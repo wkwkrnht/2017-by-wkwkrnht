@@ -876,7 +876,7 @@
     }
     .card-meta{
         height:10vmax;
-        width:10vmax;
+        width:30vmax;
     }
     .card-meta > h2{
         text-align:center;
