@@ -63,8 +63,7 @@ else:
     			<?php endif;?>
     		</footer>
         </article>
-    <?php else:?>
-        <?php
+    <?php else:
         if(is_author()===true){
             include_once(get_template_directory() . '/widget/author-bio.php');
         }
@@ -104,8 +103,7 @@ else:
                             </div>
                         </div>
                     </a>
-                <?php endwhile;
-            endif;
+            <?php endwhile;endif;
             if(is_active_sidebar('listfooter')){
                 dynamic_sidebar('listfooter');
             }
@@ -130,7 +128,9 @@ else:
     	    echo'<ul class="page-nation">' . $echo . '</ul>';
     	}
     	wp_reset_query();
-    	if(is_active_sidebar('listunder')){dynamic_sidebar('listunder');}?>
-    <?php endif;
+    	if(is_active_sidebar('listunder')){
+			dynamic_sidebar('listunder');
+		}
+    endif;
     get_footer();
-endif;
+endif;?>
