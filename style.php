@@ -858,9 +858,9 @@
 		flex-flow:row wrap;
 		justify-content:space-around;
     }
-    .card{
+    .article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
-        color:rgba(0,0,0,0);
+        color:<?php echo get_option('article_card_color','#fff');?>;
         display:block;
         height:30vmax;
         margin:4vh;
