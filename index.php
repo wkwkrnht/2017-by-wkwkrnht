@@ -98,7 +98,7 @@ else:
                                     </time>
                                 </span>
                                 <span>
-                                    <?php echo$category->cat_name;?>
+                                    <?php echo $category->cat_name;?>
                                 </span>
                             </div>
                         </div>

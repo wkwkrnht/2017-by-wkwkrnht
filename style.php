@@ -846,6 +846,7 @@
 	7.area for notice
 	8.move to search
 	*/
+    <?php $card_meta_backgrpund = get_option('card_meta_background','#333');?>
     .card-list{
         -webkit-align-content:space-around;
 		align-content:space-around;
@@ -875,6 +876,7 @@
         width:100%;
     }
     .card-meta{
+        background-color:rgba(<?php echo $card_meta_background['red'];?>,<?php echo $card_meta_background['green'];?>,<?php echo $card_meta_background['blue'];?>,.5);
         height:35%;
         width:100%;
     }
