@@ -98,7 +98,7 @@ else:
                                     </time>
                                 </span>
                                 <span>
-                                    <?php echo'<a href="' . get_category_link($category->term_id) . '" title="' . $category->name . '">' . $category->cat_name . '</a>';?>
+                                    <?php echo$category->cat_name;?>
                                 </span>
                             </div>
                         </div>
