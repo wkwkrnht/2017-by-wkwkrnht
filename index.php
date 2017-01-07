@@ -80,9 +80,7 @@ else:
 			if(is_active_sidebar('listheader')){
                 dynamic_sidebar('listheader');
             }
-            if(have_posts()):
-                while(have_posts()):
-                    the_post();
+            if(have_posts()):while(have_posts()):the_post();
                     $title      = the_title_attribute(array('echo'=>false));
                     $categories = get_the_category();
     				$category   = $categories[0];
