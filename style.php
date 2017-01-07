@@ -871,25 +871,25 @@
         position:absolute;
     }
     .card-img{
-        height:30vmax;
-        width:30vmax;
+        height:100%;
+        width:100%;
     }
     .card-meta{
-        height:10vmax;
-        width:30vmax;
+        height:35%;
+        width:100%;
     }
     .card-meta > h2{
         text-align:center;
     }
     .card-meta > div{
         font-size:1.8rem;
-        width:30vmax;
+        width:100%;
     }
     .card-meta > div > span{
         box-sizing:border-box;
         display:inline-block;
         padding:0 1em;
-        width:calc(30vmax / 2);
+        width:50%;
     }
 
     .site-header{
