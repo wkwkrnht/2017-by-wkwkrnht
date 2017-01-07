@@ -71,11 +71,11 @@ else:
 		if(is_active_sidebar('listabove')){
             dynamic_sidebar('listabove');
         }
-		if(is_404()===true):
+		if(is_404()===true){
 				if(is_active_sidebar('404')){
                     dynamic_sidebar('404');
                 }
-		else:
+		}else{
             echo'<div class="card-list">';
 			if(is_active_sidebar('listheader')){
                 dynamic_sidebar('listheader');
@@ -112,7 +112,7 @@ else:
                 dynamic_sidebar('listfooter');
             }
             echo'</div>';
-		endif;
+		}
     	global $wp_query;
     	$big = 999999999;
     	$page_format = paginate_links(array(
