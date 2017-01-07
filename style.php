@@ -846,7 +846,7 @@
 	7.area for notice
 	8.move to search
 	*/
-    <?php $card_meta_backgrpund = color_to_rgb($colorcode = get_option('card_meta_background','#333'));?>
+    <?php $article_card_meta_backgrpund = color_to_rgb($colorcode = get_option('article_card_meta_background','#333'));?>
     .card-list{
         -webkit-align-content:space-around;
 		align-content:space-around;
@@ -876,7 +876,7 @@
         width:100%;
     }
     .card-meta{
-        background-color:rgba(<?php echo $card_meta_background['red'];?>,<?php echo $card_meta_background['green'];?>,<?php echo $card_meta_background['blue'];?>,.5);
+        background-color:rgba(<?php echo $article_card_meta_background['red'];?>,<?php echo $article_card_meta_background['green'];?>,<?php echo $article_card_meta_background['blue'];?>,.5);
         height:35%;
         width:100%;
     }
@@ -891,7 +891,7 @@
         box-sizing:border-box;
         display:inline-block;
         padding:0 1em;
-        width:50%;
+        width:49%;
     }
 
     .site-header{
