@@ -768,9 +768,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
         margin:4vh auto;
         max-width:94%;
     }
-    .widget.info-card{
-        overflow:hidden;
-    }
     .widget li{
         max-width:93%;
     }
@@ -860,6 +857,21 @@ $toggle_color = get_option('toggle_color','#fff');?>
 		-webkit-flex-flow:row wrap;
 		flex-flow:row wrap;
 		justify-content:space-around;
+    }
+    .card{
+        background-color:#fff;
+		border-radius:3vmin;
+		box-shadow:0 0 3vmin rgba(0,0,0,.2);
+		box-sizing:border-box;
+		font-size:1.8rem;
+		margin:4vh 2vh;
+		min-height:30vmax;
+		padding:2vh 4vh;
+		text-align:center;
+		width:30vmax;
+    }
+    .info-card{
+        width:60vmax;
     }
     .article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
@@ -1228,7 +1240,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
             margin:4vh auto;
             width:90vw;
         }
-        .article-eyecatch,.article-meta,.article-meta > div > span{
+        .article-eyecatch,.article-meta,.article-date,.article-author{
             display:inline-block;
         }
         .article-eyecatch{

@@ -19,6 +19,7 @@
 	$pin       = get_option('Pinterest');
 	$txt       = get_option('header_txt');
 	$site_url  = site_url();
+	$theme_dir = get_template_directory();
 	$blogname  = get_bloginfo('name');
 	if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
 	if($google!==false){echo'<meta name="google-site-verification" content="' . $google . '">';}
@@ -44,67 +45,71 @@
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
 	<?php
-	include_once(get_template_directory() . '/inc/meta-json.php');
-	include_once(get_template_directory() . '/style.php');
+	include_once($theme_dir . '/inc/meta-json.php');
+	include_once($theme_dir . '/style.php');
 	wp_head();
 	if($txt!==false){echo $txt;}?>
 </head>
 <body <?php body_class();?>>
-	<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
-		<?php if(is_404()===true):?>
-			<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
-				<h1 class="site-title" itemprop="name headline">
-					404 Not Found｜<?php echo $blogname;?>
-				</h1><br>
-				<p class="site-description" itemprop="about">
-					このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。
-				</p>
-			</a>
-		<?php elseif(is_category()===true):?>
-			<h1 class="site-title" itemprop="name headline about">
-				<?php echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname;?>
-			</h1>
-		<?php elseif(is_tag()===true):?>
-			<h1 class="site-title" itemprop="name headline about">
-				<?php echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname;?>
-			</h1>
-		<?php elseif(is_search()===true):
-			global $wp_query;
-			$serachresult = $wp_query->found_posts;
-			$maxpage      = $wp_query->max_num_pages;
-			wp_reset_query();?>
-			<h1 class="site-title" itemprop="name headline about">
-				<?php '「' . get_search_query() . '」の検索結果｜' . $blogname;?>
-			</h1><br>
-			<p class="site-description">
-				<?php echo $serachresult . ' 件 / ' . $maxpage . ' ページ';?>
-			</p>
-		<?php elseif(is_singular()===true):?>
-			<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
-				<span class="site-title" itemprop="name headline">
-					<?php echo $blogname;?>
-				</span>
-			</a>
-		<?php else:?>
-			<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
-				<h1 class="site-title" itemprop="name headline">
-					<?php echo $blogname;?>
+	<?php if(is_author()===true):
+		include_once($theme_dir . '/widget/author-bio.php');
+	else:?>
+		<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
+			<?php if(is_404()===true):?>
+				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
+					<h1 class="site-title" itemprop="name headline">
+						404 Not Found｜<?php echo $blogname;?>
+					</h1><br>
+					<p class="site-description" itemprop="about">
+						このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。
+					</p>
+				</a>
+			<?php elseif(is_category()===true):?>
+				<h1 class="site-title" itemprop="name headline about">
+					<?php echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname;?>
 				</h1>
-			</a>';
-		<?php endif;?>
-		<br>
-		<span class="copyright">
-			<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
-				<span itemprop="name">
-					<b>
+			<?php elseif(is_tag()===true):?>
+				<h1 class="site-title" itemprop="name headline about">
+					<?php echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname;?>
+				</h1>
+			<?php elseif(is_search()===true):
+				global $wp_query;
+				$serachresult = $wp_query->found_posts;
+				$maxpage      = $wp_query->max_num_pages;
+				wp_reset_query();?>
+				<h1 class="site-title" itemprop="name headline about">
+					<?php '「' . get_search_query() . '」の検索結果｜' . $blogname;?>
+				</h1><br>
+				<p class="site-description">
+					<?php echo $serachresult . ' 件 / ' . $maxpage . ' ページ';?>
+				</p>
+			<?php elseif(is_singular()===true):?>
+				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
+					<span class="site-title" itemprop="name headline">
 						<?php echo $blogname;?>
-					</b>
+					</span>
+				</a>
+			<?php else:?>
+				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
+					<h1 class="site-title" itemprop="name headline">
+						<?php echo $blogname;?>
+					</h1>
+				</a>';
+			<?php endif;?>
+			<br>
+			<span class="copyright">
+				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
+					<span itemprop="name">
+						<b>
+							<?php echo $blogname;?>
+						</b>
+					</span>
+				</span>
+				&nbsp;&nbsp;&copy;
+				<span itemprop="copyrightYear">
+					<?php echo get_first_post_year();?>
 				</span>
 			</span>
-			&nbsp;&nbsp;&copy;
-			<span itemprop="copyrightYear">
-				<?php echo get_first_post_year();?>
-			</span>
-		</span>
-	</header>
+		</header>
+	<?php endif;?>
 	<main id="site-main">
