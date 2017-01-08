@@ -439,7 +439,14 @@ $toggle_color = get_option('toggle_color','#fff');?>
     .main-nav ul{
         list-style-type:none;
     }
-    .main-nav a{display:inline-block;width:inherit;text-decoration:none;border-bottom:1px dashed #aaa;font-size:1.8rem;}
+    .main-nav a{
+        border-bottom:1px dashed #aaa;
+        display:inline-block;
+        font-size:1.8rem;
+        text-decoration:none;
+        width:inherit;
+    }
+
     .social-nav{
         display:block;
         margin:2vh auto;
@@ -764,15 +771,11 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .card{
         background-color:#fff;
-		box-sizing:border-box;
 		font-size:1.8rem;
 		min-height:30vmax;
-		padding:2vh 4vh;
-		text-align:center;
-
     }
     .info-card{
-        width:60vmax;
+        width:90vmax;
     }
     .article-card{
         display:block;
