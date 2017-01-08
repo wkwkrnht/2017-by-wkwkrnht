@@ -16,7 +16,15 @@ if($myAmp===true):
 	require_once('amp.php');
 else:
     get_header();
-    if(is_singular()===true):?>
+    if(is_singular()===true):
+		if(have_posts()){while(have_posts()):the_post();
+			$author_name = get_the_author_meta('display_name');
+			$author_id   = get_the_author_meta('ID');
+		endwhile;
+		}else{
+			$author_name = 'unknown';
+			$author_id   = '0';
+		}?>
         <article id="post-<?php the_ID();?>" <?php post_class();?>>
             <header class="article-header">
                 <img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_256);?> 256w,<?php wkwkrnht_eyecatch($size_512);?> 512w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1270);?> 1270w,<?php wkwkrnht_eyecatch($size_1344);?> 1344w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w" sizes="30vw" alt="eyecatch" class="article-eyecatch">
