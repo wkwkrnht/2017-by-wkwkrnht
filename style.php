@@ -762,7 +762,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
 		box-shadow:0 0 3vmin rgba(0,0,0,.2);
 		box-sizing:border-box;
 		font-size:1.8rem;
-		margin:4vh 2vh;
+		margin:6vh auto;
 		min-height:30vmax;
 		padding:2vh 4vh;
 		text-align:center;
