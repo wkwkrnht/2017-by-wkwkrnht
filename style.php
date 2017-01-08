@@ -1238,7 +1238,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         .article-header{
             background-color:<?php echo get_option('article_header_background','#f4f4f4');?>;
             border:1px dashed <?php echo get_option('article_header_border','#ccc');?>;
-            box-shadow:0 1em 1.5em -0.5em rgba(0,0,0,.1) inset;
+            box-shadow:0 2vh 3vh -1vh rgba(0,0,0,.1) inset;
             box-sizing:border-box;
             height:45vw;
             margin:4vh auto;
