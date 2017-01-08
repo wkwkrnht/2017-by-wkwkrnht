@@ -1238,20 +1238,23 @@ $toggle_color = get_option('toggle_color','#fff');?>
         .article-header{
             background-color:<?php echo get_option('article_header_background','#f4f4f4');?>;
             box-shadow:0 1em 1.5em -0.5em rgba(0,0,0,.1) inset;
+            box-sizing:border-box;
+            height:45vw;
             margin:4vh auto;
-            width:90vw;
+            padding:2vh 4vh;
+            width:80vw;
         }
         .article-eyecatch,.article-meta,.article-date,.article-author{
             display:inline-block;
         }
         .article-eyecatch{
-            height:40vw;
-            width:40vw;
+            height:25vw;
+            width:25vw;
         }
         .article-meta{
             box-sizing:border-box;
             padding:1vh 2vh;
-            width:49vw;
+            width:45vw;
         }
         .article-title,.article-meta > div{
             width:100%;
