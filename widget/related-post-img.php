@@ -1,16 +1,18 @@
 <style>
 	.widget_related_posts_img{
+		align-items:center;
+		display:flex;
+		flex-wrap:nowrap;
 		height:calc(30vmax + 6vh * 2);
+		justify-content:space-between;
 		margin:6vh auto;
 		overflow-x:scroll;
 		overflow-y:hidden;
+		-webkit-overflow-scrolling:touch;
 		width:100%;
 	}
 	.widget_related_posts_img *{
 		-webkit-transform:translateZ(0px);
-	}
-	.widget_related_posts_img .article-card{
-		float:left;
 	}
 </style>
 <?php
