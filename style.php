@@ -461,7 +461,16 @@ $toggle_color = get_option('toggle_color','#fff');?>
         width:80vw;
     }
 
-    #share-menu ul{width:86vw;list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;padding:0;margin:0;}
+    #share-menu ul{
+        align-items:center;
+        display:flex;
+        flex-wrap:wrap;
+        list-style:none;
+        justify-content:flex-start;
+        margin:0;
+        padding:0;
+        width:86vw;
+    }
     #share-menu ul li{
         height:20vh;
         text-align:center;
@@ -878,7 +887,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         display:block;
         height:30vmax;
-        margin:4vh auto;
+        margin:6vh auto;
         position:relative;
         width:30vmax;
     }
