@@ -1,0 +1,24 @@
+{
+    "name": "wkwkrnht/2017-by-wkwkrnht",
+    "description": "The theme for Wordpress which has 1-colum and user can open menu and share-menu on anywhere",
+    "type": "wordpress-theme",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "1.0.*",
+        "johnpbloch/wordpress": "*",
+        "aws/aws-sdk-php":"*",
+        "wpackagist-plugin/akismet":"dev-trunk",
+        "wpackagist-plugin/captcha":">=3.9",
+        "wpackagist-theme/hueman":"*"
+    },
+    "extra": {
+        "installer-paths": {
+            "your/custom/path/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}
