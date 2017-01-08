@@ -767,7 +767,7 @@ add_filter('term_description',function($term){if(empty($term)){return false;}ret
 
 function color_to_rgb($colorcode = ''){
     $array_colorcode          = array();
-    $colorcode                = preg_replace("/#/","",$colorcode);
+    $colorcode                = str_replace('#','',$colorcode);
     $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
     $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
     $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
@@ -783,10 +783,25 @@ function color_to_rgb($colorcode = ''){
 6.embed spotify
 7.display navi
 */
-function style_into_article($atts){extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));$none='';if($display==='none'){$none='class="none"';}return'<pre id="wpcss"' . $none . '><code>' . $style . '</code></pre>';}
-function html_encode($args=array(),$content=''){return htmlspecialchars($content,ENT_QUOTES,'UTF-8');}
-function url_to_embedly($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';}
-function url_to_hatenaBlogcard($atts){extract(shortcode_atts(array('url'=>'',),$atts));return'<iframe src="https://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';}
+function style_into_article($atts){
+    extract(shortcode_atts(array('style'=>'','display'=>'',),$atts));
+    $none = '';
+    if($display==='none'){
+        $none='class="none"';
+    }
+    return'<pre id="wpcss"' . $none . '><code>' . $style . '</code></pre>';
+}
+function html_encode($args=array(),$content=''){
+    return htmlspecialchars($content,ENT_QUOTES,'UTF-8');
+}
+function url_to_embedly($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
+}
+function url_to_hatenaBlogcard($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    return'<iframe src="https://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';
+    }
 function url_to_OGPBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
     if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}

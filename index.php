@@ -21,15 +21,17 @@ else:
             <header class="artile-header">
                 <img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_256);?> 256w,<?php wkwkrnht_eyecatch($size_512);?> 512w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1270);?> 1270w,<?php wkwkrnht_eyecatch($size_1344);?> 1344w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w" sizes="30vw" alt="eyecatch" class="article-eyecatch">
                 <div class="article-meta">
-                    <h1><?php the_title();?></h1>
+                    <h1 class="article-title">
+						<?php the_title();?>
+					</h1>
                     <div>
-                        <span class="article-title">
+                        <span class="article-date">
                             <i class="fa fa-calendar" aria-hidden="true"></i>
                             <time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
                                 <?php the_time('Y/n/j');?>
                             </time>
                         </span>
-                        <span class="author">
+                        <span class="author article-author">
                             <i class="fa fa-user" aria-hidden="true"></i>
                             <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
         						<span class="vcard author">
