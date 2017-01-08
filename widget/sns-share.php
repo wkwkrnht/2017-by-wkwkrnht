@@ -1,4 +1,7 @@
 <style>
+    .widget_sns_share > *{
+        -webkit-transform:translateZ(0px);
+    }
     .widget_sns_share ul{
         list-style:none;
         overflow-x:scroll;

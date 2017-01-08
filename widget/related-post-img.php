@@ -10,17 +10,9 @@
 		-webkit-transform:translateZ(0px);
 	}
 	.widget_related_posts_img > .article-card{
-        box-shadow:0 0 3vmin rgba(0,0,0,.2);
-        display:inline-block;
-        height:30vmax;
-		/*letter-spacing:4vh;*/
-        position:relative;
+		margin:2vh;
 		white-space:nowrap;
-        width:30vmax;
     }
-	.widget_related_posts_img > .article-card > *{
-		/*letter-spacing:initial;*/
-	}
 </style>
 <?php
 $size_full   = array(1344,576);

@@ -85,7 +85,6 @@ else:
                     dynamic_sidebar('404');
                 }
 		}else{
-            echo'<div class="card-list">';
 			if(is_active_sidebar('listheader')){
                 dynamic_sidebar('listheader');
             }
@@ -117,7 +116,6 @@ else:
             if(is_active_sidebar('listfooter')){
                 dynamic_sidebar('listfooter');
             }
-            echo'</div>';
 		}
     	global $wp_query;
     	$big = 999999999;
