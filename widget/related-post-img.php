@@ -1,6 +1,14 @@
 <style>
 	.widget_related_posts_img{
+		-webkit-align-content:space-around;
+		align-content:space-around;
+		align-items:baseline;
+		display:-webkit-flex;
+		display:flex;
+		-webkit-flex-flow:row wrap;
+		flex-flow:row wrap;
 		height:calc(30vmax + 4vh * 2);
+		justify-content:space-around;
 		margin:6vh auto;
 		overflow-x:auto;
 		overflow-y:hidden;

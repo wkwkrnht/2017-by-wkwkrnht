@@ -745,12 +745,22 @@ $toggle_color = get_option('toggle_color','#fff');?>
 	7.area for notice
 	8.move to search
 	*/
+    .card-list{
+        -webkit-align-content:space-around;
+		align-content:space-around;
+		align-items:baseline;
+		background-color:<?php echo get_option('card_list_background','#fff');?>;
+		display:-webkit-flex;
+		display:flex;
+		-webkit-flex-flow:row wrap;
+		flex-flow:row wrap;
+		justify-content:space-around;
+    }
     .card{
         background-color:#fff;
 		border-radius:3vmin;
 		box-shadow:0 0 3vmin rgba(0,0,0,.2);
 		box-sizing:border-box;
-        display:table-cell;
 		font-size:1.8rem;
 		margin:4vh 2vh;
 		min-height:30vmax;
@@ -763,7 +773,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
-        display:table-cell;
+        display:block;
         height:30vmax;
         margin:6vh auto;
         position:relative;
