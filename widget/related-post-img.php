@@ -12,7 +12,9 @@
 	}
 	.widget_related_posts_img > div{
 		display:table-cell;
+		height:30vmax;
 		padding:4vh;
+		width:30vmax;
 	}
 </style>
 <?php
