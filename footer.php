@@ -31,17 +31,18 @@
         <script>
             (function(){
                 document.getElementById("menu-toggle").onclick = function(){
-                    document.getElementById('menu-wrap').classList.toggle('close');
-                    document.getElementById('menu-wrap').classList.toggle('open');
+                    document.getElementById('menu-wrap').classList.toggle("none");
+                    document.getElementById('menu-wrap').classList.toggle("block");
                 };
-            })();
-            (function(){
-                if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){
+                if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";
                 }
             })();
             (function(){
                 var targetElements = document.getElementsByClassName("twitter-tweet");
+                if (targetElements === null) {
+                    return;
+                }
                 for ( var i = 0, l = targetElements.length; l > i; i++ ) {
                     var targetElement = targetElements[i] ;
                     targetElement.classList.add("tw-align-center");

@@ -409,7 +409,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         width:15vh;
         z-index:100;
     }
-    #menu-wrap.open ~ #menu-toggle{
+    #menu-wrap.block ~ #menu-toggle{
         transform:rotate(45deg);
     }
     #menu-toggle,#menu-toggle:visited{
