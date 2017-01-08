@@ -34,18 +34,6 @@
                     document.getElementById('menu-wrap').classList.toggle('close');
                     document.getElementById('menu-wrap').classList.toggle('open');
                 };
-                document.getElementById("main-menu-toggle").onclick = function(){
-                    document.getElementById('share-menu').classList.add("none");
-                    document.getElementById('share-menu').classList.remove("block");
-                    document.getElementById('main-menu').classList.toggle("none");
-                    document.getElementById('main-menu').classList.toggle("block");
-                };
-                document.getElementById("share-menu-toggle").onclick = function(){
-                    document.getElementById('main-menu').classList.add("none");
-                    document.getElementById('main-menu').classList.remove("block");
-                    document.getElementById('share-menu').classList.toggle("none");
-                    document.getElementById('share-menu').classList.toggle("block");
-                };
             })();
             (function(){
                 if((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ){

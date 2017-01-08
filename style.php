@@ -767,6 +767,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         margin:6vh auto;
         position:relative;
+        text-align:center;
 		width:30vmax;
     }
     .card{
@@ -799,7 +800,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .card-meta > h2{
         overflow:hidden;
-        text-align:center;
         text-overflow:ellipsis;
         white-space:nowrap;
     }
@@ -851,12 +851,12 @@ $toggle_color = get_option('toggle_color','#fff');?>
 		color:#fff;
 		display:block;
 		font-size:1.8rem;
-		height:3em;
+		height:2em;
 		left:85vw;
 		position:relative;
 		text-align:center;
-		top:-1.5em;
-		width:3em;
+		top:-1em;
+		width:2em;
 	}
 
 	.marker{
