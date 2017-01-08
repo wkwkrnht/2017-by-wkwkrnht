@@ -756,28 +756,27 @@ $toggle_color = get_option('toggle_color','#fff');?>
 		flex-flow:row wrap;
 		justify-content:space-around;
     }
+    .card,.article-card{
+        box-shadow:0 0 3vmin rgba(0,0,0,.2);
+        margin:6vh auto;
+		width:30vmax;
+    }
     .card{
         background-color:#fff;
-		border-radius:3vmin;
-		box-shadow:0 0 3vmin rgba(0,0,0,.2);
 		box-sizing:border-box;
 		font-size:1.8rem;
-		margin:6vh auto;
 		min-height:30vmax;
 		padding:2vh 4vh;
 		text-align:center;
-		width:30vmax;
+
     }
     .info-card{
         width:60vmax;
     }
     .article-card{
-        box-shadow:0 0 3vmin rgba(0,0,0,.2);
         display:block;
         height:30vmax;
-        margin:6vh auto;
         position:relative;
-        width:30vmax;
     }
     .article-card,.article-card:visited{
         color:#fff;

@@ -85,10 +85,10 @@ else:
                     dynamic_sidebar('404');
                 }
 		}else{
+			echo'<div class="card-list">';
 			if(is_active_sidebar('listheader')){
                 dynamic_sidebar('listheader');
             }
-			echo'<div class="card-list">';
             if(have_posts()):while(have_posts()):the_post();
                     $title      = the_title_attribute(array('echo'=>false));
                     $categories = get_the_category();
