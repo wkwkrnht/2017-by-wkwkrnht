@@ -3,14 +3,15 @@
 		display:table;
 		height:calc(30vmax + 4vh * 2);
 		margin:6vh auto;
-		overflow-x:auto;
+		overflow-x:scroll;
 		overflow-y:hidden;
+		table-layout:fixed;
 		width:100%;
 	}
-	.widget_related_posts_img  *{
+	.widget_related_posts_img *{
 		-webkit-transform:translateZ(0px);
 	}
-	.widget_related_posts_img > a{
+	.widget_related_post_img > div{
 		display:table-cell;
 		padding:4vh;
 	}
@@ -30,22 +31,24 @@ $query = new WP_Query($array);?>
 <?php if($query -> have_posts()):
 	while($query -> have_posts()):$query -> the_post();
 		$title      = the_title_attribute(array('echo'=>false));?>
-		<a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
-			<div class="card-meta">
-				<h2>
-					<?php echo $title;?>
-				</h2>
-				<div>
-					<span>
-						<i class="fa fa-calendar" aria-hidden="true"></i>
-						<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
-							<?php the_time('Y/n/j');?>
-						</time>
-					</span>
+		<div>
+			<a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
+				<img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
+				<div class="card-meta">
+					<h2>
+						<?php echo $title;?>
+					</h2>
+					<div>
+						<span>
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+							<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
+								<?php the_time('Y/n/j');?>
+							</time>
+						</span>
+					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		</div>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
 <?php else:?>
@@ -57,25 +60,27 @@ $query = new WP_Query($array);?>
 		$title      = the_title_attribute(array('echo'=>false));
 		$categories = get_the_category();
 		$category   = $categories[0];?>
-		<a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
-			<div class="card-meta">
-				<h2>
-					<?php echo $title;?>
-				</h2>
-				<div>
-					<span>
-						<i class="fa fa-calendar" aria-hidden="true"></i>
-						<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
-							<?php the_time('Y/n/j');?>
-						</time>
-					</span>
-					<span>
-						<?php echo $category->cat_name;?>
-					</span>
+		<div>
+			<a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
+				<img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
+				<div class="card-meta">
+					<h2>
+						<?php echo $title;?>
+					</h2>
+					<div>
+						<span>
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+							<time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
+								<?php the_time('Y/n/j');?>
+							</time>
+						</span>
+						<span>
+							<?php echo $category->cat_name;?>
+						</span>
+					</div>
 				</div>
-			</div>
-		</a>
+			</a>
+		</div>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
 <?php endif;?>

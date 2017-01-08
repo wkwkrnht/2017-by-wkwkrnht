@@ -765,6 +765,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .card,.article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
+        height:30vmax;
         margin:6vh auto;
         position:relative;
 		width:30vmax;
@@ -772,14 +773,12 @@ $toggle_color = get_option('toggle_color','#fff');?>
     .card{
         background-color:#fff;
 		font-size:1.8rem;
-		min-height:30vmax;
     }
     .info-card{
         width:90vmax;
     }
     .article-card{
         display:block;
-        height:30vmax;
     }
     .article-card,.article-card:visited{
         color:#fff;
