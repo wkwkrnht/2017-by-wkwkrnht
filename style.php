@@ -767,7 +767,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         margin:6vh auto;
         position:relative;
-        text-align:center;
 		width:30vmax;
     }
     .card{
@@ -790,28 +789,29 @@ $toggle_color = get_option('toggle_color','#fff');?>
         position:absolute;
     }
     .card-img{
-        height:100%;
-        width:100%;
+        height:30vmax;
+        width:30vmax;
     }
     .card-meta{
         background-color:rgba(0,0,0,.5);
-        height:35%;
-        width:100%;
+        height:calc(30vmax / 10 * 4);
+        width:30vmax;
     }
     .card-meta > h2{
         overflow:hidden;
+        text-align:center;
         text-overflow:ellipsis;
         white-space:nowrap;
     }
     .card-meta > div{
         font-size:1.8rem;
-        width:100%;
+        width:30vmax;
     }
     .card-meta > div > span{
         box-sizing:border-box;
         display:inline-block;
         padding:0 1em;
-        width:49%;
+        width:calc(30vmax / 2 - 1vmin);
     }
 
     .site-header{
