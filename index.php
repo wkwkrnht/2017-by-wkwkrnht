@@ -117,7 +117,7 @@ else:
             if(is_active_sidebar('listfooter')){
                 dynamic_sidebar('listfooter');
             }
-			echo'</div>';'
+			echo'</div>';
 		}
     	global $wp_query;
     	$big = 999999999;
