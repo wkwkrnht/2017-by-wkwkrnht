@@ -9,10 +9,6 @@
 	.widget_related_posts_img > *{
 		-webkit-transform:translateZ(0px);
 	}
-	.widget_related_posts_img > .article-card{
-		margin:2vh;
-		white-space:nowrap;
-    }
 </style>
 <?php
 $size_full   = array(1344,576);
