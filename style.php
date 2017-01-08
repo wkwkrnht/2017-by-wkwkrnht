@@ -184,6 +184,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         -webkit-text-size-adjust:100%;
     }
     body{
+        margin:0;
         overflow-y:scroll;
         padding-bottom:20vh;
         scroll-behavior:smooth;
@@ -875,12 +876,14 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
-        color:#fff;
         display:block;
         height:30vmax;
-        margin:4vh;
+        margin:4vh auto;
         position:relative;
         width:30vmax;
+    }
+    .article-card,.article-card:visited{
+        color:#fff;
     }
     .card-img,.card-meta{
         bottom:0;
@@ -1265,11 +1268,11 @@ $toggle_color = get_option('toggle_color','#fff');?>
         }
 
         .article-main{
-			font-size:1.8rem;
+			font-size:1.6rem;
 		}
 		.article-main p{
 			margin:2vh auto;
-			max-width:calc(1.8rem * 40);
+			max-width:calc(1.6rem * 40);
 			padding:1vh .5vh;
 		}
 		.article-main a[href^="http"]:empty::before{
