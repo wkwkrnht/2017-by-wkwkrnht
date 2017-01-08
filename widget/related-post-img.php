@@ -13,10 +13,14 @@
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         display:inline-block;
         height:30vmax;
-        margin:4vh auto;
+		letter-spacing:4vh;
         position:relative;
+		white-space:nowrap;
         width:30vmax;
     }
+	.widget_related_posts_img > .article-card > *{
+		letter-spacing:initial;
+	}
     .widget_related_posts_img > .article-card,.widget_related_posts_img > .article-card:visited{
         color:#fff;
     }

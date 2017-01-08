@@ -2,6 +2,7 @@
     .widget_sns_share ul{
         list-style:none;
         text-align:center;
+        white-space:nowrap;
     }
     .widget_sns_share li{
         border-radius:50%;
