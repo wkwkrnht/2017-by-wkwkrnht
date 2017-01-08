@@ -1238,7 +1238,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         .article-meta{
             box-sizing:border-box;
             padding:1vh 2vh;
-            width:calc(60vw - 1px);
+            width:59vw;
         }
         .article-title,.article-meta > div{
             width:100%;
