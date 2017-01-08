@@ -1116,7 +1116,7 @@ function nendebcom_register_bulk_actions_delete($bulk_actions){
     return $bulk_actions;
 }
 add_filter('bulk_actions-edit-post','nendebcom_register_bulk_actions_delete');
-*
+/*
     ADD item to customize
 1.customizer
 2.user profile
