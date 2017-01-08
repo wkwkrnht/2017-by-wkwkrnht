@@ -348,12 +348,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
         -webkit-appearance:button;
         font:inherit;
     }
-    .close{
-        visibility:hidden;
-    }
-    .open{
-        visibility:visible;
-    }
     .vcard,.fn,.author{
         margin:0;
     }
