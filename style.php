@@ -828,7 +828,6 @@ $theme_uri  = get_template_directory_uri();?>
         border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;
     }
     .widget_recent_entries ul li a{
-        color:<?php echo $root_color;?>;
         font-size:1.6rem;
         text-decoration:none;
     }
@@ -1698,7 +1697,6 @@ $theme_uri  = get_template_directory_uri();?>
     .night-mode ul.page-nation li.current,
     .night-mode .page-nav,
     .night-mode .page-nav a:hover,
-    .night-mode .widget_recent_entries ul li a,
     .night-mode .hide-nav-prev a,
     .night-mode .hide-nav-next a,
     body.night-mode,
