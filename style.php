@@ -850,7 +850,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
 	7.area for notice
 	8.move to search
 	*/
-    <?php $article_card_meta_backgrpund = color_to_rgb(get_option('article_card_meta_background','#333'));?>
     .card-list{
         -webkit-align-content:space-around;
 		align-content:space-around;
@@ -864,7 +863,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
     }
     .article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
-        color:<?php echo get_option('article_card_color','#fff');?>;
+        color:#fff;
         display:block;
         height:30vmax;
         margin:4vh;
@@ -880,7 +879,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         width:100%;
     }
     .card-meta{
-        background-color:rgba(<?php echo $article_card_meta_background['red'];?>,<?php echo $article_card_meta_background['green'];?>,<?php echo $article_card_meta_background['blue'];?>,.5);
+        background-color:rgba(0,0,0,.5);
         height:35%;
         width:100%;
     }
