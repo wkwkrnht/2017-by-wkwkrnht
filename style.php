@@ -1250,7 +1250,7 @@ $toggle_color = get_option('toggle_color','#fff');?>
         .article-meta{
             box-sizing:border-box;
             padding:1vh 2vh;
-            width:59vw;
+            width:49vw;
         }
         .article-title,.article-meta > div{
             width:100%;
@@ -1260,12 +1260,12 @@ $toggle_color = get_option('toggle_color','#fff');?>
         }
 
         .article-main{
-			font-size:1.6rem;
+			font-size:1.8rem;
 		}
 		.article-main p{
 			margin:2vh auto;
-			max-width:calc(1.6rem * 40);
-			padding:1vh 8vmin;
+			max-width:calc(1.8rem * 40);
+			padding:1vh .5vh;
 		}
 		.article-main a[href^="http"]:empty::before{
 			content:attr(href);
@@ -1623,11 +1623,6 @@ $toggle_color = get_option('toggle_color','#fff');?>
 		.information,.question{
 			width:80%;
 		}
-		<?php if(is_singular()===true):?>
-			.article-main{
-				font-size:2rem;
-			}
-		<?php endif;?>
     }
     @media screen and (max-width:720px;){
         .toc,.article-main .toc-title{
