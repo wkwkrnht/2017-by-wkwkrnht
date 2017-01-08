@@ -11,7 +11,7 @@
 	.widget_related_posts_img *{
 		-webkit-transform:translateZ(0px);
 	}
-	.widget_related_post_img > div{
+	.widget_related_posts_img > div{
 		display:table-cell;
 		padding:4vh;
 	}
