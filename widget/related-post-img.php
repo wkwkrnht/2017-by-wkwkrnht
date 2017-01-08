@@ -13,46 +13,14 @@
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         display:inline-block;
         height:30vmax;
-		letter-spacing:4vh;
+		/*letter-spacing:4vh;*/
         position:relative;
 		white-space:nowrap;
         width:30vmax;
     }
 	.widget_related_posts_img > .article-card > *{
-		letter-spacing:initial;
+		/*letter-spacing:initial;*/
 	}
-    .widget_related_posts_img > .article-card,.widget_related_posts_img > .article-card:visited{
-        color:#fff;
-    }
-    .widget_related_posts_img .card-img,.widget_related_posts_img .card-meta{
-        bottom:0;
-        position:absolute;
-    }
-    .widget_related_posts_img .card-img{
-        height:100%;
-        width:100%;
-    }
-    .widget_related_posts_img .card-meta{
-        background-color:rgba(0,0,0,.5);
-        height:35%;
-        width:100%;
-    }
-    .widget_related_posts_img .card-meta > h2{
-        overflow:hidden;
-        text-align:center;
-        text-overflow:ellipsis;
-        white-space:nowrap;
-    }
-    .widget_related_posts_img .card-meta > div{
-        font-size:1.8rem;
-        width:100%;
-    }
-    .widget_related_posts_img .card-meta > div > span{
-        box-sizing:border-box;
-        display:inline-block;
-        padding:0 1em;
-        width:49%;
-    }
 </style>
 <?php
 $size_full   = array(1344,576);

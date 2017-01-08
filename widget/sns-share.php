@@ -1,6 +1,8 @@
 <style>
     .widget_sns_share ul{
         list-style:none;
+        overflow-x:scroll;
+        overflow-y:hidden;
         text-align:center;
         white-space:nowrap;
     }
