@@ -657,11 +657,23 @@ function get_yes_image($size){
 function yes_image($size){
     echo get_yes_image($size);
 }
-function get_no_image(){
-    return get_template_directory_uri() . '/inc/no-img.png';
+function get_no_image($size){
+    $uri = get_template_directory_uri();
+    if($size===array(1024,1024)){
+        $src = $uri . '/inc/no-image/no-image_1024x1024.png';
+    }elseif($size===array(512,512)){
+        $src = $uri . '/inc/no-image/no-image_512x512.png';
+    }elseif($size===array(256,256)){
+        $src = $uri . '/inc/no-image/no-image_256x256.png';
+    }elseif($size===array(128,128)){
+        $src = $uri . '/inc/no-image/no-image_128x128.png';
+    }else{
+        $src = $uri . '/inc/no-img.png';
+    }
+    return $src;
 }
-function no_image(){
-    echo get_no_image();
+function no_image($size){
+    echo get_no_image($size);
 }
 function get_meta_image(){
     if(is_singular()===true && has_post_thumbnail()===true){
@@ -671,7 +683,8 @@ function get_meta_image(){
         $logo = get_theme_mod('custom_logo');
         return wp_get_attachment_url($logo);
     }else{
-        return get_no_image();
+        $size = array(512,512);
+        return get_no_image($size);
     }
 }
 function meta_image(){
@@ -681,7 +694,7 @@ function get_wkwkrnht_eyecatch($size){
     if(has_post_thumbnail()===true){
         return get_yes_image($size);
     }else{
-        return get_no_image();
+        return get_no_image($size);
     }
 }
 function wkwkrnht_eyecatch($size){
