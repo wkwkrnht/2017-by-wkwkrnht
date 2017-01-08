@@ -94,7 +94,7 @@
 					<h1 class="site-title" itemprop="name headline">
 						<?php echo $blogname;?>
 					</h1>
-				</a>';
+				</a>
 			<?php endif;?>
 			<br>
 			<span class="copyright">
