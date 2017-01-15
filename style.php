@@ -856,17 +856,6 @@ $theme_uri  = get_template_directory_uri();?>
 	7.area for notice
 	8.move to search
 	*/
-    .card-list{
-        -webkit-align-content:space-around;
-		align-content:space-around;
-		align-items:baseline;
-		background-color:<?php echo get_option('card_list_background','#fff');?>;
-		display:-webkit-flex;
-		display:flex;
-		-webkit-flex-flow:row wrap;
-		flex-flow:row wrap;
-		justify-content:space-around;
-    }
     .card,.article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         margin:6vh auto;
@@ -882,7 +871,7 @@ $theme_uri  = get_template_directory_uri();?>
         width:90vmax;
     }
     .article-card{
-        display:block;
+        display:inline-block;
         height:30vmax;
     }
     .article-card,.article-card:visited{
@@ -1248,6 +1237,7 @@ $theme_uri  = get_template_directory_uri();?>
             box-sizing:border-box;
             height:45vw;
             margin:4vh auto;
+            overflow:auto;
             padding:2vh 4vh;
             width:80vw;
         }
