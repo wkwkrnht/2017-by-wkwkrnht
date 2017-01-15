@@ -1016,15 +1016,15 @@ $theme_uri  = get_template_directory_uri();?>
 		border-radius:50%;
 		color:#fff;
 		display:block;
-		height:3em;
+		height:4em;
 		left:-2em;
-		line-height:3em;
+		line-height:4em;
         margin:0;
 		position:absolute;
 		top:-2em;
 		text-align:center;
         vertical-align:middle;
-		width:3em;
+		width:4em;
 	}
 	.ogp-blogcard-main{
 		height:calc(37vh * .8);
@@ -1624,10 +1624,11 @@ $theme_uri  = get_template_directory_uri();?>
 			margin:5vh auto;
 			max-width:70vw;
 		}
-		.ogp-blogcard{
-			border-width:2vmin;
-			max-width:94%;
-		}
+        .ogp-blogcard-share-toggle{
+            height:2.5em;
+            line-height:2.5em;
+            width:2.5em;
+        }
 		.ogp-blogcard-title{
 			font-size:1.6rem;
 		}
