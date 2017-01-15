@@ -979,8 +979,8 @@ $theme_uri  = get_template_directory_uri();?>
 		height:37vh;
 		padding:2vmin 5vmin;
 		position:relative;
-		margin:3vmin auto;
-		width:80vw;
+		margin:4vh auto;
+		width:84vw;
 	}
 	.ogp-blogcard-share{
 		background-color:rgba(0,0,0,.3);
@@ -1017,16 +1017,17 @@ $theme_uri  = get_template_directory_uri();?>
 		color:#fff;
 		display:block;
 		height:3em;
-		left:-1.5em;
+		left:-2em;
 		line-height:3em;
+        margin:0;
 		position:absolute;
-		top:-1.5em;
+		top:-2em;
 		text-align:center;
+        vertical-align:middle;
 		width:3em;
 	}
 	.ogp-blogcard-main{
 		height:calc(37vh * .8);
-		margin-bottom:1vh;
         overflow:auto;
 		position:absolute;
 		top:0;
@@ -1046,9 +1047,6 @@ $theme_uri  = get_template_directory_uri();?>
 	}
 	.ogp-blogcard-title{
 		font-size:2rem;
-	}
-	.ogp-blogcard-site-name{
-		display:none;
 	}
 
 	.information,.question{
@@ -1212,11 +1210,11 @@ $theme_uri  = get_template_directory_uri();?>
 		border-radius:3vmin;
 		display:inline-block;
 		margin-left:1em;
-		padding:5px;
+		padding:1em;
 	}
 	.search-form .sform{
 		background-color:#fff;
-		min-width:280px;
+		min-width:16em;
 	}
 	.search-form .sbtn{
 		background-color:#1155ee;
@@ -1226,7 +1224,7 @@ $theme_uri  = get_template_directory_uri();?>
 		position:absolute;
 	}
 	.search-form .sbtn::after{
-		bottom:-28px;
+		bottom:1.6em;
 		color:#000;
 		content:"\f25a";
 		font-family:"FontAwesome";
@@ -1514,33 +1512,8 @@ $theme_uri  = get_template_directory_uri();?>
 		.article-main img{
 			display:block;
 			height:auto;
-			line-height:2;
 			margin:4vh auto;
-			min-height:50px;
-			position:relative;
 			text-align:center;
-			width:100%;
-		}
-		.article-main img::before{
-			background-color:#f1f1f1;
-			border:1vmin dashed #ddd;
-			border-radius:3vmin;
-			content:"";
-			display:block;
-			height:calc(100% + 2em);
-			width:100%;position:absolute;top:-2em;left:0;
-		}
-		.article-main img::after{
-			color:rgb(100,100,100);
-			content:"\f127" "この画像が読み込めませんでした。" attr(alt);
-			display:block;
-			font-family:"FontAwesome";
-			font-size:1.8rem;
-			font-style:normal;
-			left:0;
-			position:absolute;
-			text-align:center;
-			top:1em;
 			width:100%;
 		}
 		.wp-caption{
