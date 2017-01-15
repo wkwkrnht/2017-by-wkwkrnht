@@ -1016,13 +1016,13 @@ $theme_uri  = get_template_directory_uri();?>
 		border-radius:50%;
 		color:#fff;
 		display:block;
-		height:4em;
-		left:0em;
-		line-height:4em;
+		height:3em;
+		left:-1.5em;
+		line-height:3em;
 		position:absolute;
-		top:0em;
+		top:-1.5em;
 		text-align:center;
-		width:4em;
+		width:3em;
 	}
 	.ogp-blogcard-main{
 		height:calc(37vh * .8);
