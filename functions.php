@@ -758,7 +758,7 @@ function make_OGPblogcard($url){
                 <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
             </ul>
         </div>
-        <blockquote class="ogp-blogcard-main"cite="' . $url . '">
+        <blockquote class="ogp-blogcard-main" cite="' . $url . '">
             <img class="ogp-blogcard-img" src="' . $img . '">
             <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '" class="ogp-blogcard-info">
                 <h2 class="ogp-blogcard-title">' . $title . '</h2>
@@ -884,7 +884,7 @@ function make_a($args=array(),$content=''){
 }
 function make_link_button($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'','color'=>'',),$args));
-    return'<a href="' . $url . '" title="' . $content . '" class="button ' . $color . '" tabindex="0" target="_blank" rel="noopener">' . $content . '</a>';
+    return'<a href="' . $url . '" title="' . $content . '" tabindex="0" target="_blank" rel="noopener" class="button ' . $color . '">' . $content . '</a>';
 }
 function make_button($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
