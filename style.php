@@ -1612,7 +1612,7 @@ $theme_uri  = get_template_directory_uri();?>
     1.mobile style
     2.PC style
     */
-    @media screen and (max-width:720px;){
+    @media screen and (max-width:720px;) {
         .toc,.article-main .toc-title{
 			width:94%;
 		}
@@ -1621,9 +1621,9 @@ $theme_uri  = get_template_directory_uri();?>
 			max-width:70vw;
 		}
         .ogp-blogcard-share-toggle{
-            height:1.5em;
-            line-height:1.5em;
-            width:1.5em;
+            height:2em;
+            line-height:2em;
+            width:2em;
         }
 		.ogp-blogcard-title{
 			font-size:1.6rem;
