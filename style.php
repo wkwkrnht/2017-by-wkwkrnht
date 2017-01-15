@@ -856,23 +856,34 @@ $theme_uri  = get_template_directory_uri();?>
 	7.area for notice
 	8.move to search
 	*/
+    .card-list{
+        -webkit-align-content:space-around;
+		align-content:space-around;
+		align-items:baseline;
+		background-color:<?php echo get_option('card_list_background','#fff');?>;
+		display:-webkit-flex;
+		display:flex;
+		-webkit-flex-flow:row wrap;
+		flex-flow:row wrap;
+		justify-content:space-around;
+    }
     .card,.article-card{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         margin:6vh auto;
         position:relative;
-		width:30vmax;
+		width:29vmax;
     }
     .card{
         background-color:#fff;
 		font-size:1.8rem;
-        min-height:30vmax;
+        min-height:29vmax;
     }
     .info-card{
         width:90vmax;
     }
     .article-card{
-        display:inline-block;
-        height:30vmax;
+        display:block;
+        height:29vmax;
     }
     .article-card,.article-card:visited{
         color:#fff;
@@ -1013,6 +1024,7 @@ $theme_uri  = get_template_directory_uri();?>
 	.ogp-blogcard-main{
 		height:calc(37vh * .8);
 		margin-bottom:1vh;
+        overflow:auto;
 		position:absolute;
 		top:0;
 		width:80vw;

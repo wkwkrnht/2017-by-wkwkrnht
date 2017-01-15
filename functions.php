@@ -758,7 +758,7 @@ function make_OGPblogcard($url){
                 <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
             </ul>
         </div>
-        <blockquote class="ogp-blogcard-main"cite="' . $url . '">
+        <blockquote class="ogp-blogcard-main" cite="' . $url . '">
             <img class="ogp-blogcard-img" src="' . $img . '">
             <a href="' . $url . '" target="_blank" rel="noopener" tabindex="0" title="' . $title . '" class="ogp-blogcard-info">
                 <h2 class="ogp-blogcard-title">' . $title . '</h2>
