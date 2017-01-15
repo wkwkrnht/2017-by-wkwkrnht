@@ -1214,6 +1214,7 @@ $theme_uri  = get_template_directory_uri();?>
 	}
 	.search-form .sform{
 		background-color:#fff;
+        max-width:70vw;
 		min-width:16em;
 	}
 	.search-form .sbtn{
@@ -1625,9 +1626,9 @@ $theme_uri  = get_template_directory_uri();?>
 			max-width:70vw;
 		}
         .ogp-blogcard-share-toggle{
-            height:2.5em;
-            line-height:2.5em;
-            width:2.5em;
+            height:2em;
+            line-height:2em;
+            width:2em;
         }
 		.ogp-blogcard-title{
 			font-size:1.6rem;
@@ -1701,6 +1702,7 @@ $theme_uri  = get_template_directory_uri();?>
     .night-mode .page-nav a:hover,
     .night-mode .hide-nav-prev a,
     .night-mode .hide-nav-next a,
+    .night-mode .article-header,
     body.night-mode,
     .night-mode #main-menu,
     .night-mode .card,
