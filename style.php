@@ -1049,15 +1049,16 @@ $theme_uri  = get_template_directory_uri();?>
 		font-size:2rem;
 	}
 
-	.information,.question{
+	.information,.question,.attention{
 		background-color:#f4f3eb;
 		border-radius:3vmin;
 		margin:1em auto;
 		padding:2em;
 		padding-left:calc(7rem + 2vmin);
 		position:relative;
+        width:80%;
 	}
-	.information::before,.question::before{
+	.information::before,.question::before,.attention::before{
 		background-color:#eae3b4;
 		border-radius:50%;
 		color:#f4f3eb;
@@ -1078,6 +1079,9 @@ $theme_uri  = get_template_directory_uri();?>
 	.question::before{
 		content:"？";
 	}
+    .attention::before{
+        content:"！";
+    }
 
 	.cutin-box{
 		color:#fff;
@@ -1605,18 +1609,9 @@ $theme_uri  = get_template_directory_uri();?>
     <?php endif;?>
     /*
         Media Queri
-    1.PC style
-    2.mobile style
+    1.mobile style
+    2.PC style
     */
-    @media screen and (min-width:720px){
-        .hatenablogcard{
-			margin:5vh auto;
-			max-width:60vw;
-		}
-		.information,.question{
-			width:80%;
-		}
-    }
     @media screen and (max-width:720px;){
         .toc,.article-main .toc-title{
 			width:94%;
@@ -1626,9 +1621,9 @@ $theme_uri  = get_template_directory_uri();?>
 			max-width:70vw;
 		}
         .ogp-blogcard-share-toggle{
-            height:2em;
-            line-height:2em;
-            width:2em;
+            height:1.5em;
+            line-height:1.5em;
+            width:1.5em;
         }
 		.ogp-blogcard-title{
 			font-size:1.6rem;
