@@ -1148,6 +1148,7 @@ $theme_uri  = get_template_directory_uri();?>
 		line-height:2;
 		margin:2vh auto;
 		min-height:4rem;
+        overflow:hidden;
 		padding:2vmin 5vmin;
 		position:relative;
 		text-align:center;

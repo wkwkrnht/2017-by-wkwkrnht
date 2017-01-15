@@ -884,7 +884,7 @@ function make_a($args=array(),$content=''){
 }
 function make_link_button($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'','color'=>'',),$args));
-    return'<a href="' . $url . '" title="' . $content . '" class="button ' . $color . '" tabindex="0" target="_blank" rel="noopener">' . $content . '</a>';
+    return'<a href="' . $url . '" title="' . $content . '" tabindex="0" target="_blank" rel="noopener" class="button ' . $color . '">' . $content . '</a>';
 }
 function make_button($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
