@@ -962,6 +962,9 @@ $theme_uri  = get_template_directory_uri();?>
 		top:-1em;
 		width:2em;
 	}
+    .toc > ul{
+        margin:0;
+    }
 
 	.marker{
 		box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;
@@ -1148,6 +1151,8 @@ $theme_uri  = get_template_directory_uri();?>
 		padding:2vmin 5vmin;
 		position:relative;
 		text-align:center;
+        text-overflow:ellipsis;
+        white-space:nowrap;
 		width:80%;
 	}
 	.button:hover{
@@ -1199,7 +1204,7 @@ $theme_uri  = get_template_directory_uri();?>
 
 	.search-form{
 		line-height:170%;
-		margin:2vh auto;
+		margin:4vh auto;
 	}
 	.search-form div{
 		border:1px solid #555;
