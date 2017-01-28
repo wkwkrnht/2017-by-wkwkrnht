@@ -3,7 +3,6 @@
         -webkit-transform:translateZ(0px);
     }
     .widget_sns_share ul{
-        letter-spacing:-0.1px;
         list-style:none;
         overflow-x:scroll;
         overflow-y:hidden;
@@ -12,9 +11,8 @@
     }
     .widget_sns_share li{
         display:inline-block;
-        letter-spacing:initial;
-        height:15vmax;
-        width:15vmax;
+        height:10vmax;
+        width:10vmax;
     }
     .widget_sns_share ul li a{
         color:#fff;
@@ -31,9 +29,6 @@
         background-color:#333;
         font-size:4rem;
         font-weight:900;
-    }
-    .widget_sns_share .buffer > a{
-        top:28%;
     }
     .widget_sns_share .line{
         background-color:#6cc655;
@@ -58,16 +53,12 @@
         font-size:5rem;
         font-weight:900;
     }
-    .widget_sns_share .hatebu > a{
-        top:25%;
-    }
     .widget_sns_share li.instapaper{
         background-color:#fff;
     }
     .widget_sns_share li.instapaper > a{
         color:#333;
         font:900 5rem/1.9 serif;
-        top:25%;
     }
     .widget_sns_share .pinterest{
         background-color:#bd081c;

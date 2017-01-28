@@ -1,5 +1,5 @@
 /*
-1.header
+1.base
 2.p & a
 3.hx
 4.pre & address & quote & embed
@@ -11,28 +11,34 @@
 10.original
 11.codex
 */
+article{
+    box-shadow:0 0 3vmin rgba(0,0,0,.2);
+    max-width:1200px;
+    width:90vw;
+}
 .article-header{
     background-color:<?php echo get_option('article_header_background','#f4f4f4');?>;
     border:1px dashed <?php echo get_option('article_header_border','#ccc');?>;
-    box-shadow:0 2vh 3vh -1vh rgba(0,0,0,.1) inset;
     box-sizing:border-box;
-    height:45vw;
-    margin:4vh auto;
-    overflow:auto;
-    padding:2vh 4vh;
-    width:80vw;
+    overflow:hidden;
+    width:100%;
 }
 .article-eyecatch,.article-meta,.article-date,.article-author{
     display:inline-block;
 }
 .article-eyecatch{
-    height:25vw;
-    width:25vw;
+    position:0;
+    top:0;
+    width:100%;
 }
 .article-meta{
+    background-color:rgba(0,0,0,.5);
     box-sizing:border-box;
+    color:#fff;
     padding:1vh 2vh;
-    width:45vw;
+    position:absolute;
+    top:0;
+    width:100;
 }
 .article-title,.article-meta > div{
     width:100%;
