@@ -19,6 +19,7 @@ article{
 }
 .article-header{
     box-sizing:border-box;
+    height:25vmax;
     position:relative;
     overflow:hidden;
     width:100%;
