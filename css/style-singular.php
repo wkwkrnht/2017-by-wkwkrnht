@@ -14,7 +14,7 @@
 article{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
     margin:0 auto;
-    max-width:1200px;
+    max-width:1600px;
     width:90vw;
 }
 .article-header{
@@ -74,7 +74,7 @@ article{
 .article-main h1,.article-main h2,.article-main h3,.article-main h4,.article-main h5,.article-main h6{
     line-height:6vh;
     margin:2vh auto;
-    max-width:90%;
+    max-width:80%;
     min-height:6vh;
     text-align:center;
 }

@@ -73,7 +73,7 @@
 </style>
 <ul>
     <li class="tweet">
-        <a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');?><?php if(get_twitter_acount()!==null):echo '&amp;via=' . get_twitter_acount();endif;?>" target="_blank" title="Twitterへの共有リンク">
+        <a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>" target="_blank" title="Twitterへの共有リンク">
             <i class="fa fa-twitter fa-5x" aria-hidden="true"></i>
         </a>
     </li>
