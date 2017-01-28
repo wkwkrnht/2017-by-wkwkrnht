@@ -19,7 +19,7 @@ article{
 }
 .article-header{
     box-sizing:border-box;
-    height:25vmax;
+    height:40vmax;
     position:relative;
     overflow:hidden;
     width:100%;
@@ -36,6 +36,7 @@ article{
     background-color:rgba(0,0,0,.5);
     box-sizing:border-box;
     color:#fff;
+    height:100%;
     padding:1vh 2vh;
     position:absolute;
     top:0;

@@ -29,6 +29,7 @@
         background-color:#333;
         font-size:4rem;
         font-weight:900;
+        overflow:hidden;
     }
     .widget_sns_share .line{
         background-color:#6cc655;
