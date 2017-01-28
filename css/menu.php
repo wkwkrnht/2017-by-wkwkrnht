@@ -1,6 +1,6 @@
 /*
 1.toggle
-2.commmon style
+2.wrap
 3.share menu
 4.main menu
 5.main-nav
@@ -27,140 +27,27 @@
 #menu-wrap.block ~ #menu-toggle{
     transform:rotate(45deg);
 }
-.menu-tab,#menu-toggle,#main-menu-toggle,#share-menu-toggle{
+#menu-toggle{
     background-color:<?php echo get_option('footer_background','#03a9f4');?>;
 }
-.menu-tab,#menu-toggle,#main-menu-toggle,#share-menu-toggle,#menu-toggle:visited,#main-menu-toggle a:visited,#share-menu-toggle a:visited{
+#menu-toggle,#menu-toggle:visited{
     color:<?php echo get_option('footer_color','#fff');?>;
-}
-.menu-tab{
-    align-items:center;
-    display:flex;
-    flex-wrap:wrap;
-    height:8vh;
-    justify-content:flex-start;
-    width:86vw;
-}
-#main-menu-toggle,#share-menu-toggle{
-    box-sizing:border-box;
-    display:inline-block;
-    height:8vh;
-    margin:0 auto;
-    padding:1vh 0;
-    text-align:center;
-}
-#main-menu-toggle{
-    font:900 4rem/1.9 monospace;
-    line-height:8vh;
 }
 
 #menu-wrap{
+    background-color:<?php echo get_option('menu_background','#fff');?>;
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:74vh;
     left:0;
     margin:0 7vw;
-    opacity:.85;
+    opacity:.85
+    padding-top:2vh;
     position:fixed;
-    top:6vh;
     width:86vw;
     z-index:111;
 }
-#share-menu,#main-menu{
-    height:66vh;
-    overflow-x:hidden;
-    overflow-y:auto;
-    top:8vh;
-    width:86vw;
-}
-#share-menu ul,#main-menu > ul{
+#menu-wrap > ul{
     width:80vw;
-}
-
-#share-menu ul{
-    align-items:center;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:flex-start;
-    list-style:none;
-    margin:0;
-    padding:0;
-    width:86vw;
-}
-#share-menu ul li{
-    height:20vh;
-    text-align:center;
-    width:calc((86vw / 2) - 1vmin);
-}
-#share-menu ul li a{
-    color:#fff;
-    position:relative;
-    top:35%;
-}
-#share-menu .close-button{
-    background-color:#fff;
-}
-#share-menu .tweet{
-    background-color:#55acee;
-}
-#share-menu .fb-like{
-    background-color:#3b5998;
-}
-#share-menu .buffer{
-    background-color:#333;
-    font-size:4rem;
-    font-weight:900;
-}
-#share-menu .buffer > a{
-    top:28%;
-}
-#share-menu .line{
-    background-color:#6cc655;
-}
-#share-menu .g-plus{
-    background-color:#dc4e41;
-}
-#share-menu .linkedin{
-    background-color:#36465d;
-}
-#share-menu .reddit{
-    background-color:#ff5700;
-}
-#share-menu .vk{
-    background-color:#83bad6;
-}
-#share-menu .stumbleupon{
-    background-color:#ffcc00;
-}
-#share-menu .hatebu{
-    background-color:#00a5de;
-    font-size:5rem;
-    font-weight:900;
-}
-#share-menu .hatebu > a{
-    top:25%;
-}
-#share-menu li.instapaper{
-    background-color:#fff;
-}
-#share-menu li.instapaper > a{
-    color:#333;
-    font:900 5rem/1.9 serif;
-    top:25%;
-}
-#share-menu .pinterest{
-    background-color:#bd081c;
-}
-#share-menu .pocket{
-    background-color:#ef3f56;
-}
-#share-menu .tumblr{
-    background-color:#36465d;
-}
-
-#main-menu{
-    background-color:<?php echo get_option('menu_background','#fff');?>;
-    box-sizing:border-box;
-    padding-top:2vh;
 }
 
 .main-nav ul{
