@@ -40,7 +40,7 @@
     height:74vh;
     left:0;
     margin:0 7vw;
-    opacity:.85
+    opacity:.85;
     padding-top:2vh;
     position:fixed;
     width:86vw;

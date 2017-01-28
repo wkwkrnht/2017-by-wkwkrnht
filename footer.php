@@ -21,7 +21,9 @@
         wp_footer();
         $key = false;
         $key = get_option('cookie_key');
-        if($key===false){$key = '2016-by-wkwkrnht';}
+        if($key===false){
+            $key = '2017-by-wkwkrnht';
+        }
         if(get_post_format()==='link'){
             echo'
             <script>var targets = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < targets.length; i++){var target = targets[i];target.classList.add("embedly-card");}</script>
