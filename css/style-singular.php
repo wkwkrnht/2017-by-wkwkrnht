@@ -27,7 +27,7 @@ article{
     display:inline-block;
 }
 .article-eyecatch{
-    position:0;
+    position:absolute;
     top:0;
     width:100%;
 }
