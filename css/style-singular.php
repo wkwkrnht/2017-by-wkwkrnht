@@ -13,6 +13,7 @@
 */
 article{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
+    margin:0 auto;
     max-width:1200px;
     width:90vw;
 }
@@ -20,6 +21,7 @@ article{
     background-color:<?php echo get_option('article_header_background','#f4f4f4');?>;
     border:1px dashed <?php echo get_option('article_header_border','#ccc');?>;
     box-sizing:border-box;
+    position:relative;
     overflow:hidden;
     width:100%;
 }
