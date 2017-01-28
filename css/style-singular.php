@@ -18,8 +18,6 @@ article{
     width:90vw;
 }
 .article-header{
-    background-color:<?php echo get_option('article_header_background','#f4f4f4');?>;
-    border:1px dashed <?php echo get_option('article_header_border','#ccc');?>;
     box-sizing:border-box;
     position:relative;
     overflow:hidden;
@@ -40,7 +38,7 @@ article{
     padding:1vh 2vh;
     position:absolute;
     top:0;
-    width:100;
+    width:100%;
 }
 .article-title,.article-meta > div{
     width:100%;
