@@ -3,6 +3,7 @@
         -webkit-transform:translateZ(0px);
     }
     .widget_sns_share ul{
+        letter-spacing:-0.1px;
         list-style:none;
         overflow-x:scroll;
         overflow-y:hidden;
@@ -10,8 +11,8 @@
         white-space:nowrap;
     }
     .widget_sns_share li{
-        border-radius:50%;
         display:inline-block;
+        letter-spacing:initial;
         height:15vmax;
         width:15vmax;
     }

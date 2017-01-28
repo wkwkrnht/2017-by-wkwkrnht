@@ -48,9 +48,73 @@
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
+	<?php include_once($theme_dir . '/inc/meta-json.php');?>
+	<style>
+	    <?php
+	    $root_color = get_option('root_color','#333');
+	    $theme_uri  = get_template_directory_uri();
+	    include_once($theme_dir . '/css/fontawesome.php');
+	    include_once($theme_dir . '/css/sanitize.php');
+	    include_once($theme_dir . '/css/menu.php');
+	    include_once($theme_dir . '/css/card.php');
+	    include_once($theme_dir . '/css/short-code.php');
+	    if(is_singular()===true){
+	        include_once($theme_dir . '/css/style-singular.php');
+	    }
+	    include_once($theme_dir . '/css/night-mode.php');
+	    ?>
+	    @media screen and (max-width:720px;) {
+	        .toc,.article-main .toc-title{
+				width:94%;
+			}
+			.hatenablogcard{
+				margin:5vh auto;
+				max-width:70vw;
+			}
+	        .ogp-blogcard-share-toggle{
+	            height:2em;
+	            line-height:2em;
+	            width:2em;
+	        }
+			.ogp-blogcard-title{
+				font-size:1.6rem;
+			}
+			.ogp-blogcard-description{
+				display:none;
+			}
+			.information,.question{
+				width:96%;
+			}
+	        <?php if(is_singular()===true):?>
+			    .article-main h3,.article-main h4,.article-main h5,.article-main h6{
+					font-size:2.2rem;
+				}
+			    .article-main table,.article-main table caption,.article-main table thead,.article-main table tbody,.article-main table tr,.article-main table tr th{
+					display:block;
+				}
+			    .article-main table tr th{
+					margin:-1px;
+				}
+			    .article-main table tr td{
+					display:list-item;
+					list-style:disc inside;
+					border:0;
+				}
+			    .article-main table tr td + td{
+					padding-top:0;
+				}
+			<?php endif;?>
+	    }
+	    @media print{
+			:root{
+				font-size:10pt;
+			}
+			#menu-toggle,#menu-wrap{
+				display:none;
+			}
+		}
+	</style>
 	<?php
-	include_once($theme_dir . '/inc/meta-json.php');
-	include_once($theme_dir . '/style.php');
 	wp_head();
 	if($txt!==false){echo $txt;}?>
 </head>
