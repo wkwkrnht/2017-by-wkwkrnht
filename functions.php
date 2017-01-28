@@ -144,7 +144,7 @@ function wkwkrnht_widgets_init(){
 
 class wkwkrnht_manth_archive extends WP_Widget{
     function __construct(){parent::__construct('wkwkrnht_manth_archive','月別アーカイブ(短縮版)',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/manth-archive.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/manth-archive.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -185,7 +185,7 @@ class move_top extends WP_Widget{
 
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -198,7 +198,7 @@ class related_posts extends WP_Widget{
 
 class related_posts_img extends WP_Widget{
     function __construct(){parent::__construct('related_posts_img','関連記事(画像付)',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -211,7 +211,7 @@ class related_posts_img extends WP_Widget{
 
 class post_nav extends WP_Widget{
     function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -224,7 +224,7 @@ class post_nav extends WP_Widget{
 
 class post_nav_hover extends WP_Widget{
     function __construct(){parent::__construct('post_nav_hover','前後への記事のナビゲーション(hover)',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/post-nav-hover.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav-hover.php');echo $args['after_widget'];}
 }
 
 class post_comment extends WP_Widget{
@@ -440,7 +440,7 @@ class google_translate_widget extends WP_Widget{
 
 class sns_share extends WP_Widget{
     function __construct(){parent::__construct('sns_share','SNS シェアボタン',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include_once(get_template_directory() . '/widget/sns-share.php');echo $args['after_widget'];}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/sns-share.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
