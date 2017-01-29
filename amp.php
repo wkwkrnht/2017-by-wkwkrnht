@@ -87,50 +87,47 @@
 			include_once($theme_dir . '/css/style-singular.php');
 		}
 		include_once($theme_dir . '/css/mediaqueri.php');?>
-		.widget_related_posts_img{
+		.widget_related_posts{
 			align-items:center;
 			display:flex;
 			flex-wrap:nowrap;
-			height:calc(20vw + 2vh * 2);
+			height:25vw;
 			justify-content:space-between;
-			margin:6vh 0;
+			margin:5vh 0;
 			overflow-x:auto;
 			overflow-y:hidden;
-			-webkit-overflow-scrolling:touch;
 			width:100%;
+			-webkit-overflow-scrolling:touch;
 		}
-		.widget_related_posts_img > *{
+		.widget_related_posts > *{
 			-webkit-transform:translateZ(0px);
 		}
-		.widget_related_posts_img .related-wrapper{
-			background-color:#fff;
+		.widget_related_posts .related-wrapper{
+			background-color:<?php echo get_option('related_background','#fff');?>;
 			border-radius:3vmin;
 			box-shadow:0 0 2vmin rgba(0,0,0,.3);
-			color:#fff;
+			color:<?php echo get_option('related_color','#333');?>;
 			display:block;
-			height:20vw;
-			margin:2vh 4vh;
-			position:relative;
-			text-align:center;
+			height:15vw;
+			margin:2vw;
+			min-width:28vw;
+			padding:.5em 1em;
 			text-decoration:none;
-			width:35vw;
 		}
-		.widget_related_posts_img .related-wrapper:visited{
-			color:#fff;
+		.widget_related_posts .related-wrapper:visited{
+			color:<?php echo get_option('related_color','#333');?>;
 		}
-		.widget_related_posts_img .related-thumb{
-			color:#333;
-			height:20vw;
-			width:35vw;
-		}
-		.widget_related_posts_img .related-title{
-			background-color:rgba(0,0,0,.4);
-			bottom:0;
-			font-size:1.8rem;
-			height:10vmin;
-			position:absolute;
+		.widget_related_posts .related-title{
+			background-color:<?php echo get_option('related_title_background','#03a9f4');?>;
+			box-shadow:0 3px 6px rgba(0,0,0,.1);
+			color:<?php echo get_option('related_title_color','#fff');?>;
+			font-size:2rem;
+			text-align:center;
 			vertical-align:middle;
-			width:35vw;
+		}
+		.widget_related_posts .related-date,.widget_related_posts .related-category{
+			font-size:1.6rem;
+			text-align:left;
 		}
 	</style>
 </head>
@@ -195,17 +192,17 @@
 			?>
 		</main>
 		<footer>
-			<div>
-				<amp-social-share type="twitter"></amp-social-share>
-				<amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share>
-				<amp-social-share type="g+"></amp-social-share>
-				<amp-social-share type="linkedIn"></amp-social-share>
-				<amp-social-share type="pinterest"></amp-social-share>
-				<amp-social-share type="tumblr"></amp-social-share>
-				<amp-social-share type="whatsapp"></amp-social-share>
-				<amp-social-share type="email"></amp-social-share>
-			</div>
-			<div class="widget_related_posts_img">
+			<ul>
+				<li><amp-social-share type="twitter"></amp-social-share></li>
+				<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
+				<li><amp-social-share type="g+"></amp-social-share></li>
+				<li><amp-social-share type="linkedIn"></amp-social-share></li>
+				<li><amp-social-share type="pinterest"></amp-social-share></li>
+				<li><amp-social-share type="tumblr"></amp-social-share></li>
+				<li><amp-social-share type="whatsapp"></amp-social-share></li>
+				<li><amp-social-share type="email"></amp-social-share></li>
+			</ul>
+			<div class="widget_related_posts">
 				<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 				if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 				$query = new WP_Query($array);
