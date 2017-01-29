@@ -99,7 +99,9 @@
         </a>
     </li>
     <li class="buffer">
-        <a href="https://bufferapp.com/add?url<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Bufferへの共有リンク">Buffer</a>
+        <a href="https://bufferapp.com/add?url<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Bufferへの共有リンク">
+            Buffer
+        </a>
     </li>
     <li class="reddit">
         <a href="https://www.reddit.com/submit?url=<?php echo get_meta_url();?>" target="_blank" title="Redditへの共有リンク">
@@ -107,14 +109,19 @@
         </a>
     </li>
     <li class="vk">
-        <a href="http://vkontakte.ru/share.php?url=<?php echo get_meta_url();?>" target="_blank" title="VKへの共有リンク"><i class="fa fa-vk fa-5x" aria-hidden="true"></i></a></li>
+        <a href="http://vkontakte.ru/share.php?url=<?php echo get_meta_url();?>" target="_blank" title="VKへの共有リンク">
+            <i class="fa fa-vk" aria-hidden="true"></i>
+        </a>
+    </li>
     <li class="stumbleupon">
         <a href="http://www.stumbleupon.com/submit?url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="StumbleUponの共有リンク">
             <i class="fa fa-stumbleupon-circle" aria-hidden="true"></i>
         </a>
     </li>
     <li class="hatebu">
-        <a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="はてなブックマークへの共有リンク">B!</a>
+        <a href="http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="はてなブックマークへの共有リンク">
+            B!
+        </a>
     </li>
     <li class="pocket">
         <a href="http://getpocket.com/edit?url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Pocketへの共有リンク">
@@ -127,7 +134,9 @@
         </a>
     </li>
     <li class="instapaper">
-        <a href="http://www.instapaper.com/text?u=<?php echo get_meta_url();?>" target="_blank" title="Instapaperへの共有リンク">I</a>
+        <a href="http://www.instapaper.com/text?u=<?php echo get_meta_url();?>" target="_blank" title="Instapaperへの共有リンク">
+            I
+        </a>
     </li>
     <li class="tumblr">
         <a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_meta_url();?>" target="_blank" title="thumblrへの共有リンク">
