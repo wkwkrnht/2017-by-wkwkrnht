@@ -8,7 +8,9 @@
 	$description = get_meta_description();
 	$fb_app_id   = get_option('facebook_appid');
 	$root_color  = get_option('root_color','#333');
-	$theme_dir   = get_template_directory();?>
+	$theme_dir   = get_template_directory();
+	$img         = ' src="' . get_no_image('') . '"';
+	$content     = '';?>
 	<link rel="canonical" href="<?php echo get_permalink();?>">
 	<title><?php wp_title('｜',true,'right');?></title>
 	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -160,8 +162,6 @@
 		</header>
 		<main class="article-main">
 			<?php
-			$img     = ' src="' . get_no_image() . '"';
-			$content = '';
 			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
 
 			$content = apply_filters('the_content',$content);
@@ -197,7 +197,7 @@
 				<li><amp-social-share type="twitter"></amp-social-share></li>
 				<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
 				<li><amp-social-share type="gplus"></amp-social-share></li>
-				<li><amp-social-share type="linkedIn"></amp-social-share></li>
+				<li><amp-social-share type="linkedin"></amp-social-share></li>
 				<li><amp-social-share type="pinterest"></amp-social-share></li>
 				<li><amp-social-share type="tumblr"></amp-social-share></li>
 				<li><amp-social-share type="whatsapp"></amp-social-share></li>
