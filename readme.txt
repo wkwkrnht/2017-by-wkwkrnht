@@ -25,7 +25,6 @@
 ・豊富な構造化マークアップ(NewsArticle,BreadcrumbList,WebSite,SiteNavigationElement,Person)
 ・Chrome独自のアドレスバー装飾対応
 ・独自制作のウィジェット向けCSSはウィジェットテンプレート冒頭に
-・wp-appboxのスタイルシート内蔵
 
     ファイルツリー
 ・inc (素材群)
