@@ -94,7 +94,8 @@
 }
 .ogp-blogcard-main{
     height:calc(37vh * .8);
-    overflow:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
     position:absolute;
     top:0;
     width:80vw;
@@ -119,9 +120,9 @@
 .information,.question,.attention{
     background-color:#f4f3eb;
     border-radius:3vmin;
+    box-sizing:border-box;
     margin:1em auto;
-    padding:2em;
-    padding-left:calc(7rem + 2vmin);
+    padding:2em 2em 2em calc(7rem + 2vmin);
     position:relative;
     width:80%;
 }

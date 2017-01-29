@@ -42,6 +42,8 @@
     left:0;
     margin:0 7vw;
     opacity:.85;
+    overflow-x:hidden;
+    overflow-y:auto;
     position:fixed;
     width:86vw;
     z-index:111;

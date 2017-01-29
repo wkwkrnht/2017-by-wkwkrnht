@@ -239,7 +239,8 @@ article{
 }
 .article-main table tr th,.article-main table tr td{
     border:1px solid <?php echo get_option('article_main_li_border','#cfcfcf');?>;
-    padding:1.2em;
+    overflow:auto;
+    padding:1em;
     text-align:center;
 }
 .article-main table tr:last-child{
@@ -275,10 +276,10 @@ article{
 .article-main .ogp-blogcard-title{
     box-shadow:none;
 }
-.article-main .ogp-blogcard-description,.article-main .ogp-blogcard-site-name{
+.article-main .ogp-blogcard-description{
     color:<?php echo $root_color;?>;
 }
-.article-main .ogp-blogcard-description:visited,.article-main .ogp-blogcard-site-name:visited{
+.article-main .ogp-blogcard-description:visited{
     color:<?php echo $root_color;?>;
 }
 
