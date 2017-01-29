@@ -132,6 +132,9 @@
 			font-size:1.6rem;
 			text-align:left;
 		}
+		footer > ul{
+			list-style:none;
+		}
 	</style>
 </head>
 <body>
