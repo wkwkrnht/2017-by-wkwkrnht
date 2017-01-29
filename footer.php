@@ -1,5 +1,5 @@
         </main>
-        <div id="menu-wrap">
+        <div id="menu-wrap" class="none">
             <?php if(has_nav_menu('social')):?>
                 <nav class="social-nav">
                     <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Social_Menu));?>
@@ -33,8 +33,8 @@
         <script>
             (function(){
                 document.getElementById("menu-toggle").onclick = function(){
-                    document.getElementById('menu-wrap').classList.toggle("hidden");
-                    document.getElementById('menu-wrap').classList.toggle("visible");
+                    document.getElementById('menu-wrap').classList.toggle("none");
+                    document.getElementById('menu-wrap').classList.toggle("block");
                 };
                 if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";

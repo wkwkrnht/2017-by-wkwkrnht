@@ -17,12 +17,6 @@ body{
 template,[hidden],.none{
     display:none;
 }
-.hidden{
-    visibility:hidden;
-}
-.visible{
-    visibility:visible;
-}
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary,.block{
     display:block;
 }

@@ -36,6 +36,7 @@
 
 #menu-wrap{
     background-color:<?php echo get_option('menu_background','#fff');?>;
+    bottom:20vh;
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:74vh;
     left:0;
