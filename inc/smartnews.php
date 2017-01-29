@@ -1,8 +1,8 @@
 <?php
 /**
- * RSS2 Feed Template for displaying RSS2 Posts feed.
+ * RSS2 Feed Template for displaying SmartNews Posts.
  *
- * @package WordPress
+ * @package SmartNews
  */
 header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'),true);
 $more = 1;
