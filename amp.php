@@ -78,6 +78,7 @@
 		}
 	</script>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-custom>
 		<?php
 		include_once($theme_dir . '/css/sanitize.php');
@@ -195,7 +196,7 @@
 			<ul>
 				<li><amp-social-share type="twitter"></amp-social-share></li>
 				<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
-				<li><amp-social-share type="g+"></amp-social-share></li>
+				<li><amp-social-share type="gplus"></amp-social-share></li>
 				<li><amp-social-share type="linkedIn"></amp-social-share></li>
 				<li><amp-social-share type="pinterest"></amp-social-share></li>
 				<li><amp-social-share type="tumblr"></amp-social-share></li>
