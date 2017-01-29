@@ -583,6 +583,8 @@ function themeslug_comment_class($classes){
 	return preg_grep('/\comment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
 }
 add_action('comment_class','themeslug_comment_class');
+
+add_action('do_feed_smartnews',function (){$src = get_template_directory() . '/inc/smartnews-rss.php';load_template($src);});
 /*
     SEO
 1.GET URL access now
@@ -690,14 +692,13 @@ function no_image($size){
     echo get_no_image($size);
 }
 function get_meta_image(){
+    $size = array(512,512);
     if(is_singular()===true && has_post_thumbnail()===true){
-        $size = 'wkwkrnht-thumb-512';
         return get_yes_image($size);
     }elseif(has_custom_logo()===true){
         $logo = get_theme_mod('custom_logo');
         return wp_get_attachment_url($logo);
     }else{
-        $size = array(512,512);
         return get_no_image($size);
     }
 }
