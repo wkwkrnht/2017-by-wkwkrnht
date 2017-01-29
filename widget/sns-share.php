@@ -16,6 +16,7 @@
     }
     .widget_sns_share ul li a{
         color:#fff;
+        font-size:2rem;
         position:relative;
         top:35%;
     }
@@ -74,27 +75,27 @@
 <ul>
     <li class="tweet">
         <a href="https://twitter.com/share?url=<?php echo get_meta_url();?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>" target="_blank" title="Twitterへの共有リンク">
-            <i class="fa fa-twitter fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
         </a>
     </li>
     <li class="fb-like">
         <a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode(get_meta_url());?>" target="_blank" title="Facebookへの共有リンク">
-            <i class="fa fa-thumbs-up fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
         </a>
     </li>
     <li class="line">
         <a href="http://lineit.line.me/share/ui?url=<?php echo get_meta_url();?>" target="_blank" title="LINEへの共有リンク">
-            <i class="fa fa-comments fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-comments" aria-hidden="true"></i>
         </a>
     </li>
     <li class="g-plus">
         <a href="https://plus.google.com/share?url=<?php echo get_meta_url();?>" target="_blank" title="Google+への共有リンク">
-            <i class="fa fa-google-plus-official fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
         </a>
     </li>
     <li class="linkedin">
         <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Linkedinへの共有リンク">
-            <i class="fa fa-linkedin-square fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
         </a>
     </li>
     <li class="buffer">
@@ -102,14 +103,14 @@
     </li>
     <li class="reddit">
         <a href="https://www.reddit.com/submit?url=<?php echo get_meta_url();?>" target="_blank" title="Redditへの共有リンク">
-            <i class="fa fa-reddit-alien fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-reddit-alien" aria-hidden="true"></i>
         </a>
     </li>
     <li class="vk">
         <a href="http://vkontakte.ru/share.php?url=<?php echo get_meta_url();?>" target="_blank" title="VKへの共有リンク"><i class="fa fa-vk fa-5x" aria-hidden="true"></i></a></li>
     <li class="stumbleupon">
         <a href="http://www.stumbleupon.com/submit?url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="StumbleUponの共有リンク">
-            <i class="fa fa-stumbleupon-circle fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-stumbleupon-circle" aria-hidden="true"></i>
         </a>
     </li>
     <li class="hatebu">
@@ -117,12 +118,12 @@
     </li>
     <li class="pocket">
         <a href="http://getpocket.com/edit?url=<?php echo get_meta_url();?>&amp;title=<?php wp_title('');?>" target="_blank" title="Pocketへの共有リンク">
-            <i class="fa fa-get-pocket fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-get-pocket" aria-hidden="true"></i>
         </a>
     </li>
     <li class="pinterest">
         <a href="http://pinterest.com/pin/create/button/?url=<?php echo get_meta_url();?>&amp;media=<?php meta_image();?>" target="_blank" title="Pinterestへの共有リンク">
-            <i class="fa fa-pinterest fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-pinterest" aria-hidden="true"></i>
         </a>
     </li>
     <li class="instapaper">
@@ -130,7 +131,7 @@
     </li>
     <li class="tumblr">
         <a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo get_meta_url();?>" target="_blank" title="thumblrへの共有リンク">
-            <i class="fa fa-tumblr fa-5x" aria-hidden="true"></i>
+            <i class="fa fa-tumblr" aria-hidden="true"></i>
         </a>
     </li>
 </ul>

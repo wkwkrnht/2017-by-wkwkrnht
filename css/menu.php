@@ -41,7 +41,6 @@
     left:0;
     margin:0 7vw;
     opacity:.85;
-    padding-top:2vh;
     position:fixed;
     width:86vw;
     z-index:111;

@@ -30,9 +30,11 @@
     margin:0;
 }
 
+
 .marker{
     box-shadow:0 -0.3em 0 -0.1em rgb(255,255,0) inset;
 }
+
 
 .ogp-blogcard{
     background-color:#fff;
@@ -113,6 +115,7 @@
     font-size:2rem;
 }
 
+
 .information,.question,.attention{
     background-color:#f4f3eb;
     border-radius:3vmin;
@@ -146,6 +149,7 @@
 .attention::before{
     content:"！";
 }
+
 
 .cutin-box{
     color:#fff;
@@ -203,6 +207,7 @@
 .black.cutin-box > .cutin-box-inner{
     border-color:#333;
 }
+
 
 .button{
     border-radius:1.5vmin;
@@ -269,6 +274,7 @@
     box-shadow:0 .75vmin 0 #9e9e9e;
 }
 
+
 .search-form{
     line-height:170%;
     margin:4vh auto;
@@ -282,7 +288,7 @@
 }
 .search-form .sform{
     background-color:#fff;
-    max-width:70vw;
+    max-width:70%;
     min-width:16em;
 }
 .search-form .sbtn{

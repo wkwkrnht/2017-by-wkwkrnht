@@ -14,10 +14,13 @@ body{
     scroll-behavior:smooth;
     width:100%;
 }
+template,[hidden],.none{
+    display:none;
+}
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary,.block{
     display:block;
 }
-audio,canvas,progress,video,.inline-block{
+audio,canvas,progress,video{
     display:inline-block;
 }
 audio:not([controls]){
@@ -26,9 +29,6 @@ audio:not([controls]){
 }
 progress{
     vertical-align:baseline;
-}
-template,[hidden],.none{
-    display:none;
 }
 a{
     background-color:transparent;
@@ -166,7 +166,7 @@ textarea{
 }
 ::-webkit-input-placeholder{
     color:inherit;
-    opacity:.54
+    opacity:.54;
 }
 ::-webkit-file-upload-button{
     -webkit-appearance:button;
