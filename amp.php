@@ -41,44 +41,7 @@
 	<link rel="fluid-icon" href="<?php echo $meta_image;?>" title="<?php echo $blog_name;?>">
 	<link rel="image_src" href="<?php echo $meta_image;?>">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
-	<script type="application/ld+json">
-		{
-			"@context":"http://schema.org",
-			"@type":"NewsArticle",
-			"mainEntityOfPage":{
-				"@type":"WebPage",
-				"@id":"<?php the_permalink();?>"
-			},
-			"headline":"<?php the_title();?>",
-			"image":{
-				"@type":"ImageObject",
-				"url":"<?php echo esc_url(get_wkwkrnht_eyecatch(array(800,800)));?>",
-				"height":800,
-				"width":800
-			},
-			"datePublished":"<?php the_time('Y/m/d');?>",
-			"dateModified":"<?php the_modified_date('Y/m/d');?>",
-			"author":{
-				"@type":"Person",
-				"name":"<?php the_author_meta('display_name');?>"
-			},
-			"publisher":{
-				"@type":"Organization",
-				"name":"<?php bloginfo('name');?>",
-				"homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "<?php echo get_locale( );?>"
-                },
-				"logo":{
-					"@type": "ImageObject",
-					"url": "<?php echo esc_url($meta_image);?>",
-					"width":60,
-					"height":60
-				}
-			},
-			"description": "<?php echo mb_substr(strip_tags($post->post_content),0,60);?>…"
-		}
-	</script>
+	<?php include_once($theme_dir . '/inc/meta-json.php');?>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-custom>
@@ -135,6 +98,9 @@
 		footer > ul{
 			list-style:none;
 		}
+		footer > ul > li{
+			display:inline-block;
+		}
 	</style>
 </head>
 <body>
@@ -144,23 +110,28 @@
 				<amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img>
 			</a>
 			<div class="article-meta">
-				<time class="article-date" datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n/j');?></time>
-				<span class="article-info">
-					<h1 class="article-name"><?php the_title();?></h1>
-					<?php the_author();the_category(', ');?>
-					<?php
-					$cat=get_the_category();
-					if($cat && !is_wp_error($cat)){
-						$par=get_category($cat[0]->parent);$echo='';
-						echo'<div class="bread" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope=""><a href="' . home_url() . '" tabindex="0" itemprop="url"><span itemprop="title">ホーム</span></a><span class="sp">/</span>';
-						while($par && !is_wp_error($par) && $par->term_id!==0){
-							$echo='<a href="' . get_category_link($par->term_id) . '" tabindex="0" itemprop="url"><span itemprop="title">' . $par->name . '</span></a><span class="sp">/</span></div>' . $echo;
-							$par=get_category($par->parent);
-						}
-						echo $echo . '<a href="'.get_category_link($cat[0]->term_id).'" tabindex="0" itemprop="url"><span itemprop="title">' . $cat[0]->name . '</span></a></div>';
-					}
-					?>
-				</span>
+				<h1 class="article-title entry-title">
+					<?php the_title();?>
+				</h1>
+				<div>
+					<span class="article-date">
+						<time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
+							<?php the_time('Y/n/j');?>
+						</time>
+					</span>
+					<span class="author article-author">
+						<a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
+							<span class="vcard author">
+								<span class="fn">
+									<?php echo $author_name;?>
+								</span>
+							</span>
+						</a>
+					</span>
+				</div>
+				<div class="widget_tag_cloud">
+					<?php the_tags('','','');?>
+				</div>
 			</div>
 		</header>
 		<main class="article-main">
