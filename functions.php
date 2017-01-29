@@ -586,8 +586,7 @@ add_action('comment_class','themeslug_comment_class');
 
 add_action('do_feed_smartnews','do_feed_smartnews');
 function do_feed_smartnews(){
-    $src = get_template_directory() . '/inc/smartnews.php';
-    load_template($src);
+    require(get_template_directory() . '/inc/smartnews.php');
 }
 /*
     SEO
