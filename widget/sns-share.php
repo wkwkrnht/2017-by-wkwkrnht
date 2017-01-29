@@ -18,6 +18,7 @@
     .widget_sns_share ul li a{
         color:#fff;
         font-size:3rem;
+        vertical-align:middle;
     }
     .widget_sns_share .tweet{
         background-color:#55acee;
