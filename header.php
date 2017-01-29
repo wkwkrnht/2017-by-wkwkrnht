@@ -48,9 +48,23 @@
 	<link rel="prerender" href="<?php if(is_home()):echo get_permalink();else:echo site_url();endif;?>">
 	<link rel="fluid-icon" href="<?php meta_image();?>" title="<?php bloginfo('name');?>">
 	<link rel="image_src" href="<?php meta_image();?>" url="<?php meta_image();?>" height="256" width="256">
+	<?php include_once($theme_dir . '/inc/meta-json.php');?>
+	<style>
+	    <?php
+	    $root_color = get_option('root_color','#333');
+	    $theme_uri  = get_template_directory_uri();
+	    include_once($theme_dir . '/css/fontawesome.php');
+	    include_once($theme_dir . '/css/sanitize.php');
+	    include_once($theme_dir . '/css/menu.php');
+	    include_once($theme_dir . '/css/card.php');
+	    include_once($theme_dir . '/css/short-code.php');
+	    if(is_singular()===true){
+	        include_once($theme_dir . '/css/style-singular.php');
+	    }
+	    include_once($theme_dir . '/css/night-mode.php');
+	    include_once($theme_dir . '/css/mediaqueri.php');?>
+	</style>
 	<?php
-	include_once($theme_dir . '/inc/meta-json.php');
-	include_once($theme_dir . '/style.php');
 	wp_head();
 	if($txt!==false){echo $txt;}?>
 </head>

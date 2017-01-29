@@ -123,6 +123,16 @@
 
 ##ファイルツリー
 
+* css
+
+    * card.php
+    * fontawesome.php
+    * menu.php
+    * night-mode.php
+    * sanitize.php
+    * short-code.php
+    * style-singular.php
+
 * inc (素材置場)
 
     * fontawesome
@@ -152,10 +162,9 @@
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
 * header.php (ヘッダーテンプレート)
-* index.php (リストページ向けテンプレート)
+* index.php (メインテンプレート)
 * LICENSE (ライセンス文書)
 * readme.md (このファイル)
 * readme.txt (WP向けのreadme)
 * screenshot.png (スクリーンショット)
 * style.css (情報記述用スタイルシート)
-* styles.css (メインスタイルシート)
