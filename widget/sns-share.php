@@ -29,7 +29,7 @@
     }
     .widget_sns_share .buffer{
         background-color:#333;
-        font:4rem 900 inherit;
+        font:4rem 900 monospace;
         overflow:hidden;
     }
     .widget_sns_share .line{
@@ -52,7 +52,7 @@
     }
     .widget_sns_share .hatebu{
         background-color:#00a5de;
-        font:4rem 900 inherit;
+        font:4rem 900 monospace;
     }
     .widget_sns_share li.instapaper{
         background-color:#fff;
