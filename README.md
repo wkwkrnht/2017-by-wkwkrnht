@@ -17,11 +17,28 @@
 このWordpressテーマは、ブログ向けに作られています。
 
 * バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2017-by-wkwkrnht-child/)
-* すっきりとしたカードデザイン
+* すっきりとしたタイルデザイン
 * いつでもどこでも2クリック(タップ)でメニューアクセス
-* メニュー内と記事下にウィジェットスペース確保
+* メニュー内と記事上下とリスト上下にウィジェットスペース確保
 * メニュー欄にメインメニューとソーシャルメニューの2種を用意
 * ソーシャルメニューはリンク先に応じて、自動的にアイコンフォントで装飾。その代わりに、リンクテキストは表示されません。(約40種対応)
+* SNSシェアボタンはウィジェットで搭載 (以下、対応サービス)
+
+    * Twitter
+    * facebook
+    * Google+
+    * LinkedIn
+    * VK
+    * Reddit
+    * LINE
+    * buffer
+    * stumbleupon
+    * Pocket
+    * はてなブックマーク
+    * InstaPaper
+    * Pinterest
+    * tumblr
+
 * 前後記事ナビウィジェットは以下の二種
 
     * アイキャッチ表示タイプ
@@ -124,14 +141,14 @@
 
 * css (各種スタイル置き場)
 
-    * card.php
-    * fontawesome.php
-    * menu.php
-    * mediaqueri.php
-    * night-mode.php
-    * sanitize.php
-    * short-code.php
-    * style-singular.php
+    * card.php (タイルデザイン関連)
+    * fontawesome.php (fontawesomeのやつそのまま)
+    * menu.php (純正ウィジェットとフロートメニューに関する項目)
+    * mediaqueri.php (メディアクエリ)
+    * night-mode.php (ナイトモード関連)
+    * sanitize.php (初期スタイル)
+    * short-code.php (ショートコード用)
+    * style-singular.php (記事ページ用)
 
 * inc (素材置場)
 
@@ -143,22 +160,33 @@
         * fontawesome-webfont.woff2
         * fontawesome.otf
 
+    * no-image (404な画像のレスポンシブイメージ用素材)
+
+        * no-image_128x128.png
+        * no-image_256x256.png
+        * no-image_512x512.png
+        * no-image_1024x1024.png
+
     * baguetteBox.php(LightBox風スクリプト)
     * editor-styl.css (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
     * no-img.png (404な画像)
 
+
 * widget (ウィジェット)
 
     * author-bio.php (投稿者プロフィール)
     * comment.php (コメント)
-    * manth-archive.php (短縮版月別アーカイブ)
+    * manth-archive.php (短縮版投稿月別アーカイブ)
     * post-nav-hover.php (前後記事ナビ)
     * post-nav.php (前後記事ナビ)
     * related-posts-img.php (画像付関連記事)
     * related-posts.php (関連記事)
+    * sns-share.php (SNSシェアボタン)
 
+* amp.php (AMP HTML用テンプレート)
+* composer.json (composerとwpackgist対応用のjsonファイル)
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)
 * header.php (ヘッダーテンプレート)
@@ -168,3 +196,4 @@
 * readme.txt (WP向けのreadme)
 * screenshot.png (スクリーンショット)
 * style.css (情報記述用スタイルシート)
+* update-info.json (更新検知用jsonファイル)
