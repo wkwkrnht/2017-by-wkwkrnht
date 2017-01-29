@@ -12,13 +12,12 @@
     .widget_sns_share li{
         display:inline-block;
         height:10vmax;
+        vertical-align:middle;
         width:10vmax;
     }
     .widget_sns_share ul li a{
         color:#fff;
-        font-size:2rem;
-        position:relative;
-        top:35%;
+        font-size:3rem;
     }
     .widget_sns_share .tweet{
         background-color:#55acee;
@@ -52,7 +51,7 @@
     }
     .widget_sns_share .hatebu{
         background-color:#00a5de;
-        font-size:5rem;
+        font-size:4rem;
         font-weight:900;
     }
     .widget_sns_share li.instapaper{
@@ -60,7 +59,7 @@
     }
     .widget_sns_share li.instapaper > a{
         color:#333;
-        font:900 5rem/1.9 serif;
+        font:900 4rem/1.9 serif;
     }
     .widget_sns_share .pinterest{
         background-color:#bd081c;
