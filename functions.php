@@ -478,7 +478,10 @@ function wkwkrnht_search_form($form){
             margin:1vh 0;
             width:13%;
         }
-        #search input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+        #search input[type*="submit"]:hover{
+            background-color:#03a9f4;
+            color:#fff;
+        }
     </style>
     <aside id="search" role="searc﻿h﻿">
         <form method="get" action="' . esc_url(home_url()) . '">
@@ -488,7 +491,9 @@ function wkwkrnht_search_form($form){
                 <option value="" selected="selected">タグ</option>'
                  . $tag_echo
             . '</select>
-            <button id="submit" type="submit"><i class="fa fa-search" aria-hidden="true"></i><button>
+            <button id="submit" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
         </form>
     </aside>
     ';
@@ -885,6 +890,13 @@ function cutin_box($args=array(),$content=''){
         '<div class="cutin-box-inner">' . $content . '</div>
     </div>';
 }
+function simplae_box($args=array(),$content=''){
+    extract(shortcode_atts(array('color'=>'','title'=>'',),$args));
+    return'
+    <div class="simple-box ' . $color . '">'
+         . $content . '
+    </div>';
+}
 function make_a($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'',),$args));
     return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';
@@ -1011,6 +1023,7 @@ add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
 add_shortcode('columun','columun_in_article');
+add_shortcode('simple-box','simple_box');
 add_shortcode('box','cutin_box');
 add_shortcode('link','make_a');
 add_shortcode('button','make_button');
@@ -1074,6 +1087,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
+        QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');
         QTags.addButton('qt-button','button','[button class=blue]','[/button]');
         QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
         QTags.addButton('qt-a','a','[link url=]','[/link]');
