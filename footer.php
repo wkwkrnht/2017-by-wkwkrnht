@@ -1,5 +1,5 @@
         </main>
-        <div id="menu-wrap" class="none">
+        <aside id="menu-wrap" class="none">
             <?php if(has_nav_menu('social')):?>
                 <nav class="social-nav">
                     <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Social_Menu));?>
@@ -15,7 +15,7 @@
                     <?php dynamic_sidebar('floatmenu');?>
                 </ul>
             <?php endif;?>
-        </div>
+        </aside>
         <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php
         wp_footer();

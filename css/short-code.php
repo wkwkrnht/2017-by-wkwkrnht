@@ -152,6 +152,28 @@
 }
 
 
+.simple-box{
+    border:.1vmin solid #333;
+    margin:2vh auto;
+    width:80%;
+}
+.red.simple-box{
+    border-color:#f44336;
+}
+.blue.simple-box{
+    border-color:#03a9f4;
+}
+.orange.simple-box{
+    border-color:#ff9800;
+}
+.yellow.simple-box{
+    border-color:#ffeb3b;
+}
+.green.simple-box{
+    border-color:#8bc34a;
+}
+
+
 .cutin-box{
     color:#fff;
     box-sizing:border-box;
