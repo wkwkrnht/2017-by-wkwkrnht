@@ -1,10 +1,49 @@
 <?php
-$blog_name   = get_bloginfo('name');
-$home_url    = esc_url(home_url());
-$meta_img    = get_meta_image();
-$description = get_meta_description();
+$i            = 1;
+$bing         = false;
+$google       = false;
+$pi           = false;
+$txt          = false;
+$bing         = get_option('Bing_Webmaster');
+$google       = get_option('Google_Webmaster');
+$pin          = get_option('Pinterest');
+$site_url     = site_url();
+$home_url     = esc_url(home_url());
+$meta_url     = get_meta_url();
+$meta_img     = get_meta_image();
+$blog_name    = get_bloginfo('name');
+$description  = get_meta_description();
+$URLbar_color = get_option('GoogleChrome_URLbar');
+if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
+if($google!==false){echo'<meta name="google-site-verification" content="' . $google . '">';}
+if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
+<meta name="description" content="<?php echo $description;?>">
+<meta name="theme-color" content="<?php echo $URLbar_color;?>">
+<meta name="msapplication-TileColor" content="<?php echo $URLbar_color;?>">
+<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
+<meta property="og:type" content="article">
+<?php if(is_home()===true):?>
+    <meta property="og:title" content="<?php bloginfo('name');?>">
+<?php else:?>
+    <meta property="og:title" content="<?php wp_title('｜',true,'right');bloginfo('name')?>">
+<?php endif;?>
+<meta property="og:url" content="<?php echo $meta_url;?>">
+<meta property="og:description" content="<?php echo $description;?>">
+<meta property="og:site_name" content="<?php echo $blog_name;?>">
+<meta property="og:image" content="<?php echo $meta_img;?>">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
+<meta name="twitter:title" content="<?php wp_title('');?>">
+<meta name="twitter:description" content="<?php echo $description;?>">
+<meta name="twitter:image" content="<?php echo $meta_img;?>">
+<meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
+<link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
+<link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
+<link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+<?php
 if(is_singular()===true):
-    echo'<link rel="amphtml" href="' . get_permalink() . '?amp=1">';
     $fb         = '';
     $tw         = '';
     $gp         = '';
@@ -20,6 +59,7 @@ if(is_singular()===true):
     if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
     if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
     echo'
+    <link rel="amphtml" href="' . $meta_url . '?amp=1">
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",
@@ -153,7 +193,6 @@ if(is_singular()===true):
         }
         </script>';
 elseif(is_category()===true):
-    $i          = 1;
     $categories = get_the_category($post->ID);
     $cat        = $categories[0];
     $cattitle   = get_the_archive_title();
@@ -312,7 +351,6 @@ elseif(is_date()===true):
                 }
             </script>';
 elseif(is_search()===true):
-    $meta_url = get_meta_url();
     echo'
     <script type="application/ld+json">
         [
@@ -353,7 +391,6 @@ elseif(is_search()===true):
         ]
     </script>';
 elseif(is_attachment()===true):
-    $i   = 1;
     $obj = get_queried_object();
     echo'
     <script type="application/ld+json">
@@ -402,7 +439,7 @@ elseif(is_home()===true):
             "@context": "http://schema.org",
             "@type": "WebSite",
             "name":"' . $blog_name . '",
-            "description": "' . mb_substr(get_bloginfo('description'),0,60) . '…",
+            "description": "' . mb_substr($description,0,60) . '…",
             "url": "' . $homeurl . '",
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{

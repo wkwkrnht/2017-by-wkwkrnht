@@ -41,15 +41,15 @@
 	<link rel="fluid-icon" href="<?php echo $meta_image;?>" title="<?php echo $blog_name;?>">
 	<link rel="image_src" href="<?php echo $meta_image;?>">
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
-	<?php include_once($theme_dir . '/inc/meta-json.php');?>
+	<?php include_once($theme_dir . '/inc/meta-info.php');?>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-custom>
 		<?php
 		include_once($theme_dir . '/css/sanitize.php');
 		include_once($theme_dir . '/css/card.php');
-		include_once($theme_dir . '/css/short-code.php');
 		if(is_singular()===true){
+			include_once($theme_dir . '/css/short-code.php');
 			include_once($theme_dir . '/css/style-singular.php');
 		}
 		include_once($theme_dir . '/css/mediaqueri.php');?>
