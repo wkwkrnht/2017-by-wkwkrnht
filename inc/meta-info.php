@@ -1,11 +1,12 @@
 <?php
 $i            = 1;
+$google_ana   = false;
+$google_meta  = false;
 $bing         = false;
-$google       = false;
 $pi           = false;
-$txt          = false;
+$google_ana   = get_option('Google_Analytics');
+$google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
-$google       = get_option('Google_Webmaster');
 $pin          = get_option('Pinterest');
 $site_url     = site_url();
 $home_url     = esc_url(home_url());
@@ -14,8 +15,8 @@ $meta_img     = get_meta_image();
 $blog_name    = get_bloginfo('name');
 $description  = get_meta_description();
 $URLbar_color = get_option('GoogleChrome_URLbar');
+if($google_meta!==false){echo'<meta name="google-site-verification" content="' . $google_meta . '">';}
 if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
-if($google!==false){echo'<meta name="google-site-verification" content="' . $google . '">';}
 if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta name="description" content="<?php echo $description;?>">
 <meta name="theme-color" content="<?php echo $URLbar_color;?>">
@@ -23,9 +24,9 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 <meta property="og:type" content="article">
 <?php if(is_home()===true):?>
-    <meta property="og:title" content="<?php bloginfo('name');?>">
+    <meta property="og:title" content="<?php $blog_name;?>">
 <?php else:?>
-    <meta property="og:title" content="<?php wp_title('｜',true,'right');bloginfo('name')?>">
+    <meta property="og:title" content="<?php wp_title('｜',true,'right');echo $blog_name;?>">
 <?php endif;?>
 <meta property="og:url" content="<?php echo $meta_url;?>">
 <meta property="og:description" content="<?php echo $description;?>">
@@ -464,4 +465,7 @@ elseif(is_home()===true):
             }
         }
     </script>';
-endif;?>
+endif;
+if($google_ana!==false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights') === false){
+    echo'<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script><script async="" src="//www.google-analytics.com/analytics.js"></script>';
+}?>

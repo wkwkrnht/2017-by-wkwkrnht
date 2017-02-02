@@ -27,6 +27,7 @@
 	    include_once($theme_dir . '/css/mediaqueri.php');?>
 	</style>
 	<?php
+	$txt = false;
 	$txt = get_option('header_txt');
 	wp_head();
 	if($txt!==false){echo $txt;}?>
@@ -39,7 +40,7 @@
 			<?php if(is_404()===true):?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<h1 class="site-title" itemprop="name headline">
-						404 Not Found｜<?php echo $blogname;?>
+						404 Not Found｜<?php echo $blog_name;?>
 					</h1><br>
 					<p class="site-description" itemprop="about">
 						このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。
@@ -67,13 +68,13 @@
 			<?php elseif(is_singular()===true):?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<span class="site-title" itemprop="name headline">
-						<?php echo $blogname;?>
+						<?php echo $blog_name;?>
 					</span>
 				</a>
 			<?php else:?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<h1 class="site-title" itemprop="name headline">
-						<?php echo $blogname;?>
+						<?php echo $blog_name;?>
 					</h1>
 				</a>
 			<?php endif;?>
@@ -82,7 +83,7 @@
 				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 					<span itemprop="name">
 						<b>
-							<?php echo $blogname;?>
+							<?php echo $blog_name;?>
 						</b>
 					</span>
 				</span>
