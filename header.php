@@ -16,7 +16,13 @@
 	    include_once($theme_dir . '/css/menu.php');
 	    include_once($theme_dir . '/css/card.php');
 	    if(is_singular()===true){
-			include_once($theme_dir . '/css/short-code.php');
+			$id      = url_to_postid($meta_url);
+			$post    = get_post($id);
+			$content = $post->post_content;
+			global $shortcode_tags;
+			if(has_shortcode($content,$shortcode_tags)===true){
+				include_once($theme_dir . '/css/short-code.php');
+			}
 	        include_once($theme_dir . '/css/style-singular.php');
 	    }
 	    include_once($theme_dir . '/css/night-mode.php');

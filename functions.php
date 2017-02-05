@@ -453,8 +453,6 @@ class sns_share extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
-add_filter('widget_text','do_shortcode');
-
 function wkwkrnht_search_form($form){
     $tags = get_tags();
     $tag_echo = '';
