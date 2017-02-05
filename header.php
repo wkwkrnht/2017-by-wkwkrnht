@@ -20,7 +20,13 @@
 			$post    = get_post($id);
 			$content = $post->post_content;
 			global $shortcode_tags;
-			if(has_shortcode($content,$shortcode_tags)===true){
+			foreach($shortcode_tags as $code_name => $function){
+				$has_short_code = has_shortcode($content,$code_name);
+				if($has_short_code===true){
+					break;
+				}
+			}
+			if($has_short_code===true){
 				include_once($theme_dir . '/css/short-code.php');
 			}
 	        include_once($theme_dir . '/css/style-singular.php');
