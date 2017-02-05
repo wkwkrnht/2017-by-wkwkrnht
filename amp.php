@@ -3,50 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<?php
-	$meta_image  = get_meta_image();
-	$blog_name   = get_bloginfo('name');
-	$description = get_meta_description();
-	$fb_app_id   = get_option('facebook_appid');
 	$root_color  = get_option('root_color','#333');
 	$theme_dir   = get_template_directory();
-	$img         = ' src="' . get_no_image('') . '"';
 	$content     = '';?>
 	<link rel="canonical" href="<?php echo get_permalink();?>">
 	<title><?php wp_title('｜',true,'right');?></title>
-	<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-	<meta name="google-site-verification" content="<?php echo get_option('Google_Webmaster');?>">
-	<meta name="msvalidate.01" content="<?php echo get_option('Bing_Webmaster');?>">
-	<meta name="theme-color" content="<?php echo get_option('GoogleChrome_URLbar');?>">
-	<meta name="msapplication-TileColor" content="<?php echo get_option('GoogleChrome_URLbar');?>">
-	<meta name="renderer" content="webkit">
-	<meta name="description" content="<?php echo $description;?>">
-	<meta property="fb:app_id" content="<?php echo $fb_app_id;?>">
-	<meta property="og:type" content="article">
-	<meta property="og:title" content="<?php wp_title('｜',true,'right');?>">
-	<meta property="og:url" content="<?php echo get_permalink();?>">
-	<meta property="og:description" content="<?php echo $description;?>">
-	<meta property="og:site_name" content="<?php echo $blog_name;?>">
-	<meta property="og:image" content="<?php echo $meta_image;?>">
-	<meta property="article:author" content="<?php the_author_meta('facebook');?>">
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
-	<meta name="twitter:title" content="<?php wp_title('');?>">
-	<meta name="twitter:description" content="<?php echo $description;?>">
-	<meta name="twitter:image" content="<?php echo $meta_image;?>">
-	<meta name="twitter:site" content="<?php get_twitter_acount();?>">
-	<meta name="twitter:creator" content="<?php the_author_meta('twitter');?>">
-	<link rel="publisher" href="http://plus.google.com/'<?php the_author_meta('GoogleID');?>">
-	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo('pingback_url');?>">
-	<link rel="fluid-icon" href="<?php echo $meta_image;?>" title="<?php echo $blog_name;?>">
-	<link rel="image_src" href="<?php echo $meta_image;?>">
-	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php include_once($theme_dir . '/inc/meta-info.php');?>
+	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-custom>
 		<?php
-		include_once($theme_dir . '/css/sanitize.php');
+		include_once($theme_dir . '/css/initial.php');
 		include_once($theme_dir . '/css/card.php');
 		if(is_singular()===true){
 			include_once($theme_dir . '/css/short-code.php');

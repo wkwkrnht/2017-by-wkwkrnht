@@ -88,6 +88,11 @@
             <i class="fa fa-comments" aria-hidden="true"></i>
         </a>
     </li>
+    <li class="line">
+        <a href="http://lineit.line.me/like/ui?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="LINEへの共有リンク">
+            <i class="fa fa-comments" aria-hidden="true"></i>
+        </a>
+    </li>
     <li class="g-plus">
         <a href="https://plus.google.com/share?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="Google+への共有リンク">
             <i class="fa fa-google-plus-official" aria-hidden="true"></i>
@@ -134,7 +139,7 @@
         </a>
     </li>
     <li class="instapaper">
-        <a href="http://www.instapaper.com/text?u=<?php echo get_meta_url();?>" target="_blank" rel="noopener" title="Instapaperへの共有リンク">
+        <a href="http://www.instapaper.com/text?u=<?php echo $url_now;?>" target="_blank" rel="noopener" title="Instapaperへの共有リンク">
             I
         </a>
     </li>
@@ -172,7 +177,7 @@
         "name" : "Pocket",
         "url" : "http://pinterest.com/pin/create/button/?url=<?php echo $url_now;?>&amp;media=<?php meta_image();?>",
         "name" : "Pinterest",
-        "url" : "http://www.instapaper.com/text?u=<?php echo get_meta_url();?>",
+        "url" : "http://www.instapaper.com/text?u=<?php echo $url_now;?>",
         "name" : "Instapaper",
         "url" : "https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo $url_now;?>",
         "name" : "tumblr"

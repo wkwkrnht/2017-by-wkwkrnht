@@ -9,7 +9,6 @@
 }
 body{
     margin:0;
-    overflow-y:scroll;
     padding-bottom:20vh;
     scroll-behavior:smooth;
     width:100%;

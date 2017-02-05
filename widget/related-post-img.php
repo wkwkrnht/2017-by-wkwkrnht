@@ -3,7 +3,7 @@
 		align-items:center;
 		display:flex;
 		flex-wrap:nowrap;
-		height:calc(20vw + 2vh * 2);
+		height:calc(30vmax + 2vh * 2);
 		justify-content:space-between;
 		margin:6vh 0;
 		overflow-x:auto;
@@ -20,29 +20,29 @@
 		box-shadow:0 0 2vmin rgba(0,0,0,.3);
 		color:#fff;
 		display:block;
-		height:20vw;
+		height:30vmax;
 		margin:2vh 4vh;
 		position:relative;
 		text-align:center;
 		text-decoration:none;
-		width:35vw;
+		width:30vmax;
 	}
 	.widget_related_posts_img .related-wrapper:visited{
 		color:#fff;
 	}
 	.widget_related_posts_img .related-thumb{
 		color:#333;
-		height:20vw;
-		width:35vw;
+		height:30vmax;
+		width:30vmax;
 	}
 	.widget_related_posts_img .related-title{
 		background-color:rgba(0,0,0,.4);
 		bottom:0;
 		font-size:1.8rem;
-		height:10vmin;
+		height:calc(30vmax / 10 * 4);
 		position:absolute;
 		vertical-align:middle;
-		width:35vw;
+		width:30vmax;
 	}
 </style>
 <?php
