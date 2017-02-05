@@ -250,39 +250,6 @@ article{
     border-bottom:none;
 }
 
-.article-main .toc-title{
-    max-width:80%;
-}
-.article-main .toc-title:hover::before{
-    content:"";
-}
-.article-main .cutin-box > h3{
-    box-shadow:none;
-    color:#fff;
-}
-.article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
-    display:none;
-}
-.article-main .ogp-blogcard-main{
-    border:0;
-    padding:0;
-}
-.article-main .ogp-blogcard-main::after{
-    display:none;
-}
-.article-main .ogp-blogcard img{
-    display:inline-block;
-}
-.article-main .ogp-blogcard-title{
-    box-shadow:none;
-}
-.article-main .ogp-blogcard-description{
-    color:<?php echo $root_color;?>;
-}
-.article-main .ogp-blogcard-description:visited{
-    color:<?php echo $root_color;?>;
-}
-
 .article-main img{
     display:block;
     height:auto;
