@@ -2,12 +2,8 @@
 <html <?php language_attributes();?>>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
-	<meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta name="HandheldFriendly" content="true">
 	<meta http-equiv="cleartype" content="on">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="renderer" content="webkit">
 	<?php
 	$theme_dir   = get_template_directory();
 	include_once($theme_dir . '/inc/meta-info.php');?>
@@ -16,11 +12,23 @@
 	    $root_color = get_option('root_color','#333');
 	    $theme_uri  = get_template_directory_uri();
 	    include_once($theme_dir . '/css/fontawesome.php');
-	    include_once($theme_dir . '/css/sanitize.php');
+	    include_once($theme_dir . '/css/initial.php');
 	    include_once($theme_dir . '/css/menu.php');
 	    include_once($theme_dir . '/css/card.php');
 	    if(is_singular()===true){
-			include_once($theme_dir . '/css/short-code.php');
+			$id      = url_to_postid($meta_url);
+			$post    = get_post($id);
+			$content = $post->post_content;
+			global $shortcode_tags;
+			foreach($shortcode_tags as $code_name => $function){
+				$has_short_code = has_shortcode($content,$code_name);
+				if($has_short_code===true){
+					break;
+				}
+			}
+			if($has_short_code===true){
+				include_once($theme_dir . '/css/short-code.php');
+			}
 	        include_once($theme_dir . '/css/style-singular.php');
 	    }
 	    include_once($theme_dir . '/css/night-mode.php');

@@ -4,6 +4,7 @@ $google_ana   = false;
 $google_meta  = false;
 $bing         = false;
 $pi           = false;
+$img          = ' src="' . get_no_image('') . '"';
 $google_ana   = get_option('Google_Analytics');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
@@ -18,6 +19,10 @@ $URLbar_color = get_option('GoogleChrome_URLbar');
 if($google_meta!==false){echo'<meta name="google-site-verification" content="' . $google_meta . '">';}
 if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
 if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
+<meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="renderer" content="webkit">
+<meta name="HandheldFriendly" content="true">
 <meta name="description" content="<?php echo $description;?>">
 <meta name="theme-color" content="<?php echo $URLbar_color;?>">
 <meta name="msapplication-TileColor" content="<?php echo $URLbar_color;?>">
@@ -43,6 +48,7 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
 <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
 <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+<link rel="publisher" href="http://plus.google.com/<?php the_author_meta('GoogleID');?>">
 <?php
 if(is_singular()===true):
     $fb         = '';

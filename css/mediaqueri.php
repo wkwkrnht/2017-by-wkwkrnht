@@ -1,4 +1,7 @@
 @media screen and (max-width:720px;) {
+    .card(
+        width:90%;
+    )
     .toc,.article-main .toc-title{
         width:94%;
     }
