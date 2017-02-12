@@ -346,7 +346,7 @@
 
 <?php if(has_shortcode($content,'search-box')===true):?>
     .search-form{
-        line-height:170%;
+        line-height:2;
         margin:4vh auto;
     }
     .search-form div{
@@ -369,7 +369,7 @@
         position:absolute;
     }
     .search-form .sbtn::after{
-        bottom:1.6em;
+        bottom:.5em;
         color:#000;
         content:"\f25a";
         font-family:"FontAwesome";
