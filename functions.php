@@ -876,7 +876,7 @@ function columun_in_article($args=array(),$content=''){
     return'
     <aside class="cutin-box ' . $color . '">
         <h3>' . $title . '</h3>
-        <p class="cutin-box-inner">' . $content . '</p>
+        <p class="cutin-box-inner">' . do_shortcode($content) . '</p>
     </aside>';
 }
 function cutin_box($args=array(),$content=''){
@@ -884,26 +884,26 @@ function cutin_box($args=array(),$content=''){
     return'
     <div class="cutin-box ' . $color . '">'
         . $title .
-        '<div class="cutin-box-inner">' . $content . '</div>
+        '<div class="cutin-box-inner">' . do_shortcode($content) . '</div>
     </div>';
 }
 function simple_box($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
     return'
     <div class="simple-box ' . $color . '">'
-         . $content . '
+         . do_shortcode($content) . '
     </div>';
 }
 function info_box($content=''){
     return'
     <div class="infomation">'
-         . $content . '
+         . do_shortcode($content) . '
     </div>';
 }
 function qa_box($content=''){
     return'
     <div class="question">'
-         . $content . '
+         . do_shortcode($content) . '
     </div>';
 }
 function search_box($args=array(),$content=''){
@@ -911,7 +911,7 @@ function search_box($args=array(),$content=''){
     return'
     <div class="search-form">
         <div class="sform">'
-            . $content . '
+            . do_shortcode($content) . '
         </div>
         <div class="sbtn">
             <span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索
@@ -920,19 +920,19 @@ function search_box($args=array(),$content=''){
 }
 function make_a($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'',),$args));
-    return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';
+    return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . do_shortcode($content) . '</a>';
 }
 function make_marker($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
-    return'<span class="marker ' . $color . '">' . $content . '</span>';
+    return'<span class="marker ' . $color . '">' . do_shortcode($content) . '</span>';
 }
 function make_link_button($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'','color'=>'',),$args));
-    return'<a href="' . $url . '" title="' . $content . '" tabindex="0" target="_blank" rel="noopener" class="button ' . $color . '">' . $content . '</a>';
+    return'<a href="' . $url . '" title="' . $content . '" tabindex="0" target="_blank" rel="noopener" class="button ' . $color . '">' . do_shortcode($content) . '</a>';
 }
 function make_button($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
-    return'<span class="button ' . $color . '">' . $content . '</span>';
+    return'<span class="button ' . $color . '">' . do_shortcode($content) . '</span>';
 }
 function make_toc($atts){
     $atts = shortcode_atts(array(

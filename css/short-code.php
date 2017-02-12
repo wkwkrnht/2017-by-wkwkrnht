@@ -154,7 +154,6 @@
 <?php if(has_shortcode($content,'info')===true || has_shortcode($content,'qa')===true):?>
     .information,.question,.attention{
         background-color:#f4f3eb;
-        border-radius:3vmin;
         box-sizing:border-box;
         margin:1em auto;
         padding:2em 2em 2em calc(7rem + 2vmin);
@@ -350,7 +349,6 @@
         margin:4vh auto;
     }
     .search-form div{
-        box-shadow:0 0 3vmin rgba(0,0,0,.1);
         display:inline-block;
         margin-left:1em;
         padding:1em;
@@ -363,6 +361,7 @@
     }
     .search-form .sbtn{
         background-color:#1155ee;
+        box-shadow:0 0 3vmin rgba(0,0,0,.2);
         color:#fff;
         padding-left:2rem;
         padding-right:3rem;

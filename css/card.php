@@ -13,20 +13,21 @@
 .card,.article-card{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
     margin:6vh auto;
+    overflow:hidden;
     position:relative;
-    width:30vmax;
+    width:29vmax;
 }
 .card{
     background-color:#fff;
     font-size:1.8rem;
-    min-height:30vmax;
+    min-height:29vmax;
 }
 .info-card{
-    width:90vmax;
+    width:calc(29vmax * 3);
 }
 .article-card{
     display:block;
-    height:30vmax;
+    height:29vmax;
 }
 .article-card,.article-card:visited{
     color:#fff;
@@ -37,12 +38,12 @@
     position:absolute;
 }
 .card-img{
-    height:30vmax;
-    width:30vmax;
+    height:29vmax;
+    width:29vmax;
 }
 .card-meta{
     background-color:rgba(0,0,0,.5);
-    height:calc(30vmax / 10 * 4);
+    height:calc(29vmax / 10 * 4);
     width:30vmax;
 }
 .card-meta > h2{
@@ -53,13 +54,13 @@
 }
 .card-meta > div{
     font-size:1.8rem;
-    width:30vmax;
+    width:29vmax;
 }
 .card-meta > div > span{
     box-sizing:border-box;
     display:inline-block;
     padding:0 1em;
-    width:calc(30vmax / 2 - 1vmin);
+    width:calc(29vmax / 2 - 1vmin);
 }
 
 
