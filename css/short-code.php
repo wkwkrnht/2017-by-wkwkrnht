@@ -344,7 +344,7 @@
 <?php endif;?>
 
 
-<?php has_shortcode($content,'search-box')===true:?>
+<?php if(has_shortcode($content,'search-box')===true):?>
     .search-form{
         line-height:170%;
         margin:4vh auto;
