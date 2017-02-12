@@ -39,8 +39,8 @@
     bottom:20vh;
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:74vh;
-    left:0;
-    margin:0 auto;
+    left:calc(50% - 90vw / 2);
+    margin:0;
     opacity:.85;
     overflow-x:hidden;
     overflow-y:auto;
@@ -284,9 +284,6 @@
 3.recent entries
 4.archive
 */
-ul.widget-area{
-    list-style:none;
-}
 .widget{
     margin:4vh auto;
     max-width:94%;
