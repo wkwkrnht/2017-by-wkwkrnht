@@ -350,14 +350,14 @@
         margin:4vh auto;
     }
     .search-form div{
-        border:1px solid #555;
-        border-radius:3vmin;
+        box-shadow:0 0 3vmin rgba(0,0,0,.1);
         display:inline-block;
         margin-left:1em;
         padding:1em;
     }
     .search-form .sform{
         background-color:#fff;
+        border:1px solid #555;
         max-width:70%;
         min-width:16em;
     }
@@ -369,7 +369,7 @@
         position:absolute;
     }
     .search-form .sbtn::after{
-        bottom:.5em;
+        bottom:0;
         color:#000;
         content:"\f25a";
         font-family:"FontAwesome";
