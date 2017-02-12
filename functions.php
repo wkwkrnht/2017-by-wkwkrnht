@@ -896,7 +896,7 @@ function simple_box($args=array(),$content=''){
 }
 function info_box($args=array(),$content=''){
     return'
-    <div class="infomation">'
+    <div class="information">'
          . do_shortcode($content) . '
     </div>';
 }
@@ -907,7 +907,6 @@ function qa_box($args=array(),$content=''){
     </div>';
 }
 function search_box($args=array(),$content=''){
-    extract(shortcode_atts(array(),$args));
     return'
     <div class="search-form">
         <div class="sform">'
@@ -920,7 +919,7 @@ function search_box($args=array(),$content=''){
 }
 function make_a($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'',),$args));
-    return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . do_shortcode($content) . '</a>';
+    return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';
 }
 function make_marker($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));

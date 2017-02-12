@@ -40,12 +40,12 @@
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:74vh;
     left:0;
-    margin:0 7vw;
+    margin:0 auto;
     opacity:.85;
     overflow-x:hidden;
     overflow-y:auto;
     position:fixed;
-    width:86vw;
+    width:90vw;
     z-index:111;
 }
 #menu-wrap > ul{
