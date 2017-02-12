@@ -894,13 +894,13 @@ function simple_box($args=array(),$content=''){
          . do_shortcode($content) . '
     </div>';
 }
-function info_box($content=''){
+function info_box($args=array(),$content=''){
     return'
     <div class="infomation">'
          . do_shortcode($content) . '
     </div>';
 }
-function qa_box($content=''){
+function qa_box($args=array(),$content=''){
     return'
     <div class="question">'
          . do_shortcode($content) . '
