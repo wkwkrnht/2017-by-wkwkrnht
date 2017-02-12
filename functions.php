@@ -895,9 +895,10 @@ function simple_box($args=array(),$content=''){
     </div>';
 }
 function info_box($args=array(),$content=''){
+    $content = do_shortcode($content);
     return'
     <div class="information">'
-         . do_shortcode($content) . '
+         . $content . '
     </div>';
 }
 function qa_box($args=array(),$content=''){
