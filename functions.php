@@ -887,16 +887,44 @@ function cutin_box($args=array(),$content=''){
         '<div class="cutin-box-inner">' . $content . '</div>
     </div>';
 }
-function simplae_box($args=array(),$content=''){
-    extract(shortcode_atts(array('color'=>'','title'=>'',),$args));
+function simple_box($args=array(),$content=''){
+    extract(shortcode_atts(array('color'=>'',),$args));
     return'
     <div class="simple-box ' . $color . '">'
          . $content . '
     </div>';
 }
+function info_box($content=''){
+    return'
+    <div class="infomation">'
+         . $content . '
+    </div>';
+}
+function qa_box($content=''){
+    return'
+    <div class="question">'
+         . $content . '
+    </div>';
+}
+function search_box($args=array(),$content=''){
+    extract(shortcode_atts(array(),$args));
+    return'
+    <div class="search-form">
+        <div class="sform">'
+            . $content . '
+        </div>
+        <div class="sbtn">
+            <span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索
+        </div>
+    </div>';
+}
 function make_a($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'',),$args));
     return'<a href="' . $url . '" title="' . $content . '" target="_blank" rel="noopener">' . $content . '</a>';
+}
+function make_marker($args=array(),$content=''){
+    extract(shortcode_atts(array('color'=>'',),$args));
+    return'<span class="marker ' . $color . '">' . $content . '</span>';
 }
 function make_link_button($args=array(),$content=''){
     extract(shortcode_atts(array('url'=>'','color'=>'',),$args));
@@ -1020,9 +1048,13 @@ add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
 add_shortcode('columun','columun_in_article');
+add_shortcode('info-box','info_box');
+add_shortcode('qa-box','qa_box');
+add_shortcode('search-box','search_box');
 add_shortcode('simple-box','simple_box');
 add_shortcode('box','cutin_box');
 add_shortcode('link','make_a');
+add_shortcode('marker','make_marker');
 add_shortcode('button','make_button');
 add_shortcode('link_button','make_link_button');
 add_shortcode('toc','make_toc');
@@ -1104,10 +1136,10 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-tr','tr','         <tr>','     </tr>');
         QTags.addButton('qt-th','th','           <th>','</th>');
         QTags.addButton('qt-td','td','           <td>','</td>');
-		QTags.addButton('qt-marker','marker','<span class="marker">','</span>');
-		QTags.addButton('qt-information','情報','<div class="information">','</div>');
-		QTags.addButton('qt-question','疑問','<div class="question">','</div>');
-        QTags.addButton('qt-searchbox','検索風表示','<div class="search-form"><div class="sform">','</div><div class="sbtn"><span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索</div></div>');
+		QTags.addButton('qt-marker','marker','[marker]','[/marker]');
+		QTags.addButton('qt-information','情報','[info]','[/info]');
+		QTags.addButton('qt-question','疑問','[qa]','[/qa]');
+        QTags.addButton('qt-searchbox','検索風表示','[search-box]','[/search-box]');
     </script><?php }
 }
 add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');

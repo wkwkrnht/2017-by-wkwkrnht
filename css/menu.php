@@ -291,8 +291,8 @@ ul.widget-area{
     margin:4vh auto;
     max-width:94%;
 }
-.widget li{
-    max-width:93%;
+li.widget{
+    display:block;
 }
 .widget-title{
     background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;
@@ -302,6 +302,9 @@ ul.widget-area{
     max-width:94%;
     min-height:5vh;
     text-align:center;
+}
+.widget li{
+    max-width:93%;
 }
 .widget select{
     margin:2vh auto;
