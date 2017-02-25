@@ -76,11 +76,14 @@
 			font-size:1.6rem;
 			text-align:left;
 		}
-		footer > ul{
+		.amp-sharebutton > ul{
 			list-style:none;
 		}
-		footer > ul > li{
+		.amp-sharebutton > ul > li{
 			display:inline-block;
+		}
+		.amp-copyright{
+			text-align:center;
 		}
 	</style>
 </head>
@@ -152,8 +155,8 @@
 			echo $content;
 			?>
 		</main>
-		<footer>
-			<aside>
+		<footer itemscope itemtype="http://schema.org/WPFooter">
+			<aside class="amp-sharebutton">
 				<h2>share : </h2>
 				<ul>
 					<li><amp-social-share type="twitter"></amp-social-share></li>
@@ -166,7 +169,7 @@
 					<li><amp-social-share type="email"></amp-social-share></li>
 				</ul>
 			</aside>
-			<div class="widget_related_posts">
+			<aside class="widget_related_posts">
 				<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 				if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 				$query = new WP_Query($array);
@@ -193,7 +196,20 @@
 					<?php endwhile;?>
 					<?php wp_reset_postdata();?>
 				<?php endif;?>
-			</div>
+			</aside>
+			<aside class="amp-copyright">
+				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
+					<span itemprop="name">
+						<b>
+							<?php echo $blog_name;?>
+						</b>
+					</span>
+				</span>
+				&nbsp;&nbsp;&copy;
+				<span itemprop="copyrightYear">
+					<?php echo get_first_post_year();?>
+				</span>
+			</aside>
 		</footer>
 	</article>
 </body>
