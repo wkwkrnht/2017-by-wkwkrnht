@@ -23,11 +23,9 @@
 			foreach($shortcode_tags as $code_name => $function){
 				$has_short_code = has_shortcode($content,$code_name);
 				if($has_short_code===true){
+					include_once($theme_dir . '/css/short-code.php');
 					break;
 				}
-			}
-			if($has_short_code===true){
-				include_once($theme_dir . '/css/short-code.php');
 			}
 	        include_once($theme_dir . '/css/style-singular.php');
 	    }
@@ -38,6 +36,9 @@
 	$txt = false;
 	$txt = get_option('header_txt');
 	wp_head();
+	if($google_ana!==false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights') === false){
+	    echo'<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script><script async="" src="//www.google-analytics.com/analytics.js"></script>';
+	}
 	if($txt!==false){echo $txt;}?>
 </head>
 <body <?php body_class();?>>

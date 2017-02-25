@@ -24,15 +24,16 @@
 			foreach($shortcode_tags as $code_name => $function){
 				$has_short_code = has_shortcode($content,$code_name);
 				if($has_short_code===true){
+					include_once($theme_dir . '/css/short-code.php');
 					break;
 				}
-			}
-			if($has_short_code===true){
-				include_once($theme_dir . '/css/short-code.php');
 			}
 			include_once($theme_dir . '/css/style-singular.php');
 		}
 		include_once($theme_dir . '/css/mediaqueri.php');?>
+		article{
+			margin-top:6vh;
+		}
 		.widget_related_posts{
 			align-items:center;
 			display:flex;
@@ -122,41 +123,49 @@
 			$content = str_replace(']]>',']]&gt;',$content);
 			$content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div><script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>',$content);
 			$content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div><script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>',$content);
+			$content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
 			$content = preg_replace('/<iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe>/i','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
 			$content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
 			$content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe class="hatenablogcard" src="http:\/\/hatenablog-parts.com\/embed?url=(.*?)" frameborder="0" scrolling="no"><\/iframe>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
 			$content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
 			$content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
 			$content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
 			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
-			$content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
-  			$content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<a(.*?)target=".*?"(.*?)>/','<a$1$2>',$content);
-			$content = preg_replace('/<(.*?)marginwidth=".*?"(.*?)>/i','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)marginheight=".*?"(.*?)>/i','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)frameborder=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)border=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)style=.*?(.*?)>/','<$1$2>',$content);
+  			$content = preg_replace('/<(.*?)onclick=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)onmouseover=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)onmouseout=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)oncontextmenu=.*?(.*?)>/','<$1$2>',$content);
+			$content = preg_replace('/<a(.*?)target=.*?(.*?)>/','<a$1$2>',$content);
+			$content = preg_replace('/<(.*?)marginwidth=.*?(.*?)>/i','<$1$2>',$content);
+			$content = preg_replace('/<(.*?)marginheight=.*?(.*?)>/i','<$1$2>',$content);
+			$content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
 			$content = str_replace('href="javascript:void(0)"','',$content);
+			$content = str_replace('href="javascript:void(0);"','',$content);
 			$content = str_replace('src=""',$img,$content);
+			$content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
+			$content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
 
 			echo $content;
 			?>
 		</main>
 		<footer>
-			<ul>
-				<li><amp-social-share type="twitter"></amp-social-share></li>
-				<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
-				<li><amp-social-share type="gplus"></amp-social-share></li>
-				<li><amp-social-share type="linkedin"></amp-social-share></li>
-				<li><amp-social-share type="pinterest"></amp-social-share></li>
-				<li><amp-social-share type="tumblr"></amp-social-share></li>
-				<li><amp-social-share type="whatsapp"></amp-social-share></li>
-				<li><amp-social-share type="email"></amp-social-share></li>
-			</ul>
+			<aside>
+				<h2>share : </h2>
+				<ul>
+					<li><amp-social-share type="twitter"></amp-social-share></li>
+					<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
+					<li><amp-social-share type="gplus"></amp-social-share></li>
+					<li><amp-social-share type="linkedin"></amp-social-share></li>
+					<li><amp-social-share type="pinterest"></amp-social-share></li>
+					<li><amp-social-share type="tumblr"></amp-social-share></li>
+					<li><amp-social-share type="whatsapp"></amp-social-share></li>
+					<li><amp-social-share type="email"></amp-social-share></li>
+				</ul>
+			</aside>
 			<div class="widget_related_posts">
 				<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
 				if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
