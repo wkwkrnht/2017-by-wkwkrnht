@@ -47,7 +47,9 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 <link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
 <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
-<link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+<?php if($is_amp===false):?>
+    <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+<?php endif;?>
 <link rel="publisher" href="http://plus.google.com/<?php the_author_meta('GoogleID');?>">
 <?php
 if(is_singular()===true):
@@ -472,6 +474,4 @@ elseif(is_home()===true):
         }
     </script>';
 endif;
-if($google_ana!==false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights') === false){
-    echo'<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script><script async="" src="//www.google-analytics.com/analytics.js"></script>';
-}?>
+?>
