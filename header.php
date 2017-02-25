@@ -23,11 +23,9 @@
 			foreach($shortcode_tags as $code_name => $function){
 				$has_short_code = has_shortcode($content,$code_name);
 				if($has_short_code===true){
+					include_once($theme_dir . '/css/short-code.php');
 					break;
 				}
-			}
-			if($has_short_code===true){
-				include_once($theme_dir . '/css/short-code.php');
 			}
 	        include_once($theme_dir . '/css/style-singular.php');
 	    }
