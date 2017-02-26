@@ -118,7 +118,7 @@
     }
     .ogp-blogcard-info{
         display:inline-block;
-        max-width:calc(80vw * .65);
+        max-width:calc(80vw * .7);
         text-align:center;
     }
     .ogp-blogcard-title{
