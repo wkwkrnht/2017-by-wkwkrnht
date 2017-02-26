@@ -88,11 +88,6 @@
             <i class="fa fa-comments" aria-hidden="true"></i>
         </a>
     </li>
-    <li class="line">
-        <a href="http://lineit.line.me/like/ui?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="LINEへの共有リンク">
-            <i class="fa fa-comments" aria-hidden="true"></i>
-        </a>
-    </li>
     <li class="g-plus">
         <a href="https://plus.google.com/share?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="Google+への共有リンク">
             <i class="fa fa-google-plus-official" aria-hidden="true"></i>

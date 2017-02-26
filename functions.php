@@ -988,6 +988,11 @@ function make_toc($atts){
             case 'h6': $depth = 6 - $top_level + 1; break;
         }
         if($depth >= 1 && $depth <= $max_depth){
+            while($current_depth > $depth){
+                $toc_list .= '</ol>';
+                $current_depth = $current_depth - 1;
+                $counters[$current_depth] = 0;
+            }
             if($current_depth < $depth){
                 $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' id="toc-inner" class="toc-list block"' : '') . '>';
                 $current_depth++;
@@ -996,11 +1001,6 @@ function make_toc($atts){
             $counter++;
             $toc_list .= '<li><a href="#toc' . $counter . '" tabindex="0">' . $headers[2][$i] . '</a></li>';
             $prev_depth = $depth;
-            while($current_depth > $depth){
-                $toc_list .= '</ol>';
-                $current_depth = $current_depth - 1;
-                $counters[$current_depth] = 0;
-            }
         }
     }
     while($current_depth >= 1 ){
