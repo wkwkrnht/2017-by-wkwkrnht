@@ -119,8 +119,6 @@
     .ogp-blogcard-info{
         display:inline-block;
         max-width:calc(80vw * .65);
-        position:absolute;
-        right:0;
         text-align:center;
     }
     .ogp-blogcard-title{
