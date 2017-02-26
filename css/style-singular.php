@@ -53,7 +53,7 @@ article{
     color:<?php echo get_option('copyright_color','#fff');?>;
     font-size:1.8rem;
     margin:6vh 0 0;
-    padding-top:1em;
+    padding:1em 0;
     text-align:center;
     width:100%;
 }
