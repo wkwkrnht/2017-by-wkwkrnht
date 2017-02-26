@@ -998,7 +998,7 @@ function make_toc($atts){
             $prev_depth = $depth;
             while($current_depth > $depth){
                 $toc_list .= '</ol>';
-                $current_depth--;
+                $current_depth = $current_depth - 1;
                 $counters[$current_depth] = 0;
             }
         }
