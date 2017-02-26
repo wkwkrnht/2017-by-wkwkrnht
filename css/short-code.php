@@ -114,11 +114,11 @@
     .ogp-blogcard-img{
         display:inline-block;
         max-height:37vh;
-        max-width:calc(80vw * .4);
+        max-width:calc(80vw * .3);
     }
     .ogp-blogcard-info{
         display:inline-block;
-        max-width:calc(80vw * .6);
+        max-width:calc(80vw * .65);
         position:absolute;
         right:0;
         text-align:center;
