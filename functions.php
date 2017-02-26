@@ -972,9 +972,9 @@ function make_toc($atts){
     $current_depth          = $top_level - 1;
     $prev_depth             = $top_level - 1;
     if($depth == 0){
-        $max_depth = 6;
+        $max_depth = 6 - $top_level + 1;
     }else{
-        $max_depth = intval($depth)) - $top_level + 1;
+        $max_depth = intval($depth) - $top_level + 1;
     }
 
     for($i = 0; $i < $header_count; $i++){
