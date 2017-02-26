@@ -989,7 +989,7 @@ function make_toc($atts){
         }
         if($depth >= 1 && $depth <= $max_depth){
             if($current_depth < $depth){
-                $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list"' : '') . '>';
+                $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' id="toc-inner" class="toc-list block"' : '') . '>';
                 $current_depth++;
             }
             $counters[$current_depth - 1] ++;
@@ -1012,11 +1012,9 @@ function make_toc($atts){
         $html .= '
         <aside' . $id . ' class="' . $atts['class'] . '" role="navigation">
             <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick=document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");>∨</a>
-            <h2 class="toc-title">' . $atts['title'] . '</h2>
-            <div id="toc-inner" class="block">
-                ' . $toc_list .'
-            </div>
-        </aside>
+            <h2 class="toc-title">' . $atts['title'] . '</h2>'
+            . $toc_list .
+        '</aside>
         <script>
             window.onload = function () {
                 var idCounter = 0;
