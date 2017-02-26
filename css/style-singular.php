@@ -13,7 +13,7 @@
 */
 article{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
-    margin:0 auto;
+    margin:6vh auto 0;
     max-width:1600px;
     width:90vw;
 }
@@ -54,6 +54,7 @@ article{
     font-size:1.8rem;
     margin:4vh 0 0;
     padding-top:1em;
+    text-align:center
     width:100%;
 }
 
