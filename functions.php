@@ -950,6 +950,7 @@ function make_toc($atts){
     $toc_list    = '';
     $id          = $atts['id'];
     $toggle      = '';
+    $depth       = $atts['depth'];
     $counter     = 0;
     $counters    = array(0,0,0,0,0,0);
     $top_level   = intval($atts['toplevel']);
@@ -967,12 +968,16 @@ function make_toc($atts){
     }
     if($top_level < 1){$top_level = 1;}
     if($top_level > 6){$top_level = 6;}
-    $atts['toplevel'] = $top_level;
+    $atts['toplevel']       = $top_level;
     $current_depth          = $top_level - 1;
     $prev_depth             = $top_level - 1;
-    $max_depth              = (($atts['depth'] == 0) ? 6 : intval($atts['depth'])) - $top_level + 1;
+    if($depth == 0){
+        $max_depth = 6;
+    }else{
+        $max_depth = intval($depth)) - $top_level + 1;
+    }
 
-    for($i=0;$i < $header_count;$i++){
+    for($i = 0; $i < $header_count; $i++){
         $depth = 0;
         switch(strtolower($headers[1][$i])){
             case 'h1': $depth = 1 - $top_level + 1; break;
@@ -983,25 +988,23 @@ function make_toc($atts){
             case 'h6': $depth = 6 - $top_level + 1; break;
         }
         if($depth >= 1 && $depth <= $max_depth){
-            if($current_depth == $depth){$toc_list .= '</li>';}
-            while($current_depth > $depth){
-                $toc_list .= '</li></ol>';
-                $current_depth--;
-                $counters[$current_depth] = 0;
-            }
-            if($current_depth != $prev_depth){$toc_list .= '</li>';}
             if($current_depth < $depth){
-                $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list open"' : '') . '>';
+                $toc_list .= '<ol' . (($current_depth == $top_level - 1) ? ' class="toc-list"' : '') . '>';
                 $current_depth++;
             }
             $counters[$current_depth - 1] ++;
             $counter++;
-            $toc_list .= '<li><a href="#toc' . $counter . '" tabindex="0">' . $headers[2][$i] . '</a>';
+            $toc_list .= '<li><a href="#toc' . $counter . '" tabindex="0">' . $headers[2][$i] . '</a></li>';
             $prev_depth = $depth;
+            while($current_depth > $depth){
+                $toc_list .= '</ol>';
+                $current_depth--;
+                $counters[$current_depth] = 0;
+            }
         }
     }
     while($current_depth >= 1 ){
-        $toc_list .= '</li></ol>';
+        $toc_list .= '</ol>';
         $current_depth--;
     }
     if($counter >= $atts['showcount']){
@@ -1010,7 +1013,7 @@ function make_toc($atts){
         <aside' . $id . ' class="' . $atts['class'] . '" role="navigation">
             <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick=document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");>∨</a>
             <h2 class="toc-title">' . $atts['title'] . '</h2>
-            <div id="toc-inner">
+            <div id="toc-inner" class="block">
                 ' . $toc_list .'
             </div>
         </aside>
