@@ -48,6 +48,14 @@ article{
 .article-date,.article-author{
     width:49%;
 }
+.article-footer .copyright{
+    background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
+    color:<?php echo get_option('copyright_color','#fff');?>;
+    font-size:1.8rem;
+    margin:4vh 0 0;
+    padding-top:1em;
+    width:100%;
+}
 
 .article-main{
     font-size:1.6rem;

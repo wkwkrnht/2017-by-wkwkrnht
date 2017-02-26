@@ -93,18 +93,18 @@
         border-radius:50%;
         color:#fff;
         display:block;
-        height:4em;
-        left:-2em;
-        line-height:4em;
+        height:3em;
+        left:-1.5em;
+        line-height:3em;
         margin:0;
         position:absolute;
-        top:-2em;
+        top:-1.5em;
         text-align:center;
         vertical-align:middle;
-        width:4em;
+        width:3em;
     }
     .ogp-blogcard-main{
-        height:calc(37vh * .8);
+        height:37vh;
         overflow-x:hidden;
         overflow-y:auto;
         position:absolute;
@@ -113,7 +113,7 @@
     }
     .ogp-blogcard-img{
         display:inline-block;
-        max-height:calc(37vh * .75);
+        max-height:37vh;
         max-width:calc(80vw * .4);
     }
     .ogp-blogcard-info{
@@ -126,28 +126,27 @@
     .ogp-blogcard-title{
         font-size:2rem;
     }
-    .article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
-        display:none;
-    }
-    .article-main .ogp-blogcard-main{
-        border:0;
-        padding:0;
-    }
-    .article-main .ogp-blogcard-main::after{
-        display:none;
-    }
-    .article-main .ogp-blogcard img{
-        display:inline-block;
-    }
-    .article-main .ogp-blogcard-title{
-        box-shadow:none;
-    }
-    .article-main .ogp-blogcard-description{
-        color:<?php echo $root_color;?>;
-    }
-    .article-main .ogp-blogcard-description:visited{
-        color:<?php echo $root_color;?>;
-    }
+    <?php if(is_singular()===true):?>
+        .article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
+            display:none;
+        }
+        .article-main .ogp-blogcard-main{
+            border:0;
+            padding:0;
+        }
+        .article-main .ogp-blogcard-main::after{
+            display:none;
+        }
+        .article-main .ogp-blogcard img{
+            display:inline-block;
+        }
+        .article-main .ogp-blogcard-title{
+            box-shadow:none;
+        }
+        .article-main .ogp-blogcard-description,.article-main .ogp-blogcard-description:visited{
+            color:<?php echo $root_color;?>;
+        }
+    <?php endif;?>
 <?php endif;?>
 
 

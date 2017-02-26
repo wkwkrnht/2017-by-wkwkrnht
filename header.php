@@ -44,7 +44,7 @@
 <body <?php body_class();?>>
 	<?php if(is_author()===true):
 		include_once($theme_dir . '/widget/author-bio.php');
-	else:?>
+	elseif(is_singular()===false):?>
 		<header class="site-header" itemscope itemtype="http://schema.org/WPHeader">
 			<?php if(is_404()===true):?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
@@ -74,12 +74,6 @@
 				<p class="site-description">
 					<?php echo $serachresult . ' 件 / ' . $maxpage . ' ページ';?>
 				</p>
-			<?php elseif(is_singular()===true):?>
-				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
-					<span class="site-title" itemprop="name headline">
-						<?php echo $blog_name;?>
-					</span>
-				</a>
 			<?php else:?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<h1 class="site-title" itemprop="name headline">
