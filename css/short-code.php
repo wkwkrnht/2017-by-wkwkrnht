@@ -21,7 +21,7 @@
         display:block;
         font-size:1.8rem;
         height:2em;
-        left:85vw;
+        left:65vw;
         position:relative;
         text-align:center;
         top:-1em;
