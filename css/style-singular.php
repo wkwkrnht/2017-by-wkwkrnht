@@ -52,9 +52,9 @@ article{
     background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
     color:<?php echo get_option('copyright_color','#fff');?>;
     font-size:1.8rem;
-    margin:4vh 0 0;
+    margin:6vh 0 0;
     padding-top:1em;
-    text-align:center
+    text-align:center;
     width:100%;
 }
 

@@ -76,7 +76,7 @@ else:
 					<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 						<span itemprop="name">
 							<b>
-								<?php echo $blog_name;?>
+								<?php bloginfo();?>
 							</b>
 						</span>
 					</span>
