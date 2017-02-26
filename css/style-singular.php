@@ -13,7 +13,7 @@
 */
 article{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
-    margin:0 auto;
+    margin:6vh auto 0;
     max-width:1600px;
     width:90vw;
 }
@@ -47,6 +47,15 @@ article{
 }
 .article-date,.article-author{
     width:49%;
+}
+.article-footer .copyright{
+    background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
+    color:<?php echo get_option('copyright_color','#fff');?>;
+    font-size:1.8rem;
+    margin:6vh 0 0;
+    padding:1em 0;
+    text-align:center;
+    width:100%;
 }
 
 .article-main{

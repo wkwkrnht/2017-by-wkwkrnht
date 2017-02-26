@@ -72,6 +72,19 @@ else:
     					<?php dynamic_sidebar('singularfooter');?>
     				</ul>
     			<?php endif;?>
+				<div class="copyright">
+					<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
+						<span itemprop="name">
+							<b>
+								<?php bloginfo();?>
+							</b>
+						</span>
+					</span>
+					&nbsp;&nbsp;&copy;
+					<span itemprop="copyrightYear">
+						<?php echo get_first_post_year();?>
+					</span>
+				</div>
     		</footer>
         </article>
     <?php else:
