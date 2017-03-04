@@ -128,7 +128,7 @@
 </head>
 <body>
 	<?php
-	if(is_singlar()===true){
+	if(is_singular()===true){
 		include_once($theme_dir . '/amp/content-singular.php');
 	}else{
 		include_once($theme_dir . '/amp/content-list.php');
