@@ -814,7 +814,7 @@ function sanitize_for_amp($content){
     $content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)onclick="(.*?)"(.*?)>/','<$1$3>',$content);
     $content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);

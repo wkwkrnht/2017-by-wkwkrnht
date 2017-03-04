@@ -12,7 +12,7 @@ $myAmp     = false;
 $string    = $post->post_content;
 $nowurl    = $_SERVER["REQUEST_URI"];
 if(strpos($nowurl,'amp')!==false && strpos($string,'<script>')===false && is_singular()===true){$myAmp = true;}
-if(is_mp()===true):
+if(is_amp()===true):
 	require_once('amp.php');
 else:
     get_header();
