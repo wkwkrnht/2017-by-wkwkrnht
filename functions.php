@@ -50,8 +50,7 @@ function color_to_rgb($colorcode = ''){
 add_rewrite_endpoint('amp',EP_PERMALINK | EP_PAGES);
 define('AMP_QUERY_VAR','amp');
 function is_amp(){
-    $is_amp = get_query_var(AMP_QUERY_VAR,false);
-    return $is_amp;
+    return false !== get_query_var(AMP_QUERY_VAR,false);
 }
 /*
     setup
