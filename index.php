@@ -8,14 +8,13 @@ $size_1024 = array(1024,1024);
 $size_1270 = array(1270,720);
 $size_1344 = array(1344,576);
 $size_1920 = array(1920,1080);
-$myAmp     = false;
-$string    = $post->post_content;
-$nowurl    = $_SERVER["REQUEST_URI"];
-if(strpos($nowurl,'amp')!==false && strpos($string,'<script>')===false && is_singular()===true){$myAmp = true;}
-if($myAmp===true):
+if(is_amp()===true):
 	require_once('amp.php');
 else:
     get_header();
+	if(is_active_sidebar('listabove')){
+		dynamic_sidebar('listabove');
+	}
     if(is_singular()===true):
 		if(have_posts()){
 			while(have_posts()):the_post();
@@ -91,9 +90,7 @@ else:
         if(is_author()===true){
             include_once(get_template_directory() . '/widget/author-bio.php');
         }
-		if(is_active_sidebar('listabove')){
-            dynamic_sidebar('listabove');
-        }
+
 		if(is_404()===true){
 				if(is_active_sidebar('404')){
                     dynamic_sidebar('404');
@@ -151,10 +148,10 @@ else:
     	    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
     	    echo'<ul class="page-nation">' . $echo . '</ul>';
     	}
-    	wp_reset_query();
-    	if(is_active_sidebar('listunder')){
-			dynamic_sidebar('listunder');
-		}
+		wp_reset_postdata();
     endif;
+	if(is_active_sidebar('listunder')){
+		dynamic_sidebar('listunder');
+	}
     get_footer();
 endif;?>

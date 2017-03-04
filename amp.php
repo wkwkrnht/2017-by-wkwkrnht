@@ -29,188 +29,109 @@
 				}
 			}
 			include_once($theme_dir . '/css/style-singular.php');
+			?>
+			article{
+				margin-top:6vh;
+			}
+			.widget_related_posts{
+				align-items:center;
+				display:flex;
+				flex-wrap:nowrap;
+				height:25vw;
+				justify-content:space-between;
+				margin:5vh 0;
+				overflow-x:auto;
+				overflow-y:hidden;
+				width:100%;
+				-webkit-overflow-scrolling:touch;
+			}
+			.widget_related_posts > *{
+				-webkit-transform:translateZ(0px);
+			}
+			.widget_related_posts .related-wrapper{
+				background-color:<?php echo get_option('related_background','#fff');?>;
+				border-radius:3vmin;
+				box-shadow:0 0 2vmin rgba(0,0,0,.3);
+				color:<?php echo get_option('related_color','#333');?>;
+				display:block;
+				height:15vw;
+				margin:2vw;
+				min-width:28vw;
+				padding:.5em 1em;
+				text-decoration:none;
+			}
+			.widget_related_posts .related-wrapper:visited{
+				color:<?php echo get_option('related_color','#333');?>;
+			}
+			.widget_related_posts .related-title{
+				background-color:<?php echo get_option('related_title_background','#03a9f4');?>;
+				box-shadow:0 3px 6px rgba(0,0,0,.1);
+				color:<?php echo get_option('related_title_color','#fff');?>;
+				font-size:2rem;
+				text-align:center;
+				vertical-align:middle;
+			}
+			.widget_related_posts .related-date,.widget_related_posts .related-category{
+				font-size:1.6rem;
+				text-align:left;
+			}
+			.amp-sharebutton > ul{
+				list-style:none;
+			}
+			.amp-sharebutton > ul > li{
+				display:inline-block;
+			}
+			.amp-copyright{
+				text-align:center;
+			}
+			<?php
+		}elseif(is_author()===true){
+			?>
+			.bio-wrapper{
+		        background-color:#fff;
+				border-radius:3vmin;
+				box-shadow:0 0 3vmin rgba(0,0,0,.2);
+				box-sizing:border-box;
+		        display:block;
+				font-size:1.8rem;
+				margin:4vh 2vh;
+				min-height:40.5vmin;
+				padding:2vh 4vh;
+		        position:relative;
+				text-align:center;
+		        width:80vw;
+		    }
+		    .bio-img{
+		        left:4vmin;
+		        position:absolute;
+		        top:2vmin;
+		        width:calc(80vw / 10 * 3 - 1vmin);
+		    }
+		    .bio-info{
+		        position:absolute;
+		        right:0;
+		        top:0;
+				width:calc(80vw / 10 * 7);
+		    }
+		    .bio-name{
+		        font-size:2.3rem;
+		        text-align:center;
+		        vertical-align:middle;
+		    }
+		    .bio-description{
+		        font-size:1.6rem;
+		    }
+			<?php
 		}
 		include_once($theme_dir . '/css/mediaqueri.php');?>
-		article{
-			margin-top:6vh;
-		}
-		.widget_related_posts{
-			align-items:center;
-			display:flex;
-			flex-wrap:nowrap;
-			height:25vw;
-			justify-content:space-between;
-			margin:5vh 0;
-			overflow-x:auto;
-			overflow-y:hidden;
-			width:100%;
-			-webkit-overflow-scrolling:touch;
-		}
-		.widget_related_posts > *{
-			-webkit-transform:translateZ(0px);
-		}
-		.widget_related_posts .related-wrapper{
-			background-color:<?php echo get_option('related_background','#fff');?>;
-			border-radius:3vmin;
-			box-shadow:0 0 2vmin rgba(0,0,0,.3);
-			color:<?php echo get_option('related_color','#333');?>;
-			display:block;
-			height:15vw;
-			margin:2vw;
-			min-width:28vw;
-			padding:.5em 1em;
-			text-decoration:none;
-		}
-		.widget_related_posts .related-wrapper:visited{
-			color:<?php echo get_option('related_color','#333');?>;
-		}
-		.widget_related_posts .related-title{
-			background-color:<?php echo get_option('related_title_background','#03a9f4');?>;
-			box-shadow:0 3px 6px rgba(0,0,0,.1);
-			color:<?php echo get_option('related_title_color','#fff');?>;
-			font-size:2rem;
-			text-align:center;
-			vertical-align:middle;
-		}
-		.widget_related_posts .related-date,.widget_related_posts .related-category{
-			font-size:1.6rem;
-			text-align:left;
-		}
-		.amp-sharebutton > ul{
-			list-style:none;
-		}
-		.amp-sharebutton > ul > li{
-			display:inline-block;
-		}
-		.amp-copyright{
-			text-align:center;
-		}
 	</style>
 </head>
 <body>
-	<article>
-		<header class="article-header">
-			<a href="<?php echo esc_url(home_url());?>" tabindex="0" class="article-img">
-				<amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img>
-			</a>
-			<div class="article-meta">
-				<h1 class="article-title entry-title">
-					<?php the_title();?>
-				</h1>
-				<div>
-					<span class="article-date">
-						<time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
-							<?php the_time('Y/n/j');?>
-						</time>
-					</span>
-					<span class="author article-author">
-						<a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
-							<span class="vcard author">
-								<span class="fn">
-									<?php echo $author_name;?>
-								</span>
-							</span>
-						</a>
-					</span>
-				</div>
-				<div class="widget_tag_cloud">
-					<?php the_tags('','','');?>
-				</div>
-			</div>
-		</header>
-		<main class="article-main">
-			<?php
-			if(have_posts()):while(have_posts()):the_post();$content = get_the_content();endwhile;endif;
-
-			$content = apply_filters('the_content',$content);
-			$content = str_replace(']]>',']]&gt;',$content);
-			$content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div><script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div><script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>',$content);
-			$content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe>/i','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
-			$content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
-			$content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
-			$content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
-			$content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
-			$content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
-			$content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
-  			$content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)target=".*?"(.*?)>/','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)marginwidth=".*?"(.*?)>/i','<$1$2>',$content);
-			$content = preg_replace('/<(.*?)marginheight=".*?"(.*?)>/i','<$1$2>',$content);
-			$content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
-			$content = str_replace('href="javascript:void(0)"','',$content);
-			$content = str_replace('href=javascript:void(0);','',$content);
-			$content = str_replace('src=""',$img,$content);
-			$content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
-			$content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
-
-			echo $content;
-			?>
-		</main>
-		<footer itemscope itemtype="http://schema.org/WPFooter">
-			<aside class="amp-sharebutton">
-				<h2>share : </h2>
-				<ul>
-					<li><amp-social-share type="twitter"></amp-social-share></li>
-					<li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
-					<li><amp-social-share type="gplus"></amp-social-share></li>
-					<li><amp-social-share type="linkedin"></amp-social-share></li>
-					<li><amp-social-share type="pinterest"></amp-social-share></li>
-					<li><amp-social-share type="tumblr"></amp-social-share></li>
-					<li><amp-social-share type="whatsapp"></amp-social-share></li>
-					<li><amp-social-share type="email"></amp-social-share></li>
-				</ul>
-			</aside>
-			<aside class="widget_related_posts">
-				<?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-				if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
-				$query = new WP_Query($array);
-				if($query -> have_posts()):
-					while($query -> have_posts()):$query -> the_post();
-						$cat = get_the_category();?>
-						<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
-							<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
-							<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
-							<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>
-						</a>
-					<?php endwhile;?>
-					<?php wp_reset_postdata();?>
-				<?php else:
-					wp_reset_postdata();
-					$array=array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
-					$query = new WP_Query($array);
-					while($query -> have_posts()):$query -> the_post();?>
-						<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
-							<h3 class="related-title"><?php echo mb_strimwidth(get_the_title(),0,20,'…');?></h3><br>
-							<span class="related-date">投稿日時 : <time datetime="<?php get_mtime('Y/n/j G:i.s');?>"><?php the_time('Y/n');?></time></span><br>
-							<span class="related-category">カテゴリー : <?php echo $cat[0]->name;?></span>
-						</a>
-					<?php endwhile;?>
-					<?php wp_reset_postdata();?>
-				<?php endif;?>
-			</aside>
-			<aside class="amp-copyright">
-				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
-					<span itemprop="name">
-						<b>
-							<?php echo $blog_name;?>
-						</b>
-					</span>
-				</span>
-				&nbsp;&nbsp;&copy;
-				<span itemprop="copyrightYear">
-					<?php echo get_first_post_year();?>
-				</span>
-			</aside>
-		</footer>
-	</article>
+	<?php
+	if(is_singular()===true){
+		include_once($theme_dir . '/amp/content-singular.php');
+	}else{
+		include_once($theme_dir . '/amp/content-list.php');
+	}?>
 </body>
 </html>

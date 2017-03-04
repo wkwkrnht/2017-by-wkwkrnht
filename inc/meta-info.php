@@ -43,6 +43,7 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta name="twitter:description" content="<?php echo $description;?>">
 <meta name="twitter:image" content="<?php echo $meta_img;?>">
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
+<link rel="amphtml" href="<?php echo $meta_url;?>/amp">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 <link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
@@ -68,7 +69,6 @@ if(is_singular()===true):
     if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
     if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
     echo'
-    <link rel="amphtml" href="' . $meta_url . '?amp=1">
     <script type="application/ld+json">
         {
             "@context": "http://schema.org",

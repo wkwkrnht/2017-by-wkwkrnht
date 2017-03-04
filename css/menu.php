@@ -246,18 +246,14 @@
 }
 
 .page-nation{
-    background-color:<?php echo get_option('page_nation_background','#fff');?>;
-    box-shadow:0 0 3vmin rgba(0,0,0,.2);
-    height:10vw;
-    list-style:none;
-    margin:4vh auto;
-    width:80vw;
-}
-.page-nation{
     align-items:center;
     display:flex;
     flex-wrap:wrap;
+    height:10vw;
+    list-style:none;
     justify-content:center;
+    margin:4vh auto;
+    width:80vw;
 }
 .page-nation a,.page-nation .current,.page-nation li .dots{
     border:solid .5vmin <?php echo get_option('page_nation_border','#03a9f4');?>;
