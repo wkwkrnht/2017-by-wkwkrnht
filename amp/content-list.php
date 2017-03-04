@@ -96,7 +96,7 @@
     ));
     if(is_array($page_format)){
         $echo  = '';
-        $paged = (get_query_var('paged')==0) ? 1 : get_query_var('paged');
+        $paged = get_query_var('paged');
         foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
         echo'<ul class="page-nation">' . $echo . '</ul>';
     }
