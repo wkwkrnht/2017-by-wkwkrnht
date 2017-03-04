@@ -58,6 +58,8 @@
 </header>
 <main class="card-list">
     <?php
+    $default_value = get_option('posts_per_page');
+    update_option('posts_per_page',9999999999999);
     if(have_posts()):while(have_posts()):the_post();
             $title      = the_title_attribute(array('echo'=>false));
             $categories = get_the_category();
@@ -82,23 +84,5 @@
                 </div>
             </a>
     <?php endwhile;endif;
-    global $wp_query;
-    $big = 999999999;
-    $page_format = paginate_links(array(
-        'base'      => str_replace($big,'%#%',esc_url(get_pagenum_link($big))),
-        'format'    => '/page/%#%/',
-        'current'   => max(1,get_query_var('paged')),
-        'total'     => $wp_query->max_num_pages,
-        'prev_next' => True,
-        'prev_text' => '<',
-        'next_text' => '>',
-        'type'      => 'array'
-    ));
-    if(is_array($page_format)){
-        $echo  = '';
-        $paged = get_query_var('paged');
-        foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
-        echo'<ul class="page-nation">' . $echo . '</ul>';
-    }
-    wp_reset_postdata();?>
+    update_option('posts_per_page',$default_value);?>
 </main>

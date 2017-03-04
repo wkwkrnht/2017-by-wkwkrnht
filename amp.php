@@ -85,37 +85,7 @@
 				text-align:center;
 			}
 			<?php
-		}else{
-			?>
-			.page-nation{
-			    align-items:center;
-			    display:flex;
-			    flex-wrap:wrap;
-			    height:10vw;
-			    list-style:none;
-			    justify-content:center;
-			    margin:4vh auto;
-			    width:80vw;
-			}
-			.page-nation a,.page-nation .current,.page-nation li .dots{
-			    border:solid .5vmin <?php echo get_option('page_nation_border','#03a9f4');?>;
-			    font-weight:bold;
-			    margin:0 .5vmin;
-			    padding:2vmin;
-			}
-			.page-nation a,.page-nation li .dots{
-			    background-color:<?php echo get_option('page_nation_a_background','#fff');?>;
-			    color:<?php echo get_option('page_nation_a_color','#03a9f4');?>;
-			    font-size:1.3rem;
-			    text-decoration:none;
-			}
-			.page-nation a:hover,.page-nation .current{
-			    background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;
-			    color:<?php echo get_option('page_nation_hover_color','#fff');?>;
-			}
-			<?php
-		}
-		if(is_author()===true){
+		}elseif(is_author()===true){
 			?>
 			.bio-wrapper{
 		        background-color:#fff;
