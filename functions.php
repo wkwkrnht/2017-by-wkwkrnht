@@ -2,10 +2,12 @@
 require_once(get_template_directory() . '/inc/theme-update-checker.php');
 $example_update_checker = new ThemeUpdateChecker('2017-by-wkwkrnht','https://raw.githubusercontent.com/wkwkrnht/2017-by-wkwkrnht/master/update-info.json');
 /*
-    is_***
+    utility
 1.is_subpage
 2.is_actived_plugin
 3.is_user_agent_bot
+4.#xxxxxx turn to rgb(xx,xx,xx) (for CSS)
+5.ADD param of AMP
 */
 function is_subpage(){
     global $post;
@@ -34,6 +36,22 @@ function is_user_agent_bot(){
         }
     }
     return $is_bot;
+}
+
+function color_to_rgb($colorcode = ''){
+    $array_colorcode          = array();
+    $colorcode                = str_replace('#','',$colorcode);
+    $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
+    $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
+    $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
+    return $array_colorcode;
+}
+
+add_rewrite_endpoint('amp',EP_PERMALINK | EP_PAGES);
+define('AMP_QUERY_VAR','amp');
+function is_amp(){
+    $is_amp = get_query_var(AMP_QUERY_VAR,false);
+    return $is_amp;
 }
 /*
     setup
@@ -729,11 +747,11 @@ function get_twitter_acount(){
     original
 1.blogcard by OGP
 2.oEmbed content
-3.highlight as marker in resut of search
-4.content
+3.content
     ●ADD alt=""
     ●linked @hogehoge to Twitter
     ●ADD rel="noopener"(if it have target="_blank")
+4.description filltered by the_content
 */
 function make_OGPblogcard($url){
     require_once('inc/OpenGraph.php');
@@ -781,27 +799,50 @@ function custom_oembed_element($html){
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
 
+function sanitize_for_amp($content){
+    $content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div><script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>',$content);
+    $content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div><script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>',$content);
+    $content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
+    $content = preg_replace('/<iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe>/i','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div><script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>',$content);
+    $content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
+    $content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
+    $content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
+    $content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
+    $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
+    $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>',$content);
+    $content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
+    $content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)target=".*?"(.*?)>/','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)marginwidth=".*?"(.*?)>/i','<$1$2>',$content);
+    $content = preg_replace('/<(.*?)marginheight=".*?"(.*?)>/i','<$1$2>',$content);
+    $content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
+    $content = str_replace('href="javascript:void(0)"','',$content);
+    $content = str_replace('href=javascript:void(0);','',$content);
+    $content = str_replace('src=""',$img,$content);
+    $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
+    $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
+    return $content;
+}
+
 function wkwkrnht_replace($content){
+    $content = str_replace(']]>',']]&gt;',$content);
     $content = preg_replace_callback('#(<code.*?>)(.*?)(</code>)#imsu',function($match){return $match[1] . esc_html($match[2]) . $match[3];},$content);
     $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
     $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
     $content = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$content);
-    //if($is_amp===true){$content = sanitize_for_amp($content);}
+    if(is_amp()===true){$content = sanitize_for_amp($content);}
     return $content;
 }
 add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
 
 add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
-
-function color_to_rgb($colorcode = ''){
-    $array_colorcode          = array();
-    $colorcode                = str_replace('#','',$colorcode);
-    $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
-    $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
-    $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
-    return $array_colorcode;
-}
 /*
     shortcode
 1.customCSS
