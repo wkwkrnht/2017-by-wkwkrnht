@@ -20,7 +20,8 @@ function is_subpage(){
 function is_actived_plugin($plugin = ''){
     if(is_admin()===false){
         require_once('wp-admin/includes/plugin.php');
-    }return is_plugin_active($plugin);
+    }
+    return is_plugin_active($plugin);
 }
 
 function is_user_agent_bot(){
@@ -575,15 +576,6 @@ function add_body_class($classes){
     }
     return $classes;
 }
-
-/**
- * Adds custom classes to the array of comment classes.
- *
- * @param array $classes Classes for the comment element.
- *
- * @return array
- * @copyright KUCKLU & VisuAlive
- */
 function themeslug_comment_class($classes){
 	return preg_grep('/\comment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
 }
@@ -794,6 +786,7 @@ function wkwkrnht_replace($content){
     $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
     $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
     $content = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$content);
+    //if($is_amp===true){$content = sanitize_for_amp($content);}
     return $content;
 }
 add_filter('the_content','wkwkrnht_replace');
@@ -1008,10 +1001,15 @@ function make_toc($atts){
         $current_depth = $current_depth - 1;
     }
     if($counter >= $atts['showcount']){
-        if($id!==''){$id = ' id="' . $id . '"';}else{$id = '';}
-        $html .= '
+        if($id!==''){
+            $id = ' id="' . $id . '"';
+        }else{
+            $id = '';
+        }
+        $script = 'document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");';
+        $html  .= '
         <aside' . $id . ' class="' . $atts['class'] . '" role="navigation">
-            <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick=document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");>∨</a>
+            <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick="' . $script . '">∨</a>
             <h2 class="toc-title">' . $atts['title'] . '</h2>'
             . $toc_list .
         '</aside>
