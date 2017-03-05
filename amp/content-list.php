@@ -59,7 +59,7 @@
 <main class="card-list">
     <?php
     $default_value = get_option('posts_per_page');
-    update_option('posts_per_page',9999999999999);
+    update_option('posts_per_page',-1);
     if(have_posts()):while(have_posts()):the_post();
             $title      = the_title_attribute(array('echo'=>false));
             $categories = get_the_category();
