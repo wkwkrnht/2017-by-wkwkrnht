@@ -73,7 +73,8 @@ function is_amp(){
         ●comment
 5.script
 6.ADD data-title to element on social-nav
-7.ADD class into body_class
+7.ADD & DELETE class into body_class
+8.list page settings for AMP
 */
 function wkwkrnht_setup(){
     $GLOBALS['content_width'] = apply_filters('mytheme_content_width',1080);
@@ -601,6 +602,15 @@ add_action('comment_class','themeslug_comment_class');
 add_action('do_feed_smartnews','do_feed_smartnews');
 function do_feed_smartnews(){
     require(get_template_directory() . '/inc/smartnews.php');
+}
+
+add_filter('post_limits','amp_limits');
+function amp_limits($limits){
+    global $gloss_category;
+    if(is_amp()===true){
+        return'';
+    }
+    return $limits;
 }
 /*
     SEO
