@@ -48,7 +48,7 @@ article{
 .article-date,.article-author{
     width:49%;
 }
-.article-footer .copyright{
+.article-footer .copyright,.amp-copyright{
     background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
     color:<?php echo get_option('copyright_color','#fff');?>;
     font-size:1.8rem;
@@ -150,12 +150,12 @@ article{
     background-color:#eee;
 }
 .article-main blockquote,.article-main q{
-    padding:1em 2em;
     quotes:none;
 }
 .article-main blockquote{
     border:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
     border-radius:3vmin;
+    padding:1em 2em;
 }
 .article-main blockquote::after{
     border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;

@@ -3,13 +3,47 @@
 <head>
 	<meta charset="utf-8">
 	<?php
+	global $post;
 	$root_color  = get_option('root_color','#333');
 	$theme_dir   = get_template_directory();
-	$content     = '';?>
+	$content     = '';
+	$content     = $post->post_content;?>
 	<link rel="canonical" href="<?php echo get_permalink();?>">
 	<title><?php wp_title('｜',true,'right');?></title>
 	<?php include_once($theme_dir . '/inc/meta-info.php');?>
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
+	<?php
+	function amp_script($content){
+		$html    = '';
+		$pattern = '/https:\/\/twitter.com\/.*?\/status\/(.*?)"/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html .= '<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>' . PHP_EOL;
+		}
+		$pattern = '/https:\/\/www.instagram.com\/p\/(.+?)\/"/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html .= '<script custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js" async></script>' . PHP_EOL;
+		}
+		$pattern = '/<iframe.+?src="https:\/\/www.youtube.com\/embed\/(.+?)(\?feature=oembed)?".*?><\/iframe>/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html   .= '<script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>' . PHP_EOL;
+			$content = preg_replace($pattern,'',$content);
+		}
+		$pattern = '/<iframe[^>]+?src="https:\/\/vine.co\/v\/(.+?)\/embed\/simple".+?><\/iframe>/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html   .= '<script async custom-element="amp-vine" src="https://cdn.ampproject.org/v0/amp-vine-0.1.js"></script>' . PHP_EOL;
+			$content = preg_replace($pattern,'',$content);
+		}
+		$pattern = '/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/(.*?)&.+?".+?><\/iframe>/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html   .= '<script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>' . PHP_EOL;
+			$content = preg_replace($pattern,'',$content);
+		}
+		$pattern = '/<iframe/i';
+		if(preg_match($pattern,$content,$matches)===1){
+			$html .= '<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>' . PHP_EOL;
+		}
+		echo $html;
+	}amp_script();?>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-custom>
@@ -29,62 +63,7 @@
 				}
 			}
 			include_once($theme_dir . '/css/style-singular.php');
-			?>
-			article{
-				margin-top:6vh;
-			}
-			.widget_related_posts{
-				align-items:center;
-				display:flex;
-				flex-wrap:nowrap;
-				height:25vw;
-				justify-content:space-between;
-				margin:5vh 0;
-				overflow-x:auto;
-				overflow-y:hidden;
-				width:100%;
-				-webkit-overflow-scrolling:touch;
-			}
-			.widget_related_posts > *{
-				-webkit-transform:translateZ(0px);
-			}
-			.widget_related_posts .related-wrapper{
-				background-color:<?php echo get_option('related_background','#fff');?>;
-				border-radius:3vmin;
-				box-shadow:0 0 2vmin rgba(0,0,0,.3);
-				color:<?php echo get_option('related_color','#333');?>;
-				display:block;
-				height:15vw;
-				margin:2vw;
-				min-width:28vw;
-				padding:.5em 1em;
-				text-decoration:none;
-			}
-			.widget_related_posts .related-wrapper:visited{
-				color:<?php echo get_option('related_color','#333');?>;
-			}
-			.widget_related_posts .related-title{
-				background-color:<?php echo get_option('related_title_background','#03a9f4');?>;
-				box-shadow:0 3px 6px rgba(0,0,0,.1);
-				color:<?php echo get_option('related_title_color','#fff');?>;
-				font-size:2rem;
-				text-align:center;
-				vertical-align:middle;
-			}
-			.widget_related_posts .related-date,.widget_related_posts .related-category{
-				font-size:1.6rem;
-				text-align:left;
-			}
-			.amp-sharebutton > ul{
-				list-style:none;
-			}
-			.amp-sharebutton > ul > li{
-				display:inline-block;
-			}
-			.amp-copyright{
-				text-align:center;
-			}
-			<?php
+			include_once($theme_dir . '/css/amp-style-singular.php');
 		}elseif(is_author()===true){
 			?>
 			.bio-wrapper{
