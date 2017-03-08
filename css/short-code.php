@@ -48,21 +48,14 @@
 
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
-        background-color:#fff;
-        border:1px solid #e5e5e5;
-        border-radius:3vmin;
-        box-shadow:0 0 3vmin rgba(0,0,0,.15);
         display:block;
-        height:37vh;
-        padding:2vmin 5vmin;
+        height:36vh;
         position:relative;
-        margin:4vh auto;
-        width:84vw;
     }
     .ogp-blogcard-share{
         background-color:rgba(0,0,0,.3);
         border-radius:3vmin;
-        height:calc(37vh + 2vmin * 2);
+        height:calc(36vh + 2vmin * 2);
         left:0;
         position:absolute;
         top:0;
@@ -94,27 +87,33 @@
         color:#fff;
         display:block;
         height:3em;
-        left:-1.5em;
+        left:0;
         line-height:3em;
         margin:0;
         position:absolute;
-        top:-1.5em;
+        top:0;
         text-align:center;
         vertical-align:middle;
         width:3em;
     }
     .ogp-blogcard-main{
-        height:37vh;
+        background-color:#fff;
+        border:1px solid #e5e5e5;
+        border-radius:3vmin;
+        box-shadow:0 0 3vmin rgba(0,0,0,.15);
+        box-sizing:border-box;
+        height:36vh;
         overflow-x:hidden;
         overflow-y:auto;
+        padding:2vmin 5vmin;
         position:absolute;
         top:0;
         width:80vw;
     }
     .ogp-blogcard-img{
         display:inline-block;
-        max-height:37vh;
-        max-width:calc(80vw * .3);
+        max-height:36vh;
+        max-width:calc(80vw * .2);
     }
     .ogp-blogcard-info{
         display:inline-block;
@@ -347,7 +346,6 @@
     }
     .search-form div{
         display:inline-block;
-        margin-left:1em;
         padding:1em;
     }
     .search-form .sform{
@@ -360,6 +358,7 @@
         background-color:#1155ee;
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         color:#fff;
+        max-width:30%;
         padding-left:2rem;
         padding-right:3rem;
         position:absolute;
@@ -371,5 +370,62 @@
         font-family:"FontAwesome";
         font-size:2.5rem;
         position:absolute;
+    }
+<?php endif;?>
+
+<?php if(has_class('ba-slider')===true):?>
+    .ba-slider{
+        position: relative;
+        overflow: hidden;
+    }
+    .ba-slider img{
+        width: 100%;
+        display:block;
+    }
+    .resize{
+        position: absolute;
+        top:0;
+        left:0;
+        height:inherit;
+        width:50%;
+        overflow: hidden;
+    }
+    .handle{ /* Thin line seperator */
+        position:absolute;
+        left:50%;
+        top:0;
+        bottom:0;
+        width:4px;
+        margin-left:-2px;
+        background:rgba(0,0,0,.5);
+        cursor: ew-resize;
+    }
+    .handle::after {  /* Big orange knob  */
+        position: absolute;
+        top: 50%;
+        width: 64px;
+        height: 64px;
+        margin: -32px 0 0 -32px;
+        content:'\21d4';
+        color:#fff;
+        font-weight:bold;
+        font-size:36px;
+        text-align:center;
+        line-height:64px;
+        background: #ffb800; /* @orange */
+        border:1px solid #e6a600; /* darken(@orange, 5%) */
+        border-radius: 50%;
+        transition:all 0.3s ease;
+        box-shadow:
+          0 2px 6px rgba(0,0,0,.3),
+          inset 0 2px 0 rgba(255,255,255,.5),
+          inset 0 60px 50px -30px #ffd466; /* lighten(@orange, 20%)*/
+    }
+    .draggable::after {
+        width: 48px;
+        height: 48px;
+        margin: -24px 0 0 -24px;
+        line-height:48px;
+        font-size:30px;
     }
 <?php endif;?>

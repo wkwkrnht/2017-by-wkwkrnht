@@ -39,7 +39,12 @@
 }
 .card-img{
     height:29vmax;
+    transition-duration:.3s;
     width:29vmax;
+}
+.card-img:hover{
+    transform:scale(1.1);
+	transition-duration:.3s;
 }
 .card-meta{
     background-color:rgba(0,0,0,.5);

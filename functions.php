@@ -38,6 +38,17 @@ function is_user_agent_bot(){
     return $is_bot;
 }
 
+function has_class($name){
+    global $post;
+    $pattern = 'class="' . $name . '"';
+    $content = apply_filters('the_content',$post->post_content);
+    if(strpos($content,$pattern)!==false){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function color_to_rgb($colorcode = ''){
     $array_colorcode          = array();
     $colorcode                = str_replace('#','',$colorcode);
@@ -547,11 +558,13 @@ function custom_comment_tags($data){
 	return $data;
 }
 
-
+add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 function vc_remove_wp_ver_css_js($src){
-    if(strpos($src,'ver=')){$src = remove_query_arg('ver',$src);}
+    if(strpos($src,'ver=')){
+        $src = remove_query_arg('ver',$src);
+    }
     return $src;
 }
 add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
@@ -914,6 +927,17 @@ function google_ads_in_article($atts){
         <script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
     </aside>';
 }
+function make_before_after_box($atts){
+    extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
+    return'
+    <div class="ba-slider">
+        <img src="' . $after . '" alt="before">
+        <div class="resize">
+            <img src="' . $before . '" alt="after">
+        </div>
+        <span class="handle"></span>
+    </div>';
+}
 function columun_in_article($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'','title'=>'',),$args));
     return'
@@ -1095,6 +1119,7 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
+add_shortcode('before_after_box','make_before_after_box');
 add_shortcode('columun','columun_in_article');
 add_shortcode('info','info_box');
 add_shortcode('qa','qa_box');
@@ -1162,6 +1187,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
+        QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box after= before=',']');
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
         QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');
