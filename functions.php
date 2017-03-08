@@ -39,8 +39,9 @@ function is_user_agent_bot(){
 }
 
 function has_class($name){
+    global $post;
     $name    = '/class="' . $name . '"/';
-    $content = get_the_content();
+    $content = $post->post_content;
     if(preg_match($name,$content)===1){
         return true;
     }else{
