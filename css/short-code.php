@@ -48,16 +48,10 @@
 
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
-        background-color:#fff;
-        border:1px solid #e5e5e5;
-        border-radius:3vmin;
-        box-shadow:0 0 3vmin rgba(0,0,0,.15);
         display:block;
         height:37vh;
-        padding:2vmin 5vmin;
         position:relative;
         margin:4vh auto;
-        overflow-x:hidden;
         width:84vw;
     }
     .ogp-blogcard-share{
@@ -105,9 +99,15 @@
         width:3em;
     }
     .ogp-blogcard-main{
+        background-color:#fff;
+        border:1px solid #e5e5e5;
+        border-radius:3vmin;
+        box-shadow:0 0 3vmin rgba(0,0,0,.15);
+        box-sizing:border-box;
         height:37vh;
         overflow-x:hidden;
         overflow-y:auto;
+        padding:2vmin 5vmin;
         position:absolute;
         top:0;
         width:84vw;

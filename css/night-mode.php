@@ -24,7 +24,7 @@ body.night-mode,
 .night-mode a#share-menu-toggle{
     color:#fff;
 }
-.night-mode div.ogp-blogcard,
+.night-mode div.ogp-blogcard-main,
 .night-mode ul.page-nation,
 .night-mode ul.page-nation a,
 .night-mode ul.page-nation li span.dots,
@@ -39,10 +39,7 @@ body.night-mode,
 .night-mode .card,
 .night-mode div.card-list,
 .night-mode div#menu-wrap,
-.night-mode a#menu-toggle,
-.night-mode nav.menu-tab,
-.night-mode a#main-menu-toggle,
-.night-mode a#share-menu-toggle{
+.night-mode a#menu-toggle{
     background-color:#333;
 }
 .night-mode ul.page-nation,
