@@ -4,7 +4,6 @@
 .night-mode .article-main h2.ogp-blogcard-title:visited,
 .night-mode .article-main p.ogp-blogcard-description:visited,
 .night-mode .article-main a.ogp-blogcard-site-name:visited,
-.night-mode .article-main img.ogp-blogcard-img::after,
 .night-mode ul.page-nation,
 .night-mode ul.page-nation a,
 .night-mode ul.page-nation li span.dots,
@@ -24,7 +23,8 @@ body.night-mode,
 .night-mode a#share-menu-toggle{
     color:#fff;
 }
-.night-mode div.ogp-blogcard-main,
+body.night-mode,
+.night-mode .ogp-blogcard-main,
 .night-mode ul.page-nation,
 .night-mode ul.page-nation a,
 .night-mode ul.page-nation li span.dots,
@@ -34,7 +34,6 @@ body.night-mode,
 .night-mode .hide-nav-prev a,
 .night-mode .hide-nav-next a,
 .night-mode .article-header,
-body.night-mode,
 .night-mode #main-menu,
 .night-mode .card,
 .night-mode div.card-list,
@@ -66,7 +65,7 @@ body.night-mode,
 .night-mode div.question{
     color:#333;
 }
-.night-mode div.ogp-blogcard{
+.night-mode .ogp-blogcard-main{
     border-color:#f1f1f1;
 }
 .night-mode aside.toc{

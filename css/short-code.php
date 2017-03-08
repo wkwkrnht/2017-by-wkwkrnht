@@ -89,11 +89,11 @@
         color:#fff;
         display:block;
         height:3em;
-        left:-1.5em;
+        left:0;
         line-height:3em;
         margin:0;
         position:absolute;
-        top:-1.5em;
+        top:0;
         text-align:center;
         vertical-align:middle;
         width:3em;
@@ -110,12 +110,12 @@
         padding:2vmin 5vmin;
         position:absolute;
         top:0;
-        width:84vw;
+        width:80vw;
     }
     .ogp-blogcard-img{
         display:inline-block;
         max-height:37vh;
-        max-width:calc(84vw * .2);
+        max-width:calc(80vw * .2);
     }
     .ogp-blogcard-info{
         display:inline-block;
