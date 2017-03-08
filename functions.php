@@ -38,6 +38,16 @@ function is_user_agent_bot(){
     return $is_bot;
 }
 
+function has_class($name = ''){
+    $name    = '/class="' . $name . '"/';
+    $content = get_the_content();
+    if(preg_match($name,$content)===1){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 function color_to_rgb($colorcode = ''){
     $array_colorcode          = array();
     $colorcode                = str_replace('#','',$colorcode);
@@ -914,6 +924,17 @@ function google_ads_in_article($atts){
         <script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
     </aside>';
 }
+function make_before_after_box($atts){
+    extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
+    return'
+    <div class="ba-slider">
+        <img src="' . $before . '" alt="before">
+        <div class="resize">
+            <img src="' . $after . '" alt="after">
+        </div>
+        <span class="handle"></span>
+    </div>';
+}
 function columun_in_article($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'','title'=>'',),$args));
     return'
@@ -1095,6 +1116,7 @@ add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
+add_shortcode('before_after_box','make_before_after_box');
 add_shortcode('columun','columun_in_article');
 add_shortcode('info','info_box');
 add_shortcode('qa','qa_box');
@@ -1162,6 +1184,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
+        QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box before= after=',']');
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
         QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');

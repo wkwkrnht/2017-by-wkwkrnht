@@ -119,6 +119,7 @@ else:
                                     </time>
                                 </span>
                                 <span>
+									<i class="fa fa-bookmark" aria-hidden="true"></i>
                                     <?php echo $category->cat_name;?>
                                 </span>
                             </div>

@@ -5,6 +5,7 @@ $google_meta  = false;
 $bing         = false;
 $pi           = false;
 $img          = ' src="' . get_no_image('') . '"';
+$google_id    = get_the_author_meta('GoogleID');
 $google_ana   = get_option('Google_Analytics');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
@@ -43,16 +44,17 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta name="twitter:description" content="<?php echo $description;?>">
 <meta name="twitter:image" content="<?php echo $meta_img;?>">
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
-<link rel="amphtml" href="<?php echo $meta_url;?>/amp">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 <link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
 <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
-<?php if($is_amp===false):?>
+<?php if(is_amp()===false):?>
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
-<?php endif;?>
-<link rel="publisher" href="http://plus.google.com/<?php the_author_meta('GoogleID');?>">
-<?php
+    <link rel="amphtml" href="<?php echo $meta_url;?>/amp">
+<?php endif;
+if($google_id!==null):?>
+    <link rel="publisher" href="http://plus.google.com/<?php echo $google_id;?>">
+<?php endif;
 if(is_singular()===true):
     $fb         = '';
     $tw         = '';
@@ -474,4 +476,6 @@ elseif(is_home()===true):
         }
     </script>';
 endif;
-?>
+if($google_ana!==false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
+    echo'<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script><script async="" src="//www.google-analytics.com/analytics.js"></script>';
+}?>
