@@ -346,7 +346,6 @@
     }
     .search-form div{
         display:inline-block;
-        margin-left:1em;
         padding:1em;
     }
     .search-form .sform{
@@ -359,6 +358,7 @@
         background-color:#1155ee;
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         color:#fff;
+        max-width:30%;
         padding-left:2rem;
         padding-right:3rem;
         position:absolute;
