@@ -375,30 +375,30 @@
 <?php endif;?>
 
 <?php //if(has_class('ba-slider')===true):?>
-    .ba-slider {
+    .ba-slider{
         position: relative;
         overflow: hidden;
     }
-    .ba-slider img {
+    .ba-slider img{
         width: 100%;
         display:block;
     }
-    .resize {
+    .resize{
         position: absolute;
         top:0;
-        left: 0;
-        height: 100%;
-        width: 50%;
+        left:0;
+        height:inherit;
+        width:50%;
         overflow: hidden;
     }
-    .handle { /* Thin line seperator */
+    .handle{ /* Thin line seperator */
         position:absolute;
         left:50%;
         top:0;
         bottom:0;
         width:4px;
         margin-left:-2px;
-        background: rgba(0,0,0,.5);
+        background:rgba(0,0,0,.5);
         cursor: ew-resize;
     }
     .handle::after {  /* Big orange knob  */
@@ -408,7 +408,7 @@
         height: 64px;
         margin: -32px 0 0 -32px;
         content:'\21d4';
-        color:white;
+        color:#fff;
         font-weight:bold;
         font-size:36px;
         text-align:center;
