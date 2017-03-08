@@ -51,7 +51,6 @@
         display:block;
         height:36vh;
         position:relative;
-        margin:4vh calc((100% - 80vw) / 2);
     }
     .ogp-blogcard-share{
         background-color:rgba(0,0,0,.3);
