@@ -38,7 +38,7 @@ function is_user_agent_bot(){
     return $is_bot;
 }
 
-function has_class($name = ''){
+function has_class($name){
     $name    = '/class="' . $name . '"/';
     $content = get_the_content();
     if(preg_match($name,$content)===1){
@@ -557,10 +557,7 @@ function custom_comment_tags($data){
 	return $data;
 }
 
-function my_scripts_method(){
-    wp_enqueue_script('jquery');
-}
-add_action('wp_enqueue_scripts','my_scripts_method');
+//add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 function vc_remove_wp_ver_css_js($src){
