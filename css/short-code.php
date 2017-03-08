@@ -49,13 +49,14 @@
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
         display:block;
+        height:36vh;
         position:relative;
-        margin:4vh auto;
+        margin:4vh calc((100% - 80vw) / 2);
     }
     .ogp-blogcard-share{
         background-color:rgba(0,0,0,.3);
         border-radius:3vmin;
-        height:calc(37vh + 2vmin * 2);
+        height:calc(36vh + 2vmin * 2);
         left:0;
         position:absolute;
         top:0;
@@ -102,7 +103,7 @@
         border-radius:3vmin;
         box-shadow:0 0 3vmin rgba(0,0,0,.15);
         box-sizing:border-box;
-        height:37vh;
+        height:36vh;
         overflow-x:hidden;
         overflow-y:auto;
         padding:2vmin 5vmin;
@@ -112,7 +113,7 @@
     }
     .ogp-blogcard-img{
         display:inline-block;
-        max-height:37vh;
+        max-height:36vh;
         max-width:calc(80vw * .2);
     }
     .ogp-blogcard-info{
