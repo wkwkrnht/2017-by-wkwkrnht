@@ -49,10 +49,8 @@
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
         display:block;
-        height:37vh;
         position:relative;
         margin:4vh auto;
-        width:84vw;
     }
     .ogp-blogcard-share{
         background-color:rgba(0,0,0,.3);
