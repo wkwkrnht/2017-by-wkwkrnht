@@ -109,12 +109,12 @@
         overflow-y:auto;
         position:absolute;
         top:0;
-        width:80vw;
+        width:84vw;
     }
     .ogp-blogcard-img{
         display:inline-block;
         max-height:37vh;
-        max-width:calc(80vw * .3);
+        max-width:calc(80vw * .3 - 1vmin);
     }
     .ogp-blogcard-info{
         display:inline-block;
