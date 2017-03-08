@@ -557,11 +557,16 @@ function custom_comment_tags($data){
 	return $data;
 }
 
-
+function my_scripts_method(){
+    wp_enqueue_script('jquery');
+}
+add_action('wp_enqueue_scripts','my_scripts_method');
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 function vc_remove_wp_ver_css_js($src){
-    if(strpos($src,'ver=')){$src = remove_query_arg('ver',$src);}
+    if(strpos($src,'ver=')){
+        $src = remove_query_arg('ver',$src);
+    }
     return $src;
 }
 add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);

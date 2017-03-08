@@ -52,7 +52,7 @@
                     document.head.appendChild(wpStyle);
                 }
             })();
-            <?php if(has_class($name = 'ba-slider')===true):?>
+            <?php //if(has_class($name = 'ba-slider')===true):?>
                 jQuery(document).ready(function(){
                     jQuery('.ba-slider').each(function(){
                         var cur = jQuery(this);
@@ -117,7 +117,7 @@
                         resizeElement.removeClass('resizable');
                     });
                 }
-            <?php endif;?>
+            <?php //endif;?>
             (function(){
                 var key = "<?php echo $key;?>";
                 function getCookie(key){
