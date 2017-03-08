@@ -57,6 +57,7 @@
         padding:2vmin 5vmin;
         position:relative;
         margin:4vh auto;
+        overflow-x:hidden;
         width:84vw;
     }
     .ogp-blogcard-share{
@@ -118,6 +119,7 @@
     }
     .ogp-blogcard-info{
         display:inline-block;
+        max-width:calc(80vw * .7);
         text-align:center;
     }
     .ogp-blogcard-title{
