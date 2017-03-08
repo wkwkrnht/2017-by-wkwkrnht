@@ -928,9 +928,9 @@ function make_before_after_box($atts){
     extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
     return'
     <div class="ba-slider">
-        <img src="' . $before . '" alt="before">
+        <img src="' . $after . '" alt="before">
         <div class="resize">
-            <img src="' . $after . '" alt="after">
+            <img src="' . $before . '" alt="after">
         </div>
         <span class="handle"></span>
     </div>';
@@ -1184,7 +1184,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
-        QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box before= after=',']');
+        QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box after= before=',']');
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
         QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');

@@ -374,7 +374,7 @@
     }
 <?php endif;?>
 
-<?php if(has_class('ba-slider')===true):?>
+<?php //if(has_class('ba-slider')===true):?>
     .ba-slider {
         position: relative;
         overflow: hidden;
@@ -429,4 +429,4 @@
         line-height:48px;
         font-size:30px;
     }
-<?php endif;?>
+<?php //endif;?>
