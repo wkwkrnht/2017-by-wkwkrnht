@@ -56,10 +56,11 @@
                 jQuery(document).ready(function(){
                     jQuery('.ba-slider').each(function(){
                         var cur = jQuery(this);
+                        // Adjust the slider
                         var width = cur.width() + 'px';
-                        cur.querySelectorAll('.resize img').style.width = width;
+                        cur.find('.resize img').css('width', width);
                         // Bind dragging events
-                        drags(cur.getElementByClassName('handle'), cur.getElementByClassName('resize'), cur);
+                        drags(cur.find('.handle'), cur.find('.resize'), cur);
                     });
                 });
                 // Update sliders on resize.
@@ -68,7 +69,7 @@
                     jQuery('.ba-slider').each(function(){
                         var cur = jQuery(this);
                         var width = cur.width() + 'px';
-                        cur.querySelectorAll('.resize img').style.width = width;
+                        cur.find('.resize img').css('width', width);
                     });
                 });
                 function drags(dragElement, resizeElement, container) {
