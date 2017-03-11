@@ -4,7 +4,7 @@
 		display:flex;
 		flex-wrap:nowrap;
 		height:calc(30vmax + 2vh * 2);
-		justify-content:space-between;
+		justify-content:space-around;
 		margin:6vh 0;
 		overflow-x:auto;
 		overflow-y:hidden;
@@ -57,10 +57,10 @@ foreach($categories as $category){
 	array_push($category_ID,$category->cat_ID);
 }
 if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;
-$array = array('numberposts'=>6,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+$array = array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 $query = new WP_Query($array);?>
-<?php if($query -> have_posts()):
-	while($query -> have_posts()):$query -> the_post();?>
+<?php if($query->have_posts()):
+	while($query->have_posts()):$query->the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>
@@ -70,9 +70,9 @@ $query = new WP_Query($array);?>
 <?php else:?>
 	<?php
 	wp_reset_postdata();
-	$array=array('numberposts'=>6,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+	$array = array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 	$query = new WP_Query($array);
-	while($query -> have_posts()):$query -> the_post();?>
+	while($query->have_posts()):$query->the_post();?>
 		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
 			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="related-thumb">
 			<?php the_title('<div class="related-title">','</div>');?>

@@ -67,7 +67,7 @@
                 // Because we all do this: i.imgur.com/YkbaV.gif
                 jQuery(window).resize(function(){
                     jQuery('.ba-slider').each(function(){
-                        var cur = $(this);
+                        var cur = jQuery(this);
                         var width = cur.width() + 'px';
                         cur.find('.resize img').css('width', width);
                     });
@@ -103,7 +103,7 @@
                             // Set the new values for the slider and the handle.
                             // Bind mouseup events to stop dragging.
                             jQuery('.draggable').css('left', widthValue).on('mouseup touchend touchcancel', function () {
-                                $(this).removeClass('draggable');
+                                jQuery(this).removeClass('draggable');
                                 resizeElement.removeClass('resizable');
                             });
                             jQuery('.resizable').css('width', widthValue);
