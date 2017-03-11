@@ -44,6 +44,9 @@
 		vertical-align:middle;
 		width:30vmax;
 	}
+	li.widget.widget_related_posts_img{
+		display:flex;
+	}
 </style>
 <?php
 $size_full   = array(1344,576);
