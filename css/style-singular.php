@@ -51,6 +51,7 @@ article{
 .article-footer .copyright,.amp-copyright{
     background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
     color:<?php echo get_option('copyright_color','#fff');?>;
+    display:block;
     font-size:1.8rem;
     margin:6vh 0 0;
     padding:1em 0;
