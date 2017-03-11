@@ -71,7 +71,7 @@ else:
     					<?php dynamic_sidebar('singularfooter');?>
     				</ul>
     			<?php endif;?>
-				<div class="copyright">
+				<a href="<?php echo esc_url(home_url(''));?>" class="copyright">
 					<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 						<span itemprop="name">
 							<b>
@@ -83,7 +83,7 @@ else:
 					<span itemprop="copyrightYear">
 						<?php echo get_first_post_year();?>
 					</span>
-				</div>
+				</a>
     		</footer>
         </article>
     <?php else:
