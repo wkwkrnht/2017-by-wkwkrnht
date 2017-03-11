@@ -784,16 +784,13 @@ function make_OGPblogcard($url){
     $img           = $ogp->image;
     $title         = $ogp->title;
     $description   = str_replace(']]<>',']]＜＞',$ogp->description);
-    $tw_acount     = '';
-    $get_tw_acount = get_twitter_acount();
-    if($get_tw_acount!==null){$tw_acount = '&amp;via=' . $get_tw_acount;}
     $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
     $content     =
     '<div class="ogp-blogcard">
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
             <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
-                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . $tw_acount . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                 <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
                 <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
                 <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>

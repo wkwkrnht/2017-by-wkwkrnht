@@ -56,20 +56,19 @@
                 jQuery(document).ready(function(){
                     jQuery('.ba-slider').each(function(){
                         var cur = jQuery(this);
-                        // Adjust the slider
                         var width = cur.width() + 'px';
-                        cur.find('.resize img').css('width', width);
+                        cur.querySelectorAll('.resize img').style.width = width;
                         // Bind dragging events
-                        drags(cur.find('.handle'), cur.find('.resize'), cur);
+                        drags(cur.getElementByClassName('handle'), cur.getElementByClassName('resize'), cur);
                     });
                 });
                 // Update sliders on resize.
                 // Because we all do this: i.imgur.com/YkbaV.gif
                 jQuery(window).resize(function(){
                     jQuery('.ba-slider').each(function(){
-                        var cur = $(this);
+                        var cur = jQuery(this);
                         var width = cur.width() + 'px';
-                        cur.find('.resize img').css('width', width);
+                        cur.querySelectorAll('.resize img').style.width = width;
                     });
                 });
                 function drags(dragElement, resizeElement, container) {
@@ -103,7 +102,7 @@
                             // Set the new values for the slider and the handle.
                             // Bind mouseup events to stop dragging.
                             jQuery('.draggable').css('left', widthValue).on('mouseup touchend touchcancel', function () {
-                                $(this).removeClass('draggable');
+                                jQuery(this).removeClass('draggable');
                                 resizeElement.removeClass('resizable');
                             });
                             jQuery('.resizable').css('width', widthValue);
