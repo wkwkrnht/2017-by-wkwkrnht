@@ -12,9 +12,6 @@ if(is_amp()===true):
 	require_once('amp.php');
 else:
     get_header();
-	if(is_active_sidebar('listabove')){
-		dynamic_sidebar('listabove');
-	}
     if(is_singular()===true):
 		if(have_posts()){
 			while(have_posts()):the_post();
@@ -90,7 +87,9 @@ else:
         if(is_author()===true){
             include_once(get_template_directory() . '/widget/author-bio.php');
         }
-
+		if(is_active_sidebar('listabove')){
+			dynamic_sidebar('listabove');
+		}
 		if(is_404()===true){
 				if(is_active_sidebar('404')){
                     dynamic_sidebar('404');
@@ -150,9 +149,9 @@ else:
     	    echo'<ul class="page-nation">' . $echo . '</ul>';
     	}
 		wp_reset_postdata();
+		if(is_active_sidebar('listunder')){
+			dynamic_sidebar('listunder');
+		}
     endif;
-	if(is_active_sidebar('listunder')){
-		dynamic_sidebar('listunder');
-	}
     get_footer();
 endif;?>

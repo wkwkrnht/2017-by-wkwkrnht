@@ -38,6 +38,7 @@
     background-color:<?php echo get_option('menu_background','#fff');?>;
     bottom:20vh;
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
+    color:<?php echo get_option('menu_color','#333');?>;
     height:74vh;
     left:calc(50% - 90vw / 2);
     margin:0;
