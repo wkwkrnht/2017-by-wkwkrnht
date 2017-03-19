@@ -451,7 +451,7 @@ elseif(is_home()===true):
             "@type": "WebSite",
             "name":"' . $blog_name . '",
             "description": "' . mb_substr($description,0,60) . '…",
-            "url": "' . $homeurl . '",
+            "url": "' . $home_url . '",
             "inLanguage": "' . get_bloginfo('language') . '",
             "publisher":{
 				"@type":"Organization",
