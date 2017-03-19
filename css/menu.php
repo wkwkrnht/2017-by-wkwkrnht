@@ -65,7 +65,7 @@
 
 .social-nav{
     display:block;
-    margin:2vh auto;
+    margin:4vh auto;
     min-height:4em;
     width:100%;
 }
@@ -84,9 +84,10 @@
 }
 .social-nav a::before,.social-nav a::after{
     display:inline-block;
-    font:400 1.8rem/1.9 "FontAwesome";
+    font:400 2rem/1.9 "FontAwesome";
     font-style:normal;
     font-variant:normal;
+    position:absolute;
     speak:none;
     text-align:center;
     text-decoration:none;
@@ -94,14 +95,12 @@
 }
 .social-nav a::before{
     content:"\f07b";
-    font-size:2.5rem;
     left:0;
-    position:absolute;
     top:0;
 }
 .social-nav a::after{
     bottom:0;
-    position:relative;
+    font-size:calc(2rem * .8);
     right:0;
 }
 .social-nav a[href*="amazon"]::before{
@@ -281,11 +280,9 @@
 4.archive
 */
 .widget{
+    display:block;
     margin:4vh auto;
     max-width:94%;
-}
-li.widget{
-    display:block;
 }
 .widget-title{
     background-color:<?php echo get_option('wkwkrnht_widget_title_background','#03a9f4');?>;
