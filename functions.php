@@ -1202,10 +1202,10 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-h5','h5','<h5>','</h5>');
         QTags.addButton('qt-h6','h6','<h6>','</h6>');
         QTags.addButton('qt-table','table','<table>','</table>');
-        QTags.addButton('qt-thead','thead','      <thead>','    </thead>');
-        QTags.addButton('qt-tbody','tbody','      <tbody>','    </tbody>');
-        QTags.addButton('qt-tfoot','tfoot','      <tfoot>','    </tfoot>');
-        QTags.addButton('qt-tr','tr','         <tr>','     </tr>');
+        QTags.addButton('qt-thead','thead','      <thead>','      </thead>');
+        QTags.addButton('qt-tbody','tbody','      <tbody>','      </tbody>');
+        QTags.addButton('qt-tfoot','tfoot','      <tfoot>','      </tfoot>');
+        QTags.addButton('qt-tr','tr','         <tr>','         </tr>');
         QTags.addButton('qt-th','th','           <th>','</th>');
         QTags.addButton('qt-td','td','           <td>','</td>');
 		QTags.addButton('qt-marker','marker','[marker]','[/marker]');
