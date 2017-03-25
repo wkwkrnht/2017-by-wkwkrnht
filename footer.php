@@ -139,7 +139,11 @@
                 }
                 var n = getCookie(key);
                 if(n === ""){
-                    window.alert("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。");
+                    if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
+                        return;
+                    } else {
+                        window.back();
+                    }
                 }
                 n++;
                 setCookie(key,n);
