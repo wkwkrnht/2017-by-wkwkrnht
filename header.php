@@ -5,12 +5,16 @@
 	<meta http-equiv="cleartype" content="on">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<?php
-	$theme_dir   = get_template_directory();
+	$theme_dir = get_template_directory();
+	$theme_uri = get_template_directory_uri();
 	include_once($theme_dir . '/inc/meta-info.php');?>
+	<link rel="preload"  as="font" type="application/vnd.ms-fontobject" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.eot" crossorigin>
+	<link rel="preload"  as="font" type="font/woff2" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
+	<link rel="preload"  as="font" type="font/woff" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
+	<link rel="preload"  as="font" type="application/x-font-ttf" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
 	<style>
 	    <?php
 	    $root_color = get_option('root_color','#333');
-	    $theme_uri  = get_template_directory_uri();
 	    include_once($theme_dir . '/css/fontawesome.php');
 	    include_once($theme_dir . '/css/initial.php');
 	    include_once($theme_dir . '/css/menu.php');

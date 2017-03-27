@@ -484,7 +484,7 @@ class sns_share extends WP_Widget{
 }
 
 function wkwkrnht_search_form($form){
-    $tags = get_tags();
+    $tags     = get_tags();
     $tag_echo = '';
     foreach($tags as $tag){$tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';}
     $form = '
@@ -498,16 +498,16 @@ function wkwkrnht_search_form($form){
             width:40%;
         }
         #search input[type*="submit"]{
-            background-color:#fff;
-            border:1px solid #03a9f4;
+            background-color:' . get_option('search_background','#fff') . ';
+            border:1px solid ' . get_option('search_border','#03a9f4') . ';
             border-radius:3vmin;
             color:#03a9f4;
             margin:1vh 0;
             width:13%;
         }
         #search input[type*="submit"]:hover{
-            background-color:#03a9f4;
-            color:#fff;
+            background-color:' . get_option('search_hover_background','#03a9f4') . ';
+            color:' . get_option('search_hover_color','#fff') . ';
         }
     </style>
     <aside id="search" role="searc﻿h﻿">
@@ -715,17 +715,17 @@ function yes_image($size){
     echo get_yes_image($size);
 }
 function get_no_image($size){
-    $uri = get_template_directory_uri();
+    $uri = get_template_directory_uri() . '/inc/no-image/no-image_';
     if($size===array(1024,1024)){
-        $src = $uri . '/inc/no-image/no-image_1024x1024.png';
+        $src = $uri . '1024x1024.png';
     }elseif($size===array(512,512)){
-        $src = $uri . '/inc/no-image/no-image_512x512.png';
+        $src = $uri . '512x512.png';
     }elseif($size===array(256,256)){
-        $src = $uri . '/inc/no-image/no-image_256x256.png';
+        $src = $uri . '256x256.png';
     }elseif($size===array(128,128)){
-        $src = $uri . '/inc/no-image/no-image_128x128.png';
+        $src = $uri . '128x128.png';
     }else{
-        $src = $uri . '/inc/no-img.png';
+        $src = $uri . 'full.png';
     }
     return $src;
 }
@@ -1334,6 +1334,14 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_hover_color',array('label'=>'.wigdet_tag_cloud:hover color','settings'=>'tag_cloud_hover_color','section'=>'colors',)));
     $wp_customize->add_setting('tag_cloud_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_color',array('label'=>'.wigdet_tag_cloud color','settings'=>'tag_cloud_color','section'=>'colors',)));
+    $wp_customize->add_setting('search_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'search_border',array('label'=>',widget_tag_cloud border-color','settings'=>'search_border','section'=>'colors',)));
+    $wp_customize->add_setting('search_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'search_background',array('label'=>'.widget_tag_cloud:hover border-color','settings'=>'search_background','section'=>'colors',)));
+    $wp_customize->add_setting('search_hover_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'search_hover_background',array('label'=>'.wigdet_tag_cloud:hover color','settings'=>'search_hover_background','section'=>'colors',)));
+    $wp_customize->add_setting('search_hover_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'search_hover_color',array('label'=>'.search:hover color','settings'=>'search_hover_color','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'page_nation_border',array('label'=>'.page-nation border-color','settings'=>'page_nation_border','section'=>'colors',)));
     $wp_customize->add_setting('page_nation_a_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));

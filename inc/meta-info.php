@@ -10,6 +10,7 @@ $google_ana   = get_option('Google_Analytics');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
 $pin          = get_option('Pinterest');
+$is_amp       = is_amp();
 $site_url     = site_url();
 $home_url     = esc_url(home_url());
 $meta_url     = get_meta_url();
@@ -30,7 +31,7 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 <meta property="og:type" content="article">
 <?php if(is_home()===true):?>
-    <meta property="og:title" content="<?php $blog_name;?>">
+    <meta property="og:title" content="<?php echo $blog_name;?>">
 <?php else:?>
     <meta property="og:title" content="<?php wp_title('｜',true,'right');echo $blog_name;?>">
 <?php endif;?>
@@ -48,9 +49,9 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
 <link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
 <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
-<?php if(is_amp()===false):?>
+<?php if($is_amp===false):?>
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
-    <link rel="amphtml" href="<?php echo $meta_url;?>/amp">
+    <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===false){echo $meta_url . '/';}else{echo $meta_url;}?>amp">
 <?php endif;
 if($google_id!==null):?>
     <link rel="publisher" href="http://plus.google.com/<?php echo $google_id;?>">
@@ -476,6 +477,6 @@ elseif(is_home()===true):
         }
     </script>';
 endif;
-if($google_ana!==false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
+if($google_ana!==false && $is_amp===false && !isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
     echo'<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script><script async="" src="//www.google-analytics.com/analytics.js"></script>';
 }?>

@@ -1,4 +1,4 @@
-#2016-by-wkwkrnht
+#2017-by-wkwkrnht
 ====
 
 
@@ -37,6 +37,7 @@
     * InstaPaper
     * Pinterest
     * tumblr
+    * pushdog (リストページのみ)
 
 * 前後記事ナビウィジェットは以下の二種
 
@@ -124,28 +125,36 @@
         * css挿入(そのスタイルはそのページのみ適用)
         * 目次
         * ボタン
-        * ボックス
+        * 検索風表示
+        * 注意表示
+        * ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
         * a(target="＿blank"とrel="noappear"付)
 
 
 * カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
 * リファラーも設定可
-* AMP対応
-* OGP & Twitterカード対応
+* AMP & OGP & Twitterカード対応
+* Google Cookie Choice対応
 * Chrome独自のアドレスバー装飾対応
 * 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
 * jetpackの設定内容も弄れます
 
 ##ファイルツリー
 
+* amp (AMP HTML用テンプレートのコンテンツ部分)
+
+    *content-list.php
+    *content=singular.php
+
 * css (各種スタイル置き場)
 
+    * amp-style-singular.php (AMP用記事スタイル)
     * card.php (タイルデザイン関連)
     * fontawesome.php (fontawesomeのやつそのまま)
-    * menu.php (純正ウィジェットとフロートメニューに関する項目)
+    * initial.php (初期スタイル)
     * mediaqueri.php (メディアクエリ)
+    * menu.php (ウィジェットとメニューに関する項目)
     * night-mode.php (ナイトモード関連)
-    * sanitize.php (初期スタイル)
     * short-code.php (ショートコード用)
     * style-singular.php (記事ページ用)
 
@@ -165,12 +174,12 @@
         * no-image_256x256.png
         * no-image_512x512.png
         * no-image_1024x1024.png
+        * no-image_full.png
 
     * baguetteBox.php(LightBox風スクリプト)
     * editor-styl.css (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
-    * no-img.png (404な画像)
 
 
 * widget (ウィジェット)
@@ -180,8 +189,8 @@
     * manth-archive.php (短縮版投稿月別アーカイブ)
     * post-nav-hover.php (前後記事ナビ)
     * post-nav.php (前後記事ナビ)
-    * related-posts-img.php (画像付関連記事)
-    * related-posts.php (関連記事)
+    * related-post-img.php (画像付関連記事)
+    * related-post.php (関連記事)
     * sns-share.php (SNSシェアボタン)
 
 * amp.php (AMP HTML用テンプレート)

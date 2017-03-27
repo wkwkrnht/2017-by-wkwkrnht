@@ -1,7 +1,6 @@
-#2016-by-wkwkrnht
+#2017-by-wkwkrnht
 ====
 
-[![GitHub license](https://img.shields.io/badge/license-GPL-blue.svg)](https://raw.githubusercontent.com/wkwkrnht/2016-by-wkwkrnht/master/LICENSE) [![GitHub stars](https://img.shields.io/github/stars/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/stargazers) [![GitHub forks](https://img.shields.io/github/forks/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/network) [![GitHub issues](https://img.shields.io/github/issues/wkwkrnht/2016-by-wkwkrnht.svg)](https://github.com/wkwkrnht/2016-by-wkwkrnht/issues) [![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork&maxAge=2592000)]() [![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch&maxAge=2592000)]() [![GitHub stars](https://img.shields.io/github/stars/badges/shields.svg?style=social&label=Star&maxAge=2592000)]() [![GitHub followers](https://img.shields.io/github/followers/espadrine.svg?style=social&label=Follow&maxAge=2592000)]() [![Twitter](https://img.shields.io/twitter/url/http/github.com/wkwkrnht/2016-by-wkwkrnht.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=%5Bobject%20Object%5D)
 
 ##使用ライブラリ
 1. [normalize.css](https://github.com/necolas/normalize.css) | v4.1.1 | MIT License |
@@ -38,6 +37,7 @@
     * InstaPaper
     * Pinterest
     * tumblr
+    * pushdog (リストページのみ)
 
 * 前後記事ナビウィジェットは以下の二種
 
@@ -117,36 +117,44 @@
         * th
         * td
 
-    * ショートコード
+        * ショートコード
 
-        * 追加クラス
-        * ブログカード
-        * HTML特殊文字エスケープ
-        * css挿入(そのスタイルはそのページのみ適用)
-        * 目次
-        * ボタン
-        * ボックス
-        * a(target="＿blank"とrel="noappear"付)
+            * 追加クラス
+            * ブログカード
+            * HTML特殊文字エスケープ
+            * css挿入(そのスタイルはそのページのみ適用)
+            * 目次
+            * ボタン
+            * 検索風表示
+            * 注意表示
+            * ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
+            * a(target="＿blank"とrel="noappear"付)
 
 
 * カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
 * リファラーも設定可
-* AMP対応
-* OGP & Twitterカード対応
+* AMP & OGP & Twitterカード対応
+* Google Cookie Choice対応
 * Chrome独自のアドレスバー装飾対応
 * 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
 * jetpackの設定内容も弄れます
 
 ##ファイルツリー
 
+* amp (AMP HTML用テンプレートのコンテンツ部分)
+
+    * content-list.php
+    * content=singular.php
+
 * css (各種スタイル置き場)
 
+    * amp-style-singular.php (AMP用記事スタイル)
     * card.php (タイルデザイン関連)
     * fontawesome.php (fontawesomeのやつそのまま)
-    * menu.php (純正ウィジェットとフロートメニューに関する項目)
+    * initial.php (初期スタイル)
     * mediaqueri.php (メディアクエリ)
+    * menu.php (ウィジェットとメニューに関する項目)
     * night-mode.php (ナイトモード関連)
-    * sanitize.php (初期スタイル)
     * short-code.php (ショートコード用)
     * style-singular.php (記事ページ用)
 
@@ -166,12 +174,12 @@
         * no-image_256x256.png
         * no-image_512x512.png
         * no-image_1024x1024.png
+        * no-image_full.png
 
     * baguetteBox.php(LightBox風スクリプト)
     * editor-styl.css (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
-    * no-img.png (404な画像)
 
 
 * widget (ウィジェット)
@@ -181,8 +189,8 @@
     * manth-archive.php (短縮版投稿月別アーカイブ)
     * post-nav-hover.php (前後記事ナビ)
     * post-nav.php (前後記事ナビ)
-    * related-posts-img.php (画像付関連記事)
-    * related-posts.php (関連記事)
+    * related-post-img.php (画像付関連記事)
+    * related-post.php (関連記事)
     * sns-share.php (SNSシェアボタン)
 
 * amp.php (AMP HTML用テンプレート)
