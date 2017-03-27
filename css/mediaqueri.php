@@ -27,6 +27,9 @@
         .article-meta > div{
             display:none;
         }
+        .article-main{
+            font-size:1.4rem;
+        }
         .article-main h3,.article-main h4,.article-main h5,.article-main h6{
             font-size:2.2rem;
         }

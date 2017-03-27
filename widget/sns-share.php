@@ -71,6 +71,9 @@
     .widget_sns_share .tumblr{
         background-color:#36465d;
     }
+    .widget_sns_share .pushdog{
+        background-color:#0082e4;
+    }
 </style>
 <ul>
     <li class="tweet">
@@ -143,6 +146,13 @@
             <i class="fa fa-tumblr" aria-hidden="true"></i>
         </a>
     </li>
+    <?php if(is_singular()===false):?>
+        <li class="pushdog">
+            <a href="https://push.dog/subscribe?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="puahdogへの共有リンク">
+                <i class="fa fa-paw" aria-hidden="true"></i>
+            </a>
+        </li>
+    <?php endif;?>
 </ul>
 <script type="application/ld+json">
     {
