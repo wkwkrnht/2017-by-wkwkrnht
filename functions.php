@@ -531,6 +531,7 @@ class sns_follow extends WP_Widget{
         </div>'
         . $args['after_widget'];
     }
+}
 
 class sns_share extends WP_Widget{
     function __construct(){parent::__construct('sns_share','SNS シェアボタン',array());}
