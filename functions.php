@@ -476,7 +476,7 @@ class google_translate_widget extends WP_Widget{
 }
 
 class sns_follow extends WP_Widget{
-    function __construct(){parent::__construct('sns_folow','バイラル風SNSフォローウィジェット',array());}
+    function __construct(){parent::__construct('sns_follow','バイラル風SNSフォローウィジェット',array());}
     public function widget($args,$instance){
         echo $args['before_widget'] .
         '<style>
@@ -520,7 +520,7 @@ class sns_follow extends WP_Widget{
                 background-color:#2ebc50;
             }
         </style>
-        <img src="' . get_wkwkrnht_eyecatch() . '" alt="eyrecatch" class="eyecatch wrapper">
+        <img src="' . get_wkwkrnht_eyecatch(array(512,512)) . '" alt="eyrecatch" class="eyecatch wrapper">
         <div class="wrapper">
             <h3 class="title">' . wp_title('',false) . '</h3>
             <p class="description">この記事が気に入ったらフォローお願いします！フォロー先で最新情報をお届けします。</p>
