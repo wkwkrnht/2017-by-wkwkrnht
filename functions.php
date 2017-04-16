@@ -485,7 +485,7 @@ class sns_follow extends WP_Widget{
                 box-sizing:border-box;
                 display:inline-block;
                 margin:none;
-                width:50%;
+                width:49%;
             }
             .widget_sns_follow .description{
                 display:block;
@@ -500,8 +500,6 @@ class sns_follow extends WP_Widget{
                 list-style:none;
             }
             .widget_sns_follow .follow-button-area > .follow-button{
-                color:#fff;
-                display:inline-block;
                 font-size:1.4rem;
                 margin:1em 0;
                 padding:.3em 0 .45em 0;
@@ -518,6 +516,10 @@ class sns_follow extends WP_Widget{
             }
             .widget_sns_follow .follow-button-area > .feedly:hover{
                 background-color:#2ebc50;
+            }
+            .widget_sns_follow .follow-button-area > .follow-button > a{
+                color:#fff;
+                text-align:center;
             }
         </style>
         <img src="' . get_wkwkrnht_eyecatch(array(512,512)) . '" alt="eyrecatch" class="eyecatch wrapper">
