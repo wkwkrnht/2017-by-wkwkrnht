@@ -32,8 +32,11 @@
     .widget_sns_follow .follow-button-area > .twitter{
         background-color:#1b95e0;
     }
+    .widget_sns_follow .follow-button-area > .facebook{
+        background-color:#0033ff;
+    }
     .widget_sns_follow .follow-button-area > .feedly{
-        background-color:#2BB24C;
+        background-color:#2bb24c;
     }
     .widget_sns_follow .follow-button-area > .twitter:hover{
         background-color:#31a3ea;
@@ -51,7 +54,7 @@
     <h3 class="title"><?php wp_title('');?>が気に入ったらフォローお願いします！</h3>
     <ul class="follow-button-area">
         <li class="twitter follow-button"><a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
-        <li class="twitter follow-button"><a href="https://facebook.com/<?php echo get_option('facebook_appid');?>" title="Facebookでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
+        <li class="facebook follow-button"><a href="https://facebook.com/<?php echo get_option('facebook_appid');?>" title="Facebookでフォローする"><i class="fa fa-facebook" aria-hidden="true"></i>フォローする</a></li>
         <li class="feedly follow-button"><a href="<?php bloginfo('atom_url');?>" title="RSSで購読する"><i class="fa fa-rss" aria-hidden="true"></i>RSSで購読する</a></li>
     </ul>
     <p class="description">フォロー先で最新情報をお届けします。</p>
