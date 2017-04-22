@@ -8,6 +8,8 @@
         box-sizing:border-box;
         display:inline-block;
         margin:none;
+        position:absolute;
+        top:0;
         width:49%;
     }
     .widget_sns_follow > .eyecatch{
