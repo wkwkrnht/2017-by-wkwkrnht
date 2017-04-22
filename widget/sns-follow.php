@@ -43,12 +43,12 @@
         text-align:center;
     }
 </style>
-<img src="' . get_wkwkrnht_eyecatch(array(512,512)) . '" alt="eyrecatch" class="eyecatch wrapper">
+<img src="<?php wkwkrnht_eyecatch(array(512,512));?>" alt="eyecatch" class="eyecatch wrapper">
 <div class="wrapper">
-    <h3 class="title">' . wp_title('',false) . '</h3>
+    <h3 class="title"><?php wp_title();?></h3>
     <p class="description">この記事が気に入ったらフォローお願いします！フォロー先で最新情報をお届けします。</p>
     <ul class="follow-button-area">
-        <li class="twitter follow-button"><a href="https://twitter.com/' . get_twitter_acount() . '" title="Twitterでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
-        <li class="feedly follow-button"><a href="' . get_bloginfo('atom_url') . '" title="RSSで購読する"><i class="fa fa-rss" aria-hidden="true"></i>RSSで購読する</a></li>
+        <li class="twitter follow-button"><a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
+        <li class="feedly follow-button"><a href="<?php bloginfo('atom_url');?>" title="RSSで購読する"><i class="fa fa-rss" aria-hidden="true"></i>RSSで購読する</a></li>
     </ul>
 </div>
