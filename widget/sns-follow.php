@@ -9,7 +9,7 @@
         display:inline-block;
         height:100%;
         margin:none;
-        width:calc(50% - 1px);
+        width:49.9%;
     }
     .widget_sns_follow .title{
         font-size:1.8rem;

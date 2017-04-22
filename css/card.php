@@ -7,12 +7,12 @@
     display:flex;
     -webkit-flex-flow:row wrap;
     flex-flow:row wrap;
-    justify-content:space-around;
+    justify-content:space-evenly;
 }
 
 .card,.article-card{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
-    margin:6vh auto;
+    margin:4vh auto;
     overflow:hidden;
     position:relative;
     width:29vmax;
