@@ -7,9 +7,9 @@
     .widget_sns_follow > .wrapper{
         box-sizing:border-box;
         display:inline-block;
-        height:100%;
+        height:inherit;
         margin:none;
-        width:49.9%;
+        width:49%;
     }
     .widget_sns_follow .title{
         font-size:1.8rem;
