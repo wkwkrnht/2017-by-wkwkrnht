@@ -2,7 +2,7 @@
     .widget_sns_follow{
         background-color:#333;
         color:#fff;
-        height:auto;
+        height:15vmax;
     }
     .widget_sns_follow > .wrapper{
         box-sizing:border-box;
@@ -21,7 +21,7 @@
     }
     .widget_sns_follow .follow-button-area > .follow-button{
         font-size:1.4rem;
-        margin:1em 0;
+        margin:1em;
         padding:.3em 0 .45em 0;
         text-align:center;
         width:32%;
@@ -45,7 +45,7 @@
 </style>
 <img src="<?php wkwkrnht_eyecatch(array(512,512));?>" alt="eyecatch" class="eyecatch wrapper">
 <div class="wrapper">
-    <h3 class="title"><?php wp_title();?></h3>
+    <h3 class="title"><?php wp_title('');?></h3>
     <p class="description">この記事が気に入ったらフォローお願いします！フォロー先で最新情報をお届けします。</p>
     <ul class="follow-button-area">
         <li class="twitter follow-button"><a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
