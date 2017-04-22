@@ -9,7 +9,7 @@
 */
 #menu-toggle{
     border-radius:50%;
-    bottom:3vh;
+    bottom:2vh;
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
     display:inline-block;
     font-size:5rem;

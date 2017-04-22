@@ -9,8 +9,8 @@
 	$html        = '';
 	$content     = '';
 	$content     = $post->post_content;?>
-	<link rel="canonical" href="<?php echo get_permalink();?>">
-	<title><?php wp_title('｜',true,'right');?></title>
+	<link rel="canonical" href="<?php the_permalink();?>">
+	<title><?php wp_title('｜',true,'right');bloginfo()?></title>
 	<?php include_once($theme_dir . '/inc/meta-info.php');?>
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php
