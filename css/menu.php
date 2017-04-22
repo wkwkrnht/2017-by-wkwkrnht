@@ -39,7 +39,7 @@
     bottom:19vh;
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     color:<?php echo get_option('menu_color','#333');?>;
-    height:75vh;
+    height:76vh;
     left:calc(50% - 90vw / 2);
     margin:0;
     opacity:.85;

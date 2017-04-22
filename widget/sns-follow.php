@@ -3,6 +3,7 @@
         background-color:#333;
         color:#fff;
         height:15vmax;
+        position:relative;
     }
     .widget_sns_follow > .wrapper{
         box-sizing:border-box;
@@ -14,6 +15,10 @@
     }
     .widget_sns_follow > .eyecatch{
         height:inherit;
+        left:0;
+    }
+    .widget_sns_follow > .wrapper:not(.eyecatch){
+        right:0;
     }
     .widget_sns_follow .title{
         font-size:1.8rem;
