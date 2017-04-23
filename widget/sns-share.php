@@ -223,7 +223,7 @@
             {
                 "@type" : "SiteNavigationElement",
                 "url" : "http://www.instapaper.com/text?u=<?php echo $url_now;?>",
-                "name" : "Instapaper",
+                "name" : "Instapaper"
             },
             {
                 "@type" : "SiteNavigationElement",

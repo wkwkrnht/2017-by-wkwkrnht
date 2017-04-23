@@ -80,7 +80,7 @@ if(is_singular()===true):
                 "@type": "WebPage",
                 "@id": "https://google.com/article"
             },
-            "headline": "Article headline",
+            "headline": "' . wp_title('',false) . '",
                 "image": {
                     "@type": "ImageObject",
                     "url": "' . $meta_img . '",
@@ -96,10 +96,6 @@ if(is_singular()===true):
             "publisher": {
                 "@type": "Organization",
                 "name": "' . $blog_name . '",
-                "homeLocation" : {
-                    "@type" : "Place",
-                    "name" : "<?php echo get_locale( );?>"
-                },
                 "logo": {
                     "@type": "ImageObject",
                     "url": "' . wp_get_attachment_url($logo) . '",
