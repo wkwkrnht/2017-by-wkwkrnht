@@ -26,14 +26,16 @@
         top:0;
     }
     .widget_sns_follow .follow-button-area{
-        bottom:0;
         display:flex;
-        jutify-conent:space-evenly;
+        justify-content:space-evenly;
         list-style-type:none;
         position:absolute;
+        top:calc(100% - 3em);
     }
     .widget_sns_follow .follow-button-area > .follow-button{
+        box-sizing:border-box;
         font-size:1.5rem;
+        height:3em;
         margin:1em .5em;
         padding:.3em 0 .45em 0;
         text-align:center;
