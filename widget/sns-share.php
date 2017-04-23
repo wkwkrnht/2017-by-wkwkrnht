@@ -157,34 +157,84 @@
 <script type="application/ld+json">
     {
         "@context" : "http://schema.org",
-        "@type" : "SiteNavigationElement",
-        "url" : "https://twitter.com/share?url=<?php echo $url_now;?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>",
-        "name" : "Twitter",
-        "url" : "http://www.facebook.com/share.php?u=<?php echo rawurlencode($url_now);?>",
-        "name" : "facebook",
-        "url" : "http://lineit.line.me/share/ui?url=<?php echo $url_now;?>",
-        "name" : "LINE",
-        "url" : "https://plus.google.com/share?url=<?php echo $url_now;?>",
-        "name" : "Google+",
-        "url" : "https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
-        "name" : "LinkedIn",
-        "url" : "https://bufferapp.com/add?url<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
-        "name" : "buffer",
-        "url" : "https://www.reddit.com/submit?url=<?php echo $url_now;?>",
-        "name" : "Reddit",
-        "url" : "http://vkontakte.ru/share.php?url=<?php echo $url_now;?>",
-        "name" : "VK",
-        "url" : "http://www.stumbleupon.com/submit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
-        "name" : "stumbleupon",
-        "url" : "http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
-        "name" : "はてなブックマーク",
-        "url" : "http://getpocket.com/edit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
-        "name" : "Pocket",
-        "url" : "http://pinterest.com/pin/create/button/?url=<?php echo $url_now;?>&amp;media=<?php meta_image();?>",
-        "name" : "Pinterest",
-        "url" : "http://www.instapaper.com/text?u=<?php echo $url_now;?>",
-        "name" : "Instapaper",
-        "url" : "https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo $url_now;?>",
-        "name" : "tumblr"
+        "@type": "ItemList",
+        "numberOfItems": "15",
+        "itemListElement": [
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://twitter.com/share?url=<?php echo $url_now;?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>",
+                "name" : "Twitter"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://www.facebook.com/share.php?u=<?php echo rawurlencode($url_now);?>",
+                "name" : "facebook"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://lineit.line.me/share/ui?url=<?php echo $url_now;?>",
+                "name" : "LINE"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://plus.google.com/share?url=<?php echo $url_now;?>",
+                "name" : "Google+"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
+                "name" : "LinkedIn"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://bufferapp.com/add?url<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
+                "name" : "buffer"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://www.reddit.com/submit?url=<?php echo $url_now;?>",
+                "name" : "Reddit"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://vkontakte.ru/share.php?url=<?php echo $url_now;?>",
+                "name" : "VK"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://www.stumbleupon.com/submit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
+                "name" : "stumbleupon"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://b.hatena.ne.jp/add?mode=confirm&url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
+                "name" : "はてなブックマーク"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://getpocket.com/edit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>",
+                "name" : "Pocket"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://pinterest.com/pin/create/button/?url=<?php echo $url_now;?>&amp;media=<?php meta_image();?>",
+                "name" : "Pinterest"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "http://www.instapaper.com/text?u=<?php echo $url_now;?>",
+                "name" : "Instapaper",
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo $url_now;?>",
+                "name" : "tumblr"
+            },
+            {
+                "@type" : "SiteNavigationElement",
+                "url" : "https://push.dog/subscribe?url=<?php echo $url_now;?>",
+                "name" : "Pushdog"
+            }
+        ]
     }
 </script>

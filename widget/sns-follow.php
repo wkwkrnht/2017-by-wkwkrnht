@@ -21,10 +21,9 @@
         right:0;
     }
     .widget_sns_follow .title{
-        font-size:1.8rem;
-    }
-    .widget_sns_follow .description{
-        display:block;
+        font-size:1.6rem;
+        position:absolute;
+        top:0;
     }
     .widget_sns_follow .follow-button-area{
         display:flex;
@@ -60,11 +59,10 @@
 </style>
 <img src="<?php wkwkrnht_eyecatch(array(512,512));?>" alt="eyecatch" class="eyecatch wrapper">
 <div class="wrapper">
-    <h3 class="title"><?php wp_title('');?>が気に入ったらフォローお願いします！</h3>
+    <p class="title"><b>「<?php wp_title('');?>」が気に入ったらフォローお願いします！</b>フォロー先で最新情報をお届けします。</p>
     <ul class="follow-button-area">
         <li class="twitter follow-button"><a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする"><i class="fa fa-twitter" aria-hidden="true"></i>フォローする</a></li>
         <li class="facebook follow-button"><a href="https://facebook.com/<?php echo get_option('facebook_appid');?>" title="Facebookでフォローする"><i class="fa fa-facebook" aria-hidden="true"></i>フォローする</a></li>
         <li class="feedly follow-button"><a href="<?php bloginfo('atom_url');?>" title="RSSで購読する"><i class="fa fa-rss" aria-hidden="true"></i>RSSで購読する</a></li>
     </ul>
-    <p class="description">フォロー先で最新情報をお届けします。</p>
 </div>
