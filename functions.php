@@ -159,11 +159,6 @@ function wkwkrnht_widgets_init(){
     register_sidebar(array('name'=>'List Under','id'=>'listunder','before_widget'=>'<aside id="%1$s" class="widget card info-card %2$s" role="widget">','after_widget'=>'</aside>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s" role="widget">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_widget('wkwkrnht_manth_archive');
-    register_widget('related_posts');
-    register_widget('related_posts_img');
-    register_widget('post_nav');
-    register_widget('post_nav_hover');
-    register_widget('post_comment');
     register_widget('disqus_widget');
     register_widget('duck_duck_go_search_widget');
     register_widget('google_search_widget');
@@ -171,6 +166,12 @@ function wkwkrnht_widgets_init(){
     register_widget('google_two_ads_widget');
     register_widget('google_translate_widget');
     register_widget('move_top');
+    register_widget('post_nav');
+    register_widget('post_nav_hover');
+    register_widget('post_comment');
+    register_widget('related_posts');
+    register_widget('related_posts_img');
+    register_widget('sns_follow');
     register_widget('sns_share');
 }
 
@@ -215,6 +216,19 @@ class move_top extends WP_Widget{
     }
 }
 
+class post_nav extends WP_Widget{
+    function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
+    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
+    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title');?>">title</label>
+		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
+		</p>
+		<?php
+	}
+	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
+}
+
 class related_posts extends WP_Widget{
     function __construct(){parent::__construct('related_posts','関連記事',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post.php');echo $args['after_widget'];}
@@ -231,19 +245,6 @@ class related_posts extends WP_Widget{
 class related_posts_img extends WP_Widget{
     function __construct(){parent::__construct('related_posts_img','関連記事(画像付)',array());}
     public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/related-post-img.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
-		<p>
-		<label for="<?php echo $this->get_field_id('title');?>">title</label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
-		</p>
-		<?php
-	}
-	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
-}
-
-class post_nav extends WP_Widget{
-    function __construct(){parent::__construct('post_nav','前後への記事のナビゲーション',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav.php');echo $args['after_widget'];}
     public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
@@ -440,7 +441,11 @@ class google_translate_widget extends WP_Widget{
     function __construct(){parent::__construct('google_translate_widget','Google 翻訳',array());}
     public function widget($args,$instance){
         extract($instance);
-        if($analytics_id===''){$analytics = 'gaTrack: false';}else{$analytics = ' gaTrack: true, gaId: "' . $analytics_id . '"';}
+        if($analytics_id===''){
+            $analytics = 'gaTrack: false';
+        }else{
+            $analytics = ' gaTrack: true, gaId: "' . $analytics_id . '"';
+        }
         echo $args['before_widget'] .
         '<div id="google_translate_element"></div>
         <script>
@@ -468,6 +473,13 @@ class google_translate_widget extends WP_Widget{
 		<?php
 	}
 	public function update($new_instance,$old_instance){$instance=array();$instance['lang']=(!empty($new_instance['lang'])) ? strip_tags($new_instance['lang']):'';$instance['analytics_id']=(!empty($new_instance['analytics_id'])) ? strip_tags($new_instance['analytics_id']):'';return $instance;}
+}
+
+class sns_follow extends WP_Widget{
+    function __construct(){parent::__construct('sns_follow','バイラル風SNSフォローウィジェット',array());}
+    public function widget($args,$instance){
+        echo $args['before_widget'];include(get_template_directory() . '/widget/sns-follow.php');echo $args['after_widget'];
+    }
 }
 
 class sns_share extends WP_Widget{

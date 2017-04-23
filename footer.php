@@ -21,7 +21,7 @@
         wp_footer();
         $key = false;
         $key = get_option('cookie_key');
-        if($key===false){
+        if(!$key){
             $key = '2017-by-wkwkrnht';
         }
         if(get_post_format()==='link'){

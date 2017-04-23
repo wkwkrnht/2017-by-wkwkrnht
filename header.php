@@ -58,11 +58,11 @@
 				</a>
 			<?php elseif(is_category()===true):?>
 				<h1 class="site-title" itemprop="name headline about">
-					<?php echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blogname;?>
+					<?php echo'「' . single_cat_title('',false) . '」の記事一覧｜' . $blog_name;?>
 				</h1>
 			<?php elseif(is_tag()===true):?>
 				<h1 class="site-title" itemprop="name headline about">
-					<?php echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blogname;?>
+					<?php echo'「' . single_tag_title('',false) . '」の記事一覧｜' . $blog_name;?>
 				</h1>
 			<?php elseif(is_search()===true):
 				global $wp_query;
