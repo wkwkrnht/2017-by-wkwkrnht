@@ -30,7 +30,7 @@
         justify-content:space-evenly;
         list-style-type:none;
         position:absolute;
-        top:calc(100% - 3em);
+        top:8.5em;
     }
     .widget_sns_follow .follow-button-area > .follow-button{
         box-sizing:border-box;
