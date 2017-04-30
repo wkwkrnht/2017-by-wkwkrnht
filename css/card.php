@@ -67,28 +67,3 @@
     padding:0 1em;
     width:calc(29vmax / 2 - 1vmin);
 }
-
-
-.site-header{
-    <?php
-    if(get_header_image()){
-        echo'background-image:url(' . get_header_image() . ');';
-    }else{
-        echo'background-color:' . get_option('site_header_background','#03a9f4') . ';';
-    }?>
-    box-shadow:0 0 3vmin rgba(0,0,0,.1);
-    height:10%;
-    margin:0 0 5vh 0;
-    padding:3vh 0 5vh;
-    text-align:center;
-    width:100%;
-}
-.site-header,.site-header a{
-    color:<?php echo get_option('site_header_color','#fff');?>;
-}
-.site-title{
-    font-size:2.5rem;
-}
-.site-description,.site-header .copyright{
-    font-size:1.8rem;
-}
