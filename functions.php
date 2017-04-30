@@ -1,6 +1,4 @@
 <?php
-require_once(get_template_directory() . '/inc/theme-update-checker.php');
-$example_update_checker = new ThemeUpdateChecker('2017-by-wkwkrnht','https://raw.githubusercontent.com/wkwkrnht/2017-by-wkwkrnht/master/update-info.json');
 /*
     utility
 1.is_subpage
@@ -52,10 +50,23 @@ function has_class($name){
 function color_to_rgb($colorcode = ''){
     $array_colorcode          = array();
     $colorcode                = str_replace('#','',$colorcode);
-    $array_colorcode["red"]   = hexdec(substr($colorcode,0,2));
-    $array_colorcode["green"] = hexdec(substr($colorcode,2,2));
-    $array_colorcode["blue"]  = hexdec(substr($colorcode,4,2));
+    $array_colorcode['red']   = hexdec(substr($colorcode,0,2));
+    $array_colorcode['green'] = hexdec(substr($colorcode,2,2));
+    $array_colorcode['blue']  = hexdec(substr($colorcode,4,2));
     return $array_colorcode;
+}
+
+function color_change_brightness($color,$steps){
+    $return = '#';
+    $color  = color_to_rgb($color);
+    $steps  = max(-255,min(255,$steps));
+    foreach($color as $value){
+        $value = max(0,min(255,$value + $steps));
+        if($value > 255){$value = '255';}
+        if($value < 0){$value = '0';}
+        $return .= dechex($value)
+    }
+    echo $return;
 }
 
 add_rewrite_endpoint('amp',EP_ALL);
@@ -110,6 +121,7 @@ function wkwkrnht_setup(){
     add_image_size('wkwkrnht-thumb-256',256,256,true);
     add_image_size('wkwkrnht-thumb-128',128,128,true);
 
+    register_nav_menu('header','header');
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 }
@@ -121,6 +133,11 @@ add_action('admin_init',function(){add_editor_style('inc/editor-style.css');});
 
 add_action('init','wkwkrnht_init');
 function wkwkrnht_init(){
+    if(is_admin()===true){
+        require_once(get_template_directory() . '/inc/theme-update-checker.php');
+        $example_update_checker = new ThemeUpdateChecker('2017-by-wkwkrnht','https://raw.githubusercontent.com/wkwkrnht/2017-by-wkwkrnht/master/update-info.json');
+    }
+
     register_taxonomy_for_object_type('category','page');
     register_taxonomy_for_object_type('post_tag','page');
     register_taxonomy_for_object_type('category','attachment');
@@ -596,7 +613,7 @@ class add_meta_Nav_Menu extends Walker_Nav_Menu{
         $item_output = '';
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
-        $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '">' . $title . '</a>';
+        $item_output .= '<a itemprop="url" tabindex="0" href="' . esc_attr($item->url) .'" title="' . esc_attr($title) . '" data-title="' . esc_attr($title) . '">' . $title . '</a>';
         $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
     }
 }
@@ -605,7 +622,7 @@ class add_meta_Social_Menu extends Walker_Nav_Menu{
     function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
         $title        = $item->title;
         $output      .= '<li itemprop="name" class="menu-item">';
-        $item_output .= '<a itemprop="url" href="' . esc_attr($item->url) .'" data-title="' . esc_attr($title) . '"></a>';
+        $item_output .= '<a itemprop="url" tabindex="0" href="' . esc_attr($item->url) .'" title="' . esc_attr($title) . '" data-title="' . esc_attr($title) . '"></a>';
         $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
     }
 }
@@ -906,7 +923,11 @@ function url_to_hatenaBlogcard($atts){
     }
 function url_to_OGPBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    if(strlen($url) > 20){$transitname = wordwrap($url,20);}else{$transitname = $url;}
+    if(strlen($url) > 20){
+        $transitname = wordwrap($url,20);
+    }else{
+        $transitname = $url;
+    }
     $cache = get_site_transient($transitname);
     if(get_option('delete_OGPblogcard_cache')){
         delete_site_transient($transitname);
@@ -923,7 +944,43 @@ function url_to_OGPBlogcard($atts){
 function spotify_play_into_article($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
     return'<iframe src="https://embed.spotify.com/?uri=' . $url . '" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';
+}
+function toot_into_article($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    $transitname = 'mastodon_status_';
+    if(strlen($url) > 10){
+        $transitname .= wordwrap(strrev($url),10);
+    }else{
+        $transitname .= strrev($url);
     }
+    $cache = get_site_transient($transitname);
+    if(get_option('delete_mastodon_embed_cache')){
+        delete_site_transient($transitname);
+        $response = wp_remote_get($url,array('sslverify'=>false));
+        set_transient('mastodon_status_',$response,12 * WEEK_IN_SECONDS);
+    }elseif($cache){
+        $response = $cache;
+    }else{
+        $response = wp_remote_get($url,array('sslverify'=>false));
+        set_transient($transitname,$response,12 * WEEK_IN_SECONDS);
+    }
+    $httpCode = wp_remote_retrieve_response_code($response);
+    $body     = wp_remote_retrieve_body($response);
+    if($httpCode !== 404 && $httpCode !== 301)
+        $doc = new DOMDocument();
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($body);
+        $xpath = new DOMXPath($doc);
+        $url = $xpath->query("//link[@type='application/atom+xml']");
+        if($url->length){
+            $url = str_replace('.atom','/embed',$atomUrl[0]->getAttribute('href'));
+            if(!isset($height) && $height===""){
+                $height = '150';
+            }
+            return'<iframe src="' . $url . '" height="' . $height . '" width="400" scrolling="no" frameborder="0" class="spotifycard"></iframe>';
+        }
+    }
+}
 function navigation_in_article($atts){
     extract(shortcode_atts(array('id'=>'',),$atts));
     $content = wp_nav_menu(array('menu'=>$id,'echo'=>false));
@@ -1127,6 +1184,7 @@ add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
 add_shortcode('spotify','spotify_play_into_article');
+add_shortcode('mastodon','toot_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
 add_shortcode('before_after_box','make_before_after_box');
@@ -1196,6 +1254,7 @@ function wkwkrnht_add_quicktags(){
 		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
         QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
         QTags.addButton('qt-spotify','spotify','[spotify url=',']');
+        QTags.addButton('qt-mastodon','mastodon','[mastodon url=',']');
         QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
         QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box after= before=',']');
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
@@ -1284,6 +1343,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_section('security_section',array('title'=>'セキュリティ','description'=>'このテーマ独自のセキュリティ設定',));
     $wp_customize->add_setting('delete_OGPblogcard_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'OGPblogcardのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
+    $wp_customize->add_setting('delete_mastodon_embed_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_mastodon_embed_cache',array('settings'=>'delete_mastodon_embed_cache','label'=>'mastodon埋め込みのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'security_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('cookie_key',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));

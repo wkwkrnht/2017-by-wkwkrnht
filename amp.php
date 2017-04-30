@@ -51,6 +51,7 @@
 		<?php
 		include_once($theme_dir . '/css/initial.php');
 		include_once($theme_dir . '/css/card.php');
+		include_once($theme_dir . '/css/menu.php');
 		if(is_singular()===true){
 			$id      = url_to_postid($meta_url);
 			$post    = get_post($id);

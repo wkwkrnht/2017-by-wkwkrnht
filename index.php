@@ -37,7 +37,7 @@ else:
                             </time>
                         </span>
                         <span class="author article-author">
-                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span class="fa fa-user" aria-hidden="true"></span>
                             <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
         						<span class="vcard author">
         							<span class="fn">
@@ -112,13 +112,13 @@ else:
                             </h2>
                             <div>
                                 <span>
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <span class="fa fa-calendar" aria-hidden="true"></span>
                                     <time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
                                         <?php the_time('Y/n/j');?>
                                     </time>
                                 </span>
                                 <span>
-									<i class="fa fa-bookmark" aria-hidden="true"></i>
+									<span class="fa fa-bookmark" aria-hidden="true"></span>
                                     <?php echo $category->cat_name;?>
                                 </span>
                             </div>
