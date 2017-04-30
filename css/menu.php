@@ -281,17 +281,20 @@
 
 .header-nav{
     background-color:<?php color_change_brightness(get_option('site_header_background','#03a9f4'),get_option('site_nav_background_brightness','-20'));?>;
-    color:<?php echo get_option('site_header_color','#fff');?>;
+    font-size:1.6rem;
     height:5%;
     margin:0 0 5vh 0;
     overflow-x:auto;
     overflow-y:hidden;
     width:100%;
 }
+.header-nav,.header-nav  a{
+    color:<?php echo get_option('site_header_color','#fff');?>;
+}
 .header-nav li{
     box-sizing:border-box;
-    displau:inline-block;
-    padding:.3em 1em;
+    display:inline-block;
+    padding:.3em .6em;
 }
 
 .page-nation{
