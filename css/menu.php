@@ -279,16 +279,19 @@
     font-weight:bold;
 }
 
-.header-nav{
-    background-color:<?php color_change_brightness(get_option('site_header_background','#03a9f4'),get_option('site_nav_background_brightness','-20'));?>;
+.header-nav ul{
+    background-color:<?php color_change_brightness(get_option('site_header_background','#03a9f4'),get_option('site_nav_background_brightness','-40'));?>;
+    box-sizing:border-box;
     font-size:1.6rem;
     height:5%;
     margin:0 0 5vh 0;
     overflow-x:auto;
     overflow-y:hidden;
+    white-space:nowrap;
     width:100%;
+    word-break:break-all;
 }
-.header-nav,.header-nav  a{
+.header-nav ul,.header-nav  a{
     color:<?php echo get_option('site_header_color','#fff');?>;
 }
 .header-nav li{
