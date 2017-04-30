@@ -966,7 +966,7 @@ function toot_into_article($atts){
     }
     $httpCode = wp_remote_retrieve_response_code($response);
     $body     = wp_remote_retrieve_body($response);
-    if($httpCode !== 404 && $httpCode !== 301)
+    if($httpCode !== 404 && $httpCode !== 301){
         $doc = new DOMDocument();
         libxml_use_internal_errors(true);
         $doc->loadHTML($body);
