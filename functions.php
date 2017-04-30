@@ -64,7 +64,7 @@ function color_change_brightness($color,$steps){
         $value = max(0,min(255,$value + $steps));
         if($value > 255){$value = '255';}
         if($value < 0){$value = '0';}
-        $return .= dechex($value)
+        $return .= dechex($value);
     }
     echo $return;
 }
