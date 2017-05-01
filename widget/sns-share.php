@@ -78,27 +78,27 @@
 <ul>
     <li class="tweet">
         <a href="https://twitter.com/share?url=<?php echo $url_now;?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>" target="_blank" rel="noopener" title="Twitterへの共有リンク">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <span class="fa fa-twitter" aria-hidden="true"></span>
         </a>
     </li>
     <li class="fb-like">
         <a href="http://www.facebook.com/share.php?u=<?php echo rawurlencode($url_now);?>" target="_blank" rel="noopener" title="Facebookへの共有リンク">
-            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            <span class="fa fa-thumbs-up" aria-hidden="true"></span>
         </a>
     </li>
     <li class="line">
         <a href="http://lineit.line.me/share/ui?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="LINEへの共有リンク">
-            <i class="fa fa-comments" aria-hidden="true"></i>
+            <span class="fa fa-comments" aria-hidden="true"></span>
         </a>
     </li>
     <li class="g-plus">
         <a href="https://plus.google.com/share?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="Google+への共有リンク">
-            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
+            <span class="fa fa-google-plus-official" aria-hidden="true"></span>
         </a>
     </li>
     <li class="linkedin">
         <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>" target="_blank" rel="noopener" title="Linkedinへの共有リンク">
-            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            <span class="fa fa-linkedin-square" aria-hidden="true"></span>
         </a>
     </li>
     <li class="buffer">
@@ -108,17 +108,17 @@
     </li>
     <li class="reddit">
         <a href="https://www.reddit.com/submit?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="Redditへの共有リンク">
-            <i class="fa fa-reddit-alien" aria-hidden="true"></i>
+            <span class="fa fa-reddit-alien" aria-hidden="true"></span>
         </a>
     </li>
     <li class="vk">
         <a href="http://vkontakte.ru/share.php?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="VKへの共有リンク">
-            <i class="fa fa-vk" aria-hidden="true"></i>
+            <span class="fa fa-vk" aria-hidden="true"></span>
         </a>
     </li>
     <li class="stumbleupon">
         <a href="http://www.stumbleupon.com/submit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>" target="_blank" rel="noopener" title="StumbleUponの共有リンク">
-            <i class="fa fa-stumbleupon-circle" aria-hidden="true"></i>
+            <span class="fa fa-stumbleupon-circle" aria-hidden="true"></span>
         </a>
     </li>
     <li class="hatebu">
@@ -128,12 +128,12 @@
     </li>
     <li class="pocket">
         <a href="http://getpocket.com/edit?url=<?php echo $url_now;?>&amp;title=<?php wp_title('');?>" target="_blank" rel="noopener" title="Pocketへの共有リンク">
-            <i class="fa fa-get-pocket" aria-hidden="true"></i>
+            <span class="fa fa-get-pocket" aria-hidden="true"></span>
         </a>
     </li>
     <li class="pinterest">
         <a href="http://pinterest.com/pin/create/button/?url=<?php echo $url_now;?>&amp;media=<?php meta_image();?>" target="_blank" rel="noopener" title="Pinterestへの共有リンク">
-            <i class="fa fa-pinterest" aria-hidden="true"></i>
+            <span class="fa fa-pinterest" aria-hidden="true"></span>
         </a>
     </li>
     <li class="instapaper">
@@ -143,13 +143,13 @@
     </li>
     <li class="tumblr">
         <a href="https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo $url_now;?>" target="_blank" rel="noopener" title="thumblrへの共有リンク">
-            <i class="fa fa-tumblr" aria-hidden="true"></i>
+            <span class="fa fa-tumblr" aria-hidden="true"></span>
         </a>
     </li>
     <?php if(is_singular()===false):?>
         <li class="pushdog">
             <a href="https://push.dog/subscribe?url=<?php echo $url_now;?>" target="_blank" rel="noopener" title="puahdogへの共有リンク">
-                <i class="fa fa-paw" aria-hidden="true"></i>
+                <span class="fa fa-paw" aria-hidden="true"></span>
             </a>
         </li>
     <?php endif;?>

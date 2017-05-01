@@ -548,7 +548,7 @@ function wkwkrnht_search_form($form){
                  . $tag_echo
             . '</select>
             <button id="submit" type="submit">
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <span class="fa fa-search" aria-hidden="true"></span>
             </button>
         </form>
     </aside>
@@ -560,14 +560,26 @@ add_filter('get_search_form','wkwkrnht_search_form');
 add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
 function wkwkrnht_meta_widget(){ ?>
-    <li><a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a></li>
+    <li>
+        <a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost">
+            <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
+        </a>
+    </li>
     <?php if(is_singular()===true):
         $id      = '';
         $homeurl = '';
-        if(is_ssl()){$homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);}
+        if(is_ssl()){
+            $homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);
+            }
         if(have_posts()):while(have_posts()):the_post();$id = get_the_ID();endwhile;endif;?>
-        <li><?php edit_post_link();?></li>
-        <li><a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit"><i class="fa fa-windows fa-2x" aria-hidden="true"><i class="fa fa-pencil" aria-hidden="true"></i></i></a></li>
+        <li>
+            <?php edit_post_link();?>
+        </li>
+        <li>
+            <a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit">
+                <span class="fa fa-windows fa-2x" aria-hidden="true"><span class="fa fa-pencil" aria-hidden="true"></span></span>
+            </a>
+        </li>
     <?php endif;
 }
 
@@ -820,10 +832,26 @@ function make_OGPblogcard($url){
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
             <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
-                <li><a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li><a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></li>
-                <li><a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
-                <li><a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">B!</a></li>
+                <li>
+                    <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0">
+                        <span class="fa fa-twitter" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0">
+                        <span class="fa fa-thumbs-up" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">
+                        <span class="fa fa-get-pocket" aria-hidden="true"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">
+                        B!
+                    </a>
+                </li>
             </ul>
         </div>
         <blockquote class="ogp-blogcard-main" cite="' . $url . '">
@@ -833,7 +861,9 @@ function make_OGPblogcard($url){
                 <p class="ogp-blogcard-description">' . $description . '</p>
             </a>
         </blockquote>
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '"><i class="fa fa-2x fa-share-alt"></i></a>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '">
+            <span class="fa fa-2x fa-share-alt"></span>
+        </a>
     </div>';
     return $content;
 }

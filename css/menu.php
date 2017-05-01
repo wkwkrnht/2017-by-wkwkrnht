@@ -275,7 +275,7 @@
 .site-description,.site-header .copyright{
     font-size:1.8rem;
 }
-.site-heade .copyright span[itemprop*="name"]{
+span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
     font-weight:bold;
 }
 

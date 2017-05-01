@@ -45,9 +45,7 @@
     <span class="copyright">
         <span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
             <span itemprop="name">
-                <b>
-                    <?php echo $blog_name;?>
-                </b>
+                <?php echo $blog_name;?>
             </span>
         </span>
         &nbsp;&nbsp;&copy;
@@ -61,8 +59,7 @@
     if(have_posts()):while(have_posts()):the_post();
             $title      = the_title_attribute(array('echo'=>false));
             $categories = get_the_category();
-            $category   = $categories[0];
-            ?>
+            $category   = $categories[0];?>
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
                 <amp-img src="<?php wkwkrnht_eyecatch($size_full);?>" alt="eyecatch" class="card-img">
                 <div class="card-meta">
