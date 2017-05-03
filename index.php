@@ -71,9 +71,7 @@ else:
 				<a href="<?php echo esc_url(home_url(''));?>" class="copyright">
 					<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 						<span itemprop="name">
-							<b>
-								<?php bloginfo();?>
-							</b>
+							<?php bloginfo();?>
 						</span>
 					</span>
 					&nbsp;&nbsp;&copy;

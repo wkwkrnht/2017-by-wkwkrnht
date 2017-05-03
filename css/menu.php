@@ -7,7 +7,7 @@
 6.header-nav
 7.page-nation
 */
-<?php if(is_amp()===true):?>
+<?php if(is_amp()===false):?>
     #menu-toggle{
         border-radius:50%;
         bottom:2vh;
@@ -275,7 +275,7 @@
 .site-description,.site-header .copyright{
     font-size:1.8rem;
 }
-.site-heade .copyright span[itemprop*="name"]{
+span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
     font-weight:bold;
 }
 

@@ -35,14 +35,30 @@
         <aside class="amp-sharebutton">
             <h2>share : </h2>
             <ul>
-                <li><amp-social-share type="twitter"></amp-social-share></li>
-                <li><amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share></li>
-                <li><amp-social-share type="gplus"></amp-social-share></li>
-                <li><amp-social-share type="linkedin"></amp-social-share></li>
-                <li><amp-social-share type="pinterest"></amp-social-share></li>
-                <li><amp-social-share type="tumblr"></amp-social-share></li>
-                <li><amp-social-share type="whatsapp"></amp-social-share></li>
-                <li><amp-social-share type="email"></amp-social-share></li>
+                <li>
+                    <amp-social-share type="twitter"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="gplus"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="linkedin"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="pinterest"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="tumblr"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="whatsapp"></amp-social-share>
+                </li>
+                <li>
+                    <amp-social-share type="email"></amp-social-share>
+                </li>
             </ul>
         </aside>
         <aside class="widget_related_posts">
@@ -76,9 +92,7 @@
         <aside class="amp-copyright">
             <span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
                 <span itemprop="name">
-                    <b>
-                        <?php echo $blog_name;?>
-                    </b>
+                    <?php echo $blog_name;?>
                 </span>
             </span>
             &nbsp;&nbsp;&copy;

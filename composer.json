@@ -1,6 +1,6 @@
 {
     "name": "wkwkrnht/2017-by-wkwkrnht",
-    "description": "The theme for Wordpress which has 1-colum and user can open menu and share-menu on anywhere",
+    "description": "The theme for Wordpress which has 1-colum and anyone who access the site with this can open menu on anywhere",
     "type": "wordpress-theme",
     "repositories":[
         {
