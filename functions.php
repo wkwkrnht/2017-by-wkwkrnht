@@ -513,6 +513,7 @@ class sns_share extends WP_Widget{
 }
 
 function wkwkrnht_search_form($form){
+    $url      = esc_url(home_url());
     $tags     = get_tags();
     $tag_echo = '';
     foreach($tags as $tag){$tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';}
@@ -526,7 +527,7 @@ function wkwkrnht_search_form($form){
             margin-right:2%;
             width:40%;
         }
-        #search input[type*="submit"]{
+        #search button[type*="submit"]{
             background-color:' . get_option('search_background','#fff') . ';
             border:1px solid ' . get_option('search_border','#03a9f4') . ';
             border-radius:3vmin;
@@ -534,16 +535,17 @@ function wkwkrnht_search_form($form){
             margin:1vh 0;
             width:13%;
         }
-        #search input[type*="submit"]:hover{
+        #search button[type*="submit"]:hover{
             background-color:' . get_option('search_hover_background','#03a9f4') . ';
             color:' . get_option('search_hover_color','#fff') . ';
         }
     </style>
-    <aside id="search" role="searc﻿h﻿">
-        <form method="get" action="' . esc_url(home_url()) . '">
-            <input name="s" id="s" type="text"><br>'
-            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
-            . '<select name="tag" id="tag">
+    <aside id="search" role="searc﻿h﻿" itemscope itemtype="http://schema.org/WebSite">
+        <form method="get" action="' . $url . '" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+            <meta itemprop="target" content="' . $url . '?s={query}">
+            <input name="s" id="s" type="text" placeholder="検索キーワードを入力してください" itemprop="query-input"><br>'
+            . str_replace('name="cat"','itemprop="query-input" name="cat"',wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー'))
+            . '<select name="tag" id="tag" itemprop="query-input">
                 <option value="" selected="selected">タグ</option>'
                  . $tag_echo
             . '</select>
