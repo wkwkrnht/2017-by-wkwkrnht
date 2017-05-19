@@ -64,13 +64,11 @@ if(is_singular()===true):
     $author_id  = '';
     $fb         = get_the_author_meta('facebook');
     $tw         = get_the_author_meta('twitter');
-    $gp         = get_the_author_meta('Googleplus');
     $logo       = get_theme_mod('custom_logo');
     $author_id  = $post->post_author;
     $i          = 1;
     if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
     if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
-    if($gp!==''){echo'<link rel="publisher" href="http://plus.google.com/' . $gp . '">';}
     echo'
     <script type="application/ld+json">
         {
