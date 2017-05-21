@@ -122,7 +122,8 @@ article{
 }
 .article-main h4{
     border-bottom:1px solid;
-    border-left:.5em solid <?php echo get_option('article_main_h4_border','#03a9f4');?>;
+    border-color:<?php echo get_option('article_main_h4_border','#03a9f4');?>;
+    border-left:.5em solid;
     counter-increment:counter-h4;
     counter-reset:counter-h5;
 }
