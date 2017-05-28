@@ -27,20 +27,20 @@ article{
 .article-eyecatch,.article-meta,.article-date,.article-author{
     display:inline-block;
 }
-.article-eyecatch{
+.article-eyecatch,.article-meta{
     position:absolute;
-    top:0;
     width:100%;
+}
+.article-eyecatch{
+    top:0;
 }
 .article-meta{
     background-color:rgba(0,0,0,.5);
+    bottom:0;
     box-sizing:border-box;
     color:#fff;
     height:100%;
     padding:1vh 2vh;
-    position:absolute;
-    top:0;
-    width:100%;
 }
 .article-title,.article-meta > div{
     width:100%;

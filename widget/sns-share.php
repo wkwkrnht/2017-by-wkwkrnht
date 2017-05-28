@@ -68,7 +68,7 @@
     .widget_sns_share .pocket{
         background-color:#ef3f56;
     }
-    .widget_sns_share .tumblr{
+    .widget_sns_share .tumblr,.widget_sns_share .toot{
         background-color:#36465d;
     }
     .widget_sns_share .pushdog{
@@ -76,6 +76,11 @@
     }
 </style>
 <ul>
+    <li class="toot">
+        <a href="https://mastoshare.tk/post/" target="_blank" rel="noopener" title="Twitterへの共有リンク">
+            <span class="fa fa-paw" aria-hidden="true"></span>
+        </a>
+    </li>
     <li class="tweet">
         <a href="https://twitter.com/share?url=<?php echo $url_now;?>&amp;text=<?php wp_title('');if(get_twitter_acount()!==null){echo'&amp;via=' . get_twitter_acount();}?>" target="_blank" rel="noopener" title="Twitterへの共有リンク">
             <span class="fa fa-twitter" aria-hidden="true"></span>
