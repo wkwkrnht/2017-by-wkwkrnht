@@ -18,8 +18,8 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    require_once(network_admin_url('/includes/plugin.php','relative'));
-    return is_plugin_active($plugin);
+    /*require_once(network_admin_url('/includes/plugin.php','relative'));
+    return is_plugin_active($plugin);*/
 }
 
 function is_user_agent_bot(){
