@@ -27,20 +27,20 @@ article{
 .article-eyecatch,.article-meta,.article-date,.article-author{
     display:inline-block;
 }
-.article-eyecatch{
+.article-eyecatch,.article-meta{
     position:absolute;
-    top:0;
     width:100%;
+}
+.article-eyecatch{
+    top:0;
 }
 .article-meta{
     background-color:rgba(0,0,0,.5);
+    bottom:0;
     box-sizing:border-box;
     color:#fff;
     height:100%;
     padding:1vh 2vh;
-    position:absolute;
-    top:0;
-    width:100%;
 }
 .article-title,.article-meta > div{
     width:100%;
@@ -122,7 +122,8 @@ article{
 }
 .article-main h4{
     border-bottom:1px solid;
-    border-left:.5em solid <?php echo get_option('article_main_h4_border','#03a9f4');?>;
+    border-color:<?php echo get_option('article_main_h4_border','#03a9f4');?>;
+    border-left:.5em solid;
     counter-increment:counter-h4;
     counter-reset:counter-h5;
 }
@@ -158,7 +159,25 @@ article{
     border-radius:3vmin;
     padding:1em 2em;
 }
-.article-main blockquote::after{
+.article-main blockquote[title]::after{
+    border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
+    content:attr(title);
+    display:block;
+    padding-top:1em;
+    text-align:right;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+.article-main blockquote[cite]::after{
+    border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
+    content:attr(cite);
+    display:block;
+    padding-top:1em;
+    text-align:right;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+.article-main blockquote[title][cite]::after{
     border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
     content:attr(title)"\a" attr(cite);
     display:block;

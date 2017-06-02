@@ -18,10 +18,8 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    if(is_admin()===false){
-        require_once('wp-admin/includes/plugin.php');
-    }
-    return is_plugin_active($plugin);
+    /*require_once(network_admin_url('/includes/plugin.php','relative'));
+    return is_plugin_active($plugin);*/
 }
 
 function is_user_agent_bot(){
@@ -333,8 +331,8 @@ class duck_duck_go_search_widget extends WP_Widget{
         </style>
         <form action="https://duckduckgo.com/" role="search">
             <input name="sites" type="hidden" value="' . esc_url(substr(home_url('','http'),6)) . '">
-            <input name="q" type="search" required>
-            <input type="submit" value="Search">
+            <input name="q" type="search" required label="キーワード">
+            <input type="submit" value="Search" label="検索">
         </form>'
         . $args['after_widget'];
     }
@@ -385,12 +383,12 @@ class google_search_ads_widget extends WP_Widget{
             }
         </style>
         <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank" role="searc﻿h﻿">
-          <div>
-            <input type="hidden" name="cx" value="partner-pub-' . $id . '">
-            <input type="hidden" name="ie" value="UTF-8">
-            <input type="text" name="q" size="55">
-            <input type="submit" name="sa" value="検索">
-          </div>
+            <div>
+                <input type="hidden" name="cx" value="partner-pub-' . $id . '">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="text" name="q" size="55" label="キーワード">
+                <input type="submit" name="sa" value="検索" label="検索">
+            </div>
         </form>
         <script src="//www.google.co.jp/coop/cse/brand?form=cse-search-box&amp;lang=ja"></script>'
         . $args['after_widget'];
@@ -480,7 +478,9 @@ class google_translate_widget extends WP_Widget{
         <script async="" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>'
         . $args['after_widget'];
     }
-    public function form($instance){$lang=!empty($instance['lang']) ? $instance['lang'] : '';$analytics_id=!empty($instance['analytics_id']) ? $instance['analytics_id'] : '';?>
+    public function form($instance){
+        $lang         =!empty($instance['lang']) ? $instance['lang'] : '';
+        $analytics_id =!empty($instance['analytics_id']) ? $instance['analytics_id'] : '';?>
 		<p>
     		<label for="<?php echo $this->get_field_id('lang');?>">言語</label>
     		<input class="widefat" id="<?php echo $this->get_field_id('lang');?>" name="<?php echo $this->get_field_name('lang');?>" type="text" value="<?php echo esc_attr($lang);?>">
@@ -501,8 +501,13 @@ class sns_follow extends WP_Widget{
 
 class sns_share extends WP_Widget{
     function __construct(){parent::__construct('sns_share','SNS シェアボタン',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/sns-share.php');echo $args['after_widget'];}
-    public function form($instance){$title=!empty($instance['title']) ? $instance['title'] : '';?>
+    public function widget($args,$instance){
+        echo $args['before_widget'];
+        include(get_template_directory() . '/widget/sns-share.php');
+        echo $args['after_widget'];
+    }
+    public function form($instance){
+        $title=!empty($instance['title']) ? $instance['title'] : '';?>
 		<p>
 		<label for="<?php echo $this->get_field_id('title');?>">title</label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" type="text" value="<?php echo esc_attr($title);?>">
@@ -541,13 +546,13 @@ function wkwkrnht_search_form($form){
     </style>
     <aside id="search" role="searc﻿h﻿">
         <form method="get" action="' . esc_url(home_url()) . '">
-            <input name="s" id="s" type="text"><br>'
+            <input name="s" id="s" type="text" label="キーワード"><br>'
             . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
-            . '<select name="tag" id="tag">
+            . '<select name="tag" id="tag" label="タグ">
                 <option value="" selected="selected">タグ</option>'
                  . $tag_echo
             . '</select>
-            <button id="submit" type="submit">
+            <button id="submit" type="submit" label="検索">
                 <span class="fa fa-search" aria-hidden="true"></span>
             </button>
         </form>
@@ -1608,3 +1613,105 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
+
+
+/*
+    TEST code
+1.
+2.
+3.
+*/
+if(is_actived_plugin('wp-unit')===true){
+    class ShortCodeTest extends PHPUnit_Framework_TestCase{
+        function testhatenaembed(){
+            $output = do_shortcode('[hatenablogcard url=https://wkwkrnhtht.wordpress.com]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testembedly(){
+            $output = do_shortcode('[embedly url=https://wkwkrnhtht.wordpress.com]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testOGPembed(){
+            $output = do_shortcode('[OGPblogcard url=https://wkwkrnhtht.wordpress.com]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testtoc(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testspotify(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testoot(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testtwitterlink(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testmarker(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testsimplebox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testnoticebox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testquestionbox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testserachbox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testcolumunbox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testbox(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testlinkbutton(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testlink(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testbeforeafter(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+        function testlinktext(){
+            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
+            $this->assertEquals($output, $expected);
+        }
+    }
+}

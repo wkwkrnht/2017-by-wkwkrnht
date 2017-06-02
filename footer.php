@@ -30,6 +30,10 @@
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
         }
         ?>
+        <?php if(has_class('highlight-js')===true):?>
+            <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+        <?php endif;?>
         <script>
             (function(){
                 document.getElementById("menu-toggle").onclick = function(){
@@ -117,6 +121,9 @@
                         resizeElement.removeClass('resizable');
                     });
                 }
+            <?php endif;?>
+            <?php if(has_class('highlight-js')===true):?>
+                hljs.initHighlightingOnLoad();
             <?php endif;?>
             (function(){
                 var key = "<?php echo $key;?>";
