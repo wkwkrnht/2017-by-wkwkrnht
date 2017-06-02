@@ -159,7 +159,25 @@ article{
     border-radius:3vmin;
     padding:1em 2em;
 }
-.article-main blockquote::after{
+.article-main blockquote[title]::after{
+    border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
+    content:attr(title);
+    display:block;
+    padding-top:1em;
+    text-align:right;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+.article-main blockquote[cite]::after{
+    border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
+    content:attr(cite);
+    display:block;
+    padding-top:1em;
+    text-align:right;
+    white-space:pre-wrap;
+    word-wrap:break-word;
+}
+.article-main blockquote[title][cite]::after{
     border-top:1px solid <?php echo get_option('article_main_bq_border','#bbb');?>;
     content:attr(title)"\a" attr(cite);
     display:block;
