@@ -18,7 +18,7 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    require_once('wp-admin/includes/plugin.php');
+    require_once(admin_url('/includes/plugin.php'));
     return is_plugin_active($plugin);
 }
 
