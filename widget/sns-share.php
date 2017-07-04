@@ -77,7 +77,7 @@
 </style>
 <ul>
     <li class="toot">
-        <a href="https://mastoshare.tk/post/" target="_blank" rel="noopener" title="Twitterへの共有リンク">
+        <a href="https://mastoshare.net/post.php" target="_blank" rel="noopener" title="Mastodonへの共有リンク">
             <span class="fa fa-paw" aria-hidden="true"></span>
         </a>
     </li>

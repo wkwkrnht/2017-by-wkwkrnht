@@ -18,8 +18,8 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    /*require_once(network_admin_url('/includes/plugin.php','relative'));
-    return is_plugin_active($plugin);*/
+    require_once(site_url('/includes/plugin.php'));
+    return is_plugin_active($plugin);
 }
 
 function is_user_agent_bot(){
@@ -313,21 +313,24 @@ class duck_duck_go_search_widget extends WP_Widget{
     public function widget($args,$instance){
         echo $args['before_widget'] .
         '<style>
-            .widget_duck_duck_go_widget input{
+            .widget_duck_duck_go_search_widget input{
                 display:inline-block;
             }
-            .widget_duck_duck_go_widget input[type*="search"]{
+            .widget_duck_duck_go_search_widget input[type*="search"]{
                 margin-right:5%;
                 width:70%;
             }
-            .widget_duck_duck_go_widget input[type*="submit"]{
+            .widget_duck_duck_go_search_widget input[type*="submit"]{
                 background-color:#fff;
                 border:1px solid #03a9f4;
                 border-radius:3vmin;
                 color:#03a9f4;
                 width:15%;
             }
-            .widget_duck_duck_go_widget input[type*="submit"]:hover{color:#fff;background-color:#03a9f4;}
+            .widget_duck_duck_go_search_widget input[type*="submit"]:hover{
+                background-color:#03a9f4;
+                color:#fff;
+            }
         </style>
         <form action="https://duckduckgo.com/" role="search">
             <input name="sites" type="hidden" value="' . esc_url(substr(home_url('','http'),6)) . '">
@@ -1249,6 +1252,7 @@ function add_post_edit_featuer(){ ?>
 	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
     jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
     jQuery(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
+    (function(){for(var textareas=document.getElementsByTagName("textarea"),count=textareas.length,i=0;count>i;i++)textareas[i].onkeydown=function(t){if(9===t.keyCode||9===t.which){t.preventDefault();var e=this.selectionStart;this.value=this.value.substring(0,this.selectionStart)+"	"+this.value.substring(this.selectionEnd),this.selectionEnd=e+1}};})();
 </script>
 <?php }
 add_action('admin_head-post-new.php','add_post_edit_featuer');
