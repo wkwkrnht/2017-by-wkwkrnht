@@ -18,7 +18,9 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    require_once(site_url('/includes/plugin.php'));
+    if(!is_admin()){
+        require_once(site_url('/includes/plugin.php'));
+    }
     return is_plugin_active($plugin);
 }
 
