@@ -127,7 +127,7 @@
         content:"\f230";
         color:#0033ff;
     }
-    .social-nav a[href*="reader.livedwango.com/"]::before,.social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{
+    .social-nav a[href*="/feed"]::before,.social-navigation a[href*="/feed/"]::before{
         content:'\f09e';
         color:#2aff00;
     }
@@ -163,7 +163,7 @@
     .social-nav a[href*="mailto:"]::before{
         content:"\f0e0";
     }
-    .social-nav a[href*="nicovideo"]::before,.social-nav a[href*="reader.livedwango.com/"]::after{
+    .social-nav a[href*="nicovideo"]::before{
         content:"\f26c";
     }
     .social-nav a[href*="pinterest.com"]::before{
