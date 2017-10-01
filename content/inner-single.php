@@ -1,9 +1,10 @@
 <?php
 if(have_posts()){
-    while(have_posts()):the_post();
+    while(have_posts()){
+        the_post();
         $author_name = get_the_author_meta('display_name');
         $author_id   = get_the_author_meta('ID');
-    endwhile;
+    }
 }else{
     $author_name = 'unknown';
     $author_id   = '0';
@@ -16,14 +17,12 @@ if(have_posts()){
                 <?php the_title();?>
             </h1>
             <div>
-                <span class="article-date">
-                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                <span class="article-date fa fa-calendar">
                     <time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
                         <?php the_time('Y/n/j');?>
                     </time>
                 </span>
-                <span class="author article-author">
-                    <span class="fa fa-user" aria-hidden="true"></span>
+                <span class="author article-author fa fa-user">
                     <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
                         <span class="vcard author">
                             <span class="fn">
@@ -45,8 +44,13 @@ if(have_posts()){
     <?php endif;?>
     <div class="article-main" role="main">
         <?php
-        if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;
-        wp_link_pages(array('before'=>'<div class="page-nav"><span>ページ：</span>','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));?>
+        if(have_posts()){
+            while(have_posts()){
+                the_post();
+                the_content();
+                wp_link_pages(array('before'=>'<div class="page-nav"><span>ページ：</span>','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
+            }
+        }?>
     </div>
     <footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
         <?php if(is_active_sidebar('singularfooter')):?>
@@ -54,7 +58,7 @@ if(have_posts()){
                 <?php dynamic_sidebar('singularfooter');?>
             </ul>
         <?php endif;?>
-        <a href="<?php echo esc_url(home_url(''));?>" class="copyright">
+        <a href="<?php echo esc_url(home_url(''));?>" class="copyright" tabindex="0">
             <span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
                 <span itemprop="name">
                     <?php bloginfo();?>

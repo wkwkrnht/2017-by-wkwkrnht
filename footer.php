@@ -19,26 +19,19 @@
         <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php
         wp_footer();
-        $key = false;
-        $key = get_option('cookie_key');
-        if(!$key){
-            $key = '2017-by-wkwkrnht';
-        }
-        if(get_post_format()==='link'){
-            echo'
-            <script>var targets = document.querySelectorAll(".format-link .article-main a");for(var i = 0; i < targets.length; i++){var target = targets[i];target.classList.add("embedly-card");}</script>
-            <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>';
-        }
-        ?>
-        <?php if(has_class('highlight-js')===true):?>
+        $key = get_option('cookie_key','2017-by-wkwkrnht');
+        if(has_class('highlight-js')===true):?>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
             <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+        <?php endif;
+        if(get_post_format()==='link')?>
+            <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>
         <?php endif;?>
         <script>
             (function(){
                 document.getElementById("menu-toggle").onclick = function(){
-                    document.getElementById('menu-wrap').classList.toggle("none");
-                    document.getElementById('menu-wrap').classList.toggle("block");
+                    document.getElementById("menu-wrap").classList.toggle("none");
+                    document.getElementById("menu-wrap").classList.toggle("block");
                 };
                 if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";
@@ -56,6 +49,15 @@
                     document.head.appendChild(wpStyle);
                 }
             })();
+            <?php if(get_post_format()==='link'):?>
+                (function(){
+                    var targets = document.querySelectorAll(".format-link .article-main a");
+                    for(var i = 0; i < targets.length; i++){
+                        var target = targets[i];
+                        target.classList.add("embedly-card");
+                    }
+                })();
+            <?php endif;?>
             <?php if(has_class('ba-slider')):?>
                 jQuery(document).ready(function(){
                     jQuery('.ba-slider').each(function(){
@@ -141,11 +143,11 @@
                 }
                 function setCookie(key,n){
                     var myDate = new Date();
-                    myDate.setTime(myDate.getTime() + 6 * 30 * 24 * 60 * 60 * 1000);
-                    document.cookie = " " + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
+                    myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+                    document.cookie = "" + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
                 }
                 var n = getCookie(key);
-                if(n === ""){
+                if(n == ""){
                     if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
                         return;
                     } else {
@@ -156,6 +158,6 @@
                 setCookie(key,n);
             })();
         </script>
-        <?php $txt=false;$txt=get_option('footer_txt');if($txt!==false){echo $txt;}?>
+        <?php $txt=get_option('footer_txt');if($txt!==false){echo $txt;}?>
     </body>
 </html>

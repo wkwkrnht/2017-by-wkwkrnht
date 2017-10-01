@@ -24,15 +24,10 @@ echo'<div class="card-list">';
                         <?php echo $title;?>
                     </h2>
                     <div>
-                        <span>
-                            <span class="fa fa-calendar" aria-hidden="true"></span>
+                        <span class="fa fa-calendar">
                             <time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
                                 <?php the_time('Y/n/j');?>
                             </time>
-                        </span>
-                        <span>
-                            <span class="fa fa-bookmark" aria-hidden="true"></span>
-                            <?php echo $category->cat_name;?>
                         </span>
                     </div>
                 </div>

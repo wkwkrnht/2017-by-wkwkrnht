@@ -593,6 +593,17 @@ function wkwkrnht_meta_widget(){ ?>
     <?php endif;
 }
 
+add_filter('page_menu_link_attributes','exted_meta_for_page',10,5);
+function exted_meta_for_page($attrs = array(),$page,$depth,$args,$current_page){
+	if($page->ID === $current_page){
+		$attrs['aria-current'] = 'page';
+	}
+    $attrs['itemprop'] = 'url' ;
+    $attrs['tabindex'] = '0' ;
+    $attrs['data-title'] = 'esc_attr($title)' ;
+	return ($attrs);
+}
+
 function autoblank($text){
 	$return = str_replace('<a','<a target="_blank" rel="noopener"',$text);
 	return $return;
@@ -630,24 +641,24 @@ function replace_script_tag($tag){
 add_filter('script_loader_tag','replace_script_tag');
 
 
-class add_meta_Nav_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
-        $item_output = '';
-        $title        = $item->title;
-        $output      .= '<li itemprop="name" class="menu-item">';
-        $item_output .= '<a itemprop="url" tabindex="0" href="' . esc_attr($item->url) .'" title="' . esc_attr($title) . '" data-title="' . esc_attr($title) . '">' . $title . '</a>';
-        $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
-    }
+function nav_menu_with_description($output){
+	return preg_replace('/(<li>)/','<li itemprop="name" class="menu-item">',$output);
 }
-
-class add_meta_Social_Menu extends Walker_Nav_Menu{
-    function start_el(&$output,$item,$depth = 0,$args = array(),$id = 0){
-        $title        = $item->title;
-        $output      .= '<li itemprop="name" class="menu-item">';
-        $item_output .= '<a itemprop="url" tabindex="0" href="' . esc_attr($item->url) .'" title="' . esc_attr($title) . '" data-title="' . esc_attr($title) . '"></a>';
-        $output      .= apply_filters('walker_nav_menu_start_el',$item_output,$item,$depth,$args);
-    }
+add_filter('walker_nav_menu_start_el','nav_menu_with_description',10,4);
+function exted_meta_for_url($atts,$item,$args){
+    $atts['itemprop'] = 'url' ;
+    $atts['tabindex'] = '0' ;
+    $atts['data-title'] = esc_attr($item->title) ;
+	return $atts;
 }
+add_filter('nav_menu_link_attributes','exted_meta_for_url',10,5);
+function my_nav_menu_item_title($title,$item,$args,$depth){
+    if($args->theme_location){
+        $item = '';
+    }
+    return $item;
+}
+add_filter('nav_menu_item_title','social_menu_item_title',10,4);
 
 
 add_filter('body_class','add_body_class');
