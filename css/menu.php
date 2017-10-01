@@ -1,13 +1,13 @@
-/*
-1.toggle
-2.main menu
-3.main-nav
-4.social-nav
-5.site-header
-6.header-nav
-7.page-nation
-*/
 <?php if(is_amp()===false):?>
+    /*
+    1.toggle
+    2.main menu
+    3.main-nav
+    4.social-nav
+    5.site-header
+    6.header-nav
+    7.page-nation
+    */
     #menu-toggle{
         border-radius:50%;
         bottom:2vh;
