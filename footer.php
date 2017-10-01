@@ -128,7 +128,6 @@
                 hljs.initHighlightingOnLoad();
             <?php endif;?>
             (function(){
-                var key = "<?php echo $key;?>";
                 function getCookie(key){
                     var s,e;
                     var c = document.cookie + ";";
@@ -141,12 +140,13 @@
                     }
                     return("");
                 }
+                var key = "<?php echo $key;?>";
+                var n = getCookie(key);
                 function setCookie(key,n){
                     var myDate = new Date();
                     myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-                    document.cookie = "" + key + "=" + escape(n) + ";expires=" + myDate.toGMTString();
+                    document.cookie = "key=" + key + escape(n) + ";expires=" + myDate.toGMTString() + ";";
                 }
-                var n = getCookie(key);
                 if(n == ""){
                     if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
                         return;
