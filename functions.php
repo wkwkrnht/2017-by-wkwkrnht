@@ -593,23 +593,11 @@ function wkwkrnht_meta_widget(){ ?>
     <?php endif;
 }
 
-add_filter('page_menu_link_attributes','exted_meta_for_page',10,5);
-function exted_meta_for_page($attrs = array(),$page,$depth,$args,$current_page){
-	if($page->ID === $current_page){
-		$attrs['aria-current'] = 'page';
-	}
-    $attrs['itemprop'] = 'url' ;
-    $attrs['tabindex'] = '0' ;
-    $attrs['data-title'] = 'esc_attr($title)' ;
-	return ($attrs);
-}
-
 function autoblank($text){
 	$return = str_replace('<a','<a target="_blank" rel="noopener"',$text);
 	return $return;
 }
 add_filter('comment_text','autoblank');
-
 add_filter('comments_open','custom_comment_tags');
 add_filter('pre_comment_approved','custom_comment_tags');
 function custom_comment_tags($data){
@@ -619,6 +607,7 @@ function custom_comment_tags($data){
     $allowedtags['pre']   = array('class'=>array());
 	return $data;
 }
+
 
 add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 remove_action('wp_head','print_emoji_detection_script',7);
@@ -652,13 +641,13 @@ function exted_meta_for_url($atts,$item,$args){
 	return $atts;
 }
 add_filter('nav_menu_link_attributes','exted_meta_for_url',10,5);
-function my_nav_menu_item_title($title,$item,$args,$depth){
+/*function my_nav_menu_item_title($title,$item,$args,$depth){
     if($args->theme_location==='social'){
         $item = '';
     }
     return $item;
 }
-add_filter('nav_menu_item_title','social_menu_item_title',10,4);
+add_filter('nav_menu_item_title','social_menu_item_title',10,4);*/
 
 
 add_filter('body_class','add_body_class');
