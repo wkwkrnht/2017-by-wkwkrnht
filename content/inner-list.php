@@ -4,8 +4,9 @@ if(is_author()===true){
 }
 if(is_active_sidebar('listabove')){
     dynamic_sidebar('listabove');
-}
-echo'<div class="card-list">';
+}?>
+<div class="card-list">
+    <?php
     if(is_active_sidebar('listheader')){
         dynamic_sidebar('listheader');
     }
@@ -35,8 +36,9 @@ echo'<div class="card-list">';
     <?php endwhile;endif;
     if(is_active_sidebar('listfooter')){
         dynamic_sidebar('listfooter');
-    }
-echo'</div>';
+    }?>
+</div>
+<?php
 global $wp_query;
 $big = 999999999;
 $page_format = paginate_links(array(
