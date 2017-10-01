@@ -8,14 +8,14 @@ $size_1024 = array(1024,1024);
 $size_1270 = array(1270,720);
 $size_1344 = array(1344,576);
 $size_1920 = array(1920,1080);
-if(is_amp()===true):
+if(is_amp()===true){
 	require_once(get_template_directory() . '/amp/template.php');
-else:
-    get_header();
-    if(is_singular()===true):
+}else{
+	get_header();
+    if(is_singular()===true){
 		require_once(get_template_directory() . '/content/inner-single.php');
-	else:
-        require_once(get_template_directory() . '/content/inner-list.php');
-    endif;
+	}else{
+		require_once(get_template_directory() . '/content/inner-list.php');
+	}
     get_footer();
-endif;?>
+}?>

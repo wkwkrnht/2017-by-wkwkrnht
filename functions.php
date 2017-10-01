@@ -641,7 +641,7 @@ function replace_script_tag($tag){
 add_filter('script_loader_tag','replace_script_tag');
 
 
-function nav_menu_with_description($output){
+/* nav_menu_with_description($output){
 	return preg_replace('/(<li>)/','<li itemprop="name" class="menu-item">',$output);
 }
 add_filter('walker_nav_menu_start_el','nav_menu_with_description',10,4);
@@ -658,7 +658,7 @@ function my_nav_menu_item_title($title,$item,$args,$depth){
     }
     return $item;
 }
-add_filter('nav_menu_item_title','social_menu_item_title',10,4);
+add_filter('nav_menu_item_title','social_menu_item_title',10,4);*?
 
 
 add_filter('body_class','add_body_class');
