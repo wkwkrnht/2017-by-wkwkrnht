@@ -24,7 +24,7 @@
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
             <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
         <?php endif;
-        if(get_post_format()==='link')?>
+        if(get_post_format()==='link'):?>
             <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>
         <?php endif;?>
         <script>
@@ -52,7 +52,7 @@
             <?php if(get_post_format()==='link'):?>
                 (function(){
                     var targets = document.querySelectorAll(".format-link .article-main a");
-                    for(var i = 0; i < targets.length; i++){
+                    for ( var i = 0; i < targets.length; i++ ) {
                         var target = targets[i];
                         target.classList.add("embedly-card");
                     }
