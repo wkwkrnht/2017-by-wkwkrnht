@@ -2,8 +2,6 @@
 <html <?php language_attributes();?>>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
-	<meta http-equiv="cleartype" content="on">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<?php
 	$theme_dir = get_template_directory();
 	$theme_uri = get_template_directory_uri();
@@ -37,7 +35,6 @@
 	    include_once($theme_dir . '/css/mediaqueri.php');?>
 	</style>
 	<?php
-	$txt = false;
 	$txt = get_option('header_txt');
 	wp_head();
 	if($txt!==false){echo $txt;}?>
@@ -97,7 +94,7 @@
 				</span>
 			</section>
 			<nav class="header-nav">
-				<?php wp_nav_menu(array('theme_location'=>'header','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>','walker'=>new add_meta_Nav_Menu));?>
+				<?php wp_nav_menu(array('theme_location'=>'header','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
 			</nav>
 		</header>
 	<?php endif;?>

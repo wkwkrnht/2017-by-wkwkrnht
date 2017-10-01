@@ -1,9 +1,5 @@
 <?php
 $i            = 1;
-$google_ana   = false;
-$google_meta  = false;
-$bing         = false;
-$pi           = false;
 $img          = ' src="' . get_no_image('') . '"';
 $google_id    = get_the_author_meta('GoogleID');
 $google_ana   = get_option('Google_Analytics');
@@ -23,6 +19,8 @@ if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
 if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta http-equiv="cleartype" content="on">
 <meta name="renderer" content="webkit">
 <meta name="HandheldFriendly" content="true">
 <meta name="description" content="<?php echo $description;?>">
