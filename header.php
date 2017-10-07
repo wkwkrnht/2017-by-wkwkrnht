@@ -15,6 +15,10 @@
 	    $root_color = get_option('root_color','#333');
 	    include_once($theme_dir . '/css/fontawesome.php');
 	    include_once($theme_dir . '/css/initial.php');
+		if(is_amp()===false){
+			include_once($theme_dir . '/css/nav.php');
+		}
+		include_once($theme_dir . '/css/widget.php');
 	    include_once($theme_dir . '/css/menu.php');
 	    include_once($theme_dir . '/css/card.php');
 	    if(is_singular()===true){

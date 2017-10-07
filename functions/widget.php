@@ -35,25 +35,7 @@ class move_top extends WP_Widget{
     function __construct(){parent::__construct('move_top','先頭へのナビゲーション',array());}
     public function widget($args,$instance){
         echo $args['before_widget'] .
-        '<style>
-            .widget_move_top{
-                background-color:' . get_option('move_top_background','#03a9f4') . ';
-                border-radius:50%;
-                height:15vh;
-                margin:5vh auto;
-                width:15vh;
-            }
-            .widget_move_top a{
-                color:' . get_option('move_top_color','#fff') . ';
-                font-size:5rem;
-                font-weight:900;
-                line-height:15vh;
-                text-align:center;
-                text-decoration:none;
-                vertical-align:middle;
-            }
-        </style>
-        <a href="#top" title="Go to Top"  role="navigation">Λ</a>
+        '<a href="#top" title="Go to Top"  role="navigation">Λ</a>
         <script type="application/ld+json">{"@type" : "SiteNavigationElement","url" : "' . get_meta_url() . '#top","name" : "Page Top Button"}</script>'
         . $args['after_widget'];
     }
@@ -100,7 +82,18 @@ class related_posts_img extends WP_Widget{
 
 class post_nav_hover extends WP_Widget{
     function __construct(){parent::__construct('post_nav_hover','前後への記事のナビゲーション(hover)',array());}
-    public function widget($args,$instance){echo $args['before_widget'];include(get_template_directory() . '/widget/post-nav-hover.php');echo $args['after_widget'];}
+    public function widget($args,$instance){
+        $echo = '';
+        $prev = get_previous_posts_link('◀');
+        $next = get_next_posts_link('▶');
+        if($prev){
+            $echo .= '<div class="hide-nav-prev">' . $prev . '</div>';
+        }
+        if($next){
+            $echo .= '<div class="hide-nav-next">' . $echo . '</div>';
+        }
+        echo $args['before_widget'] . $echo . $args['after_widget'];
+    }
 }
 
 class post_comment extends WP_Widget{
@@ -140,27 +133,7 @@ class duck_duck_go_search_widget extends WP_Widget{
     function __construct(){parent::__construct('duck_duck_go_search_widget','DuckDuckGo 検索',array());}
     public function widget($args,$instance){
         echo $args['before_widget'] .
-        '<style>
-            .widget_duck_duck_go_search_widget input{
-                display:inline-block;
-            }
-            .widget_duck_duck_go_search_widget input[type*="search"]{
-                margin-right:5%;
-                width:70%;
-            }
-            .widget_duck_duck_go_search_widget input[type*="submit"]{
-                background-color:#fff;
-                border:1px solid #03a9f4;
-                border-radius:3vmin;
-                color:#03a9f4;
-                width:15%;
-            }
-            .widget_duck_duck_go_search_widget input[type*="submit"]:hover{
-                background-color:#03a9f4;
-                color:#fff;
-            }
-        </style>
-        <form action="https://duckduckgo.com/" role="search">
+        '<form action="https://duckduckgo.com/" role="search">
             <input name="sites" type="hidden" value="' . esc_url(substr(home_url('','http'),6)) . '">
             <input name="q" type="search" required label="キーワード">
             <input type="submit" value="Search" label="検索">
@@ -193,27 +166,7 @@ class google_search_ads_widget extends WP_Widget{
     public function widget($args,$instance){
         extract($instance);
         echo $args['before_widget'] .
-        '<style>
-            #cse-search-box input{
-                display:inline-block;
-            }
-            #cse-search-box input[type="text"]{
-                margin-right:5%;
-                width:70%;
-            }
-            #cse-search-box input[type="submit"]{
-                background-color:#fff;
-                border:1px solid #03a9f4;
-                border-radius:3vmin;
-                color:#03a9f4;
-                width:15%;
-            }
-            #cse-search-box input[type*="submit"]:hover{
-                background-color:#03a9f4;
-                color:#fff;
-            }
-        </style>
-        <form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank" role="searc﻿h﻿">
+        '<form action="http://www.google.co.jp/cse" id="cse-search-box" target="_blank" role="searc﻿h﻿">
             <div>
                 <input type="hidden" name="cx" value="partner-pub-' . $id . '">
                 <input type="hidden" name="ie" value="UTF-8">
