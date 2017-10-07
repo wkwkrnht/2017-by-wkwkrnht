@@ -357,15 +357,15 @@ function wkwkrnht_search_form($form){
     }
     $form = '
     <style>
-        .widget_search input[type*="text"]{
+        .search-form input[type*="text"]{
             width:98%;
         }
-        .widget_search select{
+        .search-form select{
             margin:1vh 0;
             margin-right:2%;
             width:35%;
         }
-        .widget_search input[type*="submit"]{
+        .search-form input[type*="submit"]{
             background-color:' . get_option('search_background','#fff') . ';
             border:1px solid ' . get_option('search_border','#03a9f4') . ';
             border-radius:3vmin;
@@ -373,7 +373,7 @@ function wkwkrnht_search_form($form){
             margin:1vh 0;
             width:20%;
         }
-        .widget_search input[type*="submit"]:hover{
+        .search-form input[type*="submit"]:hover{
             background-color:' . get_option('search_hover_background','#03a9f4') . ';
             color:' . get_option('search_hover_color','#fff') . ';
         }

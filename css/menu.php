@@ -357,31 +357,33 @@ span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
     width:70%;
 }
 
-.widget_tag_cloud{
-    padding:0;
-    margin:3vmin;
-}
-.widget_tag_cloud a{
-    background-color:#fff;
-    border:1px solid <?php echo get_option('tag_cloud_border','#03a9f4');?>;
-    border-radius:3vmin;
-    color:<?php echo get_option('tag_cloud_hover_color','#333');?>;
-    display:inline-block;
-    font-size:1.6rem;
-    height:28px;
-    max-width:100px;
-    margin:0 .3em .3em 0;
-    overflow:hidden;
-    padding:0 1em;
-    text-decoration:none;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-}
-.widget_tag_cloud a:hover{
-    background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;
-    border:1px solid <?php echo get_option('tag_cloud_hover_border','#fff');?>;
-    color:<?php echo get_option('tag_cloud_hover_color','#fff');?>;
-}
+<?php if(is_active_widget(false,false,'tag_cloud')):?>
+    .widget_tag_cloud{
+        padding:0;
+        margin:3vmin;
+    }
+    .widget_tag_cloud a{
+        background-color:#fff;
+        border:1px solid <?php echo get_option('tag_cloud_border','#03a9f4');?>;
+        border-radius:3vmin;
+        color:<?php echo get_option('tag_cloud_hover_color','#333');?>;
+        display:inline-block;
+        font-size:1.6rem;
+        height:28px;
+        max-width:100px;
+        margin:0 .3em .3em 0;
+        overflow:hidden;
+        padding:0 1em;
+        text-decoration:none;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+    }
+    .widget_tag_cloud a:hover{
+        background-color:<?php echo get_option('tag_cloud_border','#03a9f4');?>;
+        border:1px solid <?php echo get_option('tag_cloud_hover_border','#fff');?>;
+        color:<?php echo get_option('tag_cloud_hover_color','#fff');?>;
+    }
+<?php endif;?>
 
 .widget_recent_entries ul{
     list-style-type:none;
