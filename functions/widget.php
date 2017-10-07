@@ -348,7 +348,6 @@ class sns_share extends WP_Widget{
 	public function update($new_instance,$old_instance){$instance=array();$instance['title']=(!empty($new_instance['title'])) ? strip_tags($new_instance['title']):'';return $instance;}
 }
 
-add_filter('get_search_form','wkwkrnht_search_form');
 function wkwkrnht_search_form($form){
     $tags     = get_tags();
     $tag_echo = '';
@@ -356,28 +355,6 @@ function wkwkrnht_search_form($form){
         $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
     }
     $form = '
-    <style>
-        .search-form input[type*="text"]{
-            width:98%;
-        }
-        .search-form select{
-            margin:1vh 0;
-            margin-right:2%;
-            width:35%;
-        }
-        .search-form input[type*="submit"]{
-            background-color:' . get_option('search_background','#fff') . ';
-            border:1px solid ' . get_option('search_border','#03a9f4') . ';
-            border-radius:3vmin;
-            color:#03a9f4;
-            margin:1vh 0;
-            width:20%;
-        }
-        .search-form input[type*="submit"]:hover{
-            background-color:' . get_option('search_hover_background','#03a9f4') . ';
-            color:' . get_option('search_hover_color','#fff') . ';
-        }
-    </style>
     <aside id="search" class="search-form role="searc﻿h﻿">
         <form method="get" action="' . esc_url(home_url()) . '">
             <input name="s" id="s" type="text" label="キーワード"><br>'
@@ -394,3 +371,4 @@ function wkwkrnht_search_form($form){
     ';
     return $form;
 }
+add_filter('get_search_form','wkwkrnht_search_form');

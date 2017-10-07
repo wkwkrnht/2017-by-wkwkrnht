@@ -385,27 +385,54 @@ span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
     }
 <?php endif;?>
 
-.widget_recent_entries ul{
-    list-style-type:none;
-}
-.widget_recent_entries ul li{
-    border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;
-}
-.widget_recent_entries ul li a{
-    font-size:1.6rem;
-    text-decoration:none;
-}
-.widget_recent_entries ul li span{
-    font-size:calc(1.6rem * 0.8);
-}
+<?php if(is_active_widget(false,false,'recent_entries')):?>
+    .widget_recent_entries ul{
+        list-style-type:none;
+    }
+    .widget_recent_entries ul li{
+        border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;
+    }
+    .widget_recent_entries ul li a{
+        font-size:1.6rem;
+        text-decoration:none;
+    }
+    .widget_recent_entries ul li span{
+        font-size:calc(1.6rem * 0.8);
+    }
+<?php endif;?>
 
-.widget_archive ul{
-    list-style-type:none;
-    text-align:center;
-}
-.widget_archive ul li{
-    font-size:calc(1.8rem * 0.8);
-}
-.widget_archive ul li a{
-    font-size:1.8rem;
-}
+<?php if(is_active_widget(false,false,'archive')):?>
+    .widget_archive ul{
+        list-style-type:none;
+        text-align:center;
+    }
+    .widget_archive ul li{
+        font-size:calc(1.8rem * 0.8);
+    }
+    .widget_archive ul li a{
+        font-size:1.8rem;
+    }
+<?php endif;?>
+
+<?php if(is_active_widget(false,false,'search')):?>
+    .search-form input[type*="text"]{
+        width:98%;
+    }
+    .search-form select{
+        margin:1vh 0;
+        margin-right:2%;
+        width:35%;
+    }
+    .search-form input[type*="submit"]{
+        background-color:<?php echo get_option('search_background','#fff');?>;
+        border:1px solid <?php echo get_option('search_border','#03a9f4');?>;
+        border-radius:3vmin;
+        color:#03a9f4;
+        margin:1vh 0;
+        width:20%;
+    }
+    .search-form input[type*="submit"]:hover{
+        background-color:<?php echo get_option('search_hover_background','#03a9f4');?>;
+        color:<?php echo get_option('search_hover_color','#fff');?>;
+    }
+<?php endif;?>
