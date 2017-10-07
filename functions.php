@@ -19,7 +19,7 @@ function is_subpage(){
 
 function is_actived_plugin($plugin = ''){
     if(is_admin()===false){
-        require_once(includes_url('plugin.php'));
+        //require_once(includes_url('plugin.php'));
     }
     return is_plugin_active($plugin);
 }
