@@ -9,7 +9,7 @@
 */
 function is_subpage(){
     global $post;
-    if(is_page() && $post->post_parent){
+    if(is_page()===true && $post->post_parent){
         $parentID = $post->post_parent;
         return $parentID;
     }else{
@@ -18,17 +18,17 @@ function is_subpage(){
 }
 
 function is_actived_plugin($plugin = ''){
-    //if(!is_admin()){
-    //    require_once(site_url('/includes/plugin.php'));
-    //}
-    //return is_plugin_active($plugin);
+    if(is_admin()===false){
+        require_once(includes_url('plugin.php'));
+    }
+    return is_plugin_active($plugin);
 }
 
 function is_user_agent_bot(){
     $bot_list = array('Google Page Speed Insights',);
     $is_bot   = false;
     foreach($bot_list as $bot){
-        if(stripos($_SERVER['HTTP_USER_AGENT'], $bot) !== false){
+        if(stripos($_SERVER['HTTP_USER_AGENT'],$bot) !== false){
             $is_bot = true;
             break;
         }
