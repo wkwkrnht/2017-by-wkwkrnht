@@ -4,155 +4,19 @@ require(get_parent_theme_file_path('/functions/setup.php'));
 require(get_parent_theme_file_path('/functions/general.php'));
 require(get_parent_theme_file_path('/functions/widget.php'));
 require(get_parent_theme_file_path('/functions/nav.php'));
-
-/*
-    SEO
-1.GET URL access now
-2.time & year
-3.for category page
-    ●description
-    ●keyword
-4.for tag page
-    ●keyword
-    ●description
-5.meta_description
-6.image
-    ●yes_image
-    ●no_image
-    ●meta_image
-    ●wkwkrnht_eyecatch
-7.check account Twitter
-*/
-function get_mtime($format){
-    $mtime = get_the_modified_time('Ymd');
-    $ptime = get_the_time('Ymd');
-    if($ptime > $mtime || $ptime===$mtime){
-        return get_the_time($format);
-    }else{
-        return get_the_modified_time($format);
-    }
-}
-function get_first_post_year(){
-    $year = null;
-    query_posts('posts_per_page=1&order=ASC');
-    if(have_posts()):
-        while(have_posts()):
-            the_post();
-            $year = intval(get_the_time('Y'));
-        endwhile;
-    endif;
-    wp_reset_query();
-    return $year;
+require(get_parent_theme_file_path('/functions/meta.php'));
+require(get_parent_theme_file_path('/functions/editor.php'));
+if(is_actived_plugin('wp-unit')===true){
+    require(get_parent_theme_file_path('/inc/unit-test.php'));
 }
 
-function get_meta_description_from_category(){
-    $cat_desc=trim(strip_tags(category_description()));
-    if($cat_desc){return $cat_desc;}
-    $cat_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
-    return $cat_desc;
-}
-function get_meta_keyword_from_category(){
-    return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';
-}
-
-function get_meta_keyword_from_tag(){
-    return single_tag_title('',false) . ',タグ,ブログ,記事一覧';
-}
-function get_meta_description_from_tag(){
-    $tag_desc=trim(strip_tags(tag_description()));
-    if($tag_desc){return $tag_desc;}
-    $tag_desc='「' . single_tag_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
-    return $tag_desc;
-}
-
-add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title = bloginfo('name');}return $title;});
-
-function get_meta_description(){
-    if(is_singular()===true && has_excerpt()===true){
-        return get_the_excerpt();
-    }elseif(is_category()===true){
-        return get_meta_description_from_category();
-    }elseif(is_tag()===true){
-        return get_meta_description_from_tag();
-    }else{
-        return get_bloginfo('description');
-    }
-}
-function meta_description(){
-    echo get_meta_description();
-}
-
-function get_yes_image($size){
-    $img = wp_get_attachment_image_src(get_post_thumbnail_id(),$size);
-    return $img[0];
-}
-function yes_image($size){
-    echo get_yes_image($size);
-}
-function get_no_image($size){
-    $uri = get_template_directory_uri() . '/inc/no-image/no-image_';
-    if($size===array(1024,1024)){
-        $src = $uri . '1024x1024.png';
-    }elseif($size===array(512,512)){
-        $src = $uri . '512x512.png';
-    }elseif($size===array(256,256)){
-        $src = $uri . '256x256.png';
-    }elseif($size===array(128,128)){
-        $src = $uri . '128x128.png';
-    }else{
-        $src = $uri . 'full.png';
-    }
-    return $src;
-}
-function no_image($size){
-    echo get_no_image($size);
-}
-function get_meta_image(){
-    $size = array(512,512);
-    if(is_singular()===true && has_post_thumbnail()===true){
-        return get_yes_image($size);
-    }elseif(has_custom_logo()===true){
-        $logo = get_theme_mod('custom_logo');
-        return wp_get_attachment_url($logo);
-    }else{
-        return get_no_image($size);
-    }
-}
-function meta_image(){
-    echo get_meta_image();
-}
-function get_wkwkrnht_eyecatch($size){
-    if(has_post_thumbnail()===true){
-        return get_yes_image($size);
-    }else{
-        return get_no_image($size);
-    }
-}
-function wkwkrnht_eyecatch($size){
-    echo get_wkwkrnht_eyecatch($size);
-}
-
-function get_twitter_acount(){
-    if(get_the_author_meta('twitter')!==''){
-        return get_the_author_meta('twitter');
-    }elseif(get_option('Twitter_URL')!==''){
-        return get_option('Twitter_URL');
-    }else{
-        return null;
-    }
-}
 /*
     original
 1.blogcard by OGP
 2.oEmbed content
-3.content
-    ●ADD alt=""
-    ●linked @hogehoge to Twitter
-    ●ADD rel="noopener"(if it have target="_blank")
-4.description filltered by the_content
 */
 function make_OGPblogcard($url){
-    require_once('inc/OpenGraph.php');
+    require_once(get_parent_theme_file_path('/inc/OpenGraph.php'));
     $ogp           = OpenGraph::fetch($url);
     $url           = $ogp->url;
     $share_url     = urlencode($url);
@@ -195,9 +59,7 @@ function make_OGPblogcard($url){
                 <p class="ogp-blogcard-description">' . $description . '</p>
             </a>
         </blockquote>
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle" tabindex="0" onclick="' . $script . '">
-            <span class="fa fa-2x fa-share-alt"></span>
-        </a>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" tabindex="0" onclick="' . $script . '"></a>
     </div>';
     return $content;
 }
@@ -212,50 +74,6 @@ function custom_oembed_element($html){
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
 
-function sanitize_for_amp($content){
-    $content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div>',$content);
-    $content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',$content);
-    $content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',$content);
-    $content = preg_replace('/<iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe>/i','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',$content);
-    $content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div><script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>',$content);
-    $content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content);
-    $content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async="" charset="UTF-8" src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
-    $content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div>',$content);
-    $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe>',$content);
-    $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div>',$content);
-    $content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
-    $content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)onclick=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)onmouseover=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)onmouseout=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)oncontextmenu=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)target=".*?"(.*?)>/','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)marginwidth=".*?"(.*?)>/i','<$1$2>',$content);
-    $content = preg_replace('/<(.*?)marginheight=".*?"(.*?)>/i','<$1$2>',$content);
-    $content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
-    $content = str_replace('href="javascript:void(0)"','',$content);
-    $content = str_replace('href=javascript:void(0);','',$content);
-    $content = str_replace('src=""',$img,$content);
-    $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
-    $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
-    return $content;
-}
-
-function wkwkrnht_replace($content){
-    $content = str_replace(']]>',']]&gt;',$content);
-    $content = preg_replace_callback('#(<code.*?>)(.*?)(</code>)#imsu',function($match){return $match[1] . esc_html($match[2]) . $match[3];},$content);
-    $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
-    $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
-    $content = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$content);
-    if(is_amp()===true){$content = sanitize_for_amp($content);}
-    return $content;
-}
-add_filter('the_content','wkwkrnht_replace');
-add_filter('comment_text','wkwkrnht_replace');
-
-add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
 /*
     shortcode
 1.customCSS
@@ -564,131 +382,6 @@ add_shortcode('button','make_button');
 add_shortcode('link_button','make_link_button');
 add_shortcode('toc','make_toc');
 /*
-    editor custom
-1.script
-    ●category filter
-    ●regulated excerpt
-    ●NOT to upload without title
-2.ADD TinyMCE Buttons
-3.ADD quicktag
-4.ADD article drived list
-*/
-function add_post_edit_featuer(){ ?>
-<script>
-	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
-    jQuery(function($){var count=100;jQuery('#postexcerpt .hndle span').after('<span style=\"padding-left:1em;color:#888;font-size:1rem;\">現在の文字数： <span id=\"excerpt-count\"></span> / '+ count +'</span>');jQuery('#excerpt-count').text($('#excerpt').val().length);jQuery('#excerpt').keyup(function(){$('#excerpt-count').text($('#excerpt').val().length);if($(this).val().length > count){$(this).val($(this).val().substr(0,count));}});jQuery('#postexcerpt .inside p').html('※ここには <strong>"'+ count +'文字"</strong> 以上は入力できません。').css('color','#888');});
-    jQuery(function($){if('post' == $('#post_type').val() || 'page' == $('#post_type').val()){$("#post").submit(function(e){if('' == $('#title').val()){alert('タイトルを入力してください！');$('.spinner').hide();$('#publish').removeClass('button-primary-disabled');$('#title').focus();return false;}});}});
-    (function(){for(var textareas=document.getElementsByTagName("textarea"),count=textareas.length,i=0;count>i;i++)textareas[i].onkeydown=function(t){if(9===t.keyCode||9===t.which){t.preventDefault();var e=this.selectionStart;this.value=this.value.substring(0,this.selectionStart)+"	"+this.value.substring(this.selectionEnd),this.selectionEnd=e+1}};})();
-</script>
-<?php }
-add_action('admin_head-post-new.php','add_post_edit_featuer');
-add_action('admin_head-post.php','add_post_edit_featuer');
-
-add_filter('tiny_mce_before_init','wkwkrnht_add_mce_settings');
-function wkwkrnht_add_mce_settings($settings){
-    $settings['extended_valid_elements'] .= "iframe[id|class|title|style|align|frameborder|height|longdesc|marginheight|marginwidth|name|scrolling|src|width],script[src|defer|async|id]";
-    $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150% 175% 200% 250% 300%';
-    return $settings;
-}
-add_filter('mce_buttons_2','wkwkrnht_add_mce_buttons');
-function wkwkrnht_add_mce_buttons($buttons){
-    $buttons[] = 'fontsizeselect';
-    $buttons[] = 'fontselect';
-    $buttons[] = 'styleselect';
-    $buttons[] = 'backcolor';
-    $buttons[] = 'newdocument';
-    $buttons[] = 'copy';
-    $buttons[] = 'paste';
-    return $buttons;
-}
-
-function wkwkrnht_add_quicktags(){
-    if(wp_script_is('quicktags')===true){ ?>
-    <script>
-        QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
-        QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
-        QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main offset=]');
-        QTags.addButton('qt-caption','caption','[caption id= class= align= width=]','[/caption]');
-        QTags.addButton('qt-gallery','gallery','[gallery include=',' exclude= orderby=menu_order order=ASC columns=3 size=thumbnail itemtag=figure icontag"" captiontag=figcaption link=file]');
-        QTags.addButton('qt-audio','audio','[audio src=',' loop=off autoplay=off preload=metadata]');
-        QTags.addButton('qt-video','video','[video src=',' poster= loop=off autoplay=off preload=metadata]');
-        QTags.addButton('qt-playlist','playlist','[playlist include=',' exclude= type=audio orderby=menu_order order=ASC style=light tracklist=true tracknumbers=true images=true artists=true]');
-        QTags.addButton('qt-embed','embed','[embed]','[/embed]');
-        QTags.addButton('qt-embedly','embedly','[embedly url=',']');
-		QTags.addButton('qt-hatenablogcard','はてなブログカード','[hatenaBlogcard url=',']');
-        QTags.addButton('qt-ogpblogcard','OGPブログカード','[OGPBlogcard url=',']');
-        QTags.addButton('qt-spotify','spotify','[spotify url=',']');
-        QTags.addButton('qt-mastodon','mastodon','[mastodon url=',']');
-        QTags.addButton('qt-adsense','Googledsense','[adsaense client= slot=',']');
-        QTags.addButton('qt-before_after_box','画像ビフォーアフター','[before_after_box after= before=',']');
-        QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
-        QTags.addButton('qt-box','box','[box color= title=]','[/box]');
-        QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');
-        QTags.addButton('qt-button','button','[button class=blue]','[/button]');
-        QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
-        QTags.addButton('qt-a','a','[link url=]','[/link]');
-        QTags.addButton('qt-abbr','abbr','<abbr title="">','</abbr>');
-		QTags.addButton('qt-q','q','<q>','</q>');
-        QTags.addButton('qt-p','p','<p>','</p>');
-        QTags.addButton('qt-h1','h1','<h1>','</h1>');
-        QTags.addButton('qt-h2','h2','<h2>','</h2>');
-		QTags.addButton('qt-h3','h3','<h3>','</h3>');
-		QTags.addButton('qt-h4','h4','<h4>','</h4>');
-        QTags.addButton('qt-h5','h5','<h5>','</h5>');
-        QTags.addButton('qt-h6','h6','<h6>','</h6>');
-        QTags.addButton('qt-table','table','<table>','</table>');
-        QTags.addButton('qt-thead','thead','      <thead>','      </thead>');
-        QTags.addButton('qt-tbody','tbody','      <tbody>','      </tbody>');
-        QTags.addButton('qt-tfoot','tfoot','      <tfoot>','      </tfoot>');
-        QTags.addButton('qt-tr','tr','         <tr>','         </tr>');
-        QTags.addButton('qt-th','th','           <th>','</th>');
-        QTags.addButton('qt-td','td','           <td>','</td>');
-		QTags.addButton('qt-marker','marker','[marker]','[/marker]');
-		QTags.addButton('qt-information','情報','[info]','[/info]');
-		QTags.addButton('qt-question','疑問','[qa]','[/qa]');
-        QTags.addButton('qt-searchbox','検索風表示','[search-box]','[/search-box]');
-    </script><?php }
-}
-add_action('admin_print_footer_scripts','wkwkrnht_add_quicktags');
-
-function add_posts_columns($columns){
-    $columns['thumbnail'] = 'thumb';
-    $columns['postid']    = 'ID';
-    $columns['count']     = 'word count';
-    return $columns;
-}
-function add_posts_columns_row($column_name,$post_id){
-    if('thumbnail'===$column_name){
-        $thumb = get_the_post_thumbnail($post_id);
-        echo ($thumb) ? '○' : '×';
-    }elseif('postid'===$column_name){
-        echo $post_id;
-    }elseif('count'===$column_name){
-        $count = mb_strlen(strip_tags(get_post_field('post_content',$post_id)),'UTF-8');
-        echo $count;
-    }
-}
-add_filter('manage_posts_columns','add_posts_columns');
-add_action('manage_posts_custom_column','add_posts_columns_row',10,2);
-function custmuize_restrict_manage_posts_exsample(){
-    global $post_type,$tag;
-    if(is_object_in_taxonomy($post_type,'post_tag')){
-        wp_dropdown_categories(array('show_option_all'=>get_taxonomy('post_tag')->labels->all_items,'hide_empty'=>0,'hierarchical'=>1,'show_count'=>0,'orderby'=>'name','selected'=>$tag,'name'=>'tag','taxonomy'=>'post_tag','value_field'=>'slug'));
-    }
-    wp_dropdown_users(array('show_option_all' => 'すべてのユーザー','name' => 'author'));
-}
-add_action('restrict_manage_posts','custmuize_restrict_manage_posts_exsample');
-function custmuize_load_edit_php_exsample(){
-    if(isset($_GET['tag']) && '0'===$_GET['tag']){unset($_GET['tag']);}
-}
-add_action('load-edit.php','custmuize_load_edit_php_exsample');
-function nendebcom_register_bulk_actions_delete($bulk_actions){
-    $bulk_actions['delete'] = 'いきなり削除する';
-    return $bulk_actions;
-}
-add_filter('bulk_actions-edit-post','nendebcom_register_bulk_actions_delete');
-/*
     ADD item to customize
 1.customizer
 2.user profile
@@ -864,17 +557,6 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('footer_txt',array('section'=>'custom_css','settings'=>'footer_txt','label'=>'bodyタグ直前に追加で出力するテキスト','type'=>'textarea'));
 }
 
-function sanitize_checkbox($input){if($input===true){return true;}else{return false;}}
-function sanitize_radio($input,$setting){
-    global $wp_customize;
-    $control = $wp_customize->get_control($setting->id);
-    if(array_key_exists($input,$control->choices)){
-        return $input;
-    }else{
-        return $setting->default;
-    }
-}
-
 
 function my_new_contactmethods($contactmethods){
     $contactmethods['TEL']='TEL';
@@ -943,105 +625,3 @@ function my_new_contactmethods($contactmethods){
 }
 add_filter('user_contactmethods','my_new_contactmethods',10,1);
 remove_filter('pre_user_description','wp_filter_kses');
-
-
-/*
-    TEST code
-1.
-2.
-3.
-*/
-if(is_actived_plugin('wp-unit')===true){
-    class ShortCodeTest extends PHPUnit_Framework_TestCase{
-        function testhatenaembed(){
-            $output = do_shortcode('[hatenablogcard url=https://wkwkrnhtht.wordpress.com]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testembedly(){
-            $output = do_shortcode('[embedly url=https://wkwkrnhtht.wordpress.com]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testOGPembed(){
-            $output = do_shortcode('[OGPblogcard url=https://wkwkrnhtht.wordpress.com]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testtoc(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testspotify(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testoot(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testtwitterlink(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testmarker(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testsimplebox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testnoticebox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testquestionbox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testserachbox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testcolumunbox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testbox(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testlinkbutton(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testlink(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testbeforeafter(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-        function testlinktext(){
-            $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
-            $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
-            $this->assertEquals($output, $expected);
-        }
-    }
-}
