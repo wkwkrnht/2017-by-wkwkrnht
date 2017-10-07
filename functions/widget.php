@@ -351,12 +351,10 @@ class sns_share extends WP_Widget{
 function wkwkrnht_search_form($form){
     $tags     = get_tags();
     $tag_echo = '';
-    foreach($tags as $tag){
-        $tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';
-    }
+    foreach($tags as $tag){$tag_echo .= '<option value="' . esc_html($tag->slug) . '">' . esc_html($tag->name) . '</option>';}
     $form = '
     <aside id="search" class="search-form role="searc﻿h﻿">
-        <form method="get" action="' . esc_url(home_url()) . '">
+        <form method="get" action="' . home_url() . '">
             <input name="s" id="s" type="text" label="キーワード"><br>'
             . wp_dropdown_categories('depth=0&orderb=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
             . '<select name="tag" id="tag" label="タグ">
@@ -367,8 +365,48 @@ function wkwkrnht_search_form($form){
                 検索
             </button>
         </form>
-    </aside>
-    ';
+    </aside>';
     return $form;
 }
 add_filter('get_search_form','wkwkrnht_search_form');
+
+add_filter('widget_meta_poweredby','__return_empty_string');
+add_action('wp_meta','wkwkrnht_meta_widget');
+function wkwkrnht_meta_widget(){ ?>
+    <li>
+        <a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost">
+            <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
+        </a>
+    </li>
+    <?php if(is_singular()===true):
+        $id      = '';
+        $homeurl = '';
+        if(is_ssl()){
+            $homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);
+            }
+        if(have_posts()):while(have_posts()):the_post();$id = get_the_ID();endwhile;endif;?>
+        <li>
+            <?php edit_post_link();?>
+        </li>
+        <li>
+            <a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit">
+                <span class="fa fa-windows fa-2x" aria-hidden="true"><span class="fa fa-pencil" aria-hidden="true"></span></span>
+            </a>
+        </li>
+    <?php endif;
+}
+
+function autoblank($text){
+	$return = str_replace('<a','<a target="_blank" rel="noopener"',$text);
+	return $return;
+}
+add_filter('comment_text','autoblank');
+add_filter('comments_open','custom_comment_tags');
+add_filter('pre_comment_approved','custom_comment_tags');
+function custom_comment_tags($data){
+	global $allowedtags;
+    $allowedtags['style'] = array('class'=>array());
+    $allowedtags['code']  = array('class'=>array());
+    $allowedtags['pre']   = array('class'=>array());
+	return $data;
+}

@@ -334,6 +334,7 @@ span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
 2.tag cloud
 3.recent entries
 4.archive
+5.search
 */
 .widget{
     display:block;

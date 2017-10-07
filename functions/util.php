@@ -3,9 +3,11 @@
     utility
 1.is_subpage
 2.is_actived_plugin
-3.is_user_agent_bot
-4.#xxxxxx turn to rgb(xx,xx,xx) (for CSS)
-5.ADD param of AMP
+3.GET URL accessed now
+4.is_user_agent_bot
+5.#xxxxxx exchange rgb(xx,xx,xx) (for CSS)
+6.color changed by brigtness (for CSS)
+7.ADD param of AMP
 */
 function is_subpage(){
     global $post;
@@ -30,6 +32,10 @@ function is_actived_plugin($plugin){
     }else{
         return false;
     }
+}
+
+function get_meta_url(){
+    return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 
 function is_user_agent_bot(){

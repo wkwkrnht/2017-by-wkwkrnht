@@ -1,121 +1,10 @@
 <?php
 require(get_parent_theme_file_path('/functions/util.php'));
 require(get_parent_theme_file_path('/functions/setup.php'));
+require(get_parent_theme_file_path('/functions/general.php'));
+require(get_parent_theme_file_path('/functions/widget.php'));
+require(get_parent_theme_file_path('/functions/nav.php'));
 
-
-
-
-
-add_filter('widget_meta_poweredby','__return_empty_string');
-add_action('wp_meta','wkwkrnht_meta_widget');
-function wkwkrnht_meta_widget(){ ?>
-    <li>
-        <a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost">
-            <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
-        </a>
-    </li>
-    <?php if(is_singular()===true):
-        $id      = '';
-        $homeurl = '';
-        if(is_ssl()){
-            $homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);
-            }
-        if(have_posts()):while(have_posts()):the_post();$id = get_the_ID();endwhile;endif;?>
-        <li>
-            <?php edit_post_link();?>
-        </li>
-        <li>
-            <a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit">
-                <span class="fa fa-windows fa-2x" aria-hidden="true"><span class="fa fa-pencil" aria-hidden="true"></span></span>
-            </a>
-        </li>
-    <?php endif;
-}
-
-function autoblank($text){
-	$return = str_replace('<a','<a target="_blank" rel="noopener"',$text);
-	return $return;
-}
-add_filter('comment_text','autoblank');
-add_filter('comments_open','custom_comment_tags');
-add_filter('pre_comment_approved','custom_comment_tags');
-function custom_comment_tags($data){
-	global $allowedtags;
-    $allowedtags['style'] = array('class'=>array());
-    $allowedtags['code']  = array('class'=>array());
-    $allowedtags['pre']   = array('class'=>array());
-	return $data;
-}
-
-
-add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
-remove_action('wp_head','print_emoji_detection_script',7);
-remove_action('wp_print_styles','print_emoji_styles');
-function vc_remove_wp_ver_css_js($src){
-    if(strpos($src,'ver=')){
-        $src = remove_query_arg('ver',$src);
-    }
-    return $src;
-}
-add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
-add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
-function replace_link_stylesheet_tag($tag){
-    return preg_replace(array("/'/",'/(id|type|media)=".+?" */','/ \/>/'),array('"','','>'),$tag);
-}
-add_filter('style_loader_tag','replace_link_stylesheet_tag');
-function replace_script_tag($tag){
-	return preg_replace(array("/'/",'/ type=\"text\/javascript\"/'),array('"',''),$tag);
-}
-add_filter('script_loader_tag','replace_script_tag');
-
-
-function nav_menu_with_description($output){
-	return preg_replace('/(<li>)/','<li itemprop="name" class="menu-item">',$output);
-}
-add_filter('walker_nav_menu_start_el','nav_menu_with_description',10,4);
-function exted_meta_for_url($atts,$item,$args){
-    $atts['itemprop'] = 'url' ;
-    $atts['tabindex'] = '0' ;
-    $atts['data-title'] = esc_attr($item->title) ;
-	return $atts;
-}
-add_filter('nav_menu_link_attributes','exted_meta_for_url',10,5);
-/*function my_nav_menu_item_title($title,$item,$args,$depth){
-    if($args->theme_location==='social'){
-        $item = '';
-    }
-    return $item;
-}
-add_filter('nav_menu_item_title','social_menu_item_title',10,4);*/
-
-
-add_filter('body_class','add_body_class');
-function add_body_class($classes){
-    $classes = preg_grep('/\Aauthor\-.+\z/i',$classes,PREG_GREP_INVERT);
-    if(is_singular()===true){
-        global $post;
-        foreach((get_the_category($post->ID)) as $category){$classes[] = 'categoryid-' . $category->cat_ID;}
-    }
-    return $classes;
-}
-function themeslug_comment_class($classes){
-	return preg_grep('/\comment\-author\-.+\z/i',$classes,PREG_GREP_INVERT);
-}
-add_action('comment_class','themeslug_comment_class');
-
-add_action('do_feed_smartnews','do_feed_smartnews');
-function do_feed_smartnews(){
-    require(get_template_directory() . '/inc/smartnews.php');
-}
-
-add_filter('post_limits','amp_limits');
-function amp_limits($limits){
-    global $gloss_category;
-    if(is_amp()===true){
-        return'';
-    }
-    return $limits;
-}
 /*
     SEO
 1.GET URL access now
@@ -134,10 +23,6 @@ function amp_limits($limits){
     ●wkwkrnht_eyecatch
 7.check account Twitter
 */
-function get_meta_url(){
-    return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
-
 function get_mtime($format){
     $mtime = get_the_modified_time('Ymd');
     $ptime = get_the_time('Ymd');
