@@ -1,3 +1,4 @@
+<?php $theme_uri = get_template_directory_uri();?>
 @font-face{
     font-family:"FontAwesome";
     src:<?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.eot)';?>;
