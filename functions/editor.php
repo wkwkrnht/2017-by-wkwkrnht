@@ -8,6 +8,7 @@
 2.ADD TinyMCE Buttons
 3.ADD quicktag
 4.ADD article drived list
+5.ADD editor's data
 */
 function add_post_edit_featuer(){ ?>
 <script>
@@ -124,3 +125,71 @@ function nendebcom_register_bulk_actions_delete($bulk_actions){
     return $bulk_actions;
 }
 add_filter('bulk_actions-edit-post','nendebcom_register_bulk_actions_delete');
+
+function my_new_contactmethods($contactmethods){
+    $contactmethods['TEL']='TEL';
+    $contactmethods['FAX']='FAX';
+    $contactmethods['Addres']='住所';
+    $contactmethods['Graveter']='Graveter';
+    $contactmethods['LINE']='LINE';
+    $contactmethods['YO']='YO!';
+    $contactmethods['twitter']='Twitter';
+    $contactmethods['facebook']='Facebook';
+    $contactmethods['Linkedin']='Linkedin';
+    $contactmethods['Googleplus']='Google+';
+    $contactmethods['Github']='Github';
+    $contactmethods['Bitbucket']='Bitbucket';
+    $contactmethods['Codepen']='Codepen';
+    $contactmethods['JSbuddle']='JSbuddle';
+    $contactmethods['Quita']='Quita';
+    $contactmethods['xda']='xda';
+    $contactmethods['hatenablog']='はてなブログ';
+    $contactmethods['hatenadiary']='はてなダイアリー';
+    $contactmethods['hatebu']='はてなブックマーク';
+    $contactmethods['Pocket']='Pocket';
+    $contactmethods['ameba']='アメーバ';
+    $contactmethods['fc2']='fc2';
+    $contactmethods['mixi']='mixi';
+    $contactmethods['Instagram']='Instagram';
+    $contactmethods['Pinterest']='Pinterest';
+    $contactmethods['Flickr']='Flickr';
+    $contactmethods['FourSquare']='FourSquare';
+    $contactmethods['Swarm']='Swarm';
+    $contactmethods['Steam']='Steam';
+    $contactmethods['XboxLive']='XboxLive';
+    $contactmethods['PSN']='PSN';
+    $contactmethods['NINTENDOaccount']='ニンテンドーアカウント';
+    $contactmethods['NINTENDONetworkID']='ニンテンドーネットワークID';
+    $contactmethods['friendcode']='フレンドコード';
+    $contactmethods['UPlay']='UPlay';
+    $contactmethods['EAOrigin']='EAOrigin';
+    $contactmethods['SQUAREENIXMembers']='SQUAREENIXMembers';
+    $contactmethods['BANDAINAMCOID']='BANDAINAMCOID';
+    $contactmethods['SEGAID']='SEGAID';
+    $contactmethods['vine']='vine';
+    $contactmethods['vimeo']='vimeo';
+    $contactmethods['YouTube']='YouTube';
+    $contactmethods['USTREAM']='USTREAM';
+    $contactmethods['Twitch']='Twitch';
+    $contactmethods['niconico']='niconico';
+    $contactmethods['Skype']='Skype';
+    $contactmethods['twitcasting']='ツイキャス';
+    $contactmethods['MixCannel']='MixChannel';
+    $contactmethods['Slideshare']='Slideshare';
+    $contactmethods['Medium']='Medium';
+    $contactmethods['note']='note';
+    $contactmethods['Pxiv']='Pxiv';
+    $contactmethods['Tumblr']='Tumblr';
+    $contactmethods['Blogger']='Blogger';
+    $contactmethods['livedoor']='livedoor';
+    $contactmethods['wordpress.com']='wordpress.com';
+    $contactmethods['wordpress.org']='wordpress.org';
+    $contactmethods['Amazonlist']='Amazonの欲しいものリスト';
+    $contactmethods['Yahooaction']='Yahoo!オークション';
+    $contactmethods['Rakuma']='ラクマ';
+    $contactmethods['Merukari']='メルカリ';
+    $contactmethods['Bitcoin']='Bitcoin';
+    return $contactmethods;
+}
+add_filter('user_contactmethods','my_new_contactmethods',10,1);
+remove_filter('pre_user_description','wp_filter_kses');

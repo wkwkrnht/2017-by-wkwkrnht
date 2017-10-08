@@ -11,9 +11,11 @@
     ●ADD alt=""
     ●linked @hogehoge to Twitter
     ●ADD rel="noopener"(if it have target="_blank")
-8.description filltered by the_content
-9.ADD feed for smartnews
-10.SETTING for amp list
+8.CUSTOM oEmbed
+    ●Twitter
+9.description filltered by the_content
+10.ADD feed for smartnews
+11.SETTING for amp list
 */
 add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 
@@ -63,6 +65,16 @@ function wkwkrnht_replace($content){
 }
 add_filter('the_content','wkwkrnht_replace');
 add_filter('comment_text','wkwkrnht_replace');
+
+function custom_oembed_element($html){
+    if(strpos($html,'twitter.com')!==false || strpos($html,'mobile.twitter.com')!==false){
+        $html = preg_replace('/ class="(.*?)\d+"/','class="$1" align="center"',$html);
+        return $html;
+    }
+    return $code;
+}
+add_filter('embed_handler_html','custom_oembed_element');
+add_filter('embed_oembed_html','custom_oembed_element');
 
 add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
 
