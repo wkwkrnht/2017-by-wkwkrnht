@@ -390,7 +390,8 @@
         width:50%;
         overflow: hidden;
     }
-    .handle{ /* Thin line seperator */
+    .handle{
+        /* Thin line seperator */
         position:absolute;
         left:50%;
         top:0;
@@ -400,7 +401,8 @@
         background:rgba(0,0,0,.5);
         cursor: ew-resize;
     }
-    .handle::after {  /* Big orange knob  */
+    .handle::after{
+        /* Big orange knob  */
         position: absolute;
         top: 50%;
         width: 64px;
@@ -421,7 +423,7 @@
           inset 0 2px 0 rgba(255,255,255,.5),
           inset 0 60px 50px -30px #ffd466; /* lighten(@orange, 20%)*/
     }
-    .draggable::after {
+    .draggable::after{
         width: 48px;
         height: 48px;
         margin: -24px 0 0 -24px;

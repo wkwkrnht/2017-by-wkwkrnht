@@ -1,3 +1,10 @@
+<?php if(is_active_widget(false,false,'author-bio') || is_author()===true):?>
+    @media screen and (min-width:992px){
+        .bio-img{
+            height:30vmin;
+        }
+	}
+<?php endif;?>
 @media screen and (max-width:720px;) {
     .card(
         width:90%;
@@ -23,6 +30,11 @@
     .information,.question{
         width:96%;
     }
+    <?php if(is_active_widget(false,false,'author-bio') || is_author()===true):?>
+        .bio-img{
+            height:45vmin;
+        }
+    <?php endif;?>
     <?php if(is_singular()===true):?>
         .article-meta > div{
             display:none;

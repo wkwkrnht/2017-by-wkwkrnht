@@ -161,19 +161,9 @@
         vertical-align:middle;
         width:3em;
     }
-    @media screen and (min-width:992px){
-        .bio-img{
-            height:30vmin;
-        }
-	}
-    @media screen and (max-width:992px){
-        .bio-img{
-            height:45vmin;
-        }
-    }
 <?php endif;?>
 
-<?php if(is_active_widget(false,false,'wkwkrnhht_manth_archive')):?>
+<?php if(is_active_widget(false,false,'wkwkrnht_manth_archive')):?>
     .widget_wkwkrnht_manth_archive > ul{
         list-style:none;
     }
