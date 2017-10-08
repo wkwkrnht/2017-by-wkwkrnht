@@ -395,31 +395,9 @@
 
 
 (function() {
-    tinymce.create('tinymce.plugins.marker_shortcode_button', {
-        init: function( ed, url ) {
-            ed.addButton('marker', {
-                title: 'marker',
-                icon: 'code',
-                cmd: 'marker_cmd'
-            });
-            ed.addCommand('marker_cmd', function() {
-                var selected_text = ed.selection.getContent(),
-                return_text = '[marker color= ]' + selected_text + '[/marker]';
-                ed.execCommand('mceInsertContent', 0, return_text);
-            });
-        },
-        createControl : function( n, cm ) {
-            return null;
-        },
-    });
-    tinymce.PluginManager.add('wkwkrnht_shortcode_button_plugin', tinymce.plugins.marker_shortcode_button );
-})();
-
-
-(function() {
     tinymce.create('tinymce.plugins.link_button_shortcode_button', {
         init: function( ed, url ) {
-            ed.addButton('link_button', {
+            ed.addButton('_link', {
                 title: 'link_button',
                 icon: 'code',
                 cmd: 'link_button_cmd'

@@ -61,7 +61,7 @@ function wkwkrnht_add_mce_buttons($buttons){
 	$buttons[] = 'search';
     $buttons[] = 'simple';
 	$buttons[] = 'box';
-    $buttons[] = 'link';
+    $buttons[] = '_link';
 	$buttons[] = 'marker';
     $buttons[] = 'button';
 	$buttons[] = 'link_button';

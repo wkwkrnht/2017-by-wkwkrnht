@@ -118,12 +118,14 @@ class ThemeUpdateChecker {
 	public function getInstalledVersion(){
 		if ( function_exists('wp_get_theme') ) {
 			$theme = wp_get_theme($this->theme);
-			return $theme->get('Version');
+			$theme = $theme->get('Version');
+			return $theme;
 		} else {
 			/** @noinspection PhpDeprecationInspection get_themes() used for compatibility with WP 3.3 and below. */
 			foreach(get_themes() as $theme){
 				if ( $theme['Stylesheet'] === $this->theme ){
 					return $theme['Version'];
+					break;
 				}
 			}
 		}

@@ -41,6 +41,7 @@
                 };
                 if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";
+                    <?php $night_mode = true;?>
                 }
             })();
             (function(){
@@ -166,8 +167,10 @@
         </script>
         <?php
         $txt = get_option('footer_txt');
-        if(has_class('night-mode')===true){
-            include_once(get_parent_theme_file_path('/css/night-mode.php'));
+        if($night_mode===true){
+            echo'<style>';
+                include_once(get_parent_theme_file_path('/css/night-mode.php'));
+            echo'</style>';
         }
         if($txt!==false){
             echo $txt;
