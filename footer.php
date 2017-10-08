@@ -1,5 +1,5 @@
         </main>
-        <aside id="menu-wrap" class="none">
+        <aside id="menu-wrap" class="none" aria-hidden="true">
             <?php if(has_nav_menu('social')):?>
                 <nav class="social-nav">
                     <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
@@ -32,6 +32,12 @@
                 document.getElementById("menu-toggle").onclick = function(){
                     document.getElementById("menu-wrap").classList.toggle("none");
                     document.getElementById("menu-wrap").classList.toggle("block");
+                    var attr = document.getElementById("menu-wrap").attributes;
+                    if (attr['aria-hidden'].value == "true") {
+                        document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
+                    } else {
+                        document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
+                    }
                 };
                 if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";

@@ -57,17 +57,17 @@ span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
 }
 .page-nation a,.page-nation .current,.page-nation li .dots{
     border:solid .5vmin <?php echo get_option('page_nation_border','#03a9f4');?>;
+    font-size:1.3rem;
     font-weight:bold;
     margin:0 .5vmin;
     padding:2vmin;
 }
-.page-nation a,.page-nation li .dots{
+.page-nation a{
     background-color:<?php echo get_option('page_nation_a_background','#fff');?>;
     color:<?php echo get_option('page_nation_a_color','#03a9f4');?>;
-    font-size:1.3rem;
     text-decoration:none;
 }
-.page-nation a:hover,.page-nation .current{
+.page-nation a:hover,.page-nation .current,.page-nation li .dots{
     background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;
     color:<?php echo get_option('page_nation_hover_color','#fff');?>;
 }
