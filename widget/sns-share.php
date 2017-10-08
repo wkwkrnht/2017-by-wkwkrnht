@@ -114,6 +114,6 @@
         "url" : "http://www.instapaper.com/text?u=<?php echo $url_now;?>",
         "name" : "Instapaper",
         "url" : "https://www.tumblr.com/widgets/share/tool?canonicalUrl=<?php echo $url_now;?>",
--        "name" : "tumblr"
+        "name" : "tumblr"
     }
 </script>

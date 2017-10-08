@@ -2,6 +2,16 @@
     "name": "wkwkrnht/2017-by-wkwkrnht",
     "description": "The theme for Wordpress which has 1-colum and anyone who access the site with this can open menu on anywhere",
     "type": "wordpress-theme",
+    "support": {
+        "issues": "https://github.com/torounit/composer-wp-dev-kit/issues",
+        "source": "https://github.com/torounit/composer-wp-dev-kit"
+    },
+    "license": "GPL-3.0+",
+    "authors": [
+        {
+            "name": "wkwkrnht"
+        }
+    ],
     "repositories":[
         {
             "type":"composer",
@@ -9,12 +19,8 @@
         }
     ],
     "require": {
-        "composer/installers": "1.0.*",
-        "johnpbloch/wordpress": "*",
-        "aws/aws-sdk-php":"*",
-        "wpackagist-plugin/akismet":"dev-trunk",
-        "wpackagist-plugin/captcha":">=3.9",
-        "wpackagist-theme/hueman":"*"
+        "composer/installers": "*",
+        "torounit/composer-wp-dev-kit": "*"
     },
     "extra": {
         "installer-paths": {

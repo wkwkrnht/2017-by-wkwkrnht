@@ -10,6 +10,11 @@
 4.ADD article drived list
 5.ADD editor's data
 */
+add_filter('mce_external_plugins','add_add_shortcode_button_plugin');
+function add_shortcode_button_plugin($plugin_array){
+	$plugin_array['wkwkrnht_shortcode_button_plugin'] = get_parent_theme_file_uri('/inc/editor-button.js');
+	return $plugin_array;
+}
 function add_post_edit_featuer(){ ?>
 <script>
 	jQuery(function($){function catFilter(header,list){var form = $('<form>').attr({'class':'filterform','action':'#'}).css({'position':'absolute','top':'3vmin'}),input=$('<input>').attr({'class':'filterinput','type':'text','placeholder':'カテゴリー検索'});$(form).append(input).appendTo(header);$(header).css({'padding-top':'3.5vmin'});$(input).change(function(){var filter=$(this).val();if(filter){$(list).find('label:not(:contains('+filter+'))').parent().hide();$(list).find('label:contains('+filter+')').parent().show();}else{$(list).find('li').show();}return false;}).keyup(function(){$(this).change();});}$(function(){catFilter($('#category-all'),$('#categorychecklist'));});});
@@ -27,8 +32,8 @@ function wkwkrnht_add_mce_settings($settings){
     $settings['fontsize_formats'] = '10px 12px 14px 16px 18px 20px 22px 24px 26px 28px 30px 32px 34px 36px 38px 40px 42px 44px 46px 48px 50px 0.5rem 0.6rem 0.8rem 1rem 1.1rem 1.2rem 1.3rem 1.4rem 1.5rem 1.6rem 1.7rem 1.8rem 1.9rem 2rem 2.1rem 2.2rem 2.3rem 2.4rem 2.5rem 0.5em 0.6em 0.7em 0.8em 0.9em 1em 1.1em 1.2em 1.3em 1.4em 1.5em 1.6em 1.7em 1.8em 1.9em 2em 2.1em 2.2em 2.3em 2.4em 2.5em 50% 55% 60% 65% 70% 75% 80% 85% 90% 95% 100% 105% 110% 115% 120% 125% 130% 135% 140% 145% 150% 175% 200% 250% 300%';
     return $settings;
 }
-add_filter('mce_buttons_2','wkwkrnht_add_mce_buttons');
-function wkwkrnht_add_mce_buttons($buttons){
+add_filter('mce_buttons_2','wkwkrnht_revive_mce_buttons');
+function wkwkrnht_revive_mce_buttons($buttons){
     $buttons[] = 'fontsizeselect';
     $buttons[] = 'fontselect';
     $buttons[] = 'styleselect';
@@ -38,6 +43,31 @@ function wkwkrnht_add_mce_buttons($buttons){
     $buttons[] = 'paste';
     return $buttons;
 }
+add_filter('mce_buttons_3','wkwkrnht_add_mce_buttons');
+function wkwkrnht_add_mce_buttons($buttons){
+    $buttons[] = 'css';
+    $buttons[] = 'html';
+    $buttons[] = 'embedly';
+    $buttons[] = 'hatena';
+    $buttons[] = 'OGP';
+    $buttons[] = 'spotify';
+    $buttons[] = 'mastodon';
+	$buttons[] = 'nav';
+    $buttons[] = 'adsense';
+	$buttons[] = 'before_after';
+    $buttons[] = 'columun';
+	$buttons[] = 'info';
+    $buttons[] = 'qa';
+	$buttons[] = 'search';
+    $buttons[] = 'simple';
+	$buttons[] = 'box';
+    $buttons[] = 'link';
+	$buttons[] = 'marker';
+    $buttons[] = 'button';
+	$buttons[] = 'link_button';
+    $buttons[] = 'toc';
+    return $buttons;
+}
 
 function wkwkrnht_add_quicktags(){
     if(wp_script_is('quicktags')===true){ ?>
@@ -45,7 +75,7 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-customcss','カスタムCSS','[customcss display= style=',']');
         QTags.addButton('qt-htmlencode','HTMLエンコード','[html_encode]','[/html_encode]');
         QTags.addButton('qt-nav','カスタムメニュー','[nav id=',']');
-        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main offset=]');
+        QTags.addButton('qt-toc','目次','[toc id= class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main]');
         QTags.addButton('qt-caption','caption','[caption id= class= align= width=]','[/caption]');
         QTags.addButton('qt-gallery','gallery','[gallery include=',' exclude= orderby=menu_order order=ASC columns=3 size=thumbnail itemtag=figure icontag"" captiontag=figcaption link=file]');
         QTags.addButton('qt-audio','audio','[audio src=',' loop=off autoplay=off preload=metadata]');
