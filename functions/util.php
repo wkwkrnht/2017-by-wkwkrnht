@@ -7,12 +7,13 @@
 4.sanitize_radio
 5.#xxxxxx exchange rgb(xx,xx,xx) (for CSS)
 6.color changed by brigtness (for CSS)
-7.ADD param of AMP
+7.ADD param of "is_amp"
 8.is_subpage
 9.is_actived_plugin
 10.get_mtime
 11.get_first_post_year
 12.sanitize_for_amp
+13.LOAD style
 */
 function get_meta_url(){
     return (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
@@ -165,4 +166,44 @@ function sanitize_for_amp($content){
     $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
     $content = preg_replace_callback('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is',function ($m){return'<amp-facebook width=486 height=657 layout="responsive" data-href="' . urldecode($m[1]) . '"></amp-facebook><script async custom-element="amp-facebook" src="https://cdn.ampproject.org/v0/amp-facebook-0.1.js"></script>';},$content);
     return $content;
+}
+
+function wkwkrnht_load_style(){
+    $root_color = get_option('root_color','#333');
+    include_once(get_parent_theme_file_path('/css/fontawesome.php'));
+    include_once(get_parent_theme_file_path('/css/initial.php'));
+    include_once(get_parent_theme_file_path('/css/nav.php'));
+    include_once(get_parent_theme_file_path('/css/widget.php'));
+    include_once(get_parent_theme_file_path('/css/menu.php'));
+    include_once(get_parent_theme_file_path('/css/card.php'));
+    if(is_singular()===true){
+        $id      = url_to_postid(get_meta_url());
+        $post    = get_post($id);
+        $content = $post->post_content;
+        global $shortcode_tags;
+        foreach($shortcode_tags as $code_name => $function){
+            $has_short_code = has_shortcode($content,$code_name);
+            if($has_short_code===true || has_class('ba-slider')===true){
+                include_once(get_parent_theme_file_path('/css/short-code.php'));
+                break;
+            }
+        }
+        include_once(get_parent_theme_file_path('/css/style-singular.php'));
+    }
+    include_once(get_parent_theme_file_path('/css/mediaqueri.php'));
+}
+
+function wkwkrnht_load_analytics(){
+    $google_ana = get_option('Google_Analytics');
+    if($google_ana!==false){
+        if(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
+            if(is_amp()===true){
+                //amp
+            }else{
+                echo'
+                <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga("create","' . $google_ana . '","auto");ga("send","pageview");</script>
+                <script async="" src="//www.google-analytics.com/analytics.js"></script>';
+            }
+    	}
+    }
 }

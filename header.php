@@ -3,48 +3,26 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
 	<?php
-	$theme_dir = get_template_directory();
 	$theme_uri = get_template_directory_uri();
-	include_once($theme_dir . '/inc/meta-info.php');?>
+	include_once(get_template_directory() . '/inc/meta-info.php');?>
 	<link rel="preload"  as="font" type="application/vnd.ms-fontobject" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.eot" crossorigin>
 	<link rel="preload"  as="font" type="font/woff2" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload"  as="font" type="font/woff" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
 	<link rel="preload"  as="font" type="application/x-font-ttf" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
 	<style>
-	    <?php
-	    $root_color = get_option('root_color','#333');
-	    include_once($theme_dir . '/css/fontawesome.php');
-	    include_once($theme_dir . '/css/initial.php');
-		if(is_amp()===false){
-			include_once($theme_dir . '/css/nav.php');
-		}
-		include_once($theme_dir . '/css/widget.php');
-	    include_once($theme_dir . '/css/menu.php');
-	    include_once($theme_dir . '/css/card.php');
-	    if(is_singular()===true){
-			$id      = url_to_postid($meta_url);
-			$post    = get_post($id);
-			$content = $post->post_content;
-			global $shortcode_tags;
-			foreach($shortcode_tags as $code_name => $function){
-				$has_short_code = has_shortcode($content,$code_name);
-				if($has_short_code===true || has_class('ba-slider')===true){
-					include_once($theme_dir . '/css/short-code.php');
-					break;
-				}
-			}
-	        include_once($theme_dir . '/css/style-singular.php');
-	    }
-	    include_once($theme_dir . '/css/night-mode.php');
-	    include_once($theme_dir . '/css/mediaqueri.php');?>
+		<?php wkwkrnht_load_style();?>
 	</style>
 	<?php
 	$txt = get_option('header_txt');
+	wkwkrnht_load_analytics()
 	wp_head();
-	if($txt!==false){echo $txt;}?>
+	if($txt!==false){
+		echo $txt;
+	}?>
 </head>
 <body <?php body_class();?>>
-	<?php if(is_author()===true):
+	<?php
+	if(is_author()===true):
 		include_once($theme_dir . '/widget/author-bio.php');
 	elseif(is_singular()===false):?>
 		<header itemscope itemtype="http://schema.org/WPHeader">

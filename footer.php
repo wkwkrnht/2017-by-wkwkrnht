@@ -158,6 +158,13 @@
                 setCookie(key,n);
             })();
         </script>
-        <?php $txt=get_option('footer_txt');if($txt!==false){echo $txt;}?>
+        <?php
+        $txt = get_option('footer_txt');
+        if(has_class('night-mode')===true){
+            include_once(get_parent_theme_file_path('/css/night-mode.php'));
+        }
+        if($txt!==false){
+            echo $txt;
+        }?>
     </body>
 </html>
