@@ -14,7 +14,7 @@
 	</style>
 	<?php
 	$txt = get_option('header_txt');
-	wkwkrnht_load_analytics()
+	wkwkrnht_load_analytics();
 	wp_head();
 	if($txt!==false){
 		echo $txt;
