@@ -309,7 +309,6 @@
 		height:calc(30vmax / 10 * 4);
         text-align:center;
 		vertical-align:middle;
-		width:30vmax;
 	}
 	li.widget.widget_related_posts_img{
 		display:flex;
