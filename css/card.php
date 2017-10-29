@@ -1,11 +1,8 @@
 .card-list{
-    -webkit-align-content:space-around;
     align-content:space-around;
     align-items:baseline;
     background-color:<?php echo get_option('card_list_background','#fff');?>;
-    display:-webkit-flex;
     display:flex;
-    -webkit-flex-flow:row wrap;
     flex-flow:row wrap;
     justify-content:space-evenly;
 }

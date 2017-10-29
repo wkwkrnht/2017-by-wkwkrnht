@@ -270,9 +270,10 @@
 
 <?php if(is_active_widget(false,false,'related_posts_img')):?>
     .widget_related_posts_img{
-		align-items:center;
+        align-content:space-around;
+		align-items:baseline;
 		display:flex;
-		flex-wrap:nowrap;
+        flex-flow:row nowrap;
 		height:calc(30vmax + 2vh * 2);
 		justify-content:space-evenly;
 		margin:6vh 0;
