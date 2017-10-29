@@ -31,8 +31,6 @@
 }
 
 .card-img,.card-meta{
-    bottom:0;
-    position:absolute;
     width:29vmax;
 }
 .card-img,.card-img:hover{
@@ -46,7 +44,9 @@
 }
 .card-meta{
     background-color:rgba(0,0,0,.5);
+    bottom:0;
     height:calc(29vmax / 10 * 4);
+    position:absolute;
 }
 .card-title{
     overflow:hidden;
