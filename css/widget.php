@@ -293,7 +293,6 @@
 		height:30vmax;
 		margin:2vh 4vh;
 		position:relative;
-		text-decoration:none;
 		width:30vmax;
 	}
 	.widget_related_posts_img .related-wrapper:visited{
@@ -305,7 +304,7 @@
 		width:30vmax;
 	}
 	.widget_related_posts_img .related-title{
-		background-color:rgba(0,0,0,.4);
+		background-color:rgba(0,0,0,.5);
 		bottom:0;
 		font-size:1.8rem;
 		height:calc(30vmax / 10 * 4);
