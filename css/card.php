@@ -49,7 +49,7 @@
 .card-meta{
     background-color:rgba(0,0,0,.5);
     height:calc(29vmax / 10 * 4);
-    width:30vmax;
+    width:29vmax;
 }
 .card-meta > h2{
     overflow:hidden;
