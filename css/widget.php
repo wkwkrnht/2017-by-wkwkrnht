@@ -287,7 +287,7 @@
 		box-shadow:0 0 2vmin rgba(0,0,0,.2);
 		display:block;
 		height:30vmax;
-		margin:2vh 4vh;
+		margin:2vh;
 		position:relative;
 		width:30vmax;
 	}
@@ -307,6 +307,7 @@
         color:#fff;
 		font-size:1.8rem;
 		height:calc(30vmax / 10 * 4);
+        margin:0;
         text-align:center;
 		vertical-align:middle;
 	}

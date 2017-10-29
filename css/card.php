@@ -33,20 +33,20 @@
 .card-img,.card-meta{
     bottom:0;
     position:absolute;
+    width:29vmax;
+}
+.card-img,.card-img:hover{
+    transition-duration:.3s;
 }
 .card-img{
     height:29vmax;
-    transition-duration:.3s;
-    width:29vmax;
 }
 .card-img:hover{
     transform:scale(1.1);
-	transition-duration:.3s;
 }
 .card-meta{
     background-color:rgba(0,0,0,.5);
     height:calc(29vmax / 10 * 4);
-    width:29vmax;
 }
 .card-title{
     overflow:hidden;
