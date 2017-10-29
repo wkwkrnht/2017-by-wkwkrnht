@@ -275,7 +275,7 @@
 		display:flex;
         flex-flow:row nowrap;
 		height:calc(30vmax + 2vh * 2);
-		justify-content:space-evenly;
+		justify-content:space-between;
 		margin:6vh 0;
 		overflow-x:auto;
 		overflow-y:hidden;
