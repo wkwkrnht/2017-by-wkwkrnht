@@ -285,6 +285,7 @@
 		background-color:#fff;
 		box-shadow:0 0 2vmin rgba(0,0,0,.2);
 		display:block;
+        overflow:hidden;
 		position:relative;
 	}
     .widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
