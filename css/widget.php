@@ -282,13 +282,9 @@
 		-webkit-overflow-scrolling:touch;
 		width:100%;
 	}
-	.widget_related_posts_img > *{
-		-webkit-transform:translateZ(0px);
-	}
 	.widget_related_posts_img .related-wrapper{
 		background-color:#fff;
 		box-shadow:0 0 2vmin rgba(0,0,0,.2);
-		color:#fff;
 		display:block;
 		height:30vmax;
 		margin:2vh 4vh;
@@ -298,17 +294,19 @@
 	.widget_related_posts_img .related-wrapper:visited{
 		color:#fff;
 	}
+    .widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
+        bottom:0;
+        position:absolute;
+        width:30vmax;
+    }
 	.widget_related_posts_img .related-img{
-		color:#333;
 		height:30vmax;
-		width:30vmax;
 	}
 	.widget_related_posts_img .related-title{
 		background-color:rgba(0,0,0,.5);
-		bottom:0;
+        color:#fff;
 		font-size:1.8rem;
 		height:calc(30vmax / 10 * 4);
-		position:absolute;
         text-align:center;
 		vertical-align:middle;
 		width:30vmax;
