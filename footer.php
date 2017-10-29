@@ -1,49 +1,60 @@
         </main>
-        <aside id="menu-wrap" class="none" aria-hidden="true">
-            <?php if(has_nav_menu('social')):?>
-                <nav class="social-nav">
-                    <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
-                </nav>
-            <?php endif;?>
-            <?php if(has_nav_menu('main')):?>
-                <nav class="main-nav">
-                    <?php wp_nav_menu(array('theme_location'=>'main','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
-                </nav>
-            <?php endif;?>
-            <?php if(is_active_sidebar('floatmenu')):?>
-                <ul class="widget-area">
-                    <?php dynamic_sidebar('floatmenu');?>
-                </ul>
-            <?php endif;?>
-        </aside>
-        <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php
+        $social_menu = has_nav_menu('social');
+        $main_nav    = has_nav_menu('main');
+        $main_menu   = is_active_sidebar('floatmenu');
+        $key         = get_option('cookie_key','2017-by-wkwkrnht');
+        $code_highlight = has_class('highlight-js');
+        if($social_menu||$main_nav||$main_menu):?>
+            <aside id="menu-wrap" class="none" aria-hidden="true">
+                <?php if($social_menu):?>
+                    <nav class="social-nav">
+                        <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
+                    </nav>
+                <?php endif;?>
+                <?php if($main_nav):?>
+                    <nav class="main-nav">
+                        <?php wp_nav_menu(array('theme_location'=>'main','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
+                    </nav>
+                <?php endif;?>
+                <?php if($main_menu):?>
+                    <ul class="widget-area">
+                        <?php dynamic_sidebar('floatmenu');?>
+                    </ul>
+                <?php endif;?>
+            </aside>
+            <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
+        <?php
+        endif;
         wp_footer();
-        $key = get_option('cookie_key','2017-by-wkwkrnht');
-        if(has_class('highlight-js')===true):?>
+        if($code_highlight===true):?>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
             <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
         <?php endif;
         if(get_post_format()==='link'):?>
-            <script async="" charset="UTF-8" src="//cdn.embedly.com/widgets/platform.js"></script>
+            <script async="" src="//cdn.embedly.com/widgets/platform.js"></script>
         <?php endif;?>
         <script>
             (function(){
-                document.getElementById("menu-toggle").onclick = function(){
-                    document.getElementById("menu-wrap").classList.toggle("none");
-                    document.getElementById("menu-wrap").classList.toggle("block");
-                    var attr = document.getElementById("menu-wrap").attributes;
-                    if (attr['aria-hidden'].value == "true") {
-                        document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
-                    } else {
-                        document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
-                    }
-                };
                 if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
                     document.body.className += " night-mode";
                     <?php $night_mode = true;?>
                 }
             })();
+            <?php if($social_menu||$main_nav||$main_menu):?>
+                (function(){
+                    document.getElementById("menu-toggle").onclick = function(){
+                        document.getElementById("menu-wrap").classList.toggle("none");
+                        document.getElementById("menu-wrap").classList.toggle("block");
+                        var attr = document.getElementById("menu-wrap").attributes;
+                        if (attr['aria-hidden'].value == "true") {
+                            document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
+                        } else {
+                            document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
+                        }
+                    };
+                })();
+            <?php endif;?>
             (function(){
                 var wpCss = document.getElementById("wpcss");
                 if (wpCss === null) {
@@ -131,7 +142,7 @@
                     });
                 }
             <?php endif;?>
-            <?php if(has_class('highlight-js')===true):?>
+            <?php if($code_highlight===true):?>
                 hljs.initHighlightingOnLoad();
             <?php endif;?>
             (function(){
