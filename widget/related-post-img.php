@@ -14,11 +14,11 @@ $array = array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','pos
 $query = new WP_Query($array);?>
 <?php if($query->have_posts()):
 	while($query->have_posts()):$query->the_post();?>
-		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="article-card">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="card-img">
-			<div class="card-meta">
-				<?php the_title('<h3 class="card-title">','</h3>');?>
-			</div>
+		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
+			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="related-img">
+			<!--<div class="card-meta">-->
+				<?php the_title('<h3 class="related-title">','</h3>');?>
+			<!--</div>-->
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>
@@ -28,9 +28,11 @@ $query = new WP_Query($array);?>
 	$array = array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
 	$query = new WP_Query($array);
 	while($query->have_posts()):$query->the_post();?>
-		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="article-card">
-			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="card-img">
-			<?php the_title('<div class="related-title">','</div>');?>
+		<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-card">
+			<img src="<?php wkwkrnht_eyecatch($size_full);?>" sizes="30vw" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" alt="thumbnail" class="related-img">
+			<!--<div class="card-meta">-->
+				<?php the_title('<h3 class="related-title">','</h3>');?>
+			<!--</div>-->
 		</a>
 	<?php endwhile;?>
 	<?php wp_reset_postdata();?>

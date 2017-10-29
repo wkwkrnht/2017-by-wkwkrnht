@@ -299,7 +299,7 @@
 	.widget_related_posts_img .related-wrapper:visited{
 		color:#fff;
 	}
-	.widget_related_posts_img .related-thumb{
+	.widget_related_posts_img .related-img{
 		color:#333;
 		height:30vmax;
 		width:30vmax;
