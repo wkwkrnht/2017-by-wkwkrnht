@@ -1,4 +1,4 @@
-.card-list{
+.article-list{
     align-content:space-around;
     align-items:baseline;
     background-color:<?php echo get_option('card_list_background','#fff');?>;
@@ -13,7 +13,6 @@
     font-size:1.8rem;
     height:29vmax;
     margin:4vh auto;
-    overflow:hidden;
     position:relative;
     width:29vmax;
 }
@@ -28,14 +27,8 @@
 .card-img,.card-meta,.card-meta > div{
     width:29vmax;
 }
-.card-img,.card-img:hover{
-    transition-duration:.3s;
-}
 .card-img{
     height:29vmax;
-}
-.card-img:hover{
-    transform:scale(1.1);
 }
 .card-meta{
     background-color:rgba(0,0,0,.5);

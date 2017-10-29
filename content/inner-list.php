@@ -5,7 +5,7 @@ if(is_author()===true){
 if(is_active_sidebar('listabove')){
     dynamic_sidebar('listabove');
 }?>
-<div class="card-list">
+<div class="article-list">
     <?php
     if(is_active_sidebar('listheader')){
         dynamic_sidebar('listheader');
