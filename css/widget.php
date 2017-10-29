@@ -287,13 +287,12 @@
 	}
 	.widget_related_posts_img .related-wrapper{
 		background-color:#fff;
-		box-shadow:0 0 2vmin rgba(0,0,0,.3);
+		box-shadow:0 0 2vmin rgba(0,0,0,.2);
 		color:#fff;
 		display:block;
 		height:30vmax;
 		margin:2vh 4vh;
 		position:relative;
-		text-align:center;
 		text-decoration:none;
 		width:30vmax;
 	}
@@ -311,6 +310,7 @@
 		font-size:1.8rem;
 		height:calc(30vmax / 10 * 4);
 		position:absolute;
+        text-align:center;
 		vertical-align:middle;
 		width:30vmax;
 	}
