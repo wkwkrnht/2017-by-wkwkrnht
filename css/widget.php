@@ -286,7 +286,6 @@
 	}
 	.widget_related_posts_img .related-wrapper{
 		background-color:#fff;
-		border-radius:3vmin;
 		box-shadow:0 0 2vmin rgba(0,0,0,.3);
 		color:#fff;
 		display:block;
