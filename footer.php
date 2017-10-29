@@ -1,23 +1,24 @@
         </main>
         <?php
-        $social_menu = has_nav_menu('social');
-        $main_nav    = has_nav_menu('main');
-        $main_menu   = is_active_sidebar('floatmenu');
-        $key         = get_option('cookie_key','2017-by-wkwkrnht');
+        $social_menu    = has_nav_menu('social');
+        $main_nav       = has_nav_menu('main');
+        $main_menu      = is_active_sidebar('floatmenu');
+        $key            = get_option('cookie_key','2017-by-wkwkrnht');
         $code_highlight = has_class('highlight-js');
-        if($social_menu||$main_nav||$main_menu):?>
+        $post_format    = get_post_format();
+        if($social_menu===true||$main_nav===true||$main_menu===ture):?>
             <aside id="menu-wrap" class="none" aria-hidden="true">
-                <?php if($social_menu):?>
+                <?php if($social_menu===true):?>
                     <nav class="social-nav">
                         <?php wp_nav_menu(array('theme_location'=>'social','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
                     </nav>
                 <?php endif;?>
-                <?php if($main_nav):?>
+                <?php if($main_nav===true):?>
                     <nav class="main-nav">
                         <?php wp_nav_menu(array('theme_location'=>'main','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
                     </nav>
                 <?php endif;?>
-                <?php if($main_menu):?>
+                <?php if($main_menu===true):?>
                     <ul class="widget-area">
                         <?php dynamic_sidebar('floatmenu');?>
                     </ul>
@@ -31,7 +32,7 @@
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
             <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
         <?php endif;
-        if(get_post_format()==='link'):?>
+        if($post_format==='link'):?>
             <script async="" src="//cdn.embedly.com/widgets/platform.js"></script>
         <?php endif;?>
         <script>
@@ -41,7 +42,7 @@
                     <?php $night_mode = true;?>
                 }
             })();
-            <?php if($social_menu||$main_nav||$main_menu):?>
+            <?php if($social_menu===true||$main_nav===true||$main_menu===true):?>
                 (function(){
                     document.getElementById("menu-toggle").onclick = function(){
                         document.getElementById("menu-wrap").classList.toggle("none");
@@ -67,7 +68,7 @@
                     document.head.appendChild(wpStyle);
                 }
             })();
-            <?php if(get_post_format()==='link'):?>
+            <?php if($post_format==='link'):?>
                 (function(){
                     var targets = document.querySelectorAll(".format-link .article-main a");
                     for ( var i = 0; i < targets.length; i++ ) {

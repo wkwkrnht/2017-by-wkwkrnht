@@ -75,9 +75,11 @@
 					</span>
 				</span>
 			</section>
-			<nav class="header-nav">
-				<?php wp_nav_menu(array('theme_location'=>'header','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
-			</nav>
+			<?php if(has_nav_menu('header')===true):?>
+				<nav class="header-nav">
+					<?php wp_nav_menu(array('theme_location'=>'header','container'=>false,'items_wrap'=>'<ul id="%1$s" class="%2$s" itemscope itemtype="http://schema.org/SiteNavigationElement">%3$s</ul>'));?>
+				</nav>
+			<?php endif;?>
 		</header>
 	<?php endif;?>
 	<main id="site-main">
