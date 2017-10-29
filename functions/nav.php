@@ -11,7 +11,7 @@ function exted_meta_for_url($atts,$item,$args){
 }
 add_filter('nav_menu_link_attributes','exted_meta_for_url',10,5);
 function my_nav_menu_item_title($title,$item,$args,$depth){
-    if($args->theme_location==='social'){
+    if($args->theme_location === 'social'){
         $title = '';
     }
     return $title;
