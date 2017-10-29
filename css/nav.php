@@ -247,6 +247,6 @@
     content:'\f19a';
     color:#21759b;
 }
-.social-nav a[data-title*="問い合わせ"]::before,.social-nav a[data-title*="質問"]::before,.social-nav a[data-title*="Q&A"]::before{
+.social-nav a[data-title*="contact"]::before,.social-nav a[data-title*="問い合わせ"]::before,.social-nav a[data-title*="質問"]::before{
     content:"\f298";
 }
