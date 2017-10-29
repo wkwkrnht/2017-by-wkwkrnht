@@ -36,7 +36,7 @@ body.night-mode,
 .night-mode .article-header,
 .night-mode #main-menu,
 .night-mode .card,
-.night-mode div.card-list,
+.night-mode div.article-list,
 .night-mode div#menu-wrap,
 .night-mode a#menu-toggle{
     background-color:#333;
