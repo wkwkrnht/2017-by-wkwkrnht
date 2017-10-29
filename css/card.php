@@ -25,7 +25,7 @@
     width:calc(29vmax * 2);
 }
 
-.card-img,.card-meta,.card-meta > div
+.card-img,.card-meta,.card-meta > div{
     width:29vmax;
 }
 .card-img,.card-img:hover{

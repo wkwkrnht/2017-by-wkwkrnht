@@ -288,17 +288,17 @@
 		position:relative;
 	}
     .widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
-        width:30vmax;
+        width:29vmax;
     }
 	.widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img{
-		height:30vmax;
+		height:29vmax;
 	}
 	.widget_related_posts_img .related-title{
 		background-color:rgba(0,0,0,.5);
         bottom:0;
         color:#fff;
 		font-size:1.8rem;
-		height:calc(30vmax / 10 * 4);
+		height:calc(29vmax / 10 * 4);
         margin:0;
         position:absolute;
         text-align:center;

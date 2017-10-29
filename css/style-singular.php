@@ -232,8 +232,8 @@ article{
     background-color:<?php echo get_option('article_main_ol_background','#03a9f4');?>;
     border-radius:50%;
     color:<?php echo get_option('article_main_ol_color','#fff');?>;
-    content:counter(number);
-    counter-increment:number;
+    content:counter(counter-name);
+    counter-increment:counter-name;
     display:inline-block;
     height:1.5em;
     left:0;
