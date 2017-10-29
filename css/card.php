@@ -20,7 +20,7 @@
     min-height:29vmax;
 }
 .info-card{
-    width:calc(29vmax * 3);
+    width:calc(29vmax * 2);
 }
 .article-card{
     display:block;

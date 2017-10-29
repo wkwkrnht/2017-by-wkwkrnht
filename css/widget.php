@@ -273,7 +273,6 @@
         align-content:space-around;
 		align-items:baseline;
 		display:flex;
-        flex-flow:row nowrap;
 		height:calc(30vmax + 2vh * 2);
 		justify-content:space-between;
 		margin:6vh 0;
@@ -286,18 +285,15 @@
 		background-color:#fff;
 		box-shadow:0 0 2vmin rgba(0,0,0,.2);
 		display:block;
-		height:30vmax;
-		margin:2vh;
 		position:relative;
-		width:30vmax;
 	}
 	.widget_related_posts_img .related-wrapper:visited{
 		color:#fff;
 	}
-    .widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
+    .widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
         width:30vmax;
     }
-	.widget_related_posts_img .related-img{
+	.widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img{
 		height:30vmax;
 	}
 	.widget_related_posts_img .related-title{
@@ -311,7 +307,7 @@
         text-align:center;
 		vertical-align:middle;
 	}
-    .widget_related_posts_img .article-card{
+    .widget_related_posts_img .related-wrapper,.widget_related_posts_img .article-card{
         margin:2vh;
     }
 	li.widget.widget_related_posts_img{
