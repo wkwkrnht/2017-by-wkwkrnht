@@ -21,7 +21,7 @@ if(is_active_sidebar('listabove')){
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
                 <img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
                 <div class="card-meta">
-                    <h2>
+                    <h2 class="card-title">
                         <?php echo $title;?>
                     </h2>
                     <div>

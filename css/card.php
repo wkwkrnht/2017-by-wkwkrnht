@@ -51,7 +51,7 @@
     height:calc(29vmax / 10 * 4);
     width:29vmax;
 }
-.card-meta > h2{
+.card-title{
     overflow:hidden;
     text-align:center;
     text-overflow:ellipsis;

@@ -274,7 +274,7 @@
 		display:flex;
 		flex-wrap:nowrap;
 		height:calc(30vmax + 2vh * 2);
-		justify-content:space-between;
+		justify-content:space-evenly;
 		margin:6vh 0;
 		overflow-x:auto;
 		overflow-y:hidden;
