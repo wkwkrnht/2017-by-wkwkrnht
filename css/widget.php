@@ -311,6 +311,9 @@
         text-align:center;
 		vertical-align:middle;
 	}
+    .widget_related_posts_img .article-card{
+        margin:2vh;
+    }
 	li.widget.widget_related_posts_img{
 		display:flex;
 	}
