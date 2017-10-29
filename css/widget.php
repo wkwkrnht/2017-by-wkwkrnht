@@ -287,9 +287,6 @@
 		display:block;
 		position:relative;
 	}
-	.widget_related_posts_img .related-wrapper:visited{
-		color:#fff;
-	}
     .widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
         width:30vmax;
     }
