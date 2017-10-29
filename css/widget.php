@@ -281,31 +281,7 @@
 		-webkit-overflow-scrolling:touch;
 		width:100%;
 	}
-	.widget_related_posts_img .related-wrapper{
-		background-color:#fff;
-		box-shadow:0 0 2vmin rgba(0,0,0,.2);
-		display:block;
-        overflow:hidden;
-		position:relative;
-	}
-    .widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img,.widget_related_posts_img .related-title{
-        width:29vmax;
-    }
-	.widget_related_posts_img .related-wrapper,.widget_related_posts_img .related-img{
-		height:29vmax;
-	}
-	.widget_related_posts_img .related-title{
-		background-color:rgba(0,0,0,.5);
-        bottom:0;
-        color:#fff;
-		font-size:1.8rem;
-		height:calc(29vmax / 10 * 4);
-        margin:0;
-        position:absolute;
-        text-align:center;
-		vertical-align:middle;
-	}
-    .widget_related_posts_img .related-wrapper,.widget_related_posts_img .article-card{
+    .widget_related_posts_img .article-card{
         margin:2vh;
     }
 	li.widget.widget_related_posts_img{

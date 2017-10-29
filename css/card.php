@@ -37,11 +37,15 @@
     height:calc(29vmax / 10 * 4);
     position:absolute;
 }
-.card-meta > div > span,.card-title{
+.card-meta > time,.card-title{
     text-align:center;
 }
 .card-title{
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
+}
+.card-meta > time{
+    display:block;
+    width:100%;
 }

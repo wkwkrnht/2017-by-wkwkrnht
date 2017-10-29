@@ -24,13 +24,9 @@ if(is_active_sidebar('listabove')){
                     <h2 class="card-title">
                         <?php echo $title;?>
                     </h2>
-                    <div>
-                        <span class="fa fa-calendar">
-                            <time class="entry-date updated" datetime="<?php the_time('Y-m-d');?>">
-                                <?php the_time('Y/n/j');?>
-                            </time>
-                        </span>
-                    </div>
+                    <time class="entry-date updated fa fa-calendar" datetime="<?php the_time('Y-m-d');?>">
+                        <?php the_time('Y/n/j');?>
+                    </time>
                 </div>
             </a>
     <?php endwhile;endif;
