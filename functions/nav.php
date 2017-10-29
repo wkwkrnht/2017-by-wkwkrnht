@@ -10,11 +10,11 @@ function exted_meta_for_url($atts,$item,$args){
 	return $atts;
 }
 add_filter('nav_menu_link_attributes','exted_meta_for_url',10,5);
-function my_nav_menu_item_title($title,$item,$args,$depth){
+/*function my_nav_menu_item_title($title,$item,$args,$depth){
 	$theme_location = $args->theme_location;
     if($theme_location==='social'){
         $title = '';
     }
     return $title;
 }
-add_filter('nav_menu_item_title','social_menu_item_title');
+add_filter('nav_menu_item_title','social_menu_item_title');*/
