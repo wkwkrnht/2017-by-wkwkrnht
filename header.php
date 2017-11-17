@@ -5,9 +5,12 @@
 	<?php
 	$theme_uri = get_template_directory_uri();
 	include_once(get_template_directory() . '/inc/meta-info.php');?>
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="preload"  as="font" type="application/vnd.ms-fontobject" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.eot" crossorigin>
+	<link rel="preload"  as="font" type="font/woff2" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
+	<link rel="preload"  as="font" type="font/woff" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
+	<link rel="preload"  as="font" type="application/x-font-ttf" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
 	<style>
-		<?php wkwkrnht_make_style();?>
+		<?php wkwkrnht_load_style();?>
 	</style>
 	<?php
 	$txt = get_option('header_txt');
