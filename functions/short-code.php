@@ -76,21 +76,31 @@ function make_TOC($atts){
     $top_level   = intval($atts['toplevel']);
     $harray      = array();
     $targetclass = trim($atts['targetclass']);
-    if($targetclass===''){$targetclass = get_post_type();}
-    for($h = $atts['toplevel']; $h <= 6; $h++){$harray[] = '"h' . $h . '"';}
+    if($targetclass===''){
+        $targetclass = get_post_type();
+    }
+    for($h = $atts['toplevel']; $h <= 6; $h++){
+        $harray[] = '"h' . $h . '"';
+    }
     $harray = implode(',',$harray);
 
     preg_match_all('/<([hH][1-6]).*?>(.*?)<\/[hH][1-6].*?>/u',$content,$headers);
     $header_count = count($headers[0]);
     if($header_count > 0){
         $level = strtolower($headers[1][0]);
-        if($top_level < $level){$top_level = $level;}
+        if($top_level < $level){
+            $top_level = $level;
+        }
     }
-    if($top_level < 1){$top_level = 1;}
-    if($top_level > 6){$top_level = 6;}
-    $atts['toplevel']       = $top_level;
-    $current_depth          = $top_level - 1;
-    $prev_depth             = $top_level - 1;
+    if($top_level < 1){
+        $top_level = 1;
+    }
+    if($top_level > 6){
+        $top_level = 6;
+    }
+    $atts['toplevel'] = $top_level;
+    $current_depth    = $top_level - 1;
+    $prev_depth       = $top_level - 1;
     if($depth == 0){
         $max_depth = 6 - $top_level + 1;
     }else{
@@ -249,7 +259,7 @@ function toot_into_article($atts){
             if(!isset($height) && $height===""){
                 $height = '150';
             }
-            return'<iframe src="' . $url . '" height="' . $height . '" width="400" scrolling="no" frameborder="0" class="spotifycard"></iframe>';
+            return'<iframe src="' . $url . '" height="' . $height . '" width="400" scrolling="no" frameborder="0" class="mastodon"></iframe>';
         }
     }
 }
@@ -359,6 +369,7 @@ function load_TOC($atts){
     }
     return $result;
 }
+
 add_shortcode('customcss','style_into_article');
 add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');

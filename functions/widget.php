@@ -327,22 +327,29 @@ add_filter('widget_meta_poweredby','__return_empty_string');
 add_action('wp_meta','wkwkrnht_meta_widget');
 function wkwkrnht_meta_widget(){ ?>
     <li>
-        <a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost">
+        <a href="<?php echo esc_url(home_url());?>/wp-admin/post-new.php" target="_blank" rel="noopener" title="addpost" tabindex="0">
             <span class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></span>
         </a>
     </li>
     <?php if(is_singular()===true):
         $id      = '';
         $homeurl = '';
-        if(is_ssl()){
-            $homeurl = substr(home_url(),5);}else{$homeurl = substr(home_url(),4);
-            }
-        if(have_posts()):while(have_posts()):the_post();$id = get_the_ID();endwhile;endif;?>
+        if(is_ssl()===true){
+            $homeurl = substr(home_url(),5);
+        }else{
+            $homeurl = substr(home_url(),4);
+        }
+        if(have_posts()){
+            while(have_posts()):
+                the_post();
+                $id = get_the_ID();
+            endwhile;
+        }?>
         <li>
             <?php edit_post_link();?>
         </li>
         <li>
-            <a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit">
+            <a href="<?php echo'wlw' . $homeurl . '/?postid=' . $id;?>" title="wlwedit" tabindex="0">
                 <span class="fa fa-windows fa-2x" aria-hidden="true"><span class="fa fa-pencil" aria-hidden="true"></span></span>
             </a>
         </li>

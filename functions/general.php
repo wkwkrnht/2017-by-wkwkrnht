@@ -19,7 +19,7 @@
 */
 add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 
-remove_action('wp_head','print_emoji_detection_script',7);
+remove_action('wp_head','print_emoji_detection_script');
 remove_action('wp_print_styles','print_emoji_styles');
 
 function vc_remove_wp_ver_css_js($src){
@@ -28,8 +28,8 @@ function vc_remove_wp_ver_css_js($src){
     }
     return $src;
 }
-add_filter('style_loader_src','vc_remove_wp_ver_css_js',9999);
-add_filter('script_loader_src','vc_remove_wp_ver_css_js',9999);
+add_filter('style_loader_src','vc_remove_wp_ver_css_js');
+add_filter('script_loader_src','vc_remove_wp_ver_css_js');
 
 function replace_link_stylesheet_tag($tag){
     return preg_replace(array("/'/",'/ \/>/'),array('"','>'),$tag);
@@ -60,7 +60,9 @@ function wkwkrnht_replace($content){
     $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
     $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
     $content = preg_replace('/([^a-zA-Z0-9-_&])@([0-9a-zA-Z_]+)/',"$1<a href=\"http://twitter.com/$2\" target=\"_blank\" rel=\"noopener nofollow\">@$2</a>",$content);
-    if(is_amp()===true){$content = sanitize_for_amp($content);}
+    if(is_amp()===true){
+        $content = sanitize_for_amp($content);
+    }
     return $content;
 }
 add_filter('the_content','wkwkrnht_replace');
@@ -76,7 +78,13 @@ function custom_oembed_element($html){
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
 
-add_filter('term_description',function($term){if(empty($term)){return false;}return apply_filters('the_content',$term);});
+add_filter('term_description','wkwkrnht_term_description');
+function wkwkrnht_term_description($term){
+    if(empty($term)){
+        return false;
+    }
+    return apply_filters('the_content',$term);
+}
 
 add_action('do_feed_smartnews','do_feed_smartnews');
 function do_feed_smartnews(){

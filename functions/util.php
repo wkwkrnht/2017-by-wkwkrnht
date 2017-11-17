@@ -90,8 +90,9 @@ function is_amp(){
 
 function is_subpage(){
     global $post;
-    if(is_page()===true && $post->post_parent){
-        $parentID = $post->post_parent;
+    $this_post_parent = $post->post_parent;
+    if(is_page()===true && $this_post_parent){
+        $parentID = $this_post_parent;
         return $parentID;
     }else{
         return false;
@@ -178,19 +179,25 @@ function wkwkrnht_load_style(){
     }
     include_once(get_parent_theme_file_path('/css/initial.php'));
     include_once(get_parent_theme_file_path('/css/nav.php'));
-    include_once(get_parent_theme_file_path('/css/widget.php'));
+    if(is_active_widget(false,false,$this->id_base,true)){
+        include_once(get_parent_theme_file_path('/css/widget.php'));
+    }
     include_once(get_parent_theme_file_path('/css/menu.php'));
     include_once(get_parent_theme_file_path('/css/card.php'));
     if(is_singular()===true){
         $id      = url_to_postid(get_meta_url());
         $post    = get_post($id);
         $content = $post->post_content;
-        global $shortcode_tags;
-        foreach($shortcode_tags as $code_name => $function){
-            $has_short_code = has_shortcode($content,$code_name);
-            if($has_short_code===true || has_class('ba-slider')===true){
-                include_once(get_parent_theme_file_path('/css/short-code.php'));
-                break;
+        if(has_class('ba-slider')===true){
+            include_once(get_parent_theme_file_path('/css/short-code.php'));
+        }else{
+            global $shortcode_tags;
+            foreach($shortcode_tags as $code_name => $function){
+                $has_short_code = has_shortcode($content,$code_name);
+                if($has_short_code===true){
+                    include_once(get_parent_theme_file_path('/css/short-code.php'));
+                    break;
+                }
             }
         }
         include_once(get_parent_theme_file_path('/css/style-singular.php'));

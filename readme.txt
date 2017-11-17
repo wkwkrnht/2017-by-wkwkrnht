@@ -1,4 +1,7 @@
 #2017-by-wkwkrnht
+
+made by [wkwkrnht](https://twitter.com/wkwkrnht)
+
 ====
 
 
@@ -7,23 +10,71 @@
 2. [Font Awesome](http://fontawesome.io) | 4.6.3 | ([License](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)) | @davegandy
 3. [OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
 
-##作成者
-
-[wkwkrnht](https://twitter.com/wkwkrnht)
-
 ##特徴
 
 このWordpressテーマは、ブログ向けに作られています。
 
-* バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2017-by-wkwkrnht-child/)
+* バニラな子テーマあり[(リンク)](https://github.com/wkwkrnht/2017-by-wkwkrnht-child/)
 * すっきりとしたタイルデザイン
 * いつでもどこでも2クリック(タップ)でメニューアクセス
-* メニュー内と記事上下とリスト上下にウィジェットスペース確保
-* メニュー欄にメインメニューとソーシャルメニューの2種を用意
+* 以下にウィジェットスペース確保
+
+    * メニュー内
+    * 記事上下
+    * リスト上下
+
+* 以下のメニュー欄にとの2種を用意
+
+    * ヘッダー
+    * フロートメニュー内
+
+        * メイン
+        * ソーシャル
+
+
 * ソーシャルメニューはリンク先に応じて、自動的にアイコンフォントで装飾。その代わりに、リンクテキストは表示されません。(約40種対応)
+* ブログカードは、以下の三種を生成できるショートコードがそれぞれ完備
+
+    * OGPベースの独自タイプ
+
+        * 引用タグでマークアップしています
+        * シェアボタン付き
+
+            * Twitter
+            * facebook
+            * pocket
+            * はてなブックマーク
+
+
+    * Embed.ly
+    * はてな
+
+* カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
+* リファラーも設定可
+* AMP & OGP & Twitterカード対応
+* Google Cookie Choice対応
+* Chrome独自のアドレスバー装飾対応
+* jetpackの設定内容も弄れます
+
+###ショートコード
+
+* 追加クラス
+* ブログカード
+* HTML特殊文字エスケープ
+* css挿入(そのスタイルはそのページのみ適用)
+* 目次
+* ボタン
+* 検索風表示
+* 注意表示
+* ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
+* a(target="＿blank"とrel="noappear"付)
+
+###ウィジェット
+
 * SNSシェアボタンはウィジェットで搭載 (以下、対応サービス)
 
     * Twitter
+    * マストドン
     * facebook
     * Google+
     * LinkedIn
@@ -55,89 +106,54 @@
     * WordPress独自タイプ
     * Disqus
 
-* ブログカードは、以下の三種を生成できるショートコードがそれぞれ完備
+###追加クラス
 
-    * OGPベースの独自タイプ
+* マーカー
+* 検索風表示
+* 注意表示
+* ボタン
 
-        * 引用タグでマークアップしています
-        * シェアボタン付き
+    * 赤
+    * 青
+    * 黄
+    * 燈
+    * 緑
+    * 黒
 
-            * Twitter
-            * facebook
-            * pocket
-            * はてなブックマーク
+* ボックス
 
-
-    * Embed.ly
-    * はてな
-
-* 追加クラス
-
-    * マーカー
-    * 検索風表示
-    * 注意表示
-    * ボタン
-
-        * 赤
-        * 青
-        * 黄
-        * 燈
-        * 緑
-        * 黒
-
-    * ボックス
-
-        * 赤
-        * 青
-        * 黄
-        * 燈
-        * 緑
-        * 黒
+    * 赤
+    * 青
+    * 黄
+    * 燈
+    * 緑
+    * 黒
 
 
-* 豊富なクイックタグ
+###豊富なクイックタグ
 
-    * hx
+* hx
 
-        * h1
-        * h2
-        * h3
-        * h4
-        * h5
-        * h6
+    * h1
+    * h2
+    * h3
+    * h4
+    * h5
+    * h6
 
-    * p
-    * テーブル
+* p
+* テーブル
 
-        * table
-        * thead
-        * tbody
-        * tfoot
-        * tr
-        * th
-        * td
+    * table
+    * thead
+    * tbody
+    * tfoot
+    * tr
+    * th
+    * td
 
-    * ショートコード
+* ショートコード
 
-        * 追加クラス
-        * ブログカード
-        * HTML特殊文字エスケープ
-        * css挿入(そのスタイルはそのページのみ適用)
-        * 目次
-        * ボタン
-        * 検索風表示
-        * 注意表示
-        * ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
-        * a(target="＿blank"とrel="noappear"付)
-
-
-* カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
-* リファラーも設定可
-* AMP & OGP & Twitterカード対応
-* Google Cookie Choice対応
-* Chrome独自のアドレスバー装飾対応
-* 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
-* jetpackの設定内容も弄れます
 
 ##ファイルツリー
 

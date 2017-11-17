@@ -5,6 +5,17 @@
 3.recent entries
 4.archive
 5.search
+6.author biography
+7.manth archive
+8.move top
+9.related entry
+10.related entry with img
+11.hover nav
+12.comment
+13.duck duck go
+14.google search with ad
+15.sns follow
+16.sns share
 */
 .widget{
     display:block;

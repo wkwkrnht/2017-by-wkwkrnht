@@ -1,6 +1,6 @@
 :root{
     color:<?php echo $root_color;?>;
-    font:400 62.5%/1.9 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",'Meiryo',sans-serif;
+    font:400 62.5%/1.9 -apple-system,"Lucida Grande","Helvetica Neue","Hiragino Kaku Gothic ProN","游ゴシック","メイリオ",'Meiryo',sans-serif;
     font-feature-settings:"pkna" on;
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
