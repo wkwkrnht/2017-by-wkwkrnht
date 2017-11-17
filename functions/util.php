@@ -168,22 +168,25 @@ function sanitize_for_amp($content){
     return $content;
 }
 
-function wkwkrnht_load_style(){
-    $is_amp     = is_amp();
-    $root_color = get_option('root_color','#333');
-    if($is_amp===true){
-        echo'<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">';
+function wkwkrnht_make_style(){
+    $is_amp      = is_amp();
+    $is_singular = is_singular();
+    $root_color  = get_option('root_color','#333');
+    /*if($is_amp===true){
+        a
     }else{
-        include_once(get_parent_theme_file_path('/css/fontawesome.php'));
-    }
+        if($is_singular===true){
+            a
+        }else{
+            a
+        }
+    }*/
     include_once(get_parent_theme_file_path('/css/initial.php'));
     include_once(get_parent_theme_file_path('/css/nav.php'));
-    if(is_active_widget()){
-        include_once(get_parent_theme_file_path('/css/widget.php'));
-    }
+    include_once(get_parent_theme_file_path('/css/widget.php'));
     include_once(get_parent_theme_file_path('/css/menu.php'));
     include_once(get_parent_theme_file_path('/css/card.php'));
-    if(is_singular()===true){
+    if($is_singular===true){
         $id      = url_to_postid(get_meta_url());
         $post    = get_post($id);
         $content = $post->post_content;
