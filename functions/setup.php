@@ -77,6 +77,7 @@ function wkwkrnht_setup(){
     wp_oembed_add_provider('#https?://(www.)?cloudup.com/.*#i','https://cloudup.com/oembed/',true);
     wp_oembed_add_provider('#https?://(www.)?playbuzz.com/.*#i','https://www.playbuzz.com/api/oembed/',true);
 }
+add_action('after_setup_theme','wkwkrnht_setup');
 
 
 function wkwkrnht_admin_init(){
@@ -84,6 +85,7 @@ function wkwkrnht_admin_init(){
     require_once(get_template_directory() . '/inc/theme-update-checker.php');
     $example_update_checker = new ThemeUpdateChecker('2017-by-wkwkrnht','https://raw.githubusercontent.com/wkwkrnht/2017-by-wkwkrnht/master/update-info.json');
 }
+add_action('admin_init','wkwkrnht_admin_init');
 
 
 function wkwkrnht_sidebars_init(){
@@ -96,6 +98,7 @@ function wkwkrnht_sidebars_init(){
     register_sidebar(array('name'=>'List Under','id'=>'listunder','before_widget'=>'<aside id="%1$s" class="widget card info-card %2$s" role="widget">','after_widget'=>'</aside>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
     register_sidebar(array('name'=>'404 Page','id'=>'404','before_widget'=>'<section class="card"><div id="%1$s" class="widget %2$s" role="widget">','after_widget'=>'</div></section>','before_title'=>'<h2 class="widget-title">','after_title' =>'</h2>',));
 }
+add_action('widgets_init','wkwkrnht_sidebars_init');
 
 
 function wkwkrnht_init(){\
@@ -106,10 +109,4 @@ function wkwkrnht_init(){\
         add_filter('jetpack_enable_open_graph','__return_false',99);
     }
 }
-
-
-
-add_action('after_setup_theme','wkwkrnht_setup');
-add_action('admin_init','wkwkrnht_admin_init');
-add_action('widgets_init','wkwkrnht_sidebars_init');
 add_action('init','wkwkrnht_init');

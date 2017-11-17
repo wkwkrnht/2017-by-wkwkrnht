@@ -90,9 +90,8 @@ function is_amp(){
 
 function is_subpage(){
     global $post;
-    $this_post_parent = $post->post_parent;
-    if(is_page()===true && $this_post_parent){
-        $parentID = $this_post_parent;
+    if(is_page()===true && $post->post_parent){
+        $parentID = $post->post_parent;
         return $parentID;
     }else{
         return false;
@@ -127,12 +126,12 @@ function get_mtime($format){
 function get_first_post_year(){
     $year = null;
     query_posts('posts_per_page=1&order=ASC');
-    if(have_posts()):
+    if(have_posts()){
         while(have_posts()):
             the_post();
             $year = intval(get_the_time('Y'));
         endwhile;
-    endif;
+    }
     wp_reset_query();
     return $year;
 }

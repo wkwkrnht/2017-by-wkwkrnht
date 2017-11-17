@@ -19,17 +19,17 @@
 */
 add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 
-remove_action('wp_head','print_emoji_detection_script');
+remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
 
-function vc_remove_wp_ver_css_js($src){
+function vc_remove_wp_ver_asset($src){
     if(strpos($src,'ver=')){
         $src = remove_query_arg('ver',$src);
     }
     return $src;
 }
-add_filter('style_loader_src','vc_remove_wp_ver_css_js');
-add_filter('script_loader_src','vc_remove_wp_ver_css_js');
+add_filter('style_loader_src','vc_remove_wp_ver_asset',9999);
+add_filter('script_loader_src','vc_remove_wp_ver_asset',9999);
 
 function replace_link_stylesheet_tag($tag){
     return preg_replace(array("/'/",'/ \/>/'),array('"','>'),$tag);
