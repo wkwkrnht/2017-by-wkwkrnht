@@ -78,6 +78,12 @@
                 })();
             <?php endif;?>
             <?php if(has_class('ba-slider')):?>
+                (function(){
+                    var n = document.createElement("script");
+                    n.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js";
+                    var m = document.createElement("script");
+                    m.src = "//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js";
+                })();
                 jQuery(document).ready(function(){
                     jQuery('.ba-slider').each(function(){
                         var cur = jQuery(this);

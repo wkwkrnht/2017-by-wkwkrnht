@@ -17,7 +17,7 @@
 10.ADD feed for smartnews
 11.SETTING for amp list
 */
-add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
+//add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
