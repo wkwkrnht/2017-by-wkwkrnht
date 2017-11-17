@@ -178,7 +178,7 @@ function wkwkrnht_load_style(){
     }
     include_once(get_parent_theme_file_path('/css/initial.php'));
     include_once(get_parent_theme_file_path('/css/nav.php'));
-    if(is_active_widget(false,false,$this->id_base,true)){
+    if(is_active_widget(false,false,'',true)){
         include_once(get_parent_theme_file_path('/css/widget.php'));
     }
     include_once(get_parent_theme_file_path('/css/menu.php'));

@@ -64,18 +64,7 @@ function wkwkrnht_setup(){
     add_image_size('wkwkrnht-thumb-256',256,256,true);
     add_image_size('wkwkrnht-thumb-128',128,128,true);
 
-    wp_oembed_add_provider('#https?://(www.)?youtube.com/watch.*#i','http://www.youtube.com/oembed/',true);
-	wp_oembed_add_provider('#https?://(www.)?youtube.com/playlist.*#i','http://www.youtube.com/oembed/',true);
-	wp_oembed_add_provider('#https?://(www.)?youtu.be/.*#i','http://www.youtube.com/oembed/',true);
-    wp_oembed_add_provider('#https?://(www\.)?twitter\.com/.+?/status(es)?/.*#i','https://api.twitter.com/1/statuses/oembed',true);
-    wp_oembed_add_provider('#https?://(www.)?instagram.com/p/.*#i','http://api.instagram.com/oembed',true);
-    wp_oembed_add_provider('#https?://(www.)?instagr.am/p/.*#i','http://api.instagram.com/oembed',true);
-    wp_oembed_add_provider('http://*.hatenablog.com/*','http://hatenablog-parts.com/embed?url=');
-    wp_oembed_add_provider('http://codepen.io/*/pen/*','http://codepen.io/api/oembed');
-    wp_oembed_add_provider('#https?://(www.)?ifttt.com/recipes/.*#i','http://www.ifttt.com/oembed/',true);
-    wp_oembed_add_provider('http://www.kickstarter.com/projects/*','http://www.kickstarter.com/services/oembed',false);
-    wp_oembed_add_provider('#https?://(www.)?cloudup.com/.*#i','https://cloudup.com/oembed/',true);
-    wp_oembed_add_provider('#https?://(www.)?playbuzz.com/.*#i','https://www.playbuzz.com/api/oembed/',true);
+
 }
 add_action('after_setup_theme','wkwkrnht_setup');
 
@@ -101,7 +90,7 @@ function wkwkrnht_sidebars_init(){
 add_action('widgets_init','wkwkrnht_sidebars_init');
 
 
-function wkwkrnht_init(){\
+function wkwkrnht_init(){
     if(get_option('jetpack.css')){
         add_filter('jetpack_implode_frontend_css','__return_false');
     }
