@@ -66,7 +66,7 @@ h1{
 }
 mark{
     background-color:<?php echo get_option('mark_background','#ff0');?>;
-    color:<?php echo get_option('mark_color','#333');?>;
+    color:<?php echo get_option('mark_color','#000');?>;
 }
 small{
     font-size:80%;

@@ -1,5 +1,5 @@
 <?php
-$base      = get_option('night_mode_base','#333');
+$base      = get_option('night_mode_base','#000');
 $highlight = get_option('night_mode_highlight','#fff');?>
 .night-mode .article-main h2.ogp-blogcard-title,
 .night-mode .article-main p.ogp-blogcard-description,

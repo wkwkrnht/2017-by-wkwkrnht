@@ -35,14 +35,14 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
     $wp_customize->add_setting('jetpack_open_graph',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack_open_graph',array('settings'=>'jetpack_open_graph','label'=>'jetpackによるOGPの出力を停止する','section'=>'jetpack_section','type'=>'checkbox',));
-    $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
 
     /*
         color
     1.
     */
+    $wp_customize->add_setting('GoogleChrome_URLbar',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'GoogleChrome_URLbar',array('label'=>'モバイル版GoogleChrome向けURLバーの色コードを指定する','settings'=>'GoogleChrome_URLbar','section'=>'colors',)));
-    $wp_customize->add_setting('root_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('root_color',array('type'=>'option','default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'root_color',array('label'=>':root color','settings'=>'root_color','section'=>'colors',)));
     $wp_customize->add_setting('a_color',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'a_color',array('label'=>'a color','settings'=>'a_color','section'=>'colors',)));
@@ -52,7 +52,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'a_active_color',array('label'=>'a:active,a:hover color','settings'=>'a_active_color','section'=>'colors',)));
     $wp_customize->add_setting('a_hover_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'a_hover_border',array('label'=>'a:hover border-color','settings'=>'a_hover_border','section'=>'colors',)));
-    $wp_customize->add_setting('mark_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('mark_color',array('type'=>'option','default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'mark_color',array('label'=>'mark color','settings'=>'mark_color','section'=>'colors',)));
     $wp_customize->add_setting('mark_background',array('type'=>'option','default'=>'#ff0','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'mark_background',array('label'=>'mark background-color','settings'=>'mark_background','section'=>'colors',)));
@@ -72,7 +72,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'toggle_color',array('label'=>'toggle color','settings'=>'toggle_color','section'=>'colors',)));
     $wp_customize->add_setting('menu_background',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'menu_background',array('label'=>'menu-wrap background-color','settings'=>'menu_background','section'=>'colors',)));
-    $wp_customize->add_setting('menu_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('menu_color',array('type'=>'option','default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'menu_color',array('label'=>'menu-wrap color','settings'=>'menu_color','section'=>'colors',)));
     $wp_customize->add_setting('hover_nav_a_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'hover_nav_a_background',array('label'=>'hover_nav a background-color','settings'=>'hover_nav_a_background','section'=>'colors',)));
@@ -84,7 +84,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_hover_border',array('label'=>'.widget_tag_cloud:hover border-color','settings'=>'tag_cloud_hover_border','section'=>'colors',)));
     $wp_customize->add_setting('tag_cloud_hover_color',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_hover_color',array('label'=>'.wigdet_tag_cloud:hover color','settings'=>'tag_cloud_hover_color','section'=>'colors',)));
-    $wp_customize->add_setting('tag_cloud_color',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('tag_cloud_color',array('type'=>'option','default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'tag_cloud_color',array('label'=>'.wigdet_tag_cloud color','settings'=>'tag_cloud_color','section'=>'colors',)));
     $wp_customize->add_setting('search_border',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'search_border',array('label'=>',widget_tag_cloud border-color','settings'=>'search_border','section'=>'colors',)));
@@ -122,7 +122,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'move_top_background',array('label'=>'.widget_move_top background-color','settings'=>'move_top_background','section'=>'colors',)));
     $wp_customize->add_setting('related_background',array('default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_background',array('label'=>'.wiget_related background-color','settings'=>'related_background','section'=>'colors',)));
-    $wp_customize->add_setting('related_color',array('default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('related_color',array('default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_color',array('label'=>'.widget_related color','settings'=>'related_color','section'=>'colors',)));
     $wp_customize->add_setting('related_title_background_color',array('default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'related_title_background_color',array('label'=>'.related-title background-color','settings'=>'article_main_li_color','section'=>'colors',)));
@@ -172,7 +172,7 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'copyright_color',array('label'=>'.copyright color','settings'=>'copyright_h2_color','section'=>'colors',)));
     $wp_customize->add_setting('copyright_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'copyright_background',array('label'=>'.copyright background-color','settings'=>'copyright_background','section'=>'colors',)));
-    $wp_customize->add_setting('night_mode_base',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_setting('night_mode_base',array('type'=>'option','default'=>'#000','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'night_mode_base',array('label'=>'.night_mode $base','settings'=>'night_mode_base','section'=>'colors',)));
     $wp_customize->add_setting('night_mode_highlight',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'night_mode_highlight',array('label'=>'.night_mode $highlight','settings'=>'night_mode_highlight','section'=>'colors',)));

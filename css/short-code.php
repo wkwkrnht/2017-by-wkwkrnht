@@ -185,7 +185,7 @@
 
 <?php if(has_shortcode($content,'simple-box')===true):?>
     .simple-box{
-        border:.1vmin solid #333;
+        border:.1vmin solid #000;
         margin:2vh auto;
         width:80%;
     }
@@ -232,7 +232,7 @@
         background-color:#8bc34a;
     }
     .black.cutin-box{
-        background-color:#333;
+        background-color:#000;
     }
     .cutin-box > h3{
         font-weight:700;
@@ -262,7 +262,7 @@
         border-color:#8bc34a;
     }
     .black.cutin-box > .cutin-box-inner{
-        border-color:#333;
+        border-color:#000;
     }
     .article-main .cutin-box > h3{
         box-shadow:none;

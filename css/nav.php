@@ -39,7 +39,7 @@ $main_nav   = has_nav_menu('main');?>
         background-color:<?php echo get_option('menu_background','#fff');?>;
         bottom:19vh;
         box-shadow:0 0 3vmin rgba(0,0,0,.3);
-        color:<?php echo get_option('menu_color','#333');?>;
+        color:<?php echo get_option('menu_color','#000');?>;
         height:76vh;
         left:calc(50% - 90vw / 2);
         margin:0;
