@@ -1,3 +1,6 @@
+<?php
+$base      = get_option('night_mode_base','#333');
+$highlight = get_option('night_mode_highlight','#fff');?>
 .night-mode .article-main h2.ogp-blogcard-title,
 .night-mode .article-main p.ogp-blogcard-description,
 .night-mode .article-main a.ogp-blogcard-site-name,
@@ -21,7 +24,19 @@ body.night-mode,
 .night-mode nav.menu-tab,
 .night-mode a#main-menu-toggle,
 .night-mode a#share-menu-toggle{
-    color:#fff;
+    color:<?php echo $highlight;?>;
+}
+.night-mode .ogp-blogcard-main,
+.night-mode ul.page-nation,
+.night-mode ul.page-nation a,
+.night-mode ul.page-nation li span.dots,
+.night-mode ul.page-nation li.current,
+.night-mode .page-nav,
+.night-mode .page-nav a:hover{
+    border-color:<?php echo $highlight;?>;
+}
+.night-mode ul.page-nation a:hover{
+    background-color:<?php echo $highlight;?>;
 }
 body.night-mode,
 .night-mode .ogp-blogcard-main,
@@ -39,34 +54,17 @@ body.night-mode,
 .night-mode div.article-list,
 .night-mode div#menu-wrap,
 .night-mode a#menu-toggle{
-    background-color:#333;
-}
-.night-mode ul.page-nation,
-.night-mode ul.page-nation a,
-.night-mode ul.page-nation li span.dots,
-.night-mode ul.page-nation li.current,
-.night-mode .page-nav,
-.night-mode .page-nav a:hover{
-    border-color:#fff;
-}
-.night-mode ul.page-nation li span.dots{
-    color:#f1f1f1;
-}
-.night-mode ul.page-nation a:hover{
-    background-color:#fff;
-}
-.night-mode .card,
-.night-mode ul.page-nation{
-    box-shadow:0 0 3vmin rgba(0,0,0,.3);
+    background-color:<?php echo $base;?>;
 }
 .night-mode ul.page-nation a:hover,
 .night-mode .article-main h1,
 .night-mode div.information,
 .night-mode div.question{
-    color:#333;
+    color:<?php echo $base;?>;
 }
-.night-mode .ogp-blogcard-main{
-    border-color:#f1f1f1;
+.night-mode .card,
+.night-mode ul.page-nation{
+    box-shadow:0 0 3vmin rgba(0,0,0,.3);
 }
 .night-mode aside.toc{
     border:0;

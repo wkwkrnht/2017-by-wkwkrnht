@@ -169,8 +169,9 @@ function sanitize_for_amp($content){
 }
 
 function wkwkrnht_load_style(){
-    $is_amp     = is_amp();
-    $root_color = get_option('root_color','#333');
+    $is_amp         = is_amp();
+    $root_color     = get_option('root_color','#333');
+    $url_short_code = get_parent_theme_file_path('/css/short-code.php');
     if($is_amp===true){
         echo'<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">';
     }else{
@@ -178,9 +179,7 @@ function wkwkrnht_load_style(){
     }
     include_once(get_parent_theme_file_path('/css/initial.php'));
     include_once(get_parent_theme_file_path('/css/nav.php'));
-    if(is_active_widget()){
-        include_once(get_parent_theme_file_path('/css/widget.php'));
-    }
+    include_once(get_parent_theme_file_path('/css/widget.php'));
     include_once(get_parent_theme_file_path('/css/menu.php'));
     include_once(get_parent_theme_file_path('/css/card.php'));
     if(is_singular()===true){
@@ -188,13 +187,13 @@ function wkwkrnht_load_style(){
         $post    = get_post($id);
         $content = $post->post_content;
         if(has_class('ba-slider')===true){
-            include_once(get_parent_theme_file_path('/css/short-code.php'));
+            include_once($url_short_code);
         }else{
             global $shortcode_tags;
             foreach($shortcode_tags as $code_name => $function){
                 $has_short_code = has_shortcode($content,$code_name);
                 if($has_short_code===true){
-                    include_once(get_parent_theme_file_path('/css/short-code.php'));
+                    include_once($url_short_code);
                     break;
                 }
             }

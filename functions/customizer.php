@@ -1,5 +1,9 @@
 <?php add_action('customize_register','wkwkrnht_customizer');
 function wkwkrnht_customizer($wp_customize){
+    /*
+        SNS
+    1.
+    */
     $wp_customize->add_setting('Google_Analytics',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Google_Analytics',array('section'=>'title_tagline','settings'=>'Google_Analytics','label'=>'サイトのGoogleAnalyticsのIDを指定する','type'=>'text'));
     $wp_customize->add_setting('Google_Webmaster',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
@@ -168,6 +172,10 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'copyright_color',array('label'=>'.copyright color','settings'=>'copyright_h2_color','section'=>'colors',)));
     $wp_customize->add_setting('copyright_background',array('type'=>'option','default'=>'#03a9f4','sanitize_callback'=>'sanitize_hex_color',));
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'copyright_background',array('label'=>'.copyright background-color','settings'=>'copyright_background','section'=>'colors',)));
+    $wp_customize->add_setting('night_mode_base',array('type'=>'option','default'=>'#333','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'night_mode_base',array('label'=>'.night_mode $base','settings'=>'night_mode_base','section'=>'colors',)));
+    $wp_customize->add_setting('night_mode_highlight',array('type'=>'option','default'=>'#fff','sanitize_callback'=>'sanitize_hex_color',));
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize,'night_mode_highlight',array('label'=>'.night_mode $highlight','settings'=>'night_mode_highlight','section'=>'colors',)));
 
     /*
         custom space for user

@@ -77,7 +77,7 @@
                     }
                 })();
             <?php endif;?>
-            <?php if(has_class('ba-slider')):?>
+            <?php if(has_class('ba-slider')===true):?>
                 (function(){
                     var n = document.createElement("script");
                     n.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js";
@@ -154,10 +154,10 @@
             <?php endif;?>
             (function(){
                 function getCookie(key){
-                    var s,e;
+                    var s, e;
                     var c = document.cookie + ";";
                     var b = c.indexOf(key,0);
-                    if(b!=-1){
+                    if (b != -1) {
                         c = c.substring(b,c.length);
                         s = c.indexOf("=",0) + 1;
                         e = c.indexOf(";",s);
@@ -170,9 +170,9 @@
                 function setCookie(key,n){
                     var myDate = new Date();
                     myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-                    document.cookie = "key=" + key + escape(n) + ";expires=" + myDate.toGMTString() + ";";
+                    document.cookie = "key=" + escape(key) + escape(n) + ";expires=" + myDate.toGMTString() + ";";
                 }
-                if(n == ""){
+                if (n == "") {
                     if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
                         return;
                     } else {
