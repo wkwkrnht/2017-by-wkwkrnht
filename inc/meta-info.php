@@ -47,12 +47,12 @@ if($pin!==false){
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
-<link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
 <?php if($is_amp===false):?>
+    <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
-    <link rel="preload"  as="font" type="font/woff2" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
-	<link rel="preload"  as="font" type="font/woff" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
-	<link rel="preload"  as="font" type="application/x-font-ttf" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
+    <link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
+	<link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
+	<link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
     <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===false){echo $meta_url . '/';}else{echo $meta_url;}?>amp">
 <?php endif;
 if($google_id!==null):?>
