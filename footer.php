@@ -1,5 +1,9 @@
         </main>
-        <?php if(has_nav_menu('social')===true||has_nav_menu('main')===true||is_active_sidebar('floatmenu')===ture):?>
+        <?php
+        $main_menu   = is_active_sidebar('floatmenu');
+        $social_menu = has_nav_menu('social');
+        $main_nav    = has_nav_menu('main');
+        if($main_nav===true||$social_menu===true||$main_menu===ture):?>
             <aside id="menu-wrap" class="none" aria-hidden="true">
                 <?php if($social_menu===true):?>
                     <nav class="social-nav">
