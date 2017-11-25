@@ -24,9 +24,6 @@
             </aside>
             <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php endif;?>
-        <style>
-            <?php wkwkrnht_load_style();?>
-        </style>
         <?php
         wp_footer();
         if(has_class('highlight-js')===true):?>
