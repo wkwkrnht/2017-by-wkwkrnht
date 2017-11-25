@@ -31,7 +31,7 @@
 (function(){
     if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
         document.body.className += " night-mode";
-        document.getElementById('main-style').insertAdjacentHTML("beforeend","<?php include_once(get_parent_theme_file_path('/css/night-mode.php'));?>");
+        var nightMode = true;
     }
     var wpCss = document.getElementById("wpcss");
     if (wpCss === null) {

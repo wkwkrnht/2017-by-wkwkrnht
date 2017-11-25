@@ -3,6 +3,7 @@
         $main_menu   = is_active_sidebar('floatmenu');
         $social_menu = has_nav_menu('social');
         $main_nav    = has_nav_menu('main');
+        $night_mode  = '<script>document.write(nightMode);</script>';
         if($main_nav===true||$social_menu===true||$main_menu===ture):?>
             <aside id="menu-wrap" class="none" aria-hidden="true">
                 <?php if($social_menu===true):?>
@@ -23,10 +24,14 @@
             </aside>
             <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php endif;?>
-        <style id="main-style">
-            <?php wkwkrnht_load_style();?>
-        </style>
         <script src="<?php echo get_template_directory_uri();?>/inc/script.php"></script>
+        <style>
+            <?php
+            wkwkrnht_load_style();
+            if($night_mode===true){
+                include(get_parent_theme_file_path('/css/night-mode.php'));
+            }?>
+        </style>
         <?php
         wp_footer();
         if(has_class('highlight-js')===true):?>
