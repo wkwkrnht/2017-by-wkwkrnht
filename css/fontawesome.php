@@ -3,9 +3,9 @@
     font-family:"FontAwesome";
     font-style:normal;
     font-weight:normal;
-    src:url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.woff2');?>) format('woff2'),
-        url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.woff');?>) format('woff'),
-        url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.ttf');?>) format('truetype');
+    src:url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2) format('woff2'),
+        url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff) format('woff'),
+        url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf) format('truetype');
 }
 .fa{
     display:inline-block;
