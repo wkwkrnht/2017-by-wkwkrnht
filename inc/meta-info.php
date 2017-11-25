@@ -51,6 +51,9 @@ if($pin!==false){
 <?php if($is_amp===false):?>
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+    <?php if(get_post_format()==='link'):?>
+        <link rel="preload" as="script" href="//cdn.embedly.com/widgets/platform.js">
+    <?php endif;?>
     <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/script.php">
     <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>

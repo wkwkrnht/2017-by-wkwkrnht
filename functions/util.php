@@ -173,11 +173,11 @@ function wkwkrnht_load_style(){
     $root_color     = get_option('root_color','#333');
     $url_short_code = get_parent_theme_file_path('/css/short-code.php');
     if($is_amp===true){
-        echo'<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">';
+        echo'<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">';
+        include_once(get_parent_theme_file_path('/css/initial.php'));
     }else{
         include_once(get_parent_theme_file_path('/css/fontawesome.php'));
     }
-    include_once(get_parent_theme_file_path('/css/initial.php'));
     include_once(get_parent_theme_file_path('/css/nav.php'));
     include_once(get_parent_theme_file_path('/css/widget.php'));
     include_once(get_parent_theme_file_path('/css/menu.php'));

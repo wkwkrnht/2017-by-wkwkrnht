@@ -62,10 +62,6 @@ body.night-mode,
 .night-mode div.question{
     color:<?php echo $base;?>;
 }
-.night-mode .card,
-.night-mode ul.page-nation{
-    box-shadow:0 0 3vmin rgba(0,0,0,.3);
-}
 .night-mode aside.toc{
     border:0;
     box-shadow:none;

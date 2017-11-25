@@ -31,9 +31,8 @@
 (function(){
     if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
         document.body.className += " night-mode";
+        document.getElementById('main-style').insertAdjacentHTML("beforeend","<?php include_once(get_parent_theme_file_path('/css/night-mode.php'));?>");
     }
-})();
-(function(){
     var wpCss = document.getElementById("wpcss");
     if (wpCss === null) {
         return;
@@ -44,13 +43,6 @@
         wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
         document.head.appendChild(wpStyle);
     }
-    var targets = document.querySelectorAll(".format-link .article-main a");
-    for ( var i = 0; i < targets.length; i++ ) {
-        var target = targets[i];
-        target.classList.add("embedly-card");
-    }
-})();
-(function(){
     document.getElementById("menu-toggle").onclick = function(){
         document.getElementById("menu-wrap").classList.toggle("none");
         document.getElementById("menu-wrap").classList.toggle("block");
@@ -62,13 +54,14 @@
         }
     };
 })();
+function linkStyled(){
+    var targets = document.querySelectorAll(".format-link .article-main a");
+    for ( var i = 0; i < targets.length; i++ ) {
+        var target = targets[i];
+        target.classList.add("embedly-card");
+    }
+}
 <?php if(has_class('ba-slider')===true):?>
-    (function(){
-        var n = document.createElement("script");
-        n.src = "//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js";
-        var m = document.createElement("script");
-        m.src = "//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.1/jquery-migrate.min.js";
-    })();
     jQuery(document).ready(function(){
         jQuery('.ba-slider').each(function(){
             var cur = jQuery(this);
