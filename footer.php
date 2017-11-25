@@ -22,21 +22,20 @@
                 <?php endif;?>
             </aside>
             <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
+        <?php endif;?>
+        <style id="main-style">
+            <?php wkwkrnht_load_style();?>
+        </style>
+        <script src="<?php echo get_template_directory_uri();?>/inc/script.php"></script>
         <?php
-        endif;
         wp_footer();
         if(has_class('highlight-js')===true):?>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
             <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" onload="hljs.initHighlightingOnLoad();"></script>
         <?php endif;?>
-        <script src="<?php echo get_template_directory_uri();?>/inc/script.php"></script>
         <?php if(get_post_format()==='link'):?>
             <script src="//cdn.embedly.com/widgets/platform.js" onload="linkStyled();"></script>
-        <?php endif;?>
-        <style id="main-style">
-            <?php wkwkrnht_load_style();?>
-        </style>
-        <?php
+        <?php endif;
         $txt = get_option('footer_txt');
         if($txt!==false){
             echo $txt;
