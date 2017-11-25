@@ -45,8 +45,7 @@
         document.head.appendChild(wpStyle);
     }
 })();
-<?php //hogehoge?>
-//hogehoge
+<?php echo'//hogehoge';?>
 <?php if(has_nav_menu('social')===true||has_nav_menu('main')===true||is_active_sidebar('floatmenu')===true):?>
     (function(){
         document.getElementById("menu-toggle").onclick = function(){
