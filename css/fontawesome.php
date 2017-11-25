@@ -1,12 +1,9 @@
 <?php $theme_uri = get_template_directory_uri();?>
 @font-face{
     font-family:"FontAwesome";
-    src:<?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.eot)';?>;
-    src:<?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.eot?#iefix)';?> format('embedded-opentype'),
-        <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.woff2)';?> format('woff2'),
+    src:<?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.woff2)';?> format('woff2'),
         <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.woff)';?> format('woff'),
         <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.ttf)';?> format('truetype'),
-        <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.svg#fontawesomeregular)';?> format('svg');
     font-weight:normal;
     font-style:normal;
 }

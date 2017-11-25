@@ -13,19 +13,22 @@ $meta_img     = get_meta_image();
 $blog_name    = get_bloginfo('name');
 $description  = get_meta_description();
 $URLbar_color = get_option('GoogleChrome_URLbar');
-if($google_meta!==false){echo'<meta name="google-site-verification" content="' . $google_meta . '">';}
-if($bing!==false){echo'<meta name="msvalidate.01" content="' . $bing . '">';}
-if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
+if($google_meta!==false){
+    echo'<meta name="google-site-verification" content="' . $google_meta . '">';
+}
+if($bing!==false){
+    echo'<meta name="msvalidate.01" content="' . $bing . '">';
+}
+if($pin!==false){
+    echo'<meta name="p:domain_verify" content="' . $pin . '">';
+}?>
 <meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
 <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta http-equiv="cleartype" content="on">
 <meta name="renderer" content="webkit">
-<meta name="HandheldFriendly" content="true">
 <meta name="description" content="<?php echo $description;?>">
 <meta name="theme-color" content="<?php echo $URLbar_color;?>">
 <meta name="msapplication-TileColor" content="<?php echo $URLbar_color;?>">
-<meta property="fb:app_id" content="<?php echo get_option('facebook_appid');?>">
 <meta property="og:type" content="article">
 <?php if(is_home()===true):?>
     <meta property="og:title" content="<?php echo $blog_name;?>">
@@ -44,10 +47,12 @@ if($pin!==false){echo'<meta name="p:domain_verify" content="' . $pin . '">';}?>
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo('pingback_url');?>">
-<link rel="prerender" href="<?php if(is_home()){echo get_permalink();}else{echo $site_url;}?>">
 <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
 <?php if($is_amp===false):?>
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+    <link rel="preload"  as="font" type="font/woff2" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
+	<link rel="preload"  as="font" type="font/woff" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
+	<link rel="preload"  as="font" type="application/x-font-ttf" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
     <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===false){echo $meta_url . '/';}else{echo $meta_url;}?>amp">
 <?php endif;
 if($google_id!==null):?>
@@ -64,8 +69,12 @@ if(is_singular()===true):
     $logo       = get_theme_mod('custom_logo');
     $author_id  = $post->post_author;
     $i          = 1;
-    if($fb!==''){echo'<meta property="article:author" content="' . $fb . '">';}
-    if($tw!==''){echo'<meta name="twitter:creator" content="' . $tw . '">';}
+    if($fb!==''){
+        echo'<meta property="article:author" content="' . $fb . '">';
+    }
+    if($tw!==''){
+        echo'<meta name="twitter:creator" content="' . $tw . '">';
+    }
     echo'
     <script type="application/ld+json">
         {
@@ -101,7 +110,7 @@ if(is_singular()===true):
             "description": "' . $description . '"
         }
     </script>';
-    if(is_single() || is_page() && is_subpage()===false){
+    if(is_single()===true || is_page()===true && is_subpage()===false){
         $categories = get_the_category($post->ID);
         $cat        = $categories[0];
         echo'
@@ -145,7 +154,7 @@ if(is_singular()===true):
                         }
                     },';
     }
-    if(is_page() && is_subpage()===true){
+    if(is_page()===true && is_subpage()===true){
         $obj = get_queried_object();
         echo'
         <script type="application/ld+json">
@@ -323,7 +332,7 @@ elseif(is_date()===true):
                             "name": "' . esc_html($y) . '年"
                         }
                     }';
-                    if(is_month() || is_day()){
+                    if(is_month()===true || is_day()===true){
                         echo'
                         ,{
                             "@type": "ListItem",
@@ -333,7 +342,7 @@ elseif(is_date()===true):
                                 "name": "' . esc_html($m) . '月"
                             }
                         }';
-                        if(is_day()){
+                        if(is_day()===true){
                             echo'
                             ,{
                                 "@type": "ListItem",
