@@ -1,4 +1,7 @@
 #2017-by-wkwkrnht
+
+made by [wkwkrnht](https://twitter.com/wkwkrnht)
+
 ====
 
 
@@ -18,10 +21,77 @@
 * バニラな子テーマあり[(参照)](https://github.com/wkwkrnht/2017-by-wkwkrnht-child/)
 * すっきりとしたタイルデザイン
 * いつでもどこでも2クリック(タップ)でメニューアクセス
-* メニュー内と記事上下とリスト上下にウィジェットスペース確保
-* メニュー欄にメインメニューとソーシャルメニューの2種を用意
+* 以下にウィジェットスペース確保
+
+    * メニュー内
+    * 記事上下
+    * リスト上下
+
+* 以下のメニュー欄にとの2種を用意
+
+    * ヘッダー
+    * フロートメニュー内
+
+        * メイン
+        * ソーシャル
+
 * ソーシャルメニューはリンク先に応じて、自動的にアイコンフォントで装飾。その代わりに、リンクテキストは表示されません。(約40種対応)
-* SNSシェアボタンはウィジェットで搭載 (以下、対応サービス)
+* 豊富なクイックタグ
+
+    * hx
+
+        * h1
+        * h2
+        * h3
+        * h4
+        * h5
+        * h6
+
+    * p
+    * テーブル
+
+        * table
+        * thead
+        * tbody
+        * tfoot
+        * tr
+        * th
+        * td
+
+    * ショートコード
+
+* カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
+* リファラーも設定可
+* AMP & OGP & Twitterカード対応
+* Google Cookie Choice対応
+* Chrome独自のアドレスバー装飾対応
+* 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
+* jetpackの設定内容も弄れます
+
+###ウィジェット
+
+* 前後記事ナビは以下の二種
+
+    * アイキャッチ表示タイプ
+    * ホバーで表示タイプ
+
+* 関連記事は以下の二種
+
+    * 画像有りタイプ
+    * 画像無しタイプ
+
+* 検索欄
+
+    * Google製
+    * DuckDuckGo製
+    * 自家製(タグとカテゴリーで絞込可能)
+
+* コメント欄
+
+    * 自家製
+    * Disqus製
+
+* SNSシェアボタン (以下、対応サービス)
 
     * mastodon
     * Twitter
@@ -40,37 +110,8 @@
     * tumblr
     * pushdog (リストページのみ)
 
-* 前後記事ナビウィジェットは以下の二種
 
-    * アイキャッチ表示タイプ
-    * ホバーで表示タイプ
-
-* 関連記事ウィジェットは以下の二種
-
-    * 画像有りタイプ
-    * 画像無しタイプ
-
-* 検索ウィジェットはタグとカテゴリーで絞込可能
-* コメント欄は以下の二種のウィジェットで選択
-
-    * WordPress独自タイプ
-    * Disqus
-
-* ブログカードは、以下の三種を生成できるショートコードがそれぞれ完備
-
-    * OGPベースの独自タイプ
-
-        * 引用タグでマークアップしています
-        * シェアボタン付き
-
-            * Twitter
-            * facebook
-            * pocket
-            * はてなブックマーク
-
-
-    * Embed.ly
-    * はてな
+###ショートコード
 
 * 追加クラス
 
@@ -96,56 +137,39 @@
         * 黒
 
 
-* 豊富なクイックタグ
+* ブログカード
 
-    * hx
+    * OGPベースの自家製
 
-        * h1
-        * h2
-        * h3
-        * h4
-        * h5
-        * h6
+        * 引用タグでマークアップしています
+        * シェアボタン付き
 
-    * p
-    * テーブル
-
-        * table
-        * thead
-        * tbody
-        * tfoot
-        * tr
-        * th
-        * td
-
-        * ショートコード
-
-            * 追加クラス
-            * ブログカード
-            * HTML特殊文字エスケープ
-            * css挿入(そのスタイルはそのページのみ適用)
-            * 目次
-            * ボタン
-            * 検索風表示
-            * 注意表示
-            * ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
-            * a(target="＿blank"とrel="noappear"付)
+            * Twitter
+            * facebook
+            * pocket
+            * はてなブックマーク
 
 
-* カスタマイザーをいじるだけで、headタグ内とbody閉じタグ直前にテキスト埋め込み可能
-* リファラーも設定可
-* AMP & OGP & Twitterカード対応
-* Google Cookie Choice対応
-* Chrome独自のアドレスバー装飾対応
-* 独自のウィジェット向けCSSはウィジェットテンプレート冒頭に
-* jetpackの設定内容も弄れます
+    * Embed.ly製
+    * はてな製
+
+
+* HTML特殊文字エスケープ
+* css挿入(そのスタイルはそのページのみ適用)
+* 目次
+* ボタン
+* 検索風表示
+* 注意表示
+* ボックス (タイトル有無と、タイトルありでもasideタグ囲み(=コラム)とするか選択可能)
+* a (target="＿blank"とrel="noappear"付)
 
 ##ファイルツリー
 
 * amp (AMP HTML用テンプレートのコンテンツ部分)
 
-    * content-list.php
-    * content=singular.php
+    * content-list.php(リストページ用)
+    * content=singular.php(詳細ページ用)
+    * template.php (AMP HTML用テンプレート)
 
 * css (各種スタイル置き場)
 
@@ -159,15 +183,25 @@
     * short-code.php (ショートコード用)
     * style-singular.php (記事ページ用)
 
+* functions (関数ずらずら)
+
+    * customizer.php (カスタマイザー)
+    * editor.php (管理画面)
+    * general.php (その他)
+    * meta.php (メタタグ生成用)
+    * nav.php (ナビゲーション)
+    * setup.php (立ち上げ)
+    * short-code.php (ショートコード)
+    * util.php (汎用関数)
+    * widget.php (ウィジェット)
+
 * inc (素材置場)
 
     * fontawesome
 
-        * fontawesome-webfont.svg
         * fontawesome-webfont.ttf
         * fontawesome-webfont.woff
         * fontawesome-webfont.woff2
-        * fontawesome.otf
 
     * no-image (404な画像のレスポンシブイメージ用素材)
 
@@ -177,10 +211,11 @@
         * no-image_1024x1024.png
         * no-image_full.png
 
-    * baguetteBox.php(LightBox風スクリプト)
-    * editor-styl.css (TinyMCE向けスタイルシート)
+    * editor-button.js (TinyMCE向けスクリプト)
+    * editor-style.php (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
+    * script.php
 
 
 * widget (ウィジェット)
@@ -194,7 +229,6 @@
     * related-post.php (関連記事)
     * sns-share.php (SNSシェアボタン)
 
-* amp.php (AMP HTML用テンプレート)
 * composer.json (composerとwpackgist対応用のjsonファイル)
 * footer.php (フッターテンプレート)
 * functions.php (関数ずらずら)

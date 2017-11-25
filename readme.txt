@@ -170,7 +170,6 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
     * initial.php (初期スタイル)
     * mediaqueri.php (メディアクエリ)
     * menu.php (ウィジェットとメニューに関する項目)
-    * night-mode.php (ナイトモード関連)
     * short-code.php (ショートコード用)
     * style-singular.php (記事ページ用)
 
@@ -178,11 +177,9 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 
     * fontawesome
 
-        * fontawesome-webfont.svg
         * fontawesome-webfont.ttf
         * fontawesome-webfont.woff
         * fontawesome-webfont.woff2
-        * fontawesome.otf
 
     * no-image (404な画像のレスポンシブイメージ用素材)
 
@@ -192,10 +189,11 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
         * no-image_1024x1024.png
         * no-image_full.png
 
-    * baguetteBox.php(LightBox風スクリプト)
-    * editor-styl.css (TinyMCE向けスタイルシート)
+    * editor-button.js (TinyMCE向けスクリプト)
+    * editor-style.php (TinyMCE向けスタイルシート)
     * meta-json.php (ジャンル別メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
+    * script.php
 
 
 * widget (ウィジェット)
