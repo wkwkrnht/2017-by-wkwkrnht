@@ -1,11 +1,11 @@
 <?php $theme_uri = get_template_directory_uri();?>
 @font-face{
     font-family:"FontAwesome";
-    src:<?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.woff2)';?> format('woff2'),
-        <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.woff)';?> format('woff'),
-        <?php echo 'url(' . $theme_uri . '/inc/font-awesome/fontawesome-webfont.ttf)';?> format('truetype'),
-    font-weight:normal;
     font-style:normal;
+    font-weight:normal;
+    src:url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.woff2');?>) format('woff2'),
+        url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.woff');?>) format('woff'),
+        url(<?php get_parent_theme_file_path('/inc/font-awesome/fontawesome-webfont.ttf');?>) format('truetype');
 }
 .fa{
     display:inline-block;

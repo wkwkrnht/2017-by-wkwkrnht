@@ -50,6 +50,7 @@ if($pin!==false){
 <?php if($is_amp===false):?>
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+    <link rel="preload" as="sctipt" href="<?php get_parent_theme_file_path('/inc/script.php');?>">
     <link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
 	<link rel="preload"  as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
