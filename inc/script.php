@@ -11,7 +11,7 @@
         }
         return("");
     }
-    var key = "<?php echo get_option('cookie_key','2017-by-wkwkrnht');?>";
+    var key = "<?php echo htmlspecialchars(get_option('cookie_key','2017-by-wkwkrnht'));?>";
     var n = getCookie(key);
     function setCookie(key,n){
         var myDate = new Date();
