@@ -44,31 +44,24 @@
         wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
         document.head.appendChild(wpStyle);
     }
+    var targets = document.querySelectorAll(".format-link .article-main a");
+    for ( var i = 0; i < targets.length; i++ ) {
+        var target = targets[i];
+        target.classList.add("embedly-card");
+    }
 })();
-<?php echo'//hogehoge';?>
-<?php if(has_nav_menu('social')===true||has_nav_menu('main')===true||is_active_sidebar('floatmenu')===true):?>
-    (function(){
-        document.getElementById("menu-toggle").onclick = function(){
-            document.getElementById("menu-wrap").classList.toggle("none");
-            document.getElementById("menu-wrap").classList.toggle("block");
-            var attr = document.getElementById("menu-wrap").attributes;
-            if (attr['aria-hidden'].value == "true") {
-                document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
-            } else {
-                document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
-            }
-        };
-    })();
-<?php endif;?>
-<?php if(get_post_format()==='link'):?>
-    (function(){
-        var targets = document.querySelectorAll(".format-link .article-main a");
-        for ( var i = 0; i < targets.length; i++ ) {
-            var target = targets[i];
-            target.classList.add("embedly-card");
+(function(){
+    document.getElementById("menu-toggle").onclick = function(){
+        document.getElementById("menu-wrap").classList.toggle("none");
+        document.getElementById("menu-wrap").classList.toggle("block");
+        var attr = document.getElementById("menu-wrap").attributes;
+        if (attr['aria-hidden'].value == "true") {
+            document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
+        } else {
+            document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
         }
-    })();
-<?php endif;?>
+    };
+})();
 <?php if(has_class('ba-slider')===true):?>
     (function(){
         var n = document.createElement("script");
@@ -140,7 +133,4 @@
             resizeElement.removeClass('resizable');
         });
     }
-<?php endif;?>
-<?php if(has_class('highlight-js')===true):?>
-    hljs.initHighlightingOnLoad();
 <?php endif;?>

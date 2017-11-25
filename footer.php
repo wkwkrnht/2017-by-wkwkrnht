@@ -23,7 +23,7 @@
         wp_footer();
         if(has_class('highlight-js')===true):?>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" onload="hljs.initHighlightingOnLoad();"></script>
         <?php endif;
         if(get_post_format()==='link'):?>
             <script async="" src="//cdn.embedly.com/widgets/platform.js"></script>
