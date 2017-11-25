@@ -183,16 +183,9 @@ article{
     margin:4vh auto;
     max-width:80%;
 }
-.article-main iframe[src*="youtu.be"],.article-main iframe[src*="youtube.com"],.article-main iframe[src*="www.youtube.com"]{
-    height:calc(80vw / 100 * 56.25);
-    margin:4vh auto;
-    width:80vw;
-}
-.article-main p iframe[src*="youtu.be"],.article-main p iframe[src*="youtube.com"],.article-main p iframe[src*="www.youtube.com"]{
+.article-main .youtube iframe[src*="youtu.be"],.article-main .youtube iframe[src*="youtube.com"],.article-main .youtube iframe[src*="www.youtube.com"]{
     height:calc(80vw / 100 * 56.25);
     margin:4vh 0;
-    max-height:calc(720px / 100 * 56.25);
-    max-width:720px;
     width:80vw;
 }
 

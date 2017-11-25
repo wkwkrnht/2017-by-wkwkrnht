@@ -2,9 +2,7 @@
 <html <?php language_attributes();?>>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 	<meta charset="utf-8">
-	<?php
-	$theme_uri = get_template_directory_uri();
-	include_once(get_template_directory() . '/inc/meta-info.php');?>
+	<?php include_once(get_parent_theme_file_path('/inc/meta-info.php'));?>
 	<style>
 		<?php wkwkrnht_load_style();?>
 	</style>
@@ -19,7 +17,7 @@
 <body <?php body_class();?>>
 	<?php
 	if(is_author()===true):
-		include_once($theme_dir . '/widget/author-bio.php');
+		include_once(get_parent_theme_file_path('/widget/author-bio.php'));
 	elseif(is_singular()===false):?>
 		<header itemscope itemtype="http://schema.org/WPHeader">
 			<section class="site-header">

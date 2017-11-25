@@ -223,9 +223,13 @@ function url_to_OGPBlogcard($atts){
     }
     return $content;
 }
+function youtube_into_article($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    return'<figure class="youtube"><iframe src="' . $url . '" width="853" height="480" frameborder="0" allowtransparency="true"></iframe></figure>';
+}
 function spotify_play_into_article($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    return'<iframe src="https://embed.spotify.com/?uri=' . $url . '" frameborder="0" allowtransparency="true" class="spotifycard"></iframe>';
+    return'<figure class="spotifycard"><iframe src="https://embed.spotify.com/?uri=' . $url . '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe></figure>';
 }
 function toot_into_article($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
@@ -375,6 +379,7 @@ add_shortcode('html_encode','html_encode');
 add_shortcode('embedly','url_to_embedly');
 add_shortcode('hatenaBlogcard','url_to_hatenaBlogcard');
 add_shortcode('OGPBlogcard','url_to_OGPBlogcard');
+add_shortcode('youtube','youtube_into_article');
 add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('mastodon','toot_into_article');
 add_shortcode('nav','navigation_in_article');
