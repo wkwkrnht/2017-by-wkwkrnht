@@ -5,6 +5,9 @@
 	<?php
 	$theme_uri = get_template_directory_uri();
 	include_once(get_template_directory() . '/inc/meta-info.php');?>
+	<style>
+		<?php include_once(get_parent_theme_file_path('/css/initial.php'));?>
+	</style>
 	<?php
 	$txt = get_option('header_txt');
 	wkwkrnht_load_analytics();
