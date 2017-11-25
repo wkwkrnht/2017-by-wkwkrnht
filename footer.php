@@ -27,10 +27,7 @@
         <script src="<?php echo get_template_directory_uri();?>/inc/script.php"></script>
         <style>
             <?php
-            wkwkrnht_load_style();
-            if($night_mode===true){
-                include(get_parent_theme_file_path('/css/night-mode.php'));
-            }?>
+            wkwkrnht_load_style();?>
         </style>
         <?php
         wp_footer();

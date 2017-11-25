@@ -29,10 +29,6 @@
     setCookie(key,n);
 })();
 (function(){
-    if ((new Date()).getHours() >= 21 || (new Date()).getHours() < 6 ) {
-        document.body.className += " night-mode";
-        var nightMode = true;
-    }
     var wpCss = document.getElementById("wpcss");
     if (wpCss === null) {
         return;
