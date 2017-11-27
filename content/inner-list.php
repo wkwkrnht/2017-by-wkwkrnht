@@ -45,10 +45,16 @@ $page_format = paginate_links(array(
     'prev_next' => false,
     'type'      => 'array'
 ));
-if(is_array($page_format)){
+if(is_array($page_format)===true){
     $echo  = '';
     $paged = (get_query_var('paged') === 0) ? 1 : get_query_var('paged');
-    foreach($page_format as $page){if($page===$paged){$echo .= "<li class='current'>$page</li>";}else{$echo .= "<li>$page</li>";}}
+    foreach($page_format as $page){
+        if($page===$paged){
+            $echo .= "<li class='current'>$page</li>";
+        }else{
+            $echo .= "<li>$page</li>";
+        }
+    }
     echo'<ul class="page-nation">' . $echo . '</ul>';
 }
 wp_reset_postdata();

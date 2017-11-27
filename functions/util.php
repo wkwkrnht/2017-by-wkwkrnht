@@ -172,14 +172,12 @@ function wkwkrnht_load_style(){
     $is_amp         = is_amp();
     $root_color     = get_option('root_color','#333');
     $url_short_code = get_parent_theme_file_path('/css/short-code.php');
-    include_once(get_parent_theme_file_path('/css/initial.php'));
+    include_once(get_parent_theme_file_path('/css/general.php'));
     if($is_amp===false){
         include_once(get_parent_theme_file_path('/css/fontawesome.php'));
     }
     include_once(get_parent_theme_file_path('/css/nav.php'));
     include_once(get_parent_theme_file_path('/css/widget.php'));
-    include_once(get_parent_theme_file_path('/css/menu.php'));
-    include_once(get_parent_theme_file_path('/css/card.php'));
     if(is_singular()===true){
         $id      = url_to_postid(get_meta_url());
         $post    = get_post($id);
