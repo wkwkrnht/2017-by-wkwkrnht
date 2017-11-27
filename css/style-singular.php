@@ -240,6 +240,7 @@ article{
     border-collapse:collapse;
     box-sizing:border-box;
     margin:2vh auto;
+    overflow-x:auto;
     table-layout:fixed;
     width:calc(100% - 16vmin);
 }
@@ -253,16 +254,9 @@ article{
     color:<?php echo get_option('article_main_th_color','#fff');?>;
 }
 .article-main table tr th,.article-main table tr td{
-    border:1px solid <?php echo get_option('article_main_li_border','#cfcfcf');?>;
     overflow:auto;
     padding:1em;
     text-align:center;
-}
-.article-main table tr:last-child{
-    border-left:none;
-}
-.article-main table:last-child{
-    border-bottom:none;
 }
 
 .article-main img{
