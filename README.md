@@ -4,14 +4,19 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 
 ====
 
+##サポートブラウザー
+
+1. Edge
+2. Safari
+3. Chrome
+4. Firefox
 
 ##使用ライブラリ
-1. [normalize.css](https://github.com/necolas/normalize.css) | v4.1.1 | MIT License |
+1. [normalize.css](https://github.com/necolas/normalize.css) | v7.0.0 | MIT License |
 2. [Font Awesome](http://fontawesome.io) | 4.6.3 | ([License](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)) | @davegandy
 3. [OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
 
 ##作成者
-
 [wkwkrnht](https://twitter.com/wkwkrnht)
 
 ##特徴
@@ -69,7 +74,6 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 * jetpackの設定内容も弄れます
 
 ###ウィジェット
-
 * 前後記事ナビは以下の二種
 
     * アイキャッチ表示タイプ
@@ -112,7 +116,6 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 
 
 ###ショートコード
-
 * 追加クラス
 
     * マーカー
@@ -164,7 +167,6 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 * a (target="＿blank"とrel="noappear"付)
 
 ##ファイルツリー
-
 * amp (AMP HTML用テンプレートのコンテンツ部分)
 
     * content-list.php(リストページ用)
