@@ -171,6 +171,32 @@ span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
     font-weight:bold;
 }
 
+<?php
+$header_color      = get_option('site_header_color','#fff');
+$header_background = get_option('site_header_background','#03a9f4');?>
+.site-header{
+    <?php
+    if(get_header_image()){
+        echo'background-image:url(' . get_header_image() . ');';
+    }else{
+        echo'background-color:' . $header_background . ';';
+    }?>
+    box-shadow:0 0 3vmin rgba(0,0,0,.1);
+    height:10%;
+    padding:3vh 0 5vh;
+    text-align:center;
+    width:100%;
+}
+.site-header,.site-header a{
+    color:<?php echo $header_color;?>;
+}
+.site-title{
+    font-size:2.5rem;
+}
+.site-description,.site-header .copyright{
+    font-size:1.8rem;
+}
+
 .article-list{
     align-content:space-around;
     align-items:baseline;

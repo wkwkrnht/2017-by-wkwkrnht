@@ -127,21 +127,22 @@
 		box-sizing:border-box;
         display:block;
 		font-size:1.8rem;
-		margin:4vh 2vh;
+		margin:4vh auto;
 		min-height:40.5vmin;
 		padding:2vh 4vh;
         position:relative;
 		text-align:center;
-        width:80vw;
+        width:90vw;
     }
     .bio-img{
+        hight:20vw;
         left:4vmin;
         position:absolute;
         top:2vmin;
-        width:calc(80vw / 10 * 3 - 1vmin);
+        width:20vw;
     }
     .bio-info,.follow-button{
-        width:calc(80vw / 10 * 7);
+        width:calc(90vw - (20vw + 1vmin));
     }
     .bio-info{
         position:absolute;

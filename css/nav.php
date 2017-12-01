@@ -1,37 +1,10 @@
 /*
-1.header
-2.header nav
-3.float menu
-4.main-nav
-5.social-nav
-6.
+1.header nav
+2.float menu
+3.main-nav
+4.social-nav
+5.page nation
 */
-<?php
-$header_color      = get_option('site_header_color','#fff');
-$header_background = get_option('site_header_background','#03a9f4');?>
-.site-header{
-    <?php
-    if(get_header_image()){
-        echo'background-image:url(' . get_header_image() . ');';
-    }else{
-        echo'background-color:' . $header_background . ';';
-    }?>
-    box-shadow:0 0 3vmin rgba(0,0,0,.1);
-    height:10%;
-    padding:3vh 0 5vh;
-    text-align:center;
-    width:100%;
-}
-.site-header,.site-header a{
-    color:<?php echo $header_color;?>;
-}
-.site-title{
-    font-size:2.5rem;
-}
-.site-description,.site-header .copyright{
-    font-size:1.8rem;
-}
-
 <?php if(has_nav_menu('header')===true&&is_singular()===false):?>
     .header-nav ul{
         background-color:<?php color_change_brightness($header_background,get_option('site_nav_background_brightness','-40'));?>;

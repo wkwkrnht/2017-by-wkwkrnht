@@ -123,6 +123,10 @@ function get_mtime($format){
     }
 }
 
+function the_mtime($format){
+    echo get_mtime($format);
+}
+
 function get_first_post_year(){
     $year = null;
     query_posts('posts_per_page=1&order=ASC');

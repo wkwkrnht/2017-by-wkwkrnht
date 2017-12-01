@@ -1,8 +1,4 @@
-<?php
-if(is_author()===true){
-    include_once(get_template_directory() . '/widget/author-bio.php');
-}
-if(is_active_sidebar('listabove')){
+<?php if(is_active_sidebar('listabove')){
     dynamic_sidebar('listabove');
 }?>
 <div class="article-list">
@@ -19,12 +15,12 @@ if(is_active_sidebar('listabove')){
             $category   = $categories[0];
             ?>
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
-                <img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_128);?> 320w,<?php wkwkrnht_eyecatch($size_256);?> 1270w,<?php wkwkrnht_eyecatch($size_512);?> 1920w,<?php wkwkrnht_eyecatch($size_1024);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
+                <img src="<?php wkwkrnht_eyecatch($size_60_crop);?>" srcset="<?php wkwkrnht_eyecatch($size_240_crop);?> 240w,<?php wkwkrnht_eyecatch($size_320_crop);?> 320w,<?php wkwkrnht_eyecatch($size_480_crop);?> 480w,<?php wkwkrnht_eyecatch($size_560_crop);?> 560w,<?php wkwkrnht_eyecatch($size_640_crop);?> 640w,<?php wkwkrnht_eyecatch($size_720_crop);?> 720w,<?php wkwkrnht_eyecatch($size_800_crop);?> 800w,<?php wkwkrnht_eyecatch($size_1024_crop);?> 1024w,<?php wkwkrnht_eyecatch($size_1280_crop);?> 1280w,<?php wkwkrnht_eyecatch($size_1366_crop);?> 1366w,<?php wkwkrnht_eyecatch($size_1600_crop);?> 1600w,<?php wkwkrnht_eyecatch($size_1920_crop);?> 1920w,<?php wkwkrnht_eyecatch($size_2560_crop);?> 2560w" sizes="30vmax" alt="eyecatch" class="card-img">
                 <div class="card-meta">
                     <h2 class="card-title">
                         <?php echo $title;?>
                     </h2>
-                    <time class="entry-date updated fa fa-calendar" datetime="<?php the_time('Y-m-d');?>">
+                    <time class="entry-date updated fa fa-calendar" datetime="<?php the_mtime('Y/n/j G:i.s');?>">
                         <?php the_time('Y/n/j');?>
                     </time>
                 </div>

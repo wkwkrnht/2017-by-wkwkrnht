@@ -11,14 +11,14 @@ if(have_posts()){
 }?>
 <article id="post-<?php the_ID();?>" <?php post_class();?>>
     <header class="article-header">
-        <img src="<?php wkwkrnht_eyecatch($size_full);?>" srcset="<?php wkwkrnht_eyecatch($size_256);?> 256w,<?php wkwkrnht_eyecatch($size_512);?> 512w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1270);?> 1270w,<?php wkwkrnht_eyecatch($size_1344);?> 1344w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w" sizes="90vw" alt="eyecatch" class="article-eyecatch">
+        <img src="<?php wkwkrnht_eyecatch($size_160);?>" srcset="<?php wkwkrnht_eyecatch($size_2560);?> 2560w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_1600);?> 1600w,<?php wkwkrnht_eyecatch($size_1366);?> 1366w,<?php wkwkrnht_eyecatch($size_1280);?> 1280w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_720);?> 720w,<?php wkwkrnht_eyecatch($size_640);?> 640w,<?php wkwkrnht_eyecatch($size_560);?> 560w,<?php wkwkrnht_eyecatch($size_480);?> 480w,<?php wkwkrnht_eyecatch($size_320);?> 320w,<?php wkwkrnht_eyecatch($size_240);?> 240w" sizes="90vw" alt="eyecatch" class="article-eyecatch">
         <div class="article-meta">
             <h1 class="article-title entry-title">
                 <?php the_title();?>
             </h1>
             <div>
                 <span class="article-date fa fa-calendar">
-                    <time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
+                    <time class="updated" datetime="<?php the_mtime('Y/n/j G:i.s');?>">
                         <?php the_time('Y/n/j');?>
                     </time>
                 </span>

@@ -201,7 +201,7 @@ function url_to_embedly($atts){
 }
 function url_to_hatenaBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    return'<iframe src="https://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no" class="hatenablogcard"></iframe>';
+    return'<figure class="hatenablogcard"><iframe src="https://hatenablog-parts.com/embed?url=' . $url . '" frameborder="0" scrolling="no"></iframe></figure>';
     }
 function url_to_OGPBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));

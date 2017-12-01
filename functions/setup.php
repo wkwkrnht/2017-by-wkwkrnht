@@ -54,15 +54,33 @@ function wkwkrnht_setup(){
     register_nav_menu('main','main');
     register_nav_menu('social','social');
 
-    add_image_size('wkwkrnht-thumb',2560,1440);
+    add_image_size('wkwkrnht-thumb-2560',2560,1440);
     add_image_size('wkwkrnht-thumb-1920',1920,1080);
-    add_image_size('wkwkrnht-thumb-1344',1344,576);
-    add_image_size('wkwkrnht-thumb-1270',1270,720);
-    add_image_size('wkwkrnht-thumb-1024',1024,1024);
-    add_image_size('wkwkrnht-thumb-800',800,800,true);
-    add_image_size('wkwkrnht-thumb-512',512,512,true);
-    add_image_size('wkwkrnht-thumb-256',256,256,true);
-    add_image_size('wkwkrnht-thumb-128',128,128,true);
+    add_image_size('wkwkrnht-thumb-1366',1366,768);
+    add_image_size('wkwkrnht-thumb-1280',1280,720);
+    add_image_size('wkwkrnht-thumb-1024',1024,768);
+    add_image_size('wkwkrnht-thumb-800',800,450);
+    add_image_size('wkwkrnht-thumb-720',720,405);
+    add_image_size('wkwkrnht-thumb-640',640,360);
+    add_image_size('wkwkrnht-thumb-560',560,315);
+    add_image_size('wkwkrnht-thumb-480',480,320);
+    add_image_size('wkwkrnht-thumb-320',320,180);
+    add_image_size('wkwkrnht-thumb-240',240,135);
+    add_image_size('wkwkrnht-thumb-160',160,90);
+    add_image_size('wkwkrnht-thumb-2560-crop',2560,2560,true);
+    add_image_size('wkwkrnht-thumb-1920-crop',1920,1920,true);
+    add_image_size('wkwkrnht-thumb-1600-crop',1600,1600,true);
+    add_image_size('wkwkrnht-thumb-1366-crop',1366,1366,true);
+    add_image_size('wkwkrnht-thumb-1280-crop',1280,1280,true);
+    add_image_size('wkwkrnht-thumb-1024-crop',1024,1024,true);
+    add_image_size('wkwkrnht-thumb-800-crop',800,800,true);
+    add_image_size('wkwkrnht-thumb-720-crop',720,720,true);
+    add_image_size('wkwkrnht-thumb-640-crop',640,640,true);
+    add_image_size('wkwkrnht-thumb-560-crop',560,560,true);
+    add_image_size('wkwkrnht-thumb-480-crop',480,480,true);
+    add_image_size('wkwkrnht-thumb-320-crop',320,320,true);
+    add_image_size('wkwkrnht-thumb-240-crop',240,240,true);
+    add_image_size('wkwkrnht-thumb-160-crop',160,160,true);
 
 
 }
