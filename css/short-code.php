@@ -375,59 +375,54 @@
 
 <?php if(has_class('ba-slider')===true):?>
     .ba-slider{
-        position: relative;
-        overflow: hidden;
+        overflow:hidden;
+        position:relative;
     }
     .ba-slider img{
-        width: 100%;
         display:block;
+        width:100%;
     }
     .resize{
+        height:inherit;
+        left:0;
+        overflow: hidden;
         position: absolute;
         top:0;
-        left:0;
-        height:inherit;
         width:50%;
-        overflow: hidden;
     }
     .handle{
-        /* Thin line seperator */
-        position:absolute;
-        left:50%;
-        top:0;
+        background-color:rgba(0,0,0,.5);
         bottom:0;
-        width:4px;
+        cursor:ew-resize;
+        left:50%;
         margin-left:-2px;
-        background:rgba(0,0,0,.5);
-        cursor: ew-resize;
+        position:absolute;
+        top:0;
+        width:4px;
     }
     .handle::after{
-        /* Big orange knob  */
-        position: absolute;
-        top: 50%;
-        width: 64px;
-        height: 64px;
-        margin: -32px 0 0 -32px;
-        content:'\21d4';
+        background-color:#ffb800;
+        border:1px solid #e6a600;
+        border-radius: 50%;
+        box-shadow:0 2px 6px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.5),inset 0 60px 50px -30px #ffd466;
         color:#fff;
+        content:'\21d4';
         font-weight:bold;
         font-size:36px;
-        text-align:center;
+        height:64px;
         line-height:64px;
-        background: #ffb800; /* @orange */
-        border:1px solid #e6a600; /* darken(@orange, 5%) */
-        border-radius: 50%;
+        margin: -32px 0 0 -32px;
+        position:absolute;
+        text-align:center;
+        top:50%;
         transition:all 0.3s ease;
-        box-shadow:
-          0 2px 6px rgba(0,0,0,.3),
-          inset 0 2px 0 rgba(255,255,255,.5),
-          inset 0 60px 50px -30px #ffd466; /* lighten(@orange, 20%)*/
+        width:64px;
     }
     .draggable::after{
-        width: 48px;
-        height: 48px;
-        margin: -24px 0 0 -24px;
-        line-height:48px;
         font-size:30px;
+        line-height:48px;
+        height:48px;
+        margin:-24px 0 0 -24px;
+        width:48px;
     }
 <?php endif;?>

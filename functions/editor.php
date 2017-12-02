@@ -92,8 +92,8 @@ function wkwkrnht_add_quicktags(){
         QTags.addButton('qt-columun','コラム','[columun color= title=]','[/columun]');
         QTags.addButton('qt-box','box','[box color= title=]','[/box]');
         QTags.addButton('qt-simple-box','simple-box','[simple-box color=]','[/simple-box]');
-        QTags.addButton('qt-button','button','[button class=blue]','[/button]');
-        QTags.addButton('qt-link-button','link_button','[link_button class=blue url=]','[/link_button]');
+        QTags.addButton('qt-button','button','[button color=blue]','[/button]');
+        QTags.addButton('qt-link-button','link_button','[link_button color=blue url=]','[/link_button]');
         QTags.addButton('qt-a','a','[link url=]','[/link]');
         QTags.addButton('qt-abbr','abbr','<abbr title="">','</abbr>');
 		QTags.addButton('qt-q','q','<q>','</q>');
