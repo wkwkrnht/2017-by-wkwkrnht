@@ -32,7 +32,8 @@
 $social_nav = has_nav_menu('social');
 $main_nav   = has_nav_menu('main');?>
 <?php if($social_nav===true||$main_nav===true||is_active_sidebar('floatmenu')===ture):?>
-    #menu-toggle{
+    .menu-toggle{
+        background-color:<?php echo get_option('footer_background','#03a9f4');?>;
         border-radius:50%;
         bottom:2vh;
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
@@ -49,13 +50,10 @@ $main_nav   = has_nav_menu('main');?>
         width:15vh;
         z-index:100;
     }
-    #menu-wrap.block ~ #menu-toggle{
+    #menu-wrap.block ~ .menu-toggle{
         transform:rotate(45deg);
     }
-    #menu-toggle{
-        background-color:<?php echo get_option('footer_background','#03a9f4');?>;
-    }
-    #menu-toggle,#menu-toggle:visited{
+    .menu-toggle,.menu-toggle:visited{
         color:<?php echo get_option('footer_color','#fff');?>;
     }
 
