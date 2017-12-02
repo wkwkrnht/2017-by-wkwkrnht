@@ -5,7 +5,7 @@
 4.social-nav
 5.page nation
 */
-<?php if(has_nav_menu('header')===true&&is_singular()===false):?>
+<?php if(has_nav_menu('header')===true):?>
     .header-nav ul{
         background-color:<?php color_change_brightness($header_background,get_option('site_nav_background_brightness','-40'));?>;
         box-sizing:border-box;

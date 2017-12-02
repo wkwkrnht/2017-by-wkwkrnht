@@ -63,6 +63,52 @@ function yes_image($size){
 }
 function get_no_image($size){
     $uri = get_template_directory_uri() . '/inc/no-image/no-image_';
+    switch($size){
+        case 'wkwkrnht-thumb-160-crop':
+            $src = $uri . '160x160.png';
+            break;
+        case 'wkwkrnht-thumb-240-crop':
+            $src = $uri . '240x240.png';
+            break;
+        case 'wkwkrnht-thumb-320-crop':
+            $src = $uri . '320x320.png';
+            break;
+        case 'wkwkrnht-thumb-480-crop':
+            $src = $uri . '480x480.png';
+            break;
+        case 'wkwkrnht-thumb-560-crop':
+            $src = $uri . '560x560.png';
+            break;
+        case 'wkwkrnht-thumb-640-crop':
+            $src = $uri . '640x640.png';
+            break;
+        case 'wkwkrnht-thumb-720-crop':
+            $src = $uri . '720x720.png';
+            break;
+        case 'wkwkrnht-thumb-800-crop':
+            $src = $uri . '800x800.png';
+            break;
+        case 'wkwkrnht-thumb-1024-crop':
+            $src = $uri . '1024x1024.png';
+            break;
+        case 'wkwkrnht-thumb-1280-crop':
+            $src = $uri . '1280x1280.png';
+            break;
+        case 'wkwkrnht-thumb-1366-crop':
+            $src = $uri . '1366x1366.png';
+            break;
+        case 'wkwkrnht-thumb-1600-crop':
+            $src = $uri . '1600x1600.png';
+            break;
+        case 'wkwkrnht-thumb-1920-crop':
+            $src = $uri . '1920x1920.png';
+            break;
+        case 'wkwkrnht-thumb-2560-crop':
+            $src = $uri . '2560x2560.png';
+            break;
+        default:
+            $src = $uri . 'full.png';
+    }
     if($size===array(1024,1024)){
         $src = $uri . '1024x1024.png';
     }elseif($size===array(512,512)){
@@ -72,7 +118,7 @@ function get_no_image($size){
     }elseif($size===array(128,128)){
         $src = $uri . '128x128.png';
     }else{
-        $src = $uri . 'full.png';
+
     }
     return $src;
 }
