@@ -9,8 +9,10 @@
     if(is_404()===true&&is_active_sidebar('404')){
         dynamic_sidebar('404');
     }
-    if(have_posts()):while(have_posts()):the_post();
+    if(have_posts()):
+        while(have_posts()):the_post();
             $title      = the_title_attribute(array('echo'=>false));
+            $time       = get_mtime('Y/n/j G:i.s');
             $categories = get_the_category();
             $category   = $categories[0];
             ?>
@@ -20,12 +22,13 @@
                     <h2 class="card-title">
                         <?php echo $title;?>
                     </h2>
-                    <time class="entry-date updated fa fa-calendar" datetime="<?php the_mtime('Y/n/j G:i.s');?>">
-                        <?php the_time('Y/n/j');?>
+                    <time class="entry-date updated fa fa-calendar" datetime="<?php echo $time;?>">
+                        <?php echo $time;?>
                     </time>
                 </div>
             </a>
-    <?php endwhile;endif;
+    <?php endwhile;
+    endif;
     if(is_active_sidebar('listfooter')){
         dynamic_sidebar('listfooter');
     }?>

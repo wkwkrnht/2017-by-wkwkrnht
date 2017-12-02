@@ -199,9 +199,6 @@ function wkwkrnht_load_style(){
             }
         }
         include_once(get_parent_theme_file_path('/css/style-singular.php'));
-        if($is_amp===true){
-			include_once(get_parent_theme_file_path('/css/amp-style-singular.php'));
-        }
     }
     include_once(get_parent_theme_file_path('/css/mediaqueri.php'));
 }

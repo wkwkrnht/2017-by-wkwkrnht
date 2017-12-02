@@ -10,6 +10,7 @@
 9.for chat format
 10.original
 11.codex
+12.for amp
 */
 article{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
@@ -351,3 +352,12 @@ a img.aligncenter{
 }
 
 .sticky,.gallery-caption,.bypostauthor{}
+
+<?php if(is_amp()===true):?>
+    .amp-sharebutton > ul{
+        list-style:none;
+    }
+    .amp-sharebutton > ul > li{
+        display:inline-block;
+    }
+<?php endif;?>

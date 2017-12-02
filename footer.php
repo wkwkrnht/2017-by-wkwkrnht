@@ -3,7 +3,6 @@
         $main_menu   = is_active_sidebar('floatmenu');
         $social_menu = has_nav_menu('social');
         $main_nav    = has_nav_menu('main');
-        $night_mode  = '<script>document.write(nightMode);</script>';
         if($main_nav===true||$social_menu===true||$main_menu===ture):?>
             <aside id="menu-wrap" class="none" aria-hidden="true">
                 <?php if($social_menu===true):?>
@@ -22,7 +21,7 @@
                     </ul>
                 <?php endif;?>
             </aside>
-            <a href="javascript:void(0)" id="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
+            <a href="javascript:void(0)" class="menu-toggle" onclick="menuToggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
         <?php endif;?>
         <?php
         wp_footer();

@@ -11,6 +11,7 @@
 9.related entry
 10.related entry with img
 11.hover nav
+12.img nav
 12.comment
 13.duck duck go
 14.google search with ad
@@ -232,7 +233,7 @@
     }
 <?php endif;?>
 
-<?php if(is_active_widget(false,false,'related_posts')):?>
+<?php if(is_active_widget(false,false,'related_posts')||is_amp()===true):?>
     li.widget.widget_related_posts,.widget_related_posts{
 		display:flex;
 	}
@@ -330,9 +331,42 @@
     .hide-nav-prev:hover a,.hide-nav-next:hover a{
         transform:translate(0);
     }
-    .hide-nav-next a:hover,.hide-nav-prev a:hover{
-        background-color:<?php echo get_option('hover_nav_a_background','#03a9f4');?>;
-        color:<?php echo get_option('hover_nav_a_color','#fff');?>;
+<?php endif;?>
+
+<?php if(is_active_widget(false,false,'post_nav')):?>
+    .widget_post_nav a{
+        box-shadow:inset 0 0 5vmin rgba(0,0,0,.3);
+        color:#fff;
+        display:inline-block;
+        font-size:2.5rem;
+        height:10vh;
+        line-height:10vh;
+        overflow:hidden;
+        text-align:center;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        width:80vw;
+    }
+    <?php
+    $prev    = (is_attachment()) ? get_post(get_post()->post_parent) : get_adjacent_post(false,'',true);
+    $next    = get_adjacent_post(false,'',false);
+    $prev    = $prev->ID;
+    $next    = $next->ID;
+    $prevurl = get_template_directory_uri() . '/inc/no-img.png';
+    $nexturl = get_template_directory_uri() . '/inc/no-img.png';
+    if($prev&&has_post_thumbnail($prev)){
+        $prevthumb = wp_get_attachment_url(get_post_thumbnail_id($prev));
+        $prevurl   = esc_url($prevthumb);
+    }
+    if($next&&has_post_thumbnail($next)){
+        $nextthumb = wp_get_attachment_url(get_post_thumbnail_id($next));
+        $nexturl   = esc_url($nextthumb);
+    }?>
+    .widget_post_nav .prev{
+        background:url(<?php $prevurl;?>) rgba(0,0,0,.1) center;
+    }
+    .widget_post_nav .next{
+        background:url(<?php $nexturl;?>) rgba(0,0,0,.1) center;
     }
 <?php endif;?>
 

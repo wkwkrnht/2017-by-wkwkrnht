@@ -39,17 +39,17 @@
         wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
         document.head.appendChild(wpStyle);
     }
-    document.getElementById("menu-toggle").onclick = function(){
-        document.getElementById("menu-wrap").classList.toggle("none");
-        document.getElementById("menu-wrap").classList.toggle("block");
-        var attr = document.getElementById("menu-wrap").attributes;
-        if (attr['aria-hidden'].value == "true") {
-            document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
-        } else {
-            document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
-        }
-    };
 })();
+function menuToggle(){
+    document.getElementById("menu-wrap").classList.toggle("none");
+    document.getElementById("menu-wrap").classList.toggle("block");
+    var attr = document.getElementById("menu-wrap").attributes;
+    if (attr['aria-hidden'].value == "true") {
+        document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
+    } else {
+        document.getElementById("menu-wrap").setAttribute("aria-hidden","true");
+    }
+}
 function linkStyled(){
     var targets = document.querySelectorAll(".format-link .article-main a");
     for ( var i = 0; i < targets.length; i++ ) {
