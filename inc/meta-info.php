@@ -6,6 +6,7 @@ $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
 $pin          = get_option('Pinterest');
 $is_amp       = is_amp();
+$is_home      = is_home();
 $theme_uri    = get_template_directory_uri();
 $site_url     = site_url();
 $home_url     = esc_url(home_url());
@@ -31,7 +32,7 @@ if($pin!==false){
 <meta name="theme-color" content="<?php echo $URLbar_color;?>">
 <meta name="msapplication-TileColor" content="<?php echo $URLbar_color;?>">
 <meta property="og:type" content="article">
-<?php if(is_home()===true):?>
+<?php if($is_home===true):?>
     <meta property="og:title" content="<?php echo $blog_name;?>">
 <?php else:?>
     <meta property="og:title" content="<?php wp_title('｜',true,'right');echo $blog_name;?>">
@@ -58,18 +59,12 @@ if($pin!==false){
     <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/script.php">
     <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
-	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf" crossorigin>
-    <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===false){echo $meta_url . '/';}else{echo $meta_url;}?>amp">
+    <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===true){$amp_html = rtrim($meta_url,'/');}else{$amp_html = $mrta_url;}echo $meta_url;?>?amp=1">
 <?php endif;
 if($google_id!==null):?>
     <link rel="publisher" href="http://plus.google.com/<?php echo $google_id;?>">
 <?php endif;
 if(is_singular()===true):
-    $fb         = '';
-    $tw         = '';
-    $gp         = '';
-    $logo       = '';
-    $author_id  = '';
     $fb         = get_the_author_meta('facebook');
     $tw         = get_the_author_meta('twitter');
     $logo       = get_theme_mod('custom_logo');
@@ -446,7 +441,7 @@ elseif(is_attachment()===true):
             ]
         }
     </script>';
-elseif(is_home()===true):
+elseif($is_home===true):
     echo'
     <script type="application/ld+json">
         {

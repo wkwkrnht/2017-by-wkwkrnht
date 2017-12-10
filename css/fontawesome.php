@@ -4,8 +4,7 @@
     font-style:normal;
     font-weight:normal;
     src:url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2) format('woff2'),
-        url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff) format('woff'),
-        url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.ttf) format('truetype');
+        url(<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff) format('woff');
 }
 .fa{
     display:inline-block;
