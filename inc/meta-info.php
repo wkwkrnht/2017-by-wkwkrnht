@@ -52,7 +52,7 @@ if($pin!==false){
 <?php if($is_amp===false):?>
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
-    <?PHP if(get_option('x_domain_ad_preload',false)===true):?>
+    <?php if(get_option('x_domain_ad_preload')===true):?>
         <link rel="preload" as="script" href="//ad.xdomain.ne.jp/js/server-wp.js">
     <?php endif;?>
     <?php if(get_post_format()==='link'):?>
