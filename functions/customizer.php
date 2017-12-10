@@ -21,6 +21,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('delete_mastodon_embed_cache',array('settings'=>'delete_mastodon_embed_cache','label'=>'mastodon埋め込みのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'security_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
+    $wp_customize->add_setting('x_domain_ad_preload',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('x_domain_ad_preload',array('settings'=>'x_domain_ad_preload','label'=>'エックスドメインの無料WordPressサーバーにて広告用スクリプトを先読みする','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('cookie_key',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('cookie_key',array('section'=>'security_section','settings'=>'cookie_key','label'=>'Cookieのkeyを入力する','type'=>'text'));
     $wp_customize->add_setting('cookie_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));

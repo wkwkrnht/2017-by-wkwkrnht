@@ -25,7 +25,7 @@ if($pin!==false){
     echo'<meta name="p:domain_verify" content="' . $pin . '">';
 }?>
 <meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
-<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <meta name="renderer" content="webkit">
 <meta name="description" content="<?php echo $description;?>">
@@ -52,6 +52,9 @@ if($pin!==false){
 <?php if($is_amp===false):?>
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+    <?PHP if(get_option('x_domain_ad_preload',false)===true):?>
+        <link rel="preload" as="script" href="//ad.xdomain.ne.jp/js/server-wp.js">
+    <?php endif;?>
     <?php if(get_post_format()==='link'):?>
         <link rel="preload" as="script" href="//cdn.embedly.com/widgets/platform.js">
     <?php endif;?>
