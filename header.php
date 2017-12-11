@@ -52,8 +52,7 @@
 					</h1>
 				</a>
 			<?php endif;?>
-			<br>
-			<span class="copyright">
+			<div class="copyright">
 				<span itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization">
 					<span itemprop="name">
 						<?php echo $blog_name;?>
@@ -63,7 +62,7 @@
 				<span itemprop="copyrightYear">
 					<?php echo get_first_post_year();?>
 				</span>
-			</span>
+			</div>
 		</section>
 		<?php if(has_nav_menu('header')===true):?>
 			<nav class="header-nav">

@@ -32,7 +32,7 @@
         <?php if(get_post_format()==='link'):?>
             <script src="//cdn.embedly.com/widgets/platform.js" onload="linkStyled();"></script>
         <?php endif;?>
-        <script src="<?php echo get_template_directory_uri();?>/inc/script.php"></script>
+        <script src="<?php echo get_template_directory_uri();?>/inc/js/script.php"></script>
         <?php
         $txt = get_option('footer_txt');
         if($txt!==false){

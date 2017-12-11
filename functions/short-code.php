@@ -143,10 +143,8 @@ function make_TOC($atts){
         }else{
             $id = '';
         }
-        $script = 'document.getElementById("toc-inner").classList.toggle("none");document.getElementById("toc-inner").classList.toggle("block");';
         $html  .= '
         <aside' . $id . ' class="' . $atts['class'] . '" role="navigation">
-            <a href="javascript:void(0);" tabindex="0" class="toc-toggle" onclick="' . $script . '">∨</a>
             <h2 class="toc-title">' . $atts['title'] . '</h2>'
             . $toc_list .
         '</aside>

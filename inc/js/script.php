@@ -1,32 +1,37 @@
-(function(){
-    function getCookie(key){
-        var s, e;
-        var c = document.cookie + ";";
-        var b = c.indexOf(key,0);
-        if (b != -1) {
-            c = c.substring(b,c.length);
-            s = c.indexOf("=",0) + 1;
-            e = c.indexOf(";",s);
-            return(unescape(c.substring(s,e)));
-        }
-        return("");
+function getCookie(key){
+    var s, e;
+    var c = document.cookie + ";";
+    var b = c.indexOf(key,0);
+    if (b != -1) {
+        c = c.substring(b,c.length);
+        s = c.indexOf("=",0) + 1;
+        e = c.indexOf(";",s);
+        return(unescape(c.substring(s,e)));
     }
+    return("");
+}
+function setCookie(key,n){
+    var myDate = new Date();
+    myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
+    document.cookie = "key=" + escape(key) + escape(n) + ";expires=" + myDate.toGMTString() + ";";
+}
+(function(){
     var key = location.hostname;
     var n = getCookie(key);
-    function setCookie(key,n){
-        var myDate = new Date();
-        myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
-        document.cookie = "key=" + escape(key) + escape(n) + ";expires=" + myDate.toGMTString() + ";";
-    }
     if (n == "") {
+        +n;
         if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
+            n++;
+            setCookie(key,n);
             return;
         } else {
             window.back();
         }
+    } else {
+        n++;
+        setCookie(key,n);
+        return;
     }
-    n++;
-    setCookie(key,n);
 })();
 (function(){
     var wpCss = document.getElementById("wpcss");

@@ -191,7 +191,7 @@ $header_background = get_option('site_header_background','#03a9f4');?>
     color:<?php echo $header_color;?>;
 }
 .site-title{
-    font-size:2.5rem;
+    font-size:2.4rem;
 }
 .site-description,.site-header .copyright{
     font-size:1.8rem;
