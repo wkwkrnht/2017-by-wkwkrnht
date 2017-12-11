@@ -15,13 +15,13 @@ $meta_img     = get_meta_image();
 $blog_name    = get_bloginfo('name');
 $description  = get_meta_description();
 $URLbar_color = get_option('GoogleChrome_URLbar');
-if($google_meta!==false){
+if($google_meta!==''){
     echo'<meta name="google-site-verification" content="' . $google_meta . '">';
 }
-if($bing!==false){
+if($bing!==''){
     echo'<meta name="msvalidate.01" content="' . $bing . '">';
 }
-if($pin!==false){
+if($pin!==''){
     echo'<meta name="p:domain_verify" content="' . $pin . '">';
 }?>
 <meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">

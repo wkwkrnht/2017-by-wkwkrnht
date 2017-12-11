@@ -308,15 +308,10 @@ function wkwkrnht_search_form($form){
     $form = '
     <aside id="search" class="search-form role="searc﻿h﻿">
         <form method="get" action="' . home_url() . '">
-            <input name="s" id="s" type="text" label="キーワード"><br>'
-            . wp_dropdown_categories('depth=0&orderb=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
-            . '<select name="tag" id="tag" label="タグ">
-                <option value="" selected="selected">タグで絞り込む</option>'
-                 . $tag_echo
-            . '</select>
-            <button type="submit" label="検索" id="submit" class="fa fa-search">
-                検索
-            </button>
+            <input name="s" id="s" type="text" label="キーワード" title="キーワード"><br>'
+            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=カテゴリー')
+            . wp_dropdown_categories('depth=0&orderby=name&echo=0&hide_empty=1&show_option_all=タグ&taxonomy=post_tag')
+            . '<button type="submit" label="検索" title="検索" id="submit" class="fa fa-search">検索</button>
         </form>
     </aside>';
     return $form;

@@ -27,10 +27,10 @@
         wp_footer();
         if(has_class('highlight-js')===true):?>
             <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-            <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" onload="hljs.initHighlightingOnLoad();"></script>
+            <script async src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js" onload="hljs.initHighlightingOnLoad();"></script>
         <?php endif;?>
         <?php if(get_post_format()==='link'):?>
-            <script src="//cdn.embedly.com/widgets/platform.js" onload="linkStyled();"></script>
+            <script async src="//cdn.embedly.com/widgets/platform.js" onload="linkStyled();"></script>
         <?php endif;?>
         <script src="<?php echo get_template_directory_uri();?>/inc/js/script.php"></script>
         <?php

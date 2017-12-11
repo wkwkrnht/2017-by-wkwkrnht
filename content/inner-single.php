@@ -18,20 +18,16 @@ $made_time = get_mtime('Y/n/j G:i.s');?>
                 <?php the_title();?>
             </h1>
             <div>
-                <span class="article-date fa fa-calendar">
-                    <time class="updated" datetime="<?php echo $made_time;?>">
-                        <?php echo $made_time;?>
-                    </time>
-                </span>
-                <span class="author article-author fa fa-user">
-                    <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
-                        <span class="vcard author">
-                            <span class="fn">
-                                <?php echo $author_name;?>
-                            </span>
+                <time class="updated article-date fa fa-calendar" datetime="<?php echo $made_time;?>">
+                    <?php echo $made_time;?>
+                </time>
+                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="author article-author fa fa-user" tabindex="0">
+                    <span class="vcard author">
+                        <span class="fn">
+                            <?php echo $author_name;?>
                         </span>
-                    </a>
-                </span>
+                    </span>
+                </a>
             </div>
             <div class="widget_tag_cloud">
                 <?php the_tags('','','');?>
