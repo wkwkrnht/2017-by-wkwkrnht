@@ -160,7 +160,7 @@ article{
 .article-main blockquote:not(.ogp-blogcard-main),.article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
     border-color:<?php echo get_option('article_main_bq_border','#bbb');?>;
 }
-.article-main blockquote{
+.article-main blockquote:not(.ogp-blogcard-main){
     border:1px solid;
     border-radius:3vmin;
     padding:1em 2em;

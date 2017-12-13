@@ -41,8 +41,7 @@
         border:1px solid #ddd;
         box-sizing:border-box;
         height:36vh;
-        overflow-x:hidden;
-        overflow-y:auto;
+        overflow:hidden;
         padding:2vmin 5vmin;
         position:relative;
     }
