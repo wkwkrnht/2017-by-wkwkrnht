@@ -68,10 +68,10 @@ article{
     max-width:calc(1.6rem * 40);
     padding:1vh .5vh;
 }
-.article-main a[href^="http"]:empty::before{
+.article-main a[href^="http"]:empty:not(.fa)::before{
     content:attr(href);
 }
-.article-main a[href^="http"][title]:empty::before{
+.article-main a[href^="http"][title]:empty:not(.fa)::before{
     content:attr(title);
 }
 .article-main a[href*=".png"],.article-main a[href*=".jpg"],.article-main a[href*=".jpeg"],.article-main a[href*=".gif"]{

@@ -18,7 +18,6 @@ function make_OGPblogcard($url){
     '<div class="ogp-blogcard">
         <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" title="このブログカードのシェアメニューを開ける" tabindex="0" onclick="' . $script . '"></a>
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
-            <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
                 <li>
                     <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-twitter" title="Twitterへ共有する"></a>
@@ -35,6 +34,7 @@ function make_OGPblogcard($url){
                     </a>
                 </li>
             </ul>
+            <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
         </div>
         <blockquote class="ogp-blogcard-main" cite="' . $url . '">
             <img class="ogp-blogcard-img" src="' . $img . '">
