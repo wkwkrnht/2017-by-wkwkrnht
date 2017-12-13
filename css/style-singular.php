@@ -138,6 +138,7 @@ article{
     counter-increment:counter-h6;
 }
 
+
 .article-main pre,.article-main address{
     margin:1vh auto;
     max-width:94%;
@@ -152,10 +153,11 @@ article{
 .article-main address,.article-main code,.article-main q{
     background-color:#eee;
 }
+
 .article-main blockquote,.article-main q{
     quotes:none;
 }
-.article-main blockquote,.article-main blockquote[title]::after,.article-main blockquote[cite]::after,.article-main blockquote[title][cite]::after{
+.article-main blockquote:not(.ogp-blogcard-main),.article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
     border-color:<?php echo get_option('article_main_bq_border','#bbb');?>;
 }
 .article-main blockquote{
@@ -163,7 +165,7 @@ article{
     border-radius:3vmin;
     padding:1em 2em;
 }
-.article-main blockquote[title]::after,.article-main blockquote[cite]::after,.article-main blockquote[title][cite]::after{
+.article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
     border-top:1px solid;
     display:block;
     padding-top:1em;
@@ -171,15 +173,16 @@ article{
     white-space:pre-wrap;
     word-wrap:break-word;
 }
-.article-main blockquote[title]::after{
+.article-main blockquote:not(.ogp-blogcard-main)[title]::after{
     content:attr(title);
 }
-.article-main blockquote[cite]::after{
+.article-main blockquote:not(.ogp-blogcard-main)[cite]::after{
     content:attr(cite);
 }
-.article-main blockquote[title][cite]::after{
+.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
     content:attr(title)"\a" attr(cite);
 }
+
 .article-main > div{
     margin:4vh auto;
     max-width:80%;

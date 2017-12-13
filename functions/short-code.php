@@ -16,6 +16,7 @@ function make_OGPblogcard($url){
     $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
     $content     =
     '<div class="ogp-blogcard">
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" tabindex="0" onclick="' . $script . '"></a>
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
             <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
@@ -48,7 +49,6 @@ function make_OGPblogcard($url){
                 <p class="ogp-blogcard-description">' . $description . '</p>
             </a>
         </blockquote>
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" tabindex="0" onclick="' . $script . '"></a>
     </div>';
     return $content;
 }

@@ -6,6 +6,7 @@
 5.area for notice
 6.move to search
 */
+<?php $singular = is_singular();?>
 <?php if(has_shortcode($content,'toc')===true):?>
     .toc{
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
@@ -13,29 +14,17 @@
         padding:4vh 0;
         width:90%;
     }
-    .toc-toggle{
-        background-color:#03a9f4;
-        border-radius:50%;
-        box-shadow:0 0 3vmin rgba(0,0,0,.3);
-        color:#fff;
-        display:block;
-        font-size:1.8rem;
-        height:2em;
-        left:65vw;
-        position:relative;
-        text-align:center;
-        top:-1em;
-        width:2em;
-    }
     .toc > ul{
         margin:0;
     }
-    .article-main .toc-title{
-        max-width:80%;
-    }
-    .article-main .toc-title:hover::before{
-        content:"";
-    }
+    <?php if($singular===true):?>
+        .article-main .toc-title{
+            max-width:80%;
+        }
+        .article-main .toc-title:hover::before{
+            content:"";
+        }
+    <?php endif;?>
 <?php endif;?>
 
 
@@ -48,8 +37,13 @@
 
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
-        display:block;
+        background-color:#fff;
+        border:1px solid #ddd;
+        box-sizing:border-box;
         height:36vh;
+        overflow-x:hidden;
+        overflow-y:auto;
+        padding:2vmin 5vmin;
         position:relative;
     }
     .ogp-blogcard-share{
@@ -59,7 +53,6 @@
         left:0;
         position:absolute;
         top:0;
-        width:calc(80vw + 5vmin * 2);
         z-index:2;
     }
     .ogp-blogcard-share-close{
@@ -81,57 +74,41 @@
     .ogp-blogcard-share-close,.ogp-blogcard-share-close:visited,.ogp-blogcard-share > ul > li > a,.ogp-blogcard-share > ul > li > a:visited{
         color:#fff;
     }
+    .ogp-blogcard-share-toggle,.ogp-blogcard-main{
+        position:absolute;
+        top:0;
+    }
     .ogp-blogcard-share-toggle{
         background-color:#03a9f4;
         border-radius:50%;
         color:#fff;
         display:block;
-        height:3em;
+        height:2em;
         left:0;
-        line-height:3em;
         margin:0;
-        position:absolute;
-        top:0;
         text-align:center;
         vertical-align:middle;
-        width:3em;
+        width:2em;
     }
     .ogp-blogcard-main{
-        background-color:#fff;
-        border:1px solid #e5e5e5;
-        border-radius:3vmin;
-        box-shadow:0 0 3vmin rgba(0,0,0,.15);
-        box-sizing:border-box;
         height:36vh;
-        overflow-x:hidden;
-        overflow-y:auto;
-        padding:2vmin 5vmin;
-        position:absolute;
-        top:0;
-        width:80vw;
+    }
+    .ogp-blogcard-img,.ogp-blogcard-info{
+        display:inline-block;
     }
     .ogp-blogcard-img{
-        display:inline-block;
         max-height:36vh;
-        max-width:calc(80vw * .2);
+        max-width:25%;
     }
     .ogp-blogcard-info{
-        display:inline-block;
-        max-width:calc(80vw * .7);
+        max-width:70%;
         text-align:center;
     }
     .ogp-blogcard-title{
         font-size:2rem;
     }
-    <?php if(is_singular()===true):?>
+    <?php if($singular===true):?>
         .article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
-            display:none;
-        }
-        .article-main .ogp-blogcard-main{
-            border:0;
-            padding:0;
-        }
-        .article-main .ogp-blogcard-main::after{
             display:none;
         }
         .article-main .ogp-blogcard img{
