@@ -16,27 +16,21 @@ function make_OGPblogcard($url){
     $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
     $content     =
     '<div class="ogp-blogcard">
-        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" tabindex="0" onclick="' . $script . '"></a>
+        <a href="javascript:void(0)" class="ogp-blogcard-share-toggle fa fa-2x fa-share-alt" title="このブログカードのシェアメニューを開ける" tabindex="0" onclick="' . $script . '"></a>
         <div id="ogp-blogcard-share-' . $id_url . '" class="ogp-blogcard-share none">
             <a href="javascript:void(0)" class="ogp-blogcard-share-close" tabindex="0" onclick="' . $script . '">×</a>
             <ul>
                 <li>
-                    <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0">
-                        <span class="fa fa-twitter" aria-hidden="true"></span>
-                    </a>
+                    <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-twitter" title="Twitterへ共有する"></a>
                 </li>
                 <li>
-                    <a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0">
-                        <span class="fa fa-thumbs-up" aria-hidden="true"></span>
-                    </a>
+                    <a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-thumbs-up" title="facebookrへ共有する"></a>
                 </li>
                 <li>
-                    <a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">
-                        <span class="fa fa-get-pocket" aria-hidden="true"></span>
-                    </a>
+                    <a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-get-pocket" title="pocketへ共有する"></a>
                 </li>
                 <li>
-                    <a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0">
+                    <a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0" title="はてブへ共有する">
                         B!
                     </a>
                 </li>

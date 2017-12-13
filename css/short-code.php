@@ -53,6 +53,7 @@
         background-color:rgba(0,0,0,.3);
         border-radius:3vmin;
         height:calc(36vh + 2vmin * 2);
+        left:0;
         width:100%;
         z-index:2;
     }
@@ -109,7 +110,7 @@
         .article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
             display:none;
         }
-        .article-main .ogp-blogcard img{
+        .article-main .ogp-blogcard-img{
             display:inline-block;
         }
         .article-main .ogp-blogcard-title{
