@@ -40,7 +40,7 @@
         height:36vh;
         position:relative;
     }
-    .ogp-blogcard-share-toggle,.ogp-blogcard-share,.ogp-blogcard-main{
+    .ogp-blogcard-share,.ogp-blogcard-main{
         left:0;
         position:absolute;
         top:0;
@@ -76,9 +76,12 @@
         color:#fff;
         display:block;
         height:2em;
+        left:-1em;
         line-height:2em;
         margin:0;
+        position:absolute;
         text-align:center;
+        top:-1em;
         vertical-align:middle;
         width:2em;
         z-index:2;
@@ -90,7 +93,7 @@
         height:36vh;
         margin:0;
         overflow:hidden;
-        padding:2vmin 5vmin;
+        padding:1vmin 4vmin;
         width:100%;
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
@@ -99,7 +102,7 @@
     .ogp-blogcard-img{
         margin:auto;
         max-height:36vh;
-        max-width:25%;
+        max-width:20%;
     }
     .ogp-blogcard-info{
         max-height:100%;
