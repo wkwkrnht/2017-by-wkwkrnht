@@ -37,12 +37,7 @@
 
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
-        background-color:#fff;
-        border:1px solid #ddd;
-        box-sizing:border-box;
         height:36vh;
-        overflow:hidden;
-        padding:2vmin 5vmin;
         position:relative;
     }
     .ogp-blogcard-share-toggle,.ogp-blogcard-share,.ogp-blogcard-main{
@@ -52,7 +47,7 @@
     .ogp-blogcard-share{
         background-color:rgba(0,0,0,.3);
         border-radius:3vmin;
-        height:calc(36vh + 2vmin * 2);
+        height:36vh;
         left:0;
         width:100%;
         z-index:2;
@@ -60,8 +55,8 @@
     .ogp-blogcard-share-close{
         font-size:3em;
         position:absolute;
-        right:2em;
-        top:1em;
+        right:1em;
+        top:.5em;
     }
     .ogp-blogcard-share > ul{
         list-style:none;
@@ -69,7 +64,7 @@
     .ogp-blogcard-share > ul > li{
         border:1px solid #fff;
         display:inline-block;
-        font-size:2.2rem;
+        font-size:2.2em;
         margin:2vmin auto;
         padding:1em;
     }
@@ -90,7 +85,12 @@
         width:2em;
     }
     .ogp-blogcard-main{
+        background-color:#fff;
+        border:1px solid #ddd;
+        box-sizing:border-box;
         height:36vh;
+        overflow:hidden;
+        padding:2vmin 5vmin;
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
         display:inline-block;
