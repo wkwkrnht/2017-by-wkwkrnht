@@ -88,8 +88,9 @@
         border:1px solid #ddd;
         box-sizing:border-box;
         height:36vh;
+        margin:0;
         overflow:hidden;
-        padding:1vmin 2vmin;
+        padding:2vmin 5vmin;
         width:100%;
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
@@ -112,6 +113,7 @@
         }
         .article-main .ogp-blogcard-img{
             display:inline-block;
+            margin:0;
         }
         .article-main .ogp-blogcard-title{
             box-shadow:none;
