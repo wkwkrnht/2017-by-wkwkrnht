@@ -40,7 +40,7 @@
         height:36vh;
         position:relative;
     }
-    .ogp-blogcard-share,.ogp-blogcard-main{
+    .ogp-blogcard-share-toggle,.ogp-blogcard-share,.ogp-blogcard-main{
         left:0;
         position:absolute;
         top:0;
@@ -76,12 +76,9 @@
         color:#fff;
         display:block;
         height:2em;
-        left:-1em;
         line-height:2em;
         margin:0;
-        position:absolute;
         text-align:center;
-        top:-1em;
         vertical-align:middle;
         width:2em;
         z-index:2;
@@ -92,7 +89,7 @@
         box-sizing:border-box;
         height:36vh;
         overflow:hidden;
-        padding:2vmin 5vmin;
+        padding:1vmin 2vmin;
         width:100%;
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
