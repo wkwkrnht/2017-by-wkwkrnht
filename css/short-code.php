@@ -97,10 +97,12 @@
         display:inline-block;
     }
     .ogp-blogcard-img{
+        margin:auto;
         max-height:36vh;
         max-width:25%;
     }
     .ogp-blogcard-info{
+        max-height:100%;
         max-width:70%;
         text-align:center;
     }
@@ -113,7 +115,6 @@
         }
         .article-main .ogp-blogcard-img{
             display:inline-block;
-            margin:0;
         }
         .article-main .ogp-blogcard-title{
             box-shadow:none;
