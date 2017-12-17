@@ -1,3 +1,4 @@
+"use strict";
 function getCookie(key){
     var s, e;
     var c = document.cookie + ";";

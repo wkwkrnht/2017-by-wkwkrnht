@@ -321,11 +321,13 @@ function qa_box($args=array(),$content=''){
 function search_box($args=array(),$content=''){
     return'
     <div class="search-form">
-        <div class="sform">'
+        <div class="search-form">'
             . do_shortcode($content) . '
         </div>
-        <div class="sbtn">
-            <span class="fa fa-search fa-fw" aria-hidden="true"></span> 検索
+        <div class="search-btn">
+            <span class="fa fa-search fa-fw">
+                検索
+            </span>
         </div>
     </div>';
 }

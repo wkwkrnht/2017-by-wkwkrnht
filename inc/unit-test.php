@@ -22,17 +22,17 @@ class ShortCodeTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals($output, $expected);
     }
     function testtoc(){
-        $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+        $output = do_shortcode('[toc id=id class=toc title=目次 showcount=2 depth=0 toplevel=1 targetclass=article-main]');
         $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
         $this->assertEquals($output, $expected);
     }
     function testspotify(){
-        $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+        $output = do_shortcode('[spotify url=https://my-mitsu.jp/estimation/292]');
         $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
         $this->assertEquals($output, $expected);
     }
     function testoot(){
-        $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+        $output = do_shortcode('[mastodon url=https://my-mitsu.jp/estimation/292]');
         $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
         $this->assertEquals($output, $expected);
     }
@@ -42,7 +42,7 @@ class ShortCodeTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals($output, $expected);
     }
     function testmarker(){
-        $output = do_shortcode('[mymitsu]https://my-mitsu.jp/estimation/292[/mymitsu]');
+        $output = do_shortcode('[marker]https://my-mitsu.jp/estimation/292[/marker]');
         $expected = '<iframe src="https://my-mitsu.jp/estimation/292" id="mymitsu" width="640" height="480"></iframe>';
         $this->assertEquals($output, $expected);
     }

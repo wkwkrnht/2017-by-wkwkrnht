@@ -1,7 +1,6 @@
 <?php
 $i            = 1;
 $img          = ' src="' . get_no_image('') . '"';
-$google_id    = get_the_author_meta('GoogleID');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
 $pin          = get_option('Pinterest');
@@ -62,25 +61,24 @@ if($pin!==''){
     <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/js/script.php">
     <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
-    <link rel="amphtml" href="<?php if(strpos($meta_url,'/',-1)===true){$amp_html = rtrim($meta_url,'/');}else{$amp_html = $mrta_url;}echo $meta_url;?>?amp=1">
-<?php endif;
-if($google_id!==null):?>
-    <link rel="publisher" href="http://plus.google.com/<?php echo $google_id;?>">
+    <link rel="amphtml" href="<?php echo $meta_url;?>?amp=1">
 <?php endif;
 if(is_singular()===true):
+    $google_id  = get_the_author_meta('GoogleID');
     $fb         = get_the_author_meta('facebook');
     $tw         = get_the_author_meta('twitter');
     $logo       = get_theme_mod('custom_logo');
     $author_id  = $post->post_author;
-    $i          = 1;
+    if($google_id!==''){
+        echo'<link rel="publisher" href="http://plus.google.com/' . $google_id . '">';
+    }
     if($fb!==''){
         echo'<meta property="article:author" content="' . $fb . '">';
     }
     if($tw!==''){
         echo'<meta name="twitter:creator" content="' . $tw . '">';
     }
-    echo'
-    <script type="application/ld+json">
+    $meta_script = '
         {
             "@context": "http://schema.org",
             "@type": "NewsArticle",
@@ -112,56 +110,10 @@ if(is_singular()===true):
                 }
             },
             "description": "' . $description . '"
-        }
-    </script>';
-    if(is_single()===true || is_page()===true && is_subpage()===false){
-        $categories = get_the_category($post->ID);
-        $cat        = $categories[0];
-        echo'
-        <script type="application/ld+json">
-            {
-                "@context":"http://schema.org",
-                "@type": "BreadcrumbList",
-                "itemListElement":
-                [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "item":{
-                            "@id": "' . $home_url . '",
-                            "name": "ホーム"
-                        }
-                    },';
-                    if($cat -> parent != 0){
-                        $ancestors = array_reverse(get_ancestors($cat->cat_ID,'category'));
-                        foreach($ancestors as $ancestor){
-                            $i++;
-                            echo'
-                            {
-                                "@type": "ListItem",
-                                "position": ' . $i . ',
-                                "item":{
-                                    "@id": "' . get_category_link($ancestor) . '",
-                                    "name": "' . get_cat_name($ancestor) . '"
-                                }
-                            },';
-                        }
-                    }
-                    $i++;
-                    echo'
-                    {
-                        "@type": "ListItem",
-                        "position": ' . $i . ',
-                        "item":{
-                            "@id": "' . get_category_link($cat -> term_id) . '",
-                            "name": "' . $cat-> cat_name . '"
-                        }
-                    },';
-    }
-    if(is_page()===true && is_subpage()===true){
+        }';
+    if(is_subpage()===true){
         $obj = get_queried_object();
-        echo'
-        <script type="application/ld+json">
+        $meta_script = '
             {
                 "@context":"http://schema.org",
                 "@type": "BreadcrumbList",
@@ -179,7 +131,7 @@ if(is_singular()===true):
                         $pageAncestors = array_reverse($post -> ancestors);
                         foreach($pageAncestors as $pageAncestor){
                             $i++;
-                            echo'
+                            $meta_script .= '
                             {
                                 "@type": "ListItem",
                                 "position": ' . $i . ',
@@ -190,26 +142,66 @@ if(is_singular()===true):
                             },';
                         }
                     }
-    }
-                $i++;
-                echo'
-                {
-                    "@type": "ListItem",
-                    "position": ' . $i . ',
-                    "item":{
-                        "@id": "' . esc_url(get_permalink()) . '",
-                        "name": "' . esc_html(get_the_title()) . '"
+    }else{
+        $categories = get_the_category($post->ID);
+        $cat        = $categories[0];
+        $meta_script .= '
+            {
+                "@context":"http://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement":
+                [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "item":{
+                            "@id": "' . $home_url . '",
+                            "name": "ホーム"
+                        }
+                    },';
+                    if($cat -> parent != 0){
+                        $ancestors = array_reverse(get_ancestors($cat->cat_ID,'category'));
+                        foreach($ancestors as $ancestor){
+                            $i++;
+                            $meta_script .= '
+                            {
+                                "@type": "ListItem",
+                                "position": ' . $i . ',
+                                "item":{
+                                    "@id": "' . get_category_link($ancestor) . '",
+                                    "name": "' . get_cat_name($ancestor) . '"
+                                }
+                            },';
+                        }
                     }
+                    $i++;
+                    $meta_script .= '
+                    {
+                        "@type": "ListItem",
+                        "position": ' . $i . ',
+                        "item":{
+                            "@id": "' . get_category_link($cat -> term_id) . '",
+                            "name": "' . $cat-> cat_name . '"
+                        }
+                    },';
+    }
+        $i++;
+        $meta_script .= '
+            {
+                "@type": "ListItem",
+                "position": ' . $i . ',
+                "item":{
+                    "@id": "' . esc_url(get_permalink()) . '",
+                    "name": "' . esc_html(get_the_title()) . '"
                 }
-            ]
-        }
-        </script>';
+            }
+        ]
+    }';
 elseif(is_category()===true):
     $categories = get_the_category($post->ID);
     $cat        = $categories[0];
     $cattitle   = get_the_archive_title();
-    echo'
-    <script type="application/ld+json">
+    $meta_script = '
         {
             "@context":"http://schema.org",
             "@type": "BreadcrumbList",
@@ -249,14 +241,12 @@ elseif(is_category()===true):
                     }
                 }
             ]
-        }
-    </script>';
+        }';
 elseif(is_tag()===true):
     $tagName = single_tag_title('',false);
     $tag     = get_term_by('name',$tagName,'post_tag');
     $link    = get_tag_link($tag->term_id);
-    echo'
-        <script type="application/ld+json">
+    $meta_script = '
         {
             "@context":"http://schema.org",
             "@type": "BreadcrumbList",
@@ -279,13 +269,11 @@ elseif(is_tag()===true):
                     }
                 }
             ]
-        }
-        </script>';
+        }';
 elseif(is_author()===true):
         $userId     = get_query_var('author');
         $authorName = get_the_author_meta('display_name',$userId);
-        echo'
-        <script type="application/ld+json">
+        $meta_script = '
         {
             "@context":"http://schema.org",
             "@type": "BreadcrumbList",
@@ -305,8 +293,7 @@ elseif(is_author()===true):
                         "@id": "' . esc_url(get_author_posts_url($userId)) . '",
                         "name": "' . esc_html($authorName) . '"}}
             ]
-        }
-        </script>';
+        }';
 elseif(is_date()===true):
         $y     = get_query_var('year');
         $m     = get_query_var('monthnum');
@@ -314,8 +301,7 @@ elseif(is_date()===true):
         $linkY = get_year_link($y);
         $linkM = get_month_link($y,$m);
         $linkD = get_month_link($y,$m,$d);
-        echo'
-            <script type="application/ld+json">
+        $meta_script = '
                 {
                     "@context":"http://schema.org",
                     "@type": "BreadcrumbList",
@@ -360,11 +346,9 @@ elseif(is_date()===true):
                     }
                     echo'
                     ]
-                }
-            </script>';
+                }';
 elseif(is_search()===true):
-    echo'
-    <script type="application/ld+json">
+    $meta_script = '
         [
             {
                 "@context":"http://schema.org",
@@ -400,12 +384,10 @@ elseif(is_search()===true):
                 "image": "' . $meta_img . '",
                 "description": "' . $description . '"
             }
-        ]
-    </script>';
+        ]';
 elseif(is_attachment()===true):
     $obj = get_queried_object();
-    echo'
-    <script type="application/ld+json">
+    $meta_script = '
         {
             "@context":"http://schema.org",
             "@type": "BreadcrumbList",
@@ -442,11 +424,9 @@ elseif(is_attachment()===true):
                     }
                 }
             ]
-        }
-    </script>';
+        }';
 elseif($is_home===true):
-    echo'
-    <script type="application/ld+json">
+    $meta_script = '
         {
             "@context": "http://schema.org",
             "@type": "WebSite",
@@ -475,5 +455,8 @@ elseif($is_home===true):
                 "query-input": "required name=search_term"
             }
         }
-    </script>';
-endif;?>
+    ';
+endif;
+if(isset($meta_script)===true){
+    echo'<script async type="application/ld+json">' . $meta_script . '</script>';
+}?>

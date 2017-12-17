@@ -201,31 +201,31 @@ $main_nav   = has_nav_menu('main');?>
         color:#ee4056;
     }
     .social-nav a[href*="polldaddy.com"]:before{
-        content:'\f200';
+        content:"\f200";
     }
     .social-nav a[href*="push.dog"]::before{
-        content:'\f1b0';
+        content:"\f1b0";
     }
     .social-nav a[href*="bpush.net"]::before,.social-nav a[href*="pushnate.com"]::before,.social-nav a[href*="pushsan.com"]::before,.social-nav a[href*="onesignal.com"]::before{
-        content:'\f0f3';
+        content:"\f0f3";
     }
     .social-nav a[href*="push7.jp"]::before{
-        content:'\f0e7';
+        content:"\f0e7";
         color:#fffc00;
     }
     .social-nav a[href*="reddit.com"]::before{
-        content:'\f1a1';
+        content:"\f1a1";
         color:#ff5700;
     }
     .social-nav a[href*="skype.com"]::before{
-        content:'\f17e';
+        content:"\f17e";
         color:#00aff0;
     }
     .social-nav a[href*="slack.com"]::before{
-        content:'\f198';
+        content:"\f198";
     }
     .social-nav a[href*="stumbleupon.com"]::before{
-        content:'\f1a4';
+        content:"\f1a4";
         color:#eb4924;
     }
     .social-nav a[href*="spotify.com"]::before{
@@ -241,7 +241,7 @@ $main_nav   = has_nav_menu('main');?>
         color:#2c4762;
     }
     .social-nav a[href*="twitch.tv"]::before{
-        content:'\f1e8';
+        content:"\f1e8";
         color:#0033ff;
     }
     .social-nav a[href*="twitter.com"]::before{

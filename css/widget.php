@@ -48,17 +48,18 @@
     .widget_tag_cloud a{
         background-color:#fff;
         border:1px solid <?php echo get_option('tag_cloud_border','#03a9f4');?>;
-        border-radius:3vmin;
         color:<?php echo get_option('tag_cloud_hover_color','#333');?>;
         display:inline-block;
         font-size:1.6rem;
-        height:28px;
-        max-width:100px;
+        height:2em;
+        max-width:10em;
         margin:0 .3em .3em 0;
         overflow:hidden;
         padding:0 1em;
+        text-align:center;
         text-decoration:none;
         text-overflow:ellipsis;
+        vertical-align:middle;
         white-space:nowrap;
     }
     .widget_tag_cloud a:hover{
@@ -143,11 +144,11 @@
         width:20vw;
     }
     .bio-info,.follow-button{
+        position:absolute;
+        right:0;
         width:calc(90vw - (20vw + 1vmin));
     }
     .bio-info{
-        position:absolute;
-        right:0;
         top:0;
     }
     .bio-name{
@@ -163,16 +164,14 @@
         list-style:none;
         overflow-x:auto;
         overflow-y:hidden;
-        position:absolute;
-        right:0;
     }
     .follow-button li{
         display:inline-block;
-        height:3em;
+        height:2.6em;
         padding:.5em;
         text-align:center;
         vertical-align:middle;
-        width:3em;
+        width:2.6em;
     }
 <?php endif;?>
 
@@ -408,7 +407,7 @@
         max-width:100%;
     }
     .night-mode .comment{
-        background-color:#333;
+        background-color:#000;
     }
 <?php endif;?>
 
@@ -456,7 +455,7 @@
 
 <?php if(is_active_widget(false,false,'sns_follow')):?>
     .widget_sns_follow{
-        background-color:#333;
+        background-color:#000;
         color:#fff;
         height:15vmax;
         position:relative;
@@ -519,9 +518,6 @@
 <?php endif;?>
 
 <?php if(is_active_widget(false,false,'sns_share')):?>
-    .widget_sns_share > *{
-        -webkit-transform:translateZ(0px);
-    }
     .widget_sns_share ul{
         list-style:none;
         overflow-x:scroll;

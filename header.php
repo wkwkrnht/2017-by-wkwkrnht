@@ -21,10 +21,10 @@
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<h1 class="site-title" itemprop="name headline">
 						404 Not Found｜<?php echo $blog_name;?>
-					</h1><br>
-					<p class="site-description" itemprop="about">
+					</h1>
+					<summary class="site-description" itemprop="about">
 						このサイトにはお探しのものはございません。お手数を掛けますが、再度お探しください。
-					</p>
+					</summary>
 				</a>
 			<?php elseif(is_category()===true):?>
 				<h1 class="site-title" itemprop="name headline about">
@@ -41,10 +41,10 @@
 				wp_reset_query();?>
 				<h1 class="site-title" itemprop="name headline">
 					<?php '「' . get_search_query() . '」の検索結果｜' . $blogname;?>
-				</h1><br>
-				<p class="site-description" itemprop="about">
+				</h1>
+				<summary class="site-description" itemprop="about">
 					<?php echo $serachresult . ' 件 / ' . $maxpage . ' ページ';?>
-				</p>
+				</summary>
 			<?php else:?>
 				<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 					<h1 class="site-title" itemprop="name headline">

@@ -14,17 +14,9 @@
         padding:4vh 0;
         width:90%;
     }
-    .toc > ul{
-        margin:0;
+    .toc-title{
+        max-width:80%;
     }
-    <?php if($singular===true):?>
-        .article-main .toc-title{
-            max-width:80%;
-        }
-        .article-main .toc-title:hover::before{
-            content:"";
-        }
-    <?php endif;?>
 <?php endif;?>
 
 
@@ -190,11 +182,13 @@
 
 
 <?php if(has_shortcode($content,'box')===true):?>
+    .cutin-box,.cutin-box-inner{
+        box-sizing:border-box;
+        padding:1vh 2vh;
+    }
     .cutin-box{
         color:#fff;
-        box-sizing:border-box;
         margin:2vh auto;
-        padding:1vh 2vh;
         text-align:center;
         width:calc(80% + (3vh * 2));
     }
@@ -222,10 +216,8 @@
     .cutin-box-inner{
         background-color:#fff;
         border:1vh solid;
-        color:#333;
-        box-sizing:border-box;
+        color:<?php echo $root_color;?>;
         margin:0;
-        padding:1vh 2vh;
         text-align:initial;
         width:calc(80% + (2vh * 2));}
     .red.cutin-box > .cutin-box-inner{
@@ -326,32 +318,33 @@
         line-height:2;
         margin:4vh auto;
     }
-    .search-form div{
+    .search-form > *{
         display:inline-block;
         padding:1em;
     }
-    .search-form .sform{
+    .search-form{
         background-color:#fff;
         border:1px solid #555;
         max-width:70%;
         min-width:16em;
     }
-    .search-form .sbtn{
+    .search-btn,.search-btn::after{
+        position:absolute;
+    }
+    .search-btn{
         background-color:#1155ee;
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
         color:#fff;
         max-width:30%;
-        padding-left:2rem;
-        padding-right:3rem;
-        position:absolute;
+        padding-left:2em;
+        padding-right:3em;
     }
-    .search-form .sbtn::after{
+    .search-btn::after{
         bottom:0;
         color:#000;
         content:"\f25a";
         font-family:"FontAwesome";
-        font-size:2.5rem;
-        position:absolute;
+        font-size:2.5em;
     }
 <?php endif;?>
 
@@ -364,12 +357,14 @@
         display:block;
         width:100%;
     }
+    .resize,.handle{
+        position:absolute;
+        top:0;
+    }
     .resize{
         height:inherit;
         left:0;
-        overflow: hidden;
-        position: absolute;
-        top:0;
+        overflow:hidden;
         width:50%;
     }
     .handle{
@@ -378,22 +373,20 @@
         cursor:ew-resize;
         left:50%;
         margin-left:-2px;
-        position:absolute;
-        top:0;
         width:4px;
     }
     .handle::after{
         background-color:#ffb800;
         border:1px solid #e6a600;
-        border-radius: 50%;
+        border-radius:50%;
         box-shadow:0 2px 6px rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.5),inset 0 60px 50px -30px #ffd466;
         color:#fff;
-        content:'\21d4';
+        content:"\21d4";
         font-weight:bold;
         font-size:36px;
         height:64px;
         line-height:64px;
-        margin: -32px 0 0 -32px;
+        margin:-32px 0 0 -32px;
         position:absolute;
         text-align:center;
         top:50%;
