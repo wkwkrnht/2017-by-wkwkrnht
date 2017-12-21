@@ -1,9 +1,29 @@
 <?php
 /*
     MAKE
-1.blogcard by OGP
-2.TOC
+1.toot embed
+2.blogcard by OGP
+3.TOC
 */
+function make_toot_embed($url){
+    $sorce    = wp_remote_get($url,array('sslverify'=>false));
+    $httpCode = wp_remote_retrieve_response_code($sorce);
+    $body     = wp_remote_retrieve_body($sorce);
+    if($httpCode !== 404 && $httpCode !== 301){
+        $doc = new DOMDocument();
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($body);
+        $xpath = new DOMXPath($doc);
+        $url = $xpath->query("//link[@type='application/atom+xml']");
+        if($url->length){
+            $url = str_replace('.atom','/embed',$atomUrl[0]->getAttribute('href'));
+            if(!isset($height) && $height===""){
+                $height = '150';
+            }
+            return'<figure class="mastodon"><iframe src="' . $url . '" height="' . $height . '" width="400" scrolling="no" frameborder="0"></iframe></figure>';
+        }
+    }
+}
 function make_OGPblogcard($url){
     require_once(get_parent_theme_file_path('/inc/OpenGraph.php'));
     $ogp           = OpenGraph::fetch($url);
@@ -203,7 +223,7 @@ function url_to_OGPBlogcard($atts){
         $transitname = $url;
     }
     $cache = get_site_transient($transitname);
-    if(get_option('delete_OGPblogcard_cache')){
+    if(get_option('delete_OGPblogcard_cache')===true){
         delete_site_transient($transitname);
         $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
@@ -232,32 +252,17 @@ function toot_into_article($atts){
         $transitname .= strrev($url);
     }
     $cache = get_site_transient($transitname);
-    if(get_option('delete_mastodon_embed_cache')){
+    if(get_option('delete_mastodon_embed_cache')===true){
         delete_site_transient($transitname);
-        $response = wp_remote_get($url,array('sslverify'=>false));
+        $response = make_toot_embed($url);
         set_transient('mastodon_status_',$response,12 * WEEK_IN_SECONDS);
     }elseif($cache){
         $response = $cache;
     }else{
-        $response = wp_remote_get($url,array('sslverify'=>false));
+        $response = make_toot_embed($url);
         set_transient($transitname,$response,12 * WEEK_IN_SECONDS);
     }
-    $httpCode = wp_remote_retrieve_response_code($response);
-    $body     = wp_remote_retrieve_body($response);
-    if($httpCode !== 404 && $httpCode !== 301){
-        $doc = new DOMDocument();
-        libxml_use_internal_errors(true);
-        $doc->loadHTML($body);
-        $xpath = new DOMXPath($doc);
-        $url = $xpath->query("//link[@type='application/atom+xml']");
-        if($url->length){
-            $url = str_replace('.atom','/embed',$atomUrl[0]->getAttribute('href'));
-            if(!isset($height) && $height===""){
-                $height = '150';
-            }
-            return'<iframe src="' . $url . '" height="' . $height . '" width="400" scrolling="no" frameborder="0" class="mastodon"></iframe>';
-        }
-    }
+    return $response;
 }
 function navigation_in_article($atts){
     extract(shortcode_atts(array('id'=>'',),$atts));
@@ -272,16 +277,37 @@ function google_ads_in_article($atts){
         <script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
     </aside>';
 }
+function load_TOC($atts){
+    extract(shortcode_atts(array('url'=>'',),$atts));
+    $url = get_meta_url();
+    if(strlen($url) > 20){
+        $transitname = wordwrap($url,20);
+    }else{
+        $transitname = $url;
+    }
+    $cache = get_site_transient($transitname);
+    if(get_option('delete_TOC_cache')===true){
+        delete_site_transient($transitname);
+        $result = make_TOC($atts);
+        set_site_transient($transitname,$result,12 * WEEK_IN_SECONDS);
+    }elseif($cache){
+        $result = $cache;
+    }else{
+        $result = make_TOC($atts);
+        set_site_transient($transitname,$result,12 * WEEK_IN_SECONDS);
+    }
+    return $result;
+}
 function make_before_after_box($atts){
     extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
     return'
-    <div class="ba-slider">
-        <img src="' . $after . '" alt="before">
+    <figure class="ba-slider">
+        <img src="' . $before . '" alt="before">
         <div class="resize">
-            <img src="' . $before . '" alt="after">
+            <img src="' . $after . '" alt="after">
         </div>
         <span class="handle"></span>
-    </div>';
+    </figure>';
 }
 function columun_in_article($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'','title'=>'',),$args));
@@ -346,26 +372,6 @@ function make_link_button($args=array(),$content=''){
 function make_button($args=array(),$content=''){
     extract(shortcode_atts(array('color'=>'',),$args));
     return'<span class="button ' . $color . '">' . do_shortcode($content) . '</span>';
-}
-function load_TOC($atts){
-    $url = get_meta_url();
-    if(strlen($url) > 20){
-        $transitname = wordwrap($url,20);
-    }else{
-        $transitname = $url;
-    }
-    $cache = get_site_transient($transitname);
-    if(get_option('delete_TOC_cache')){
-        delete_site_transient($transitname);
-        $result = make_TOC($atts);
-        set_site_transient($transitname,$result,12 * WEEK_IN_SECONDS);
-    }elseif($cache){
-        $result = $cache;
-    }else{
-        $result = make_TOC($atts);
-        set_site_transient($transitname,$result,12 * WEEK_IN_SECONDS);
-    }
-    return $result;
 }
 
 add_shortcode('customcss','style_into_article');

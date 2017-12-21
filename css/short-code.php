@@ -9,7 +9,7 @@
 <?php $singular = is_singular();?>
 <?php if(has_shortcode($content,'toc')===true):?>
     .toc{
-        box-shadow:0 0 3vmin rgba(0,0,0,.2);
+        box-shadow:0 0 3vmin rgba(0,0,0,.1);
         margin:4vh auto;
         padding:4vh 0;
         width:90%;

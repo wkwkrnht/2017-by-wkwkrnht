@@ -39,7 +39,7 @@
                     <amp-social-share type="twitter"></amp-social-share>
                 </li>
                 <li>
-                    <amp-social-share type="facebook" data-param-app_id="<?php echo $fb_app_id;?>"></amp-social-share>
+                    <amp-social-share type="facebook"></amp-social-share>
                 </li>
                 <li>
                     <amp-social-share type="gplus"></amp-social-share>

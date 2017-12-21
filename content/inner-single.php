@@ -4,13 +4,18 @@ if(have_posts()){
         the_post();
         $author_name = get_the_author_meta('display_name');
         $author_id   = get_the_author_meta('ID');
+        $content     = apply_filters('the_content',get_the_content());
+        $content     = str_replace(']]>',']]&gt;',$content);
+        $page_nation = wp_link_pages(array('before'=>'<div class="page-nav"><span>ページ：</span>','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>','echo'=>false));
     }
 }else{
     $author_name = 'unknown';
     $author_id   = '0';
+    $content     = 'This is unknown request. Wolud you check your request again?'
+    $page_nation =  '';
 }
 $made_time = get_mtime('Y/n/j G:i.s');?>
-<article id="post-<?php the_ID();?>" <?php post_class();?>>
+<article id="post-<?php the_ID();?>" <?php post_class('article-wrapper');?>>
     <header class="article-header">
         <img src="<?php wkwkrnht_eyecatch($size_160);?>" srcset="<?php wkwkrnht_eyecatch($size_2560);?> 2560w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_1600);?> 1600w,<?php wkwkrnht_eyecatch($size_1366);?> 1366w,<?php wkwkrnht_eyecatch($size_1280);?> 1280w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_720);?> 720w,<?php wkwkrnht_eyecatch($size_640);?> 640w,<?php wkwkrnht_eyecatch($size_560);?> 560w,<?php wkwkrnht_eyecatch($size_480);?> 480w,<?php wkwkrnht_eyecatch($size_320);?> 320w,<?php wkwkrnht_eyecatch($size_240);?> 240w" sizes="90vw" alt="eyecatch" class="article-eyecatch">
         <div class="article-meta">
@@ -41,13 +46,8 @@ $made_time = get_mtime('Y/n/j G:i.s');?>
     <?php endif;?>
     <div class="article-main" role="main">
         <?php
-        if(have_posts()){
-            while(have_posts()){
-                the_post();
-                the_content();
-                wp_link_pages(array('before'=>'<div class="page-nav"><span>ページ：</span>','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
-            }
-        }?>
+        echo $content;
+        echo $page_nation;?>
     </div>
     <footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
         <?php if(is_active_sidebar('singularfooter')):?>

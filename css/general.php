@@ -167,23 +167,22 @@ button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusri
     width:auto;
     z-index:100000;
 }
-span[itemprop*="copyrightHolder"] span[itemprop*="name"]{
+span[itemprop="copyrightHolder"] span[itemprop="name"]{
     font-weight:bold;
 }
 
-<?php
-$header_color      = get_option('site_header_color','#fff');
-$header_background = get_option('site_header_background','#03a9f4');?>
 .site-header{
     <?php
-    if(get_header_image()){
+    $header_color      = get_option('site_header_color','#fff');
+    $header_background = get_option('site_header_background','#03a9f4');
+    if(has_header_image()===true){
         echo'background-image:url(' . get_header_image() . ');';
     }else{
         echo'background-color:' . $header_background . ';';
     }?>
-    box-shadow:0 0 3vmin rgba(0,0,0,.1);
+    box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:10%;
-    padding:3vh 0 5vh;
+    padding:2vh 0 4vh;
     text-align:center;
     width:100%;
 }
@@ -223,7 +222,7 @@ $header_background = get_option('site_header_background','#03a9f4');?>
     width:calc(29vmax * 2);
 }
 
-.card-img,.card-meta,.card-meta > div{
+.card-img,.card-meta{
     width:29vmax;
 }
 .card-img{
@@ -236,7 +235,7 @@ $header_background = get_option('site_header_background','#03a9f4');?>
     height:calc(29vmax / 10 * 4);
     position:absolute;
 }
-.card-meta > time,.card-title{
+.card-time,.card-title{
     text-align:center;
 }
 .card-title{
@@ -244,7 +243,7 @@ $header_background = get_option('site_header_background','#03a9f4');?>
     text-overflow:ellipsis;
     white-space:nowrap;
 }
-.card-meta > time{
+.card-time{
     display:block;
     width:100%;
 }

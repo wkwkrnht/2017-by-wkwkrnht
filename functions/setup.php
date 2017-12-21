@@ -109,11 +109,14 @@ add_action('widgets_init','wkwkrnht_sidebars_init');
 
 
 function wkwkrnht_init(){
-    if(get_option('jetpack.css')){
+    if(get_option('jetpack_open_graph')===true){
+        add_filter('jetpack_enable_open_graph','__return_false',99);
+    }
+    if(get_option('jetpack.css')===true){
         add_filter('jetpack_implode_frontend_css','__return_false');
     }
-    if(get_option('jetpack_open_graph')){
-        add_filter('jetpack_enable_open_graph','__return_false',99);
+    if(get_option('simple_payments')===true){
+        add_action('wp_print_styles',function(){wp_deregister_style('simple-payments');});
     }
 }
 add_action('init','wkwkrnht_init');

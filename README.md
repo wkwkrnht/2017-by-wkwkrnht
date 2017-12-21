@@ -11,6 +11,8 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 3. Chrome
 4. Firefox
 
+また、これらのブラウザーが搭載しているエンジンを使用したもの。そして、最新版とその1つ前のバージョンに限る。
+
 ##使用ライブラリ
 1. [normalize.css](https://github.com/necolas/normalize.css) | v7.0.0 | MIT License |
 2. [Font Awesome](http://fontawesome.io) | 4.6.3 | ([License](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)) | @davegandy
@@ -173,17 +175,20 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
     * content=singular.php(詳細ページ用)
     * template.php (AMP HTML用テンプレート)
 
+* content
+
+    * inner-list.php (リストページ用)
+    * inne-single.php (ページ用)
+
 * css (各種スタイル置き場)
 
-    * amp-style-singular.php (AMP用記事スタイル)
-    * card.php (タイルデザイン関連)
-    * fontawesome.php (fontawesomeのやつそのまま)
-    * initial.php (初期スタイル)
+    * fontawesome.php (fontawesome用)
+    * genera;.php (クリティカルスタイル)
     * mediaqueri.php (メディアクエリ)
-    * menu.php (ウィジェットとメニューに関する項目)
-    * night-mode.php (ナイトモード関連)
+    * nav.php (ナビゲーションに関する項目)
     * short-code.php (ショートコード用)
     * style-singular.php (記事ページ用)
+    * widget.php (ウィジェット用)
 
 * functions (関数ずらずら)
 
@@ -201,23 +206,36 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 
     * fontawesome
 
-        * fontawesome-webfont.ttf
         * fontawesome-webfont.woff
         * fontawesome-webfont.woff2
 
+    * js
+
+        * editor-button.js (WHATWGカスタマイズ用)
+        * editor-plugin.js (TinyMCEカスタマイズ用)
+        * script.php (表示用スクリプト)
+
     * no-image (404な画像のレスポンシブイメージ用素材)
 
-        * no-image_128x128.png
-        * no-image_256x256.png
-        * no-image_512x512.png
+        * no-image_160x160.png
+        * no-image_320x320.png
+        * no-image_480x480.png
+        * no-image_560x560.png
+        * no-image_640x640.png
+        * no-image_720x720.png
+        * no-image_800x800.png
         * no-image_1024x1024.png
+        * no-image_1280x1280.png
+        * no-image_1366x1366.png
+        * no-image_1600x1600.png
+        * no-image_1920x1920.png
+        * no-image_2560x2560.png
         * no-image_full.png
 
-    * editor-button.js (TinyMCE向けスクリプト)
     * editor-style.php (TinyMCE向けスタイルシート)
-    * meta-json.php (ジャンル別メタ情報出力スクリプト)
+    * meta-json.php (メタ情報出力スクリプト)
     * OpenGraph.php (OGP解読ライブラリ)
-    * script.php
+    * theme-update-checker.php (テーマアップデート確認用スクリプト)
 
 
 * widget (ウィジェット)
@@ -225,10 +243,10 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
     * author-bio.php (投稿者プロフィール)
     * comment.php (コメント)
     * manth-archive.php (短縮版投稿月別アーカイブ)
-    * post-nav-hover.php (前後記事ナビ)
     * post-nav.php (前後記事ナビ)
     * related-post-img.php (画像付関連記事)
     * related-post.php (関連記事)
+    * sns-follow.php (SNSフォローウィジェット)
     * sns-share.php (SNSシェアボタン)
 
 * composer.json (composerとwpackgist対応用のjsonファイル)

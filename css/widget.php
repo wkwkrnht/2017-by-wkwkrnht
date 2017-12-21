@@ -48,6 +48,7 @@
     .widget_tag_cloud a{
         background-color:#fff;
         border:1px solid <?php echo get_option('tag_cloud_border','#03a9f4');?>;
+        border-radius:3vmin;
         color:<?php echo get_option('tag_cloud_hover_color','#333');?>;
         display:inline-block;
         font-size:1.6rem;
@@ -75,13 +76,13 @@
     }
     .widget_recent_entries ul li{
         border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;
+        font-size:1.6rem;
     }
     .widget_recent_entries ul li a{
-        font-size:1.6rem;
         text-decoration:none;
     }
     .widget_recent_entries ul li span{
-        font-size:calc(1.6rem * 0.8);
+        font-size:.8em;
     }
 <?php endif;?>
 
@@ -103,15 +104,13 @@
         width:98%;
     }
     .search-form select{
-        margin:1vh 0;
-        margin-right:2%;
+        margin:1vh 2% 1vh 0;
         width:35%;
     }
     .search-form input[type*="submit"]{
         background-color:<?php echo get_option('search_background','#fff');?>;
         border:1px solid <?php echo get_option('search_border','#03a9f4');?>;
-        border-radius:3vmin;
-        color:#03a9f4;
+        color:<?php echo get_option('search_color','#03a9f4');?>;
         margin:1vh 0;
         width:20%;
     }
@@ -124,7 +123,6 @@
 <?php if(is_active_widget(false,false,'author-bio') || is_author()===true):?>
     .bio-wrapper{
         background-color:#fff;
-		border-radius:3vmin;
 		box-shadow:0 0 3vmin rgba(0,0,0,.2);
 		box-sizing:border-box;
         display:block;
@@ -177,6 +175,7 @@
 
 <?php if(is_active_widget(false,false,'wkwkrnht_manth_archive')):?>
     .widget_wkwkrnht_manth_archive > ul{
+        font-size:1.6rem;
         list-style:none;
     }
     .widget_wkwkrnht_manth_archive > ul > .list-year{
@@ -191,7 +190,7 @@
     }
     .widget_wkwkrnht_manth_archive > ul > .list-year > h3 > a{
         color:<?php echo get_option('manth_archive_year_h3_color','#fff');?>;
-        font-size:1.8rem;
+        font-size:1.2em;
         text-decoration:none;
     }
     .widget_wkwkrnht_manth_archive > ul > .list-year > .article-list{
@@ -203,7 +202,6 @@
     }
     .widget_wkwkrnht_manth_archive > ul > .list-year > .article-list > li{
         display:inline-block;
-        font-size:1.6rem;
         height:2em;
         text-align:center;
         width:4.5em;
@@ -249,7 +247,7 @@
 	}
 	.widget_related_posts .related-wrapper{
 		background-color:<?php echo get_option('related_background','#fff');?>;
-		box-shadow:0 0 2vmin rgba(0,0,0,.2);
+		box-shadow:0 0 2vmin rgba(0,0,0,.1);
 		color:<?php echo get_option('related_color','#333');?>;
 		display:block;
 		height:15vw;
@@ -372,8 +370,7 @@
 <?php if(is_active_widget(false,false,'post_comment')):?>
     .comment{
         background-color:<?php echo get_option('wkwkrnht_comment_background','#fff');?>;
-        border-radius:3vmin;
-        box-shadow:0 0 3vmin rgba(0,0,0,.2);
+        box-shadow:0 0 3vmin rgba(0,0,0,.1);
         font-size:1.8rem;
         padding:4vmin 3vmin;
         margin:5vmin auto;
@@ -415,18 +412,18 @@
     .widget_duck_duck_go_search_widget input{
         display:inline-block;
     }
-    .widget_duck_duck_go_search_widget input[type*="search"]{
+    .widget_duck_duck_go_search_widget input[type="search"]{
         margin-right:5%;
         width:70%;
     }
-    .widget_duck_duck_go_search_widget input[type*="submit"]{
+    .widget_duck_duck_go_search_widget input[type="submit"]{
         background-color:#fff;
         border:1px solid #03a9f4;
         border-radius:3vmin;
         color:#03a9f4;
         width:15%;
     }
-    .widget_duck_duck_go_search_widget input[type*="submit"]:hover{
+    .widget_duck_duck_go_search_widget input[type="submit"]:hover{
         background-color:#03a9f4;
         color:#fff;
     }
@@ -447,7 +444,7 @@
         color:#03a9f4;
         width:15%;
     }
-    #cse-search-box input[type*="submit"]:hover{
+    #cse-search-box input[type="submit"]:hover{
         background-color:#03a9f4;
         color:#fff;
     }
@@ -527,14 +524,12 @@
     }
     .widget_sns_share li{
         display:inline-block;
-        height:10vmax;
-        vertical-align:middle;
-        width:10vmax;
+        height:8vmax;
+        width:8vmax;
     }
-    .widget_sns_share ul li a{
+    .widget_sns_share a{
         color:#fff;
         font-size:3rem;
-        line-height:10vmax;
         vertical-align:middle;
     }
     .widget_sns_share .tweet{
@@ -570,10 +565,10 @@
         background-color:#00a5de;
         font:4rem 900 monospace;
     }
-    .widget_sns_share li.instapaper{
+    .widget_sns_share .instapaper{
         background-color:#fff;
     }
-    .widget_sns_share li.instapaper > a{
+    .widget_sns_share .instapaper > a{
         color:#333;
         font:900 4rem serif;
     }

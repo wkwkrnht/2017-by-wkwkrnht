@@ -12,8 +12,9 @@
 11.codex
 12.for amp
 */
-article{
+.article-wrapper{
     box-shadow:0 0 3vmin rgba(0,0,0,.2);
+    font-size:1.6rem;
     margin:6vh auto 0;
     max-width:1600px;
     width:90vw;
@@ -53,20 +54,17 @@ article{
     background-color:<?php echo get_option('copyright_background','#03a9f4');?>;
     color:<?php echo get_option('copyright_color','#fff');?>;
     display:block;
-    font-size:1.8rem;
+    font-size:1.2em;
     margin:6vh 0 0;
     padding:1em 0;
     text-align:center;
     width:100%;
 }
 
-.article-main{
-    font-size:1.6rem;
-}
 .article-main p{
     margin:2vh auto;
-    max-width:calc(1.6rem * 40);
-    padding:1vh .5vh;
+    max-width:calc(1em * 40);
+    padding:2vh .5vh;
 }
 .article-main a[href^="http"]:empty:not(.fa)::before{
     content:attr(href);
@@ -90,7 +88,7 @@ article{
     text-align:center;
 }
 .article-main h3,.article-main h4,.article-main h5,.article-main h6{
-    font-size:2rem;
+    font-size:1.5em;
 }
 .article-main h1{
     background-color:<?php echo get_option('article_main_h1_background','#f4f4f4');?>;
@@ -104,7 +102,7 @@ article{
 }
 .article-main h2{
     background-color:<?php echo get_option('article_main_h2_background','#03a9f4');?>;
-    box-shadow:0 0 3vmin rgba(0,0,0,.2);
+    box-shadow:0 0 3vmin rgba(0,0,0,.1);
     counter-increment:counter-h2;
     counter-reset:counter-h3;
 }
@@ -151,7 +149,7 @@ article{
     white-space:pre;
 }
 .article-main address,.article-main code,.article-main q{
-    background-color:#eee;
+    background-color:<?php echo get_option('article_main_quote_background','#eee');?>;
 }
 
 .article-main blockquote,.article-main q{
@@ -162,7 +160,6 @@ article{
 }
 .article-main blockquote:not(.ogp-blogcard-main){
     border:1px solid;
-    border-radius:3vmin;
     padding:1em 2em;
 }
 .article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
@@ -187,22 +184,17 @@ article{
     margin:4vh auto;
     max-width:80%;
 }
+.hatenablogcard{
+    margin:4vh auto;
+    max-width:800px;
+    width:70%;
+}
 .article-main .youtube iframe[src*="youtu.be"],.article-main .youtube iframe[src*="youtube.com"],.article-main .youtube iframe[src*="www.youtube.com"]{
     height:calc(80vw / 100 * 56.25);
     margin:4vh 0;
     width:80vw;
 }
 
-.article-main li::after{
-    border-bottom:1px dashed <?php echo get_option('article_main_li_border','#aaa');?>;
-    content:"";
-    display:block;
-    height:0;
-    left:0;
-    position:relative;
-    top:0;
-    width:100%;
-}
 .article-main ul{
     list-style:none;
     margin:2em auto;
@@ -334,7 +326,7 @@ a img.aligncenter{
     border:1px solid #777;
     border-radius:5vmin;
     display:block;
-    font-size:1.8rem;
+    font-size:1.2em;
     height:3em;
     margin-bottom:2em;
     padding:1em;

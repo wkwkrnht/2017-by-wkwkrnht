@@ -6,8 +6,9 @@
 5.page nation
 */
 <?php if(has_nav_menu('header')===true):?>
-    .header-nav ul{
+    .header-nav{
         background-color:<?php color_change_brightness($header_background,get_option('site_nav_background_brightness','-40'));?>;
+        box-shadow:0 0 3vmin rgba(0,0,0,.1) inset;
         box-sizing:border-box;
         font-size:1.6rem;
         height:5%;
@@ -18,7 +19,7 @@
         width:100%;
         word-break:break-all;
     }
-    .header-nav ul,.header-nav  a{
+    .header-nav,.header-nav a{
         color:<?php echo $header_color;?>;
     }
     .header-nav li{
@@ -99,7 +100,6 @@ $main_nav   = has_nav_menu('main');?>
     }
     .social-nav ul{
         list-style:none;
-        margin:0 0 -1.6em 0;
     }
     .social-nav li{
         float:left;
@@ -112,14 +112,11 @@ $main_nav   = has_nav_menu('main');?>
     }
     .social-nav a::before,.social-nav a::after{
         display:inline-block;
-        font:400 2rem/1.9 "FontAwesome";
-        font-style:normal;
-        font-variant:normal;
+        font:2rem "FontAwesome";
         position:absolute;
         speak:none;
         text-align:center;
         text-decoration:none;
-        text-transform:none;
     }
     .social-nav a::before{
         content:"\f07b";
