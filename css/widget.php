@@ -525,9 +525,10 @@
     .widget_sns_share li{
         display:inline-block;
         height:8vmax;
+        vertical-align:middle;
         width:8vmax;
     }
-    .widget_sns_share li a{
+    .widget_sns_share a{
         color:#fff;
         font-size:3rem;
         vertical-align:middle;
@@ -540,8 +541,6 @@
     }
     .widget_sns_share .buffer{
         background-color:#333;
-        font:4rem 900 monospace;
-        overflow:hidden;
     }
     .widget_sns_share .line{
         background-color:#6cc655;
