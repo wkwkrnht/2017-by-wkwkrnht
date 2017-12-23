@@ -183,7 +183,7 @@ span[itemprop="copyrightHolder"] span[itemprop="name"]{
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:10%;
     margin:0 0 6vh 0;
-    padding:2vh 0 4vh;
+    padding:2vh 0 0;
     text-align:center;
     width:100%;
 }
