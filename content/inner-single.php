@@ -4,11 +4,14 @@ if(have_posts()){
         the_post();
         $author_name = get_the_author_meta('display_name');
         $author_id   = get_the_author_meta('ID');
+        $content     = apply_filteres('the_content',get_the_content());
+        $content     = str_replace(']]>',']]&gt;',$content);
+        $page_nation = wp_link_pages(array('before'=>'<div class="page-nation">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
     }
 }else{
     $author_name = 'unknown';
     $author_id   = '0';
-    $content     = 'This is unknown request. Wolud you check your request again?'
+    $content     = 'This is unknown request. Wolud you check your request again?';
     $page_nation =  '';
 }
 $made_time = get_mtime('Y/n/j G:i.s');?>
@@ -42,15 +45,7 @@ $made_time = get_mtime('Y/n/j G:i.s');?>
         </ul>
     <?php endif;?>
     <div class="article-main" role="main">
-        <?php
-        if(have_posts()){
-            while(have_posts()):
-                the_post();
-                the_content();
-                wp_link_pages(array('before'=>'<div class="page-nation">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
-            endwhile;
-        }
-        ?>
+        <?php echo $content . $page_nation;?>
     </div>
     <footer class="article-footer" itemscope itemtype="http://schema.org/WPFooter">
         <?php if(is_active_sidebar('singularfooter')):?>
