@@ -516,7 +516,7 @@
 
 <?php if(is_active_widget(false,false,'sns_share')):?>
     .widget_sns_share ul{
-        list-style:none;
+        list-style-type:none;
         overflow-x:scroll;
         overflow-y:hidden;
         text-align:center;
@@ -527,7 +527,7 @@
         height:8vmax;
         width:8vmax;
     }
-    .widget_sns_share a{
+    .widget_sns_share li a{
         color:#fff;
         font-size:3rem;
         vertical-align:middle;
