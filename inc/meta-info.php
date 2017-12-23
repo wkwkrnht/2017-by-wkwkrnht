@@ -458,5 +458,5 @@ elseif($is_home===true):
     ';
 endif;
 if(isset($meta_script)===true){
-    echo'<script type="application/ld+json">' . $meta_script . '</script>';
+    echo'<script async type="application/ld+json">' . $meta_script . '</script>';
 }?>

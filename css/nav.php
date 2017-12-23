@@ -12,7 +12,7 @@
         box-sizing:border-box;
         font-size:1.6rem;
         height:5%;
-        margin:0 0 5vh 0;
+        margin:0;
         overflow-x:auto;
         overflow-y:hidden;
         white-space:nowrap;
