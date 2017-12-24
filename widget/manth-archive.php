@@ -1,7 +1,5 @@
 <?php
 $home          = esc_url(home_url());
-$echo          = '';
-$year          = '';
 $archives_year = strip_tags(wp_get_archives('type=yearly&show_count=0&format=custom&echo=0'));
 $archives_year = explode("\n",$archives_year);
 array_pop($archives_year);
@@ -11,19 +9,21 @@ $archives = explode("\n",$archives);
 
 foreach($archives_year as $year_value){
     foreach($archives as $archives_value){
-        if(intval(strip_tags($archives_value)) == intval($year_value)){
-            $year .= str_replace(intval($year_value) . '年','',ltrim($archives_value));
+        $year_int = intval($year_value);
+        if(intval(strip_tags($archives_value)) == $year_int){
+            $year_body .= str_replace($year_int . '年','',ltrim($archives_value));
         }
     }
-    $echo .= '
+    $year_echo = ltrim($year_value);
+    $echo     .= '
     <li class="list-year">
         <h3>
-            <a href="' . $home . '/' . ltrim($year_value) . '" tabindex="0">'
-                . ltrim($year_value) . '年
+            <a href="' . $home . '/' . $year_echo . '" tabindex="0">'
+                . $year_echo . '年
             </a>
         </h3>
         <ul class="article-list">'
-            . $year .
+            . $year_body .
         '</ul>
     </li>';
 }

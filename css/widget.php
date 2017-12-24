@@ -525,13 +525,11 @@
     .widget_sns_share li{
         display:inline-block;
         height:8vmax;
-        vertical-align:middle;
         width:8vmax;
     }
     .widget_sns_share a{
         color:#fff;
         font-size:3rem;
-        vertical-align:middle;
     }
     .widget_sns_share .tweet{
         background-color:#55acee;

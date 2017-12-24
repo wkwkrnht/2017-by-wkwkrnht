@@ -1,17 +1,95 @@
 <?php
+function make_author_info_array($setting){
+    $array = array();
+    foreach($setting as $value){
+        $value = get_the_author_meta($key);
+        if($value!==''){
+            $array[$key] = $value;
+        }
+    }
+    return $array;
+}
+function make_author_follow_button($array){
+    foreach($array as $array_key => $array_value){
+        switch($array_key){
+            case 'twitter':
+                $fw_class = 'fa-twitter-square';
+                break;
+            case 'facebook':
+                $fw_class = 'fa-facebook-official';
+                break;
+            case 'Instagram':
+                $fw_class = 'fa-instagram';
+                break;
+            case 'Googleplus':
+                $fw_class = 'fa-google-plus-official';
+                break;
+            case 'Linkedin':
+                $fw_class = 'fa-linkedin-square';
+                break;
+            case 'vine':
+                $fw_class = 'fa-vine';
+                break;
+            case 'vimeo':
+                $fw_class = 'fa-vimeo-square';
+                break;
+            case 'niconico':
+                $fw_class = 'fa-television';
+                break;
+            case 'YouTube':
+                $fw_class = 'fa-youtube-square';
+                break;
+            case 'Twitch':
+                $fw_class = 'fa-twitch';
+                break;
+            case 'Github':
+                $fw_class = 'fa-github';
+                break;
+            case 'Gitlab':
+                $fw_class = 'fa-gitlab';
+                break;
+            case 'bitbucket':
+                $fw_class = 'fa-bittbucket-square';
+                break;
+            case 'Amazonlist':
+                $fw_class = 'fa-amazon';
+                break;
+            default:
+                $fw_class = null;
+        }
+        if($fw_class===null){
+            $name = '<span itemprop="name">' . $array_key . '</span>';
+        }else{
+            $name = '<span class="fa fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
+        }
+        echo'
+        <li itemscope itemtype="http://schema.org/SiteNavigationElement">
+            <a href="' . $array_value . '" title="' . $array_key . '" class="' . $array_key . '" tabindex="0" itemprop="url">
+                ' . $name . '
+            </a>
+        </li>';
+    }
+}
+$setting = array(
+    'twitter',
+    'facebook',
+    'Instagram',
+    'Googleplus',
+    'Linkedin',
+    'vine',
+    'vimeo',
+    'niconico',
+    'Youtube',
+    'Twitch',
+    'Github',
+    'Gitlab',
+    'bitbucket',
+    'Amazonlist'
+);
 $is_author   = is_author();
-$author_name = the_author_meta('display_name');
-$tw          = get_the_author_meta('twitter');
-$fb          = get_the_author_meta('facebook');
-$Instagram   = get_the_author_meta('Instagram');
+$author_name = get_the_author_meta('display_name');
+$id          = get_the_author_meta('ID');
 $line        = get_the_author_meta('LINE');
-$gp          = get_the_author_meta('Googleplus');
-$ld          = get_the_author_meta('Linkedin');
-$vine        = get_the_author_meta('vine');
-$vimeo       = get_the_author_meta('vimeo');
-$niconico    = get_the_author_meta('niconico');
-$YouTube     = get_the_author_meta('YouTube');
-$Twitch      = get_the_author_meta('Twitch');
 $USTREAM     = get_the_author_meta('USTREAM');
 $fc2         = get_the_author_meta('fc2');
 $livedoor    = get_the_author_meta('livedoor');
@@ -22,32 +100,26 @@ $hatenadiary = get_the_author_meta('hatenadiary');
 $hatebu      = get_the_author_meta('hatebu');
 $xda         = get_the_author_meta('xda');
 $Quita       = get_the_author_meta('Quita');
-$Github      = get_the_author_meta('Github');
 $Codepen     = get_the_author_meta('Codepen');
 $JSbuddle    = get_the_author_meta('JSbuddle');
-$Amazonlist  = get_the_author_meta('Amazonlist');
 $Yahooaction = get_the_author_meta('Yahooaction');
 $Rakuma      = get_the_author_meta('Rakuma');
-$Merukari    = get_the_author_meta('Merukari');?>
+$Merukari    = get_the_author_meta('Merukari');
+$array       = make_author_info_array($setting);
+$array       = make_author_follow_button($array);?>
 <<?php if($is_author===true){echo'header itemscope itemtype="http://schema.org/WPHeader"';}else{echo'div';}?> class="bio-wrapper">
-    <?php echo get_avatar(get_the_author_meta('ID'),256,'','bio-img',array('class'=>'bio-img'));?>
-    <a class="bio-info" href="<?php echo home_url() . '?author=' . get_the_author_meta('ID');?>" tabindex="0" title="<?php echo $author_name;?>'s summary"<?php if($is_author===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
-        <h2 class="bio-name" <?php if($is_author===true){echo'itemprop="name"';}?>><?php echo $author_name;?></h2><br>
-        <p class="bio-description" <?php if($is_author===true){echo'itemprop="about"';}?>><?php the_author_meta('user_description');?></p>
+    <?php echo get_avatar($id,256,'','bio-img',array('class'=>'bio-img'));?>
+    <a class="bio-info" href="<?php echo home_url() . '?author=' . $id;?>" tabindex="0" title="<?php echo $author_name;?>'s summary"<?php if($is_author===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
+        <h2 class="bio-name" <?php if($is_author===true){echo'itemprop="name"';}?>>
+            <?php echo $author_name;?>
+        </h2><br>
+        <p class="bio-description" <?php if($is_author===true){echo'itemprop="about"';}?>>
+            <?php the_author_meta('user_description');?>
+        </p>
     </a>
-    <ul class="follow-button" itemscope itemtype="http://schema.org/SiteNavigationElement">
+    <ul class="follow-button">
         <?php
-        if($tw!==''){echo'<li itemprop="name"><a href="https://twitter.com/' . $tw . '" class="twitter" tabindex="0" itemprop="url"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a></li>';}
-        if($fb!==''){echo'<li itemprop="name"><a href="https://www.facebook.com/profile.php?id=' . $fb . '" class="facebook" tabindex="0" itemprop="url"><i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a></li>';}
-        if($Instagram!==''){echo'<li itemprop="name"><a href="https://www.instagram.com/' . $Instagram . '" class="instagram" tabindex="0" itemprop="url"></a></li>';}
         if($line!==''){echo'<li>' . $line . '</li>';}
-        if($gp!==''){echo'<li itemprop="name"><a href="https://plus.google.com/u/0/' . $gp . '" class="google-plus" tabindex="0" itemprop="url"><i class="fa fa-google-plus-official fa-3x" aria-hidden="true"></i></a></li>';}
-        if($ld!==''){echo'<li itemprop="name"><a href="https://linkedin.com/in/' . $ld . '" class="linkedin" tabindex="0" itemprop="url"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a></li>';}
-        if($vine!==''){echo'<li itemprop="name"><a href="' . $vine . '" class="vine" tabindex="0" itemprop="url"><i class="fa fa-vine" aria-hidden="true"></i></a></li>';}
-        if($vimeo!==''){echo'<li itemprop="name"><a href="' . $vimeo . '" class="vimeo" tabindex="0" itemprop="url"><i class="fa fa-vimeo-square" aria-hidden="true"></i></a></li>';}
-        if($niconico!==''){echo'<li itemprop="name"><a href="' . $niconico . '" class="nicnico" tabindex="0" itemprop="url"><i class="fa fa-television" aria-hidden="true"></i></a></li>';}
-        if($YouTube!==''){echo'<li itemprop="name"><a href="https://youtube.com/channel/' . $YouTube . '" class="youtube" tabindex="0" itemprop="url"><i class="fa fa-youtube-square" aria-hidden="true"></i></a></li>';}
-        if($Twitch!==''){echo'<li itemprop="name"><a href="' . $Twitch . '" class="twitch" tabindex="0" itemprop="url"><i class="fa fa-twitch" aria-hidden="true"></i></a></li>';}
         if($USTREAM!==''){echo'<li itemprop="name"><a href="' . $USTREAM . '" class="ustream" tabindex="0" itemprop="url">U</a></li>';}
         if($fc2!==''){echo'<li itemprop="name"><a href="' . $fc2 . '" class="fc2" tabindex="0" itemprop="url"></a></li>';}
         if($livedoor!==''){echo'<li itemprop="name"><a href="' . $livedoor . '" class="livedoor" tabindex="0" itemprop="url"></a></li>';}
