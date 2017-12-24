@@ -3,15 +3,15 @@ function make_author_info_array($setting){
     $array = array();
     foreach($setting as $key){
         $value = get_the_author_meta($key);
-        if($value!==''){
+        if($value){
             $array[$key] = $value;
         }
     }
     return $array;
 }
 function make_author_follow_button($array){
-    foreach($array as $array_key => $array_value){
-        switch($array_key){
+    foreach($array as $key => $value){
+        switch($key){
             case 'twitter':
                 $fw_class = 'fa-twitter-square';
                 break;
@@ -58,13 +58,13 @@ function make_author_follow_button($array){
                 $fw_class = null;
         }
         if($fw_class===null){
-            $name = '<span itemprop="name">' . $array_key . '</span>';
+            $name = '<span itemprop="name">' . $key . '</span>';
         }else{
             $name = '<span class="fa fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
         }
         echo'
         <li itemscope itemtype="http://schema.org/SiteNavigationElement">
-            <a href="' . $array_value . '" title="' . $array_key . '" class="' . $array_key . '" tabindex="0" itemprop="url">
+            <a href="' . $value . '" title="' . $key . '" class="' . $key . '" tabindex="0" itemprop="url">
                 ' . $name . '
             </a>
         </li>';
@@ -105,7 +105,7 @@ $JSbuddle    = get_the_author_meta('JSbuddle');
 $Yahooaction = get_the_author_meta('Yahooaction');
 $Rakuma      = get_the_author_meta('Rakuma');
 $Merukari    = get_the_author_meta('Merukari');
-$array       = make_author_info_array($setting);
+$array       = make_author_info_array($setting);?>
 <<?php if($is_author===true){echo'header itemscope itemtype="http://schema.org/WPHeader"';}else{echo'div';}?> class="bio-wrapper">
     <?php echo get_avatar($id,256,'','bio-img',array('class'=>'bio-img'));?>
     <a class="bio-info" href="<?php echo home_url() . '?author=' . $id;?>" tabindex="0" title="<?php echo $author_name;?>'s summary"<?php if($is_author===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
