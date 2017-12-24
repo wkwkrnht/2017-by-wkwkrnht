@@ -177,7 +177,7 @@ function my_new_contactmethods($contactmethods){
     $contactmethods['Bitbucket']='Bitbucket';
     $contactmethods['Codepen']='Codepen';
     $contactmethods['JSbuddle']='JSbuddle';
-    $contactmethods['Quita']='Quita';
+    $contactmethods['Qiita']='Qiita';
     $contactmethods['xda']='xda';
     $contactmethods['hatenablog']='はてなブログ';
     $contactmethods['hatenadiary']='はてなダイアリー';

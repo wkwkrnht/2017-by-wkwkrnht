@@ -48,7 +48,7 @@ function make_author_follow_button($array){
             case 'Gitlab':
                 $fw_class = 'fa-gitlab';
                 break;
-            case 'bitbucket':
+            case 'Bitbucket':
                 $fw_class = 'fa-bittbucket-square';
                 break;
             case 'Amazonlist':
@@ -83,7 +83,7 @@ $setting = array(
     'Twitch',
     'Github',
     'Gitlab',
-    'bitbucket',
+    'Bitbucket',
     'Amazonlist'
 );
 $is_author   = is_author();
@@ -106,7 +106,6 @@ $Yahooaction = get_the_author_meta('Yahooaction');
 $Rakuma      = get_the_author_meta('Rakuma');
 $Merukari    = get_the_author_meta('Merukari');
 $array       = make_author_info_array($setting);
-$array       = make_author_follow_button($array);?>
 <<?php if($is_author===true){echo'header itemscope itemtype="http://schema.org/WPHeader"';}else{echo'div';}?> class="bio-wrapper">
     <?php echo get_avatar($id,256,'','bio-img',array('class'=>'bio-img'));?>
     <a class="bio-info" href="<?php echo home_url() . '?author=' . $id;?>" tabindex="0" title="<?php echo $author_name;?>'s summary"<?php if($is_author===true){echo'itemprop="copyrightHolder" itemscope itemtype="http://schema.org/Organization"';}?>>
@@ -119,6 +118,7 @@ $array       = make_author_follow_button($array);?>
     </a>
     <ul class="follow-button">
         <?php
+        make_author_follow_button($array);
         if($line!==''){echo'<li>' . $line . '</li>';}
         if($USTREAM!==''){echo'<li itemprop="name"><a href="' . $USTREAM . '" class="ustream" tabindex="0" itemprop="url">U</a></li>';}
         if($fc2!==''){echo'<li itemprop="name"><a href="' . $fc2 . '" class="fc2" tabindex="0" itemprop="url"></a></li>';}
@@ -130,10 +130,8 @@ $array       = make_author_follow_button($array);?>
         if($hatebu!==''){echo'<li itemprop="name"><a href="' . $hatebu . '" class="hatena" tabindex="0" itemprop="url">B!</a></li>';}
         if($xda!==''){echo'<li itemprop="name"><a href="' . $xda . '" class="xda" tabindex="0" itemprop="url"></a></li>';}
         if($Quita!==''){echo'<li itemprop="name"><a href="http://qiita.com/' . $Quita . '" class="quiita" tabindex="0" itemprop="url">Q</a></li>';}
-        if($Github!==''){echo'<li itemprop="name"><a href="https://github.com/' . $Github . '" class="github" tabindex="0" itemprop="url"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a></li>';}
         if($Codepen!==''){echo'<li itemprop="name"><a href="' . $Codepen . '" class="codepen" tabindex="0" itemprop="url"></a></li>';}
         if($JSbuddle!==''){echo'<li itemprop="name"><a href="' . $JSbuddle . '" class="jsbuddle" tabindex="0" itemprop="url"></a></li>';}
-        if($Amazonlist!==''){echo'<li itemprop="name"><a href="' . $Amazonlist . '" class="amazon" tabindex="0" itemprop="url"><i class="fa fa-amazon" aria-hidden="true"></i></a></li>';}
         if($Yahooaction!==''){echo'<li itemprop="name"><a href="' . $Yahooaction . '" class="y-action" tabindex="0" itemprop="url">Y!</a></li>';}
         if($Rakuma!==''){echo'<li itemprop="name"><a href="' . $Rakuma . '" class="rakuma" tabindex="0" itemprop="url">R</a></li>';}
         if($Merukari!==''){echo'<li itemprop="name"><a href="' . $Merukari . '" class="merukari" tabindex="0" itemprop="url">merukari</a></li>';}?>
