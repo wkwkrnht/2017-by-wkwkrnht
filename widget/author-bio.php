@@ -1,7 +1,7 @@
 <?php
 function make_author_info_array($setting){
     $array = array();
-    foreach($setting as $value){
+    foreach($setting as $key){
         $value = get_the_author_meta($key);
         if($value!==''){
             $array[$key] = $value;
