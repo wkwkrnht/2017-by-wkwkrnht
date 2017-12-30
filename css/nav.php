@@ -35,9 +35,11 @@ $main_nav   = has_nav_menu('main');?>
 <?php if($social_nav===true||$main_nav===true||is_active_sidebar('floatmenu')===ture):?>
     .menu-toggle{
         background-color:<?php echo get_option('footer_background','#03a9f4');?>;
+        border:none;
         border-radius:50%;
         bottom:2vh;
         box-shadow:0 0 3vmin rgba(0,0,0,.2);
+        color:<?php echo get_option('footer_color','#fff');?>;
         display:inline-block;
         font-size:5rem;
         font-weight:900;
@@ -51,14 +53,11 @@ $main_nav   = has_nav_menu('main');?>
         width:15vh;
         z-index:100;
     }
-    #menu-wrap.block ~ .menu-toggle{
+    .menu-wrap.block ~ .menu-toggle{
         transform:rotate(45deg);
     }
-    .menu-toggle,.menu-toggle:visited{
-        color:<?php echo get_option('footer_color','#fff');?>;
-    }
 
-    #menu-wrap{
+    .menu-wrap{
         background-color:<?php echo get_option('menu_background','#fff');?>;
         bottom:19vh;
         box-shadow:0 0 3vmin rgba(0,0,0,.3);
@@ -73,7 +72,7 @@ $main_nav   = has_nav_menu('main');?>
         width:90vw;
         z-index:111;
     }
-    #menu-wrap > ul{
+    .menu-wrap > ul{
         width:80vw;
     }
 <?php endif;?>
