@@ -11,6 +11,8 @@ function make_author_info_array($setting){
 }
 function make_author_follow_button($array){
     foreach($array as $key => $value){
+        $fw_class  = '';
+        $character = '';
         switch($key){
             case 'twitter':
                 $fw_class = 'fa-twitter-square';
@@ -45,6 +47,15 @@ function make_author_follow_button($array){
             case 'USTREAM':
                 $character = 'U';
                 break;
+            case 'Skype':
+                $fw_class = 'fa-skype';
+                break;
+            case 'WordPress.com':
+                $fw_class = 'fa-wordpress';
+                break;
+            case 'WordPress.org':
+                $fw_class = 'fa-wordpress';
+                break;
             case 'Tumblr':
                 $fw_class = 'fa-tumblr-square';
                 break;
@@ -62,6 +73,12 @@ function make_author_follow_button($array){
                 break;
             case 'Pinterest':
                 $fw_class = 'fa-pinterest-square';
+                break;
+            case 'Spotify':
+                $fw_class = 'fa-spotify';
+                break;
+            case 'SoundCloud':
+                $fw_class = 'fa-soundcloud';
                 break;
             case 'Flickr':
                 $fw_class = 'fa-flickr';
@@ -105,9 +122,9 @@ function make_author_follow_button($array){
             default:
                 break;
         }
-        if($fw_class){
+        if($fw_class!==''){
             $name = '<span class="fa fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
-        }elseif($character){
+        }elseif($character!==''){
             $name = '<span itemprop="name">' . $character . '</span>';
         }else{
             $name = '<span itemprop="name">' . $key . '</span>';
@@ -136,6 +153,7 @@ $setting = array(
     'livedoor',
     'ameba',
     'mixi',
+    'WordPress.com',
     'Tumblr',
     'Medium',
     'note',
@@ -143,6 +161,8 @@ $setting = array(
     'hatenadiary',
     'hatebu',
     'Pinterest',
+    'Spotify',
+    'SoundCloud',
     'Flickr',
     'FourSquare',
     'Steam',

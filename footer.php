@@ -21,7 +21,7 @@
                     </ul>
                 <?php endif;?>
             </aside>
-            <a href="javascript:void(0)" id="menu-toggle" class="menu-toggle" tabindex="0" role="button" title="メニューウィンドウの切り替えボタン">+</a>
+            <button id="menu-toggle" class="menu-toggle" tabindex="0" title="メニューウィンドウの切り替えボタン">+</button>
         <?php endif;?>
         <?php
         wp_footer();
