@@ -217,12 +217,8 @@ function url_to_hatenaBlogcard($atts){
     }
 function url_to_OGPBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    if(strlen($url) > 20){
-        $transitname = wordwrap($url,20);
-    }else{
-        $transitname = $url;
-    }
-    $cache = get_site_transient($transitname);
+    $transitname = make_transit_name($url);
+    $cache       = get_site_transient($transitname);
     if(get_option('delete_OGPblogcard_cache')===true){
         delete_site_transient($transitname);
         $content = make_OGPblogcard($url);
@@ -245,13 +241,8 @@ function spotify_play_into_article($atts){
 }
 function toot_into_article($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    $transitname = 'mastodon_status_';
-    if(strlen($url) > 10){
-        $transitname .= wordwrap(strrev($url),10);
-    }else{
-        $transitname .= strrev($url);
-    }
-    $cache = get_site_transient($transitname);
+    $transitname = 'mastodon_status_' . make_transit_name($url);
+    $cache       = get_site_transient($transitname);
     if(get_option('delete_mastodon_embed_cache')===true){
         delete_site_transient($transitname);
         $response = make_toot_embed($url);
@@ -280,12 +271,8 @@ function google_ads_in_article($atts){
 function load_TOC($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
     $url = get_meta_url();
-    if(strlen($url) > 20){
-        $transitname = wordwrap($url,20);
-    }else{
-        $transitname = $url;
-    }
-    $cache = get_site_transient($transitname);
+    $transitname = make_transit_name($url);
+    $cache       = get_site_transient($transitname);
     if(get_option('delete_TOC_cache')===true){
         delete_site_transient($transitname);
         $result = make_TOC($atts);
