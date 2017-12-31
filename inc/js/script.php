@@ -1,8 +1,8 @@
 "use strict";
 function getCookie(key){
-    var s, e;
-    var c = document.cookie + ";";
-    var b = c.indexOf(key,0);
+    let s, e;
+    let c = document.cookie + ";";
+    let b = c.indexOf(key,0);
     if (b != -1) {
         c = c.substring(b,c.length);
         s = c.indexOf("=",0) + 1;
@@ -12,13 +12,13 @@ function getCookie(key){
     return("");
 }
 function setCookie(key,n){
-    var myDate = new Date();
+    let myDate = new Date();
     myDate.setTime(myDate.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "key=" + escape(key) + escape(n) + ";expires=" + myDate.toGMTString() + ";";
 }
 (function(){
-    var key = location.hostname;
-    var n = getCookie(key);
+    const key = location.hostname;
+    let n = getCookie(key);
     if (n == "") {
         +n;
         if(window.confirm("このサイトでは、よりよいサイト運営のためにCookieを使用しています。そこでお預かりした情報は、各提携先と共有する場合があります。ご了承ください。")){
@@ -35,13 +35,13 @@ function setCookie(key,n){
     }
 })();
 (function(){
-    var wpCss = document.getElementById("wpcss");
+    const wpCss = document.getElementById("wpcss");
     if (wpCss === null) {
         return;
     }
-    var wpCssL = wpCss.length;
-    for ( i = 0; i < wpCssL; i++ ) {
-        var wpStyle = document.createElement("style");
+    const wpCssL = wpCss.length;
+    for ( let i = 0; i < wpCssL; i++ ) {
+        let wpStyle = document.createElement("style");
         wpStyle.textContent = wpCss[i].textContent.replace(/\s{2,}/g,"");
         document.head.appendChild(wpStyle);
     }
@@ -50,7 +50,7 @@ function setCookie(key,n){
     document.getElementById("menu-toggle").onclick = function(){
         document.getElementById("menu-wrap").classList.toggle("none");
         document.getElementById("menu-wrap").classList.toggle("block");
-        var attr = document.getElementById("menu-wrap").attributes;
+        let attr = document.getElementById("menu-wrap").attributes;
         if (attr['aria-hidden'].value == "true") {
             document.getElementById("menu-wrap").setAttribute("aria-hidden","false");
         } else {
@@ -59,18 +59,19 @@ function setCookie(key,n){
     }
 })();
 function linkStyled(){
-    var targets = document.querySelectorAll(".format-link .article-main a");
-    for ( var i = 0; i < targets.length; i++ ) {
-        var target = targets[i];
+    const targets = document.querySelectorAll(".format-link .article-main a");
+    const length = targets.length;
+    for ( let i = 0; i < length; i++ ) {
+        let target = targets[i];
         target.classList.add("embedly-card");
     }
 }
 <?php if(has_class('ba-slider')===true):?>
     jQuery(document).ready(function(){
         jQuery('.ba-slider').each(function(){
-            var cur = jQuery(this);
+            let cur = jQuery(this);
             // Adjust the slider
-            var width = cur.width() + 'px';
+            let width = cur.width() + 'px';
             cur.find('.resize img').css('width', width);
             // Bind dragging events
             drags(cur.find('.handle'), cur.find('.resize'), cur);
@@ -80,8 +81,8 @@ function linkStyled(){
     // Because we all do this: i.imgur.com/YkbaV.gif
     jQuery(window).resize(function(){
         jQuery('.ba-slider').each(function(){
-            var cur = jQuery(this);
-            var width = cur.width() + 'px';
+            let cur = jQuery(this);
+            let width = cur.width() + 'px';
             cur.find('.resize img').css('width', width);
         });
     });
@@ -91,9 +92,9 @@ function linkStyled(){
             dragElement.addClass('draggable');
             resizeElement.addClass('resizable');
             // Check if it's a mouse or touch event and pass along the correct value
-            var startX = (e.pageX) ? e.pageX : e.originalEvent.touches[0].pageX;
+            let startX = (e.pageX) ? e.pageX : e.originalEvent.touches[0].pageX;
             // Get the initial position
-            var dragWidth = dragElement.outerWidth(),
+            let dragWidth = dragElement.outerWidth(),
             posX = dragElement.offset().left + dragWidth - startX,
             containerOffset = container.offset().left,
             containerWidth = container.outerWidth();
@@ -103,7 +104,7 @@ function linkStyled(){
             // Calculate the dragging distance on mousemove.
             dragElement.parents().on("mousemove touchmove", function(e) {
                 // Check if it's a mouse or touch event and pass along the correct value
-                var moveX = (e.pageX) ? e.pageX : e.originalEvent.touches[0].pageX;
+                let moveX = (e.pageX) ? e.pageX : e.originalEvent.touches[0].pageX;
                 leftValue = moveX + posX - dragWidth;
                 // Prevent going off limits
                 if ( leftValue < minLeft) {

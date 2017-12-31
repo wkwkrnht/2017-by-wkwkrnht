@@ -1,6 +1,7 @@
 <?php
 require(get_parent_theme_file_path('/functions/util.php'));
 require(get_parent_theme_file_path('/functions/setup.php'));
+require(get_parent_theme_file_path('/functions/amp.php'));
 require(get_parent_theme_file_path('/functions/general.php'));
 require(get_parent_theme_file_path('/functions/widget.php'));
 require(get_parent_theme_file_path('/functions/nav.php'));

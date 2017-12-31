@@ -1,27 +1,36 @@
+<?php
+$made_time = get_mtime('Y/n/j G:i.s');
+if(have_posts()){
+    while(have_posts()){
+        the_post();
+        $author_name = get_the_author_meta('display_name');
+        $author_id   = get_the_author_meta('ID');
+        $now_ID      = get_the_ID();
+        $content     = apply_filters('the_content',get_the_content());
+        $content     = str_replace(']]>',']]&gt;',$content);
+        $page_nation = wp_link_pages(array('before'=>'<div class="page-nation">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
+    }
+}else{
+    $author_name = 'unknown';
+    $author_id   = '0';
+    $now_ID      = false;
+    $content     = 'This is unknown request. Wolud you check your request again?';
+    $page_nation =  '';
+}?>
 <article>
     <header class="article-header">
-        <a href="<?php echo esc_url(home_url());?>" tabindex="0" class="article-img">
-            <amp-img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb');?>" alt="eyecatch" height="576" width="1344" layout="responsive" class="article-eyecatch"></amp-img>
-        </a>
+        <amp-img src="<?php wkwkrnht_eyecatch($size_160);?>" srcset="<?php wkwkrnht_eyecatch($size_2560);?> 2560w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_1600);?> 1600w,<?php wkwkrnht_eyecatch($size_1366);?> 1366w,<?php wkwkrnht_eyecatch($size_1280);?> 1280w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_720);?> 720w,<?php wkwkrnht_eyecatch($size_640);?> 640w,<?php wkwkrnht_eyecatch($size_560);?> 560w,<?php wkwkrnht_eyecatch($size_480);?> 480w,<?php wkwkrnht_eyecatch($size_320);?> 320w,<?php wkwkrnht_eyecatch($size_240);?> 240w" sizes="90vw" layout="responsive" alt="eyecatch" class="article-eyecatch"></amp-img>
         <div class="article-meta">
             <h1 class="article-title entry-title">
                 <?php the_title();?>
             </h1>
             <div>
-                <span class="article-date">
-                    <time class="updated" datetime="<?php get_mtime('Y/m/d');?>" content="<?php the_time('Y/n/j G:i.s');?>">
-                        <?php the_time('Y/n/j');?>
-                    </time>
-                </span>
-                <span class="author article-author">
-                    <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" tabindex="0">
-                        <span class="vcard author">
-                            <span class="fn">
-                                <?php echo $author_name;?>
-                            </span>
-                        </span>
-                    </a>
-                </span>
+                <time class="article-date fa fa-calendar" datetime="<?php echo $made_time;?>">
+                    <?php echo $made_time;?>
+                </time>
+                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="article-author fa fa-user" tabindex="0">
+                    <?php echo $author_name;?>
+                </a>
             </div>
             <div class="widget_tag_cloud">
                 <?php the_tags('','','');?>
@@ -29,12 +38,19 @@
         </div>
     </header>
     <main class="article-main">
-        <?php if(have_posts()):while(have_posts()):the_post();the_content();endwhile;endif;?>
+        <?php
+        echo $content;
+        echo $page_nation;?>
     </main>
     <footer itemscope itemtype="http://schema.org/WPFooter">
         <aside class="amp-sharebutton">
             <h2>share : </h2>
             <ul>
+                <?php if(is_ssl()===true):?>
+                    <li>
+                        <amp-social-share type="system"></amp-social-share>
+                    </li>
+                <?php endif;?>
                 <li>
                     <amp-social-share type="twitter"></amp-social-share>
                 </li>
@@ -57,15 +73,23 @@
                     <amp-social-share type="whatsapp"></amp-social-share>
                 </li>
                 <li>
+                    <amp-social-share type="sms"></amp-social-share>
+                </li>
+                <li>
                     <amp-social-share type="email"></amp-social-share>
                 </li>
             </ul>
         </aside>
         <aside class="widget_related_posts">
-            <?php $categories=get_the_category();$category_ID=array();foreach($categories as $category):array_push($category_ID,$category->cat_ID);endforeach;
-            if(have_posts()):while(have_posts()):the_post();$now = get_the_ID();endwhile;endif;$array=array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+            <?php
+            $category_ID = array();
+            $categories  = get_the_category();
+            foreach($categories as $category){
+                $category_ID[] = $category->cat_ID;
+            }
+            $array = array('numberposts'=>10,'category'=>$category_ID,'orderby'=>'rand','post__not_in'=>array($now_ID),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
             $query = new WP_Query($array);
-            if($query -> have_posts()):
+            if($query->have_posts()):
                 while($query -> have_posts()):$query -> the_post();
                     $cat = get_the_category();?>
                     <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">
@@ -77,7 +101,7 @@
                 <?php wp_reset_postdata();?>
             <?php else:
                 wp_reset_postdata();
-                $array=array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
+                $array=array('numberposts'=>10,'orderby'=>'rand','post__not_in'=>array($now_ID),'no_found_rows'=>true,'update_post_term_cache'=>false,'update_post_meta_cache'=>false);
                 $query = new WP_Query($array);
                 while($query -> have_posts()):$query -> the_post();?>
                     <a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="related-wrapper">

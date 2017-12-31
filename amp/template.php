@@ -2,16 +2,16 @@
 <html amp class="amp">
 <head>
 	<meta charset="utf-8">
+	<link rel="canonical" href="<?php the_permalink();?>">
+	<title><?php wp_title('｜',true,'right');bloginfo();?></title>
 	<?php
 	global $post;
 	$root_color  = get_option('root_color','#333');
 	$theme_dir   = get_template_directory();
 	$html        = '';
 	$content     = '';
-	$content     = $post->post_content;?>
-	<link rel="canonical" href="<?php the_permalink();?>">
-	<title><?php wp_title('｜',true,'right');bloginfo()?></title>
-	<?php include_once($theme_dir . '/inc/meta-info.php');?>
+	$content     = $post->post_content;
+	include_once($theme_dir . '/inc/meta-info.php');?>
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php
 	$pattern = '/https:\/\/twitter.com\/.*?\/status\/(.*?)"/i';
