@@ -33,11 +33,13 @@ function corect_amp_script($array){
     }
     if(get_option('delete_amp_script_cache')===true){
         delete_site_transient($transitname);
-        set_site_transient($transitname,$script,12 * WEEK_IN_SECONDS);
-    }elseif(get_site_transient($transitname)!==false){
-        break;
+        set_site_transient($transitname,$scripts,12 * WEEK_IN_SECONDS);
+        return;
+    }elseif(get_site_transient($transitname)){
+        return;
     }else{
-        set_site_transient($transitname,$script,12 * WEEK_IN_SECONDS);
+        set_site_transient($transitname,$scripts,12 * WEEK_IN_SECONDS);
+        return;
     }
 }
 
