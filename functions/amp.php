@@ -47,17 +47,13 @@ function sanitize_for_amp($content){
     $content = preg_replace('/<iframe src="https:\/\/(www\.)?facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is','<div class=embed-container><amp-facebook width=486 height=657 layout="responsive" data-href="$1"></amp-facebook></div>',$content,-1,$fb_v_count);
     $content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=embed-container><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716"></amp-instagram></div>',$content,-1,$insta_count);
     $content = preg_replace('/<iframe src="\/\/instagram.com\/p\/(.*?)\/embed\/\".*<\/iframe>/i','<div class=embed-container><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',$content,-1,$insta_2_count);
-    $content = preg_replace('/<iframe width="(.*?)" height="(.*?)" src="https:\/\/www.youtube.com\/embed\/(.*?)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=embed-container><amp-youtube width="$1" height="$2" layout="responsive" data-videoid="$3"></amp-youtube></div>',$content,-1,$youtube_count);
+    $content = preg_replace('/<iframe width="(.*?)" height="(.*?)" src="https:\/\/www.youtube.com\/embed\/(.*?)" allowfullscreen><\/iframe>/i','<div class=embed-container><amp-youtube width="$1" height="$2" layout="responsive" data-videoid="$3"></amp-youtube></div>',$content,-1,$youtube_count);
     $content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div class=embed-container><amp-iframe layout="responsive" src="https://www.google.com/maps/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div>',$content,-1,$map_count);
     $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<div class=embed-container><amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe></div>',$content,-1,$aws_count);
     $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div class=embed-container><amp-iframe layout="responsive" height="576" width="1344" sandbox="allow-scripts" $1></amp-iframe></div>',$content,-1,$count);
     $content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
     $content = preg_replace('/target=".*?"/','',$content);
     $content = preg_replace('/style=".*?"/','',$content);
-    $content = preg_replace('/marginwidth=".*?"/i','',$content);
-    $content = preg_replace('/marginheight=".*?"/i','',$content);
-    $content = preg_replace('/border=".*?"/','',$content);
-    $content = preg_replace('/frameborder=".*?"/','',$content);
     $content = preg_replace('/onclick=".*?"/','',$content);
     $content = preg_replace('/onmouseover=".*?"/','',$content);
     $content = preg_replace('/onmouseout=".*?"/','',$content);

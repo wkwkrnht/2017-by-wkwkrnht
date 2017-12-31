@@ -56,6 +56,10 @@ add_action('comment_class','themeslug_comment_class');
 
 function wkwkrnht_replace($content){
     $content = str_replace(']]>',']]&gt;',$content);
+    $content = preg_replace('/border=".*?"/','',$content);
+    $content = preg_replace('/frameborder=".*?"/','',$content);
+    $content = preg_replace('/marginwidth=".*?"/i','',$content);
+    $content = preg_replace('/marginheight=".*?"/i','',$content);
     $content = preg_replace_callback('#(<code.*?>)(.*?)(</code>)#imsu',function($match){return $match[1] . esc_html($match[2]) . $match[3];},$content);
     $content = preg_replace('/<img((?![^>]*alt=)[^>]*)>/i','<img alt=""${1}>',$content);
     $content = preg_replace('/<a href="(.*?)" target="_blank"/',"<a href=\"$1\" target=\"_blank\" rel=\"noopener\"",$content);
