@@ -7,14 +7,14 @@
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php
 	$theme_dir = get_template_directory();
-	$url       = get_meta_url();
+	$name      = get_meta_url();
 	if(strlen($url) > 20){
         $amp_script = wordwrap($url,20);
     }else{
         $amp_script = $url;
     }
 	include_once($theme_dir . '/inc/meta-info.php');
-	echo get_site_transient($amp_script);
+	echo get_site_transient(make_transit_name($name));
 	wkwkrnht_load_analytics();?>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

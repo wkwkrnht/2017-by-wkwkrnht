@@ -7,7 +7,7 @@ function is_amp(){
 
 function corect_amp_script($array){
     $scripts = '';
-    $url     = get_meta_url();
+    $name    = get_meta_url();
 	if($array[0] > 0){
 		$scripts .= '<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>' . PHP_EOL;
 	}
@@ -26,36 +26,32 @@ function corect_amp_script($array){
 	if($array[8] > 0 || $array[9] > 0 || $array[10] > 0){
 		$scripts .= '<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>' . PHP_EOL;
 	}
-    if(strlen($url) > 20){
-        $transitname = wordwrap($url,20);
-    }else{
-        $transitname = $url;
-    }
+    $amp_script = make_transit_name($name);
     if(get_option('delete_amp_script_cache')===true){
-        delete_site_transient($transitname);
-        set_site_transient($transitname,$scripts,12 * WEEK_IN_SECONDS);
+        delete_site_transient($amp_script);
+        set_site_transient($amp_script,$scripts,12 * WEEK_IN_SECONDS);
         return;
-    }elseif(get_site_transient($transitname)){
+    }elseif(get_site_transient($amp_script)){
         return;
     }else{
-        set_site_transient($transitname,$scripts,12 * WEEK_IN_SECONDS);
+        set_site_transient($amp_script,$scripts,12 * WEEK_IN_SECONDS);
         return;
     }
 }
 
 function sanitize_for_amp($content){
     $img     = get_parent_theme_file_uri('/inc/no-image/no-image_128x128.png');
-    $content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=\'embed-container\'><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div>',$content,-1,$tw_count);
-    $content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=\'embed-container\'><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',$content,-1,$vine_count);
-    $content = preg_replace('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is','<amp-facebook width=486 height=657 layout="responsive" data-href="$1"></amp-facebook>',$content,-1,$fb_count);
-    $content = preg_replace('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is','<amp-facebook width=486 height=657 layout="responsive" data-href="$1"></amp-facebook>',$content,-1,$fb_v_count);
-    $content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716"></amp-instagram></div>',$content,-1,$insta_count);
+    $content = preg_replace('/<blockquote class="twitter-tweet".*>.*<a href="https:\/\/twitter.com\/.*\/status\/(.*).*<\/blockquote>.*<script async src="\/\/platform.twitter.com\/widgets.js" charset="utf-8"><\/script>/i','<div class=embed-container><amp-twitter width="800" height="600" layout="responsive" data-tweetid="$1" data-conversation="all" data-align="center"></amp-twitter></div>',$content,-1,$tw_count);
+    $content = preg_replace('/<iframe width=\'100%\' src=\'https:\/\/vine.co\/v\/(.*)\/embed\/simple\'.*><\/iframe>/i','<div class=embed-container><amp-vine data-vineid="$1" width="592" height="592" layout="responsive"></amp-vine></div>',$content,-1,$vine_count);
+    $content = preg_replace('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/post\.php\?href=(.*?)&.+?".+?><\/iframe>/is','<div class=embed-container><amp-facebook width=486 height=657 layout="responsive" data-href="$1"></amp-facebook></div>',$content,-1,$fb_count);
+    $content = preg_replace('/<iframe[^>]+?src="https:\/\/www\.facebook\.com\/plugins\/video\.php\?href=(.*?)&.+?".+?><\/iframe>/is','<div class=embed-container><amp-facebook width=486 height=657 layout="responsive" data-href="$1"></amp-facebook></div>',$content,-1,$fb_v_count);
+    $content = preg_replace('/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>.*?<script async defer src="\/\/platform.instagram.com\/.+?\/embeds.js"><\/script>/is','<div class=embed-container><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716"></amp-instagram></div>',$content,-1,$insta_count);
     $content = preg_replace('/<iframe src=\'\/\/instagram.com\/p\/(.*)\/embed\/\'.*<\/iframe>/i','<div class=\'embed-container\'><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="716" ></amp-instagram></div>',$content,-1,$insta_2_count);
     $content = preg_replace('/https:\/\/youtu.be\/(.*)/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content,-1,$youtube_count);
-    $content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=\'embed-container\'><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content,-1,$youtube_2_count);
-    $content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div>',$content,-1,$map_count);
-    $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe>',$content,-1,$aws_count);
-    $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div>',$content,-1,$count);
+    $content = preg_replace('/<iframe width="853" height="480" src="https:\/\/www.youtube.com\/embed\/(.*)" frameborder="0" allowfullscreen><\/iframe>.*<\/div>/i','<div class=embed-container><amp-youtube layout="responsive" data-videoid="$1" width="592" height="363"></amp-youtube></div>',$content,-1,$youtube_2_count);
+    $content = preg_replace('/<iframe src="https:\/\/www.google.com\/maps\/embed?(.*?)" (.*?)><\/iframe>/i','<div class=embed-container><amp-iframe layout="responsive" src="https:\/\/www.google.com\/maps\/embed?$1" width="600" height="450" layout="responsive" sandbox="allow-scripts allow-same-origin allow-popups" frameborder="0" allowfullscreen></amp-iframe></div>',$content,-1,$map_count);
+    $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<div class=embed-container><amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe></div>',$content,-1,$aws_count);
+    $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div class=embed-container><amp-iframe layout="responsive" height="576" width="1344" sandbox="allow-scripts" $1></amp-iframe></div>',$content,-1,$count);
     $content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
     $content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);

@@ -82,6 +82,14 @@ function color_change_brightness($color,$steps){
     echo $return;
 }
 
+function make_transit_name($name){
+    if(strlen($name) > 20){
+        return wordwrap($name,20);
+    }else{
+        return $name;
+    }
+}
+
 function is_subpage(){
     global $post;
     if(is_page()===true && $post->post_parent){
