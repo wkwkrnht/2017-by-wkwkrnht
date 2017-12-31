@@ -209,7 +209,7 @@ function html_encode($args=array(),$content=''){
 }
 function url_to_embedly($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
-    return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async src="//cdn.embedly.com/widgets/platform.js"></script>';
+    return'<a class="embedly-card" href="' . $url . '">' . $url . '</a><script async="" src="//cdn.embedly.com/widgets/platform.js"></script>';
 }
 function url_to_hatenaBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
