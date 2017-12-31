@@ -57,7 +57,7 @@ function sanitize_for_amp($content){
     $content = preg_replace('/<iframe (.*?)src="https:\/\/(.*?).amazon(.*?)><\/iframe>/i','<amp-iframe width="120" height="240" sandbox="allow-scripts allow-same-origin" frameborder="0" $1src="https://$2.amazon$3 ></amp-iframe>',$content,-1,$aws_count);
     $content = preg_replace('/<iframe(.*?)><\/iframe>/i','<div><amp-iframe layout="responsive" height="576" width="1344" $1></amp-iframe></div>',$content,-1,$count);
     $content = preg_replace('/<img(.*?)>/i','<div><amp-img layout="responsive" height="576" width="1344" $1></amp-img></div>',$content);
-    $content = preg_replace('/<a class="embedly-card" href="(.*?)"><\/a><script async src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','<a href="$1">$1</a>',$content);
+    $content = preg_replace('/<script async src="\/\/cdn.embedly.com\/widgets\/platform.js"><\/script>/i','',$content);
     $content = preg_replace('/<(.*?)frameborder=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)border=".*?"(.*?)>/','<$1$2>',$content);
     $content = preg_replace('/<(.*?)style=".*?"(.*?)>/','<$1$2>',$content);
