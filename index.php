@@ -32,7 +32,7 @@ if(is_amp()===true){
 }else{
 	get_header();
     if(is_singular()===true){
-		require_once(get_template_directory() . '/content/inner-single.php');
+		require_once(get_template_directory() . '/content/inner-singular.php');
 	}else{
 		require_once(get_template_directory() . '/content/inner-list.php');
 	}
