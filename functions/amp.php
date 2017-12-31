@@ -5,7 +5,7 @@ function is_amp(){
     return false !== get_query_var(AMP_QUERY_VAR,false);
 }
 
-function _amp_script($array){
+function corect_amp_script($array){
     $scripts = '<script async src="https://cdn.ampproject.org/v0.js"></script>';
 	if($array[0] > 0){
 		$scripts .= '<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>' . PHP_EOL;
@@ -62,6 +62,6 @@ function sanitize_for_amp($content){
     $content = str_replace('href=javascript:void(0);','',$content);
     $content = str_replace('src=""',$img,$content);
     $array   = array($tw_count,$vine_count,$fb_count,$fb_v_count,$insta_count,$insta_2_count,$youtube_count,$youtube_2_count,$map_count,$aws_count,$count);
-    enque_amp_script($array);
+    corect_amp_script($array);
     return $content;
 }
