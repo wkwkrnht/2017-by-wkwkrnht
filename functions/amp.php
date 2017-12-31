@@ -6,7 +6,7 @@ function is_amp(){
 }
 
 function corect_amp_script($array){
-    $scripts = '<script async src="https://cdn.ampproject.org/v0.js"></script>';
+    $scripts = '';
 	if($array[0] > 0){
 		$scripts .= '<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>' . PHP_EOL;
 	}
@@ -29,7 +29,7 @@ function corect_amp_script($array){
         $amp_scripts = $scripts;
         return $amp_scripts;
     }
-    add_filter('wkwkrnht_amp_scripts',enque_amp_scripts($scripts));
+    add_action('wkwkrnht_amp_scripts',enque_amp_scripts($scripts));
 }
 
 function sanitize_for_amp($content){

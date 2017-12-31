@@ -145,6 +145,7 @@ function wkwkrnht_load_style(){
     include_once(get_parent_theme_file_path('/css/nav.php'));
     include_once(get_parent_theme_file_path('/css/widget.php'));
     if(is_singular()===true){
+        global $post;
         $id      = url_to_postid(get_meta_url());
         $post    = get_post($id);
         $content = $post->post_content;
