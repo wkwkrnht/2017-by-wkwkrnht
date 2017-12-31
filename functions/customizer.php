@@ -13,6 +13,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_setting('Pinterest',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Pinterest',array('section'=>'title_tagline','settings'=>'Pinterest','label'=>'サイトのPinterest向け認証コードを指定する','type'=>'text'));
     $wp_customize->add_section('security_section',array('title'=>'セキュリティ','description'=>'このテーマ独自のセキュリティ設定',));
+    $wp_customize->add_setting('delete_amp_script_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_amp_script_cache',array('settings'=>'delete_amp_script_cache','label'=>'AMP スクリプトのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('delete_TOC_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('delete_TOC_cache',array('settings'=>'delete_TOC_cache','label'=>'目次のキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('delete_OGPblogcard_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));

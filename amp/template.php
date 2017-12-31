@@ -6,9 +6,15 @@
 	<title><?php wp_title('｜',true,'right');bloginfo();?></title>
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php
-	$theme_dir   = get_template_directory();
+	$theme_dir = get_template_directory();
+	$url       = get_meta_url();
+	if(strlen($url) > 20){
+        $transitname = wordwrap($url,20);
+    }else{
+        $transitname = $url;
+    }
 	include_once($theme_dir . '/inc/meta-info.php');
-	echo do_action('wkwkrnht_amp_scripts',$amp_scripts);
+	echo get_site_transient($transitname);
 	wkwkrnht_load_analytics();?>
 	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">

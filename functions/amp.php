@@ -7,6 +7,7 @@ function is_amp(){
 
 function corect_amp_script($array){
     $scripts = '';
+    $url     = get_meta_url();
 	if($array[0] > 0){
 		$scripts .= '<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>' . PHP_EOL;
 	}
@@ -25,11 +26,19 @@ function corect_amp_script($array){
 	if($array[8] > 0 || $array[9] > 0 || $array[10] > 0){
 		$scripts .= '<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>' . PHP_EOL;
 	}
-    function enque_amp_scripts($scripts){
-        $amp_scripts = $scripts;
-        return $amp_scripts;
+    if(strlen($url) > 20){
+        $transitname = wordwrap($url,20);
+    }else{
+        $transitname = $url;
     }
-    add_action('wkwkrnht_amp_scripts',enque_amp_scripts($scripts));
+    if(get_option('delete_amp_script_cache')===true){
+        delete_site_transient($transitname);
+        set_site_transient($transitname,$script,12 * WEEK_IN_SECONDS);
+    }elseif(get_site_transient($transitname)!==false){
+        break;
+    }else{
+        set_site_transient($transitname,$script,12 * WEEK_IN_SECONDS);
+    }
 }
 
 function sanitize_for_amp($content){

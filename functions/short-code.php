@@ -26,13 +26,13 @@ function make_toot_embed($url){
 }
 function make_OGPblogcard($url){
     require_once(get_parent_theme_file_path('/inc/OpenGraph.php'));
-    $ogp           = OpenGraph::fetch($url);
-    $url           = $ogp->url;
-    $share_url     = urlencode($url);
-    $id_url        = mb_strtolower(str_replace(':/.','',$url));
-    $img           = $ogp->image;
-    $title         = $ogp->title;
-    $description   = str_replace(']]<>',']]＜＞',$ogp->description);
+    $ogp         = OpenGraph::fetch($url);
+    $url         = $ogp->url;
+    $share_url   = urlencode($url);
+    $id_url      = mb_strtolower(str_replace(':/.','',$url));
+    $img         = $ogp->image;
+    $title       = $ogp->title;
+    $description = str_replace(']]<>',']]＜＞',$ogp->description);
     $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
     $content     =
     '<div class="ogp-blogcard">
@@ -227,7 +227,7 @@ function url_to_OGPBlogcard($atts){
         delete_site_transient($transitname);
         $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
-    }elseif($cache){
+    }elseif($cache!==false){
         $content = $cache;
     }else{
         $content = make_OGPblogcard($url);
@@ -256,7 +256,7 @@ function toot_into_article($atts){
         delete_site_transient($transitname);
         $response = make_toot_embed($url);
         set_transient('mastodon_status_',$response,12 * WEEK_IN_SECONDS);
-    }elseif($cache){
+    }elseif($cache!==false){
         $response = $cache;
     }else{
         $response = make_toot_embed($url);
@@ -290,7 +290,7 @@ function load_TOC($atts){
         delete_site_transient($transitname);
         $result = make_TOC($atts);
         set_site_transient($transitname,$result,12 * WEEK_IN_SECONDS);
-    }elseif($cache){
+    }elseif($cache!==false){
         $result = $cache;
     }else{
         $result = make_TOC($atts);
