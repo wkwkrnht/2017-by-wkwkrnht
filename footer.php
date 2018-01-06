@@ -34,9 +34,9 @@
         <?php endif;?>
         <script src="<?php echo get_template_directory_uri();?>/inc/js/script.php"></script>
         <?php
-        $txt = get_option('footer_txt');
-        if($txt!==false){
-            echo $txt;
+        $footer = get_option('insert_into_footer');
+        if($footer!==false){
+            echo $footer;
         }?>
     </body>
 </html>

@@ -2,7 +2,10 @@
 function wkwkrnht_customizer($wp_customize){
     /*
         SNS
-    1.
+    1.Google Analyticsの認証コード
+    2.Google Search Consoleの認証コード
+    3.Bing Web masterの認証コード
+    4.Pinterestの認証コード
     */
     $wp_customize->add_setting('Google_Analytics',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Google_Analytics',array('section'=>'title_tagline','settings'=>'Google_Analytics','label'=>'サイトのGoogleAnalyticsのIDを指定する','type'=>'text'));
@@ -12,26 +15,26 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('Bing_Webmaster',array('section'=>'title_tagline','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向け認証コードを指定する','type'=>'text'));
     $wp_customize->add_setting('Pinterest',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Pinterest',array('section'=>'title_tagline','settings'=>'Pinterest','label'=>'サイトのPinterest向け認証コードを指定する','type'=>'text'));
+
+    /*
+        Security
+    1.
+    */
     $wp_customize->add_section('security_section',array('title'=>'セキュリティ','description'=>'このテーマ独自のセキュリティ設定',));
-    $wp_customize->add_setting('delete_amp_script_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('delete_amp_script_cache',array('settings'=>'delete_amp_script_cache','label'=>'AMP用追加スクリプトのオブジェクトキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
-    $wp_customize->add_setting('delete_TOC_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('delete_TOC_cache',array('settings'=>'delete_TOC_cache','label'=>'目次のキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
-    $wp_customize->add_setting('delete_OGPblogcard_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'OGPblogcardのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
-    $wp_customize->add_setting('delete_mastodon_embed_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
-    $wp_customize->add_control('delete_mastodon_embed_cache',array('settings'=>'delete_mastodon_embed_cache','label'=>'mastodon埋め込みのキャッシュを削除する','section'=>'security_section','type'=>'checkbox',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'security_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('x_domain_ad_preload',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('x_domain_ad_preload',array('settings'=>'x_domain_ad_preload','label'=>'エックスドメインの無料WordPressサーバーにて広告用スクリプトを先読みする','section'=>'security_section','type'=>'checkbox',));
-    $wp_customize->add_setting('cookie_key',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('cookie_key',array('section'=>'security_section','settings'=>'cookie_key','label'=>'Cookieのkeyを入力する','type'=>'text'));
-    $wp_customize->add_setting('cookie_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('cookie_txt',array('section'=>'security_section','settings'=>'cookie_txt','label'=>'Cookieのテキストを入力する','type'=>'text'));
     $wp_customize->add_section('sns_section',array('title'=>'SNS','description'=>'このテーマ独自のSNS向け設定',));
     $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントを指定する','type'=>'text'));
+
+    /*
+        Jetpack
+    1.jetpack.cssの読み込みを停止
+    2.simple-payments.min.cssの読み込みを停止
+    3.OGP出力を停止
+    */
     $wp_customize->add_section('jetpack_section',array('title'=>'jetpack','description'=>'このテーマ独自のjetpack向け設定',));
     $wp_customize->add_setting('jetpack.css',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack.css',array('settings'=>'jetpack.css','label'=>'jetpack.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
@@ -39,6 +42,23 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('simple_payments',array('settings'=>'simple_payments','label'=>'simple-payments.cssの読み込みを停止する','section'=>'jetpack_section','type'=>'checkbox',));
     $wp_customize->add_setting('jetpack_open_graph',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('jetpack_open_graph',array('settings'=>'jetpack_open_graph','label'=>'jetpackによるOGPの出力を停止する','section'=>'jetpack_section','type'=>'checkbox',));
+
+    /*
+        Chache
+    1.AMP用追加スクリプト
+    2.目次
+    3.OGPブログカード
+    4.マストドン埋め込み
+    */
+    $wp_customize->add_section('cache_section',array('title'=>'キャッシュ','description'=>'このテーマ内のキャッシュ設定',));
+    $wp_customize->add_setting('delete_amp_script_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_amp_script_cache',array('settings'=>'delete_amp_script_cache','label'=>'AMP用追加スクリプトのオブジェクトキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
+    $wp_customize->add_setting('delete_TOC_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_TOC_cache',array('settings'=>'delete_TOC_cache','label'=>'目次のキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
+    $wp_customize->add_setting('delete_OGPblogcard_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'OGPblogcardのキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
+    $wp_customize->add_setting('delete_mastodon_embed_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
+    $wp_customize->add_control('delete_mastodon_embed_cache',array('settings'=>'delete_mastodon_embed_cache','label'=>'mastodon埋め込みのキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
 
     /*
         color
@@ -188,8 +208,8 @@ function wkwkrnht_customizer($wp_customize){
     1.header
     2.footer
     */
-    $wp_customize->add_setting('header_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('header_txt',array('section'=>'custom_css','settings'=>'header_txt','label'=>'headタグ内に追加で出力するテキスト','type'=>'textarea'));
-    $wp_customize->add_setting('footer_txt',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
-    $wp_customize->add_control('footer_txt',array('section'=>'custom_css','settings'=>'footer_txt','label'=>'bodyタグ直前に追加で出力するテキスト','type'=>'textarea'));
+    $wp_customize->add_setting('insert_into_header',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_control('insert_into_header',array('settings'=>'insert_into_header','label'=>'headタグ内に追加で出力するテキスト','section'=>'custom_css','type'=>'textarea'));
+    $wp_customize->add_setting('insert_into_footer',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_control('insert_into_footer',array('settings'=>'insert_into_insert_into_footer','label'=>'bodyタグ直前に追加で出力するテキスト','section'=>'custom_css','type'=>'textarea'));
 }

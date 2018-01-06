@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-	<meta charset="utf-8">
 	<?php include_once(get_parent_theme_file_path('/inc/meta-info.php'));?>
 	<style>
 		<?php wkwkrnht_load_style();?>
 	</style>
 	<?php
-	$txt = get_option('header_txt');
+	$header = get_option('insert_into_header');
 	wkwkrnht_load_analytics();
 	wp_head();
-	if($txt!==false){
-		echo $txt;
+	if($header!==false){
+		echo $header;
 	}?>
 </head>
 <body <?php body_class();?>>

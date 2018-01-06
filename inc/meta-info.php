@@ -23,6 +23,7 @@ if($bing!==''){
 if($pin!==''){
     echo'<meta name="p:domain_verify" content="' . $pin . '">';
 }?>
+<meta charset="utf-8">
 <meta name="referrer" content="<?php echo get_theme_mod('referrer_setting','default');?>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
