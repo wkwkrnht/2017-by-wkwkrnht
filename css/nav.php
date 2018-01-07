@@ -7,7 +7,7 @@
 */
 <?php if(has_nav_menu('header')===true):?>
     .header-nav{
-        background-color:<?php color_change_brightness($header_background,get_option('site_nav_background_brightness','-40'));?>;
+        background-color:<?php color_change_brightness(get_option('site_header_background','#03a9f4'),get_option('site_nav_background_brightness','-40'));?>;
         box-shadow:0 0 3vmin rgba(0,0,0,.1) inset;
         box-sizing:border-box;
         font-size:1.6rem;
