@@ -143,6 +143,9 @@ button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusri
 ::-webkit-file-upload-button{
     font:inherit;
 }
+.fa-mastodon::before{
+    content:url(<?php get_theme_file_uri('/inc/mastodon.svg');?>);
+}
 .screen-reader-text{
     clip:rect(1px,1px,1px,1px);
     clip-path:inset(50%);
@@ -173,12 +176,10 @@ span[itemprop="copyrightHolder"] span[itemprop="name"]{
 
 .site-header{
     <?php
-    $header_color      = get_option('site_header_color','#fff');
-    $header_background = get_option('site_header_background','#03a9f4');
     if(has_header_image()===true){
         echo'background-image:url(' . get_header_image() . ');';
     }else{
-        echo'background-color:' . $header_background . ';';
+        echo'background-color:' . get_option('site_header_background','#03a9f4') . ';';
     }?>
     box-shadow:0 0 3vmin rgba(0,0,0,.3);
     height:10%;
@@ -188,7 +189,7 @@ span[itemprop="copyrightHolder"] span[itemprop="name"]{
     width:100%;
 }
 .site-header,.site-header a{
-    color:<?php echo $header_color;?>;
+    color:<?php echo get_option('site_header_color','#fff');?>;
 }
 .site-title{
     font-size:2.4rem;

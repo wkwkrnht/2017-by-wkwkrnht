@@ -522,14 +522,12 @@
         text-align:center;
         white-space:nowrap;
     }
-    .widget_sns_share li{
-        display:inline-block;
-        height:8vmax;
-        width:8vmax;
-    }
     .widget_sns_share a{
         color:#fff;
+        display:inline-block;
         font-size:3rem;
+        height:8vmax;
+        width:8vmax;
     }
     .widget_sns_share .toot{
         background-color:#00a4ff;
