@@ -1,43 +1,48 @@
 <?php
 /*
     SEO
-3.for category page
+1.for category page
     ●description
     ●keyword
-4.for tag page
+2.for tag page
     ●keyword
     ●description
-5.meta_description
-6.image
+3.meta_description
+4.title
+5.image
     ●yes_image
     ●no_image
     ●meta_image
     ●wkwkrnht_eyecatch
-7.check account Twitter
+6.check account Twitter
 */
 
 
 function get_meta_description_from_category(){
-    $cat_desc=trim(strip_tags(category_description()));
-    if($cat_desc){return $cat_desc;}
-    $cat_desc='「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
-    return $cat_desc;
+    $cat_desc = category_description();
+    if(is_string($cat_desc)){
+        return trim(strip_tags($cat_desc));
+    }else{
+        return '「' . single_cat_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    }
 }
 function get_meta_keyword_from_category(){
     return single_cat_title('',false) . ',カテゴリー,ブログ,記事一覧';
 }
 
+
 function get_meta_keyword_from_tag(){
     return single_tag_title('',false) . ',タグ,ブログ,記事一覧';
 }
 function get_meta_description_from_tag(){
-    $tag_desc=trim(strip_tags(tag_description()));
-    if($tag_desc){return $tag_desc;}
-    $tag_desc='「' . single_tag_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
-    return $tag_desc;
+    $tag_desc = tag_description();
+    if(is_string($tag_desc)){
+        return trim(strip_tags($tag_desc));
+    }else{
+        return '「' . single_tag_title('',false) . '」の記事一覧です。' . get_bloginfo('description');
+    }
 }
 
-add_filter('wp_title',function($title){if(empty($title)&&(is_home()||is_front_page())){$title = bloginfo('name');}return $title;});
 
 function get_meta_description(){
     if(is_singular()===true && has_excerpt()===true){
@@ -53,6 +58,16 @@ function get_meta_description(){
 function meta_description(){
     echo get_meta_description();
 }
+
+
+function wkwkrnht_title($title){
+    if(empty($title)===true&&(is_home()===true||is_front_page()===true)){
+        $title = bloginfo('name');
+    }
+    return $title;
+}
+add_filter('wp_title','wkwkrnht_title');
+
 
 function get_yes_image($size){
     $img = wp_get_attachment_image_src(get_post_thumbnail_id(),$size);
@@ -106,19 +121,20 @@ function get_no_image($size){
         case 'wkwkrnht-thumb-2560-crop':
             $src = $uri . '2560x2560.png';
             break;
+        case array(1024,1024):
+            $src = $uri . '1024x1024.png';
+            break;
+        case array(512,512):
+            $src = $uri . '512x512.png';
+            break;
+        case array(256,256):
+            $src = $uri . '256x256.png';
+            break;
+        case array(128,128):
+            $src = $uri . '128x128.png';
+            break;
         default:
             $src = $uri . 'full.png';
-    }
-    if($size===array(1024,1024)){
-        $src = $uri . '1024x1024.png';
-    }elseif($size===array(512,512)){
-        $src = $uri . '512x512.png';
-    }elseif($size===array(256,256)){
-        $src = $uri . '256x256.png';
-    }elseif($size===array(128,128)){
-        $src = $uri . '128x128.png';
-    }else{
-
     }
     return $src;
 }
@@ -126,7 +142,7 @@ function no_image($size){
     echo get_no_image($size);
 }
 function get_meta_image(){
-    $size = array(512,512);
+    $size = 'wkwkrnht-thumb-480-crop';
     if(is_singular()===true && has_post_thumbnail()===true){
         return get_yes_image($size);
     }elseif(has_custom_logo()===true){

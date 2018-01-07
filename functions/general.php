@@ -84,7 +84,7 @@ add_filter('embed_oembed_html','custom_oembed_element');
 
 add_filter('term_description','wkwkrnht_term_description');
 function wkwkrnht_term_description($term){
-    if(empty($term)){
+    if(empty($term)===true){
         return false;
     }
     return apply_filters('the_content',$term);

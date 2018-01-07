@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<link rel="canonical" href="<?php the_permalink();?>">
-	<title><?php wp_title('｜',true,'right');bloginfo();?></title>
+	<title><?php echo wp_get_document_title();?></title>
 	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<?php
 	$theme_dir = get_template_directory();

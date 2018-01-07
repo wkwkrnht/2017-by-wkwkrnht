@@ -531,6 +531,9 @@
         color:#fff;
         font-size:3rem;
     }
+    .widget_sns_share .toot{
+        background-color:#00a4ff;
+    }
     .widget_sns_share .tweet{
         background-color:#55acee;
     }
@@ -567,7 +570,7 @@
     }
     .widget_sns_share .instapaper > a{
         color:#333;
-        font:900 4rem serif;
+        font:4rem 900 serif;
     }
     .widget_sns_share .pinterest{
         background-color:#bd081c;
@@ -575,7 +578,7 @@
     .widget_sns_share .pocket{
         background-color:#ef3f56;
     }
-    .widget_sns_share .tumblr,.widget_sns_share .toot{
+    .widget_sns_share .tumblr{
         background-color:#36465d;
     }
     .widget_sns_share .pushdog{

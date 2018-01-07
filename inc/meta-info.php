@@ -11,6 +11,7 @@ $site_url     = site_url();
 $home_url     = esc_url(home_url());
 $meta_url     = get_meta_url();
 $meta_img     = get_meta_image();
+$title        = wp_get_document_title();
 $blog_name    = get_bloginfo('name');
 $description  = get_meta_description();
 $URLbar_color = get_option('GoogleChrome_URLbar');
@@ -32,18 +33,14 @@ if($pin!==''){
 <meta name="theme-color" content="<?php echo $URLbar_color;?>">
 <meta name="msapplication-TileColor" content="<?php echo $URLbar_color;?>">
 <meta property="og:type" content="article">
-<?php if($is_home===true):?>
-    <meta property="og:title" content="<?php echo $blog_name;?>">
-<?php else:?>
-    <meta property="og:title" content="<?php wp_title('｜',true,'right');echo $blog_name;?>">
-<?php endif;?>
+<meta property="og:title" content="<?php echo $title;?>">
 <meta property="og:url" content="<?php echo $meta_url;?>">
 <meta property="og:description" content="<?php echo $description;?>">
 <meta property="og:site_name" content="<?php echo $blog_name;?>">
 <meta property="og:image" content="<?php echo $meta_img;?>">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:domain" content="<?php echo $_SERVER['SERVER_NAME'];?>">
-<meta name="twitter:title" content="<?php wp_title('');?>">
+<meta name="twitter:title" content="<?php echo $title;?>">
 <meta name="twitter:description" content="<?php echo $description;?>">
 <meta name="twitter:image" content="<?php echo $meta_img;?>">
 <meta name="twitter:site" content="@<?php echo get_option('Twitter_URL');?>">
@@ -87,7 +84,7 @@ if(is_singular()===true):
                 "@type": "WebPage",
                 "@id": "https://google.com/article"
             },
-            "headline": "' . wp_title('',false) . '",
+            "headline": "' . $title . '",
                 "image": {
                     "@type": "ImageObject",
                     "url": "' . $meta_img . '",
@@ -311,8 +308,10 @@ elseif(is_date()===true):
                         {
                             "@type": "ListItem",
                             "position": 1,
-                            "item":{"@id": "' . $home_url . '",
-                            "name": "ホーム"
+                            "item":{
+                                "@id": "' . $home_url . '",
+                                "name": "ホーム"
+                            }
                         }
                     },
                     {
@@ -378,8 +377,8 @@ elseif(is_search()===true):
                 "@context":"http://schema.org",
                 "@type": "SearchResultsPage",
                 "@id": "' . $meta_url . '",
-                "headline": "' . $blog_name . '",
-                "name": "' . $blog_name . '",
+                "headline": "' . $title . '",
+                "name": "' . $title . '",
                 "url": "' . $meta_url . '",
                 "datePublished": "' .  date('c') . '",
                 "image": "' . $meta_img . '",
