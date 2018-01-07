@@ -4,6 +4,7 @@
 3.main-nav
 4.social-nav
 5.page nation
+6.share button for amp
 */
 <?php if(has_nav_menu('header')===true):?>
     .header-nav{
@@ -301,3 +302,12 @@ $main_nav   = has_nav_menu('main');?>
     background-color:<?php echo get_option('page_nation_hover_background','#03a9f4');?>;
     color:<?php echo get_option('page_nation_hover_color','#fff');?>;
 }
+
+<?php if(is_amp()===true):?>
+    .amp-sharebutton > ul{
+        list-style:none;
+    }
+    .amp-sharebutton > ul > li{
+        display:inline-block;
+    }
+<?php endif;?>

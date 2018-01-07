@@ -144,7 +144,7 @@ button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusri
     font:inherit;
 }
 .fa-mastodon::before{
-    content:url(<?php get_theme_file_uri('/inc/mastodon.svg');?>);
+    content:url(<?php echo get_theme_file_uri('/inc/mastodon.svg');?>);
 }
 .screen-reader-text{
     clip:rect(1px,1px,1px,1px);

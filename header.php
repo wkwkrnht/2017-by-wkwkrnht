@@ -46,7 +46,7 @@
 		<?php else:?>
 			<a href="<?php echo $site_url;?>" tabindex="0" itemprop="url">
 				<h1 class="site-title" itemprop="name headline">
-					<?php echo $blog_name;?>
+					<?php echo wp_get_document_title();?>
 				</h1>
 			</a>
 		<?php endif;?>

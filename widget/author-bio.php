@@ -16,6 +16,7 @@ function make_author_follow_button($array){
         switch($key){
             case 'twitter':
                 $fw_class = 'fa-twitter-square';
+                $value    = 'https://twitter.com/' . $value;
                 break;
             case 'facebook':
                 $fw_class = 'fa-facebook-official';

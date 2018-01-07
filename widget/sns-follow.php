@@ -1,6 +1,6 @@
-<img src="<?php wkwkrnht_eyecatch(array(512,512));?>" alt="eyecatch" class="eyecatch wrapper">
+<img src="<?php wkwkrnht_eyecatch('wkwkrnht-thumb-480-crop');?>" alt="eyecatch" class="eyecatch wrapper">
 <div class="wrapper">
-    <p class="title"><b>「<?php wp_title('');?>」が気に入ったらフォローお願いします！</b><br>フォロー先で最新情報をお届けします。</p>
+    <p class="title">「<?php echo wp_get_document_title();?>」が気に入ったらフォローお願いします！<br>フォロー先で最新情報をお届けします。</p>
     <ul class="follow-button-area">
         <li class="twitter follow-button">
             <a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする">
