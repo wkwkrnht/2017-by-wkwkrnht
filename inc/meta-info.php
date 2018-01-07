@@ -111,7 +111,7 @@ if(is_singular()===true):
         }';
     if(is_subpage()===true){
         $obj = get_queried_object();
-        $meta_script = '
+        $meta_script .= '
             {
                 "@context":"http://schema.org",
                 "@type": "BreadcrumbList",
@@ -217,7 +217,7 @@ elseif(is_category()===true):
                     $ancestors = array_reverse(get_ancestors($cat -> cat_ID,'category'));
                     foreach($ancestors as $ancestor){
                         $i++;
-                        echo'
+                        $meta_script .= '
                         {
                             "@type": "ListItem",
                             "position": ' . $i . ',
@@ -229,7 +229,7 @@ elseif(is_category()===true):
                     }
                 }
                 $i++;
-                echo'
+                $meta_script .= '
                 {
                     "@type": "ListItem",
                     "position": ' . $i . ',
@@ -323,7 +323,7 @@ elseif(is_date()===true):
                         }
                     }';
                     if(is_month()===true || is_day()===true){
-                        echo'
+                        $meta_script .= '
                         ,{
                             "@type": "ListItem",
                             "position": 3,
@@ -333,7 +333,7 @@ elseif(is_date()===true):
                             }
                         }';
                         if(is_day()===true){
-                            echo'
+                            $meta_script .= '
                             ,{
                                 "@type": "ListItem",
                                 "position": 4,
@@ -403,7 +403,7 @@ elseif(is_attachment()===true):
                 },';
                 if($obj -> parent != 0){
                     $i++;
-                    echo'
+                    $meta_script .= '
                     {
                         "@type": "ListItem",
                         "position": ' . $i . ',
@@ -414,7 +414,7 @@ elseif(is_attachment()===true):
                     },';
                 }
                 $i++;
-                echo'
+                $meta_script .= '
                 {
                     "@type": "ListItem",
                     "position": ' . $i . ',

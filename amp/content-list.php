@@ -35,7 +35,7 @@
         </li>
     </ul>
 </aside>
-<main class="card-list">
+<main class="article-list">
     <?php
     if(have_posts()):while(have_posts()):the_post();
             $title = the_title_attribute(array('echo'=>false));
