@@ -57,8 +57,8 @@ function sanitize_for_amp($content){
     $content = preg_replace('/onmouseover="(.*?)"/','',$content);
     $content = preg_replace('/onmouseout="(.*?)"/','',$content);
     $content = preg_replace('/oncontextmenu="(.*?)"/','',$content);
-    $content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
-    $content = preg_replace('/<script(.*?)><\/script>/i','',$content);
+    //$content = preg_replace('/<script>(.*?)<\/script>/i','',$content);
+    //$content = preg_replace('/<script(.*?)><\/script>/i','',$content);
     $content = str_replace('href="javascript:void(0)"','',$content);
     $content = str_replace('href=javascript:void(0);','',$content);
     $content = str_replace('src=""',$img,$content);
