@@ -2,8 +2,9 @@
 <html amp class="amp">
 	<head>
 		<?php
+		$dir  = get_template_directory();
 		$name = get_meta_url();
-		include_once(get_template_directory() . '/inc/meta-info.php');
+		include_once($dir . '/inc/meta-info.php');
 		echo get_site_transient(make_transit_name($name));
 		wkwkrnht_load_analytics();?>
 		<style amp-custom>
@@ -74,9 +75,9 @@
 		</header>
 		<?php
 		if(is_singular()===true){
-			include_once($theme_dir . '/amp/content-singular.php');
+			include_once($dir . '/amp/content-singular.php');
 		}else{
-			include_once($theme_dir . '/amp/content-list.php');
+			include_once($dir . '/amp/content-list.php');
 		}?>
 	</body>
 </html>
