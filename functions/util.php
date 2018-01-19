@@ -180,7 +180,7 @@ function wkwkrnht_load_analytics(){
         if(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
             if(is_amp()===true){
                 echo'
-                <script async custom-element="amp-analytics" src="//cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+                <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
                 <amp-analytics type="googleanalytics" id="analytics">
                     <script type="application/json">
                         {
