@@ -7,7 +7,6 @@
 	</style>
 	<?php
 	$header = get_option('insert_into_header');
-	wkwkrnht_load_analytics();
 	wp_head();
 	if($header!==false){
 		echo $header;

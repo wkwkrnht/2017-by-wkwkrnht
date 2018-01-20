@@ -173,39 +173,3 @@ function wkwkrnht_load_style(){
     }
     include_once(get_parent_theme_file_path('/css/mediaqueri.php'));
 }
-
-function wkwkrnht_load_analytics(){
-    $google_ana = get_option('Google_Analytics');
-    if($google_ana!==false){
-        if(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false){
-            if(is_amp()===true){
-                echo'
-                <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-                <amp-analytics type="googleanalytics" id="analytics">
-                    <script type="application/json">
-                        {
-                            "vars": {
-                                "account": "' . $google_ana . '"
-                            },
-                            "triggers": {
-                                "trackPageview": {
-                                    "on": "visible",
-                                    "request": "pageview"
-                                }
-                            }
-                        }
-                    </script>
-                </amp-analytics>';
-            }else{
-                echo'
-                <script>
-                    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
-                    ga.l=+new Date;
-                    ga("create","' . $google_ana . '","auto");
-                    ga("send","pageview");
-                </script>
-                <script src="//www.google-analytics.com/analytics.js"></script>';
-            }
-    	}
-    }
-}

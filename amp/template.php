@@ -5,8 +5,7 @@
 		$dir  = get_template_directory();
 		$name = get_meta_url();
 		include_once($dir . '/inc/meta-info.php');
-		echo get_site_transient(make_transit_name($name));
-		wkwkrnht_load_analytics();?>
+		echo get_site_transient(make_transit_name($name));?>
 		<style amp-custom>
 			<?php wkwkrnht_load_style();?>
 		</style>
@@ -79,5 +78,22 @@
 		}else{
 			include_once($dir . '/amp/content-list.php');
 		}?>
+		<?php if($google_ana!==false&&(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false)):?>
+	        <amp-analytics type="googleanalytics" id="analytics">
+	            <script type="application/json">
+	                {
+	                    "vars": {
+	                        "account": "<?php echo $google_ana;?>"
+	                    },
+	                    "triggers": {
+	                        "trackPageview": {
+	                            "on": "visible",
+	                            "request": "pageview"
+	                        }
+	                    }
+	                }
+	            </script>
+	        </amp-analytics>
+	    <?php endif;?>
 	</body>
 </html>

@@ -2,6 +2,7 @@
 <?php
 $i            = 1;
 $img          = ' src="' . get_no_image('') . '"';
+$google_ana   = get_option('Google_Analytics');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
 $pin          = get_option('Pinterest');
@@ -52,9 +53,10 @@ if($pin!==''){
     <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 	<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <?php if($google_ana!==false&&(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false)):?>
+        <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <?php endif;?>
 <?php else:?>
-    <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
-    <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
     <?php if(get_option('x_domain_ad_preload')===true):?>
         <link rel="preload" as="script" href="//ad.xdomain.ne.jp/js/server-wp.js">
     <?php endif;?>
@@ -66,7 +68,18 @@ if($pin!==''){
     <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
     <link rel="amphtml" href="<?php echo $meta_url;?>?amp=1">
-<?php endif;
+    <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
+    <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
+    <?php if($google_ana!==false&&(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false)):?>
+        <script>
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
+            ga.l=+new Date;
+            ga("create","<?php echo $google_ana;?>","auto");
+            ga("send","pageview");
+        </script>
+        <script src="//www.google-analytics.com/analytics.js"></script>
+    <?php endif;
+endif;
 if(is_singular()===true):
     $google_id  = get_the_author_meta('GoogleID');
     $fb         = get_the_author_meta('facebook');
