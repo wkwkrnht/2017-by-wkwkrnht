@@ -27,7 +27,6 @@ function make_toot_embed($url){
 function make_OGPblogcard($url){
     require_once(get_parent_theme_file_path('/inc/OpenGraph.php'));
     $ogp         = OpenGraph::fetch($url);
-    $url         = $ogp->url;
     $share_url   = urlencode($url);
     $img         = $ogp->image;
     $title       = $ogp->title;

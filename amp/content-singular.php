@@ -8,6 +8,7 @@ if(have_posts()){
         $now_ID      = get_the_ID();
         $content     = apply_filters('the_content',get_the_content());
         $content     = str_replace(']]>',']]&gt;',$content);
+        $content     = sanitize_for_amp($content);
         $page_nation = wp_link_pages(array('before'=>'<div class="page-nation">','after'=>'</div>','separator'=>'','nextpagelink'=>'<','previouspagelink'=>'>'));
     }
 }else{
