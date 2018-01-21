@@ -33,7 +33,21 @@
         border:1px solid #ddd;
         box-sizing:border-box;
         overflow:hidden;
-        padding:1vmin 4vmin;
+        /*padding:1vmin 4vmin;*/
+    }
+    .ogp-blogcard-img,.ogp-blogcard-info{
+        display:inline-block;
+    }
+    .ogp-blogcard-img{
+        margin:auto;
+        max-width:20%;
+    }
+    .ogp-blogcard-info{
+        max-width:70%;
+        text-align:center;
+    }
+    .ogp-blogcard-title{
+        font-size:2rem;
     }
     .ogp-blogcard-share{
         text-align:right;
@@ -55,24 +69,8 @@
         color:#00a5de;
         font:900 monospace;
     }
-    .ogp-blogcard-img,.ogp-blogcard-info{
-        display:inline-block;
-    }
-    .ogp-blogcard-img{
-        margin:auto;
-        max-height:36vh;
-        max-width:20%;
-    }
-    .ogp-blogcard-info{
-        max-height:100%;
-        max-width:70%;
-        text-align:center;
-    }
-    .ogp-blogcard-title{
-        font-size:2rem;
-    }
     <?php if($singular===true):?>
-        .article-main .ogp-blogcard blockquote::after,.article-main .ogp-blogcard-share li::before{
+        .article-main .ogp-blogcard blockquote[cite]::after,.article-main .ogp-blogcard-share li::before{
             display:none;
         }
         .article-main .ogp-blogcard-img{
