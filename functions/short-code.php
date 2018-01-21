@@ -213,17 +213,18 @@ function url_to_OGPBlogcard($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
     $transitname = make_transit_name($url);
     $cache       = get_site_transient($transitname);
-    if(get_option('delete_OGPblogcard_cache')===true){
+    if(get_option('delete_OGPblogcard_cache')){
         delete_site_transient($transitname);
         $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+        return $content;
     }elseif($cache!==false){
-        $content = $cache;
+        return $cache;
     }else{
         $content = make_OGPblogcard($url);
         set_site_transient($transitname,$content,12 * WEEK_IN_SECONDS);
+        return $content;
     }
-    return $content;
 }
 function youtube_into_article($atts){
     extract(shortcode_atts(array('url'=>'',),$atts));
