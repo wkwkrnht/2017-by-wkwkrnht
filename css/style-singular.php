@@ -154,14 +154,14 @@
 .article-main blockquote,.article-main q{
     quotes:none;
 }
-.article-main blockquote:not(.ogp-blogcard-main),.article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
+.article-main blockquote,.article-main blockquote[title]::after,.article-main blockquote[cite]::after,.article-main blockquote[title][cite]::after{
     border-color:<?php echo get_option('article_main_bq_border','#bbb');?>;
 }
-.article-main blockquote:not(.ogp-blogcard-main){
+.article-main blockquote{
     border:1px solid;
     padding:1em 2em;
 }
-.article-main blockquote:not(.ogp-blogcard-main)[title]::after,.article-main blockquote:not(.ogp-blogcard-main)[cite]::after,.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
+.article-main blockquote[title]::after,.article-main blockquote[cite]::after,.article-main blockquote[title][cite]::after{
     border-top:1px solid;
     display:block;
     padding-top:1em;
@@ -169,13 +169,13 @@
     white-space:pre-wrap;
     word-wrap:break-word;
 }
-.article-main blockquote:not(.ogp-blogcard-main)[title]::after{
+.article-main blockquote[title]::after{
     content:attr(title);
 }
-.article-main blockquote:not(.ogp-blogcard-main)[cite]::after{
+.article-main blockquote[cite]::after{
     content:attr(cite);
 }
-.article-main blockquote:not(.ogp-blogcard-main)[title][cite]::after{
+.article-main blockquote[title][cite]::after{
     content:attr(title)"\a" attr(cite);
 }
 

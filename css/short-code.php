@@ -72,14 +72,14 @@
         font-size:2rem;
     }
     <?php if($singular===true):?>
-        .article-main .ogp-blogcard-share > ul > li::before,.article-main .ogp-blogcard-share > ul > li::after{
+        .article-main .ogp-blogcard blockquote::after,.article-main .ogp-blogcard-share li::before{
             display:none;
         }
         .article-main .ogp-blogcard-img{
             display:inline-block;
         }
-        .article-main .ogp-blogcard-title{
-            box-shadow:none;
+        .article-main .ogp-blogcard blockquote,.article-main .ogp-blogcard-title{
+            border:none;
         }
         .article-main .ogp-blogcard-description,.article-main .ogp-blogcard-description:visited{
             color:<?php echo $root_color;?>;
