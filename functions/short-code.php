@@ -29,11 +29,9 @@ function make_OGPblogcard($url){
     $ogp         = OpenGraph::fetch($url);
     $url         = $ogp->url;
     $share_url   = urlencode($url);
-    $id_url      = mb_strtolower(str_replace(':/.','',$url));
     $img         = $ogp->image;
     $title       = $ogp->title;
     $description = str_replace(']]<>',']]＜＞',$ogp->description);
-    $script      = "document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('none');document.getElementById('ogp-blogcard-share-" . $id_url . "').classList.toggle('block');";
     $content     =
     '<div class="ogp-blogcard">
         <blockquote cite="' . $url . '">
