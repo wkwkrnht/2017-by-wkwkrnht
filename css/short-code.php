@@ -29,64 +29,31 @@
 
 <?php if(has_shortcode($content,'OGPBlogcard')===true):?>
     .ogp-blogcard{
-        height:36vh;
-        position:relative;
-    }
-    .ogp-blogcard-share,.ogp-blogcard-main{
-        left:0;
-        position:absolute;
-        top:0;
-    }
-    .ogp-blogcard-share{
-        background-color:rgba(0,0,0,.3);
-        height:36vh;
-        width:100%;
-        z-index:3;
-    }
-    .ogp-blogcard-share-close{
-        font-size:3em;
-        position:absolute;
-        right:1em;
-        top:.5em;
-    }
-    .ogp-blogcard-share > ul{
-        list-style:none;
-    }
-    .ogp-blogcard-share > ul > li{
-        border:1px solid #fff;
-        display:inline-block;
-        font-size:2.2em;
-        margin:2vmin auto;
-        padding:1em;
-    }
-    .ogp-blogcard-share-close,.ogp-blogcard-share-close:visited,.ogp-blogcard-share > ul > li > a,.ogp-blogcard-share > ul > li > a:visited{
-        color:#fff;
-    }
-    .ogp-blogcard-share-toggle{
-        background-color:#03a9f4;
-        border-radius:50%;
-        color:#fff;
-        display:block;
-        height:2em;
-        left:-1em;
-        line-height:2em;
-        margin:0;
-        position:absolute;
-        text-align:center;
-        top:-1em;
-        vertical-align:middle;
-        width:2em;
-        z-index:2;
-    }
-    .ogp-blogcard-main{
         background-color:#fff;
         border:1px solid #ddd;
         box-sizing:border-box;
-        height:36vh;
-        margin:0;
         overflow:hidden;
         padding:1vmin 4vmin;
-        width:100%;
+    }
+    .ogp-blogcard-share{
+        text-align:right;
+    }
+    .ogp-blogcard-share li{
+        display:inline-block;
+        font-size:1.6em;
+    }
+    .ogp-blogcard-share .fa-twitter{
+        color:#55acee;
+    }
+    .ogp-blogcard-share .fa-thumbs-up{
+        color:#3b5998;
+    }
+    .ogp-blogcard-share .fa-get-pocket{
+        color:#ef3f56;
+    }
+    .ogp-blogcard-share .hatebu{
+        color:#00a5de;
+        font:900 monospace;
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
         display:inline-block;
