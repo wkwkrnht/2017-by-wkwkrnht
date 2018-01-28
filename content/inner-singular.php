@@ -17,7 +17,7 @@ if(have_posts()){
 }?>
 <article id="post-<?php the_ID();?>" <?php post_class('article-wrapper');?>>
     <header class="article-header">
-        <img src="<?php wkwkrnht_eyecatch($size_160);?>" srcset="<?php wkwkrnht_eyecatch($size_2560);?> 2560w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_1600);?> 1600w,<?php wkwkrnht_eyecatch($size_1366);?> 1366w,<?php wkwkrnht_eyecatch($size_1280);?> 1280w,<?php wkwkrnht_eyecatch($size_1024);?> 1024w,<?php wkwkrnht_eyecatch($size_1920);?> 1920w,<?php wkwkrnht_eyecatch($size_800);?> 800w,<?php wkwkrnht_eyecatch($size_720);?> 720w,<?php wkwkrnht_eyecatch($size_640);?> 640w,<?php wkwkrnht_eyecatch($size_560);?> 560w,<?php wkwkrnht_eyecatch($size_480);?> 480w,<?php wkwkrnht_eyecatch($size_320);?> 320w,<?php wkwkrnht_eyecatch($size_240);?> 240w" sizes="90vw" alt="eyecatch" class="article-eyecatch">
+        <img <?php wkwkrnht_img_srcs();?> sizes="90vw" alt="eyecatch" class="article-eyecatch">
         <div class="article-meta">
             <h1 class="article-title entry-title">
                 <?php the_title();?>

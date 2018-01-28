@@ -42,7 +42,7 @@
             $time  = get_mtime('Y/n/j G:i.s');?>
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
                 <div class="card-img">
-                    <amp-img src="<?php wkwkrnht_eyecatch($size_160_crop);?>" srcset="<?php wkwkrnht_eyecatch($size_240_crop);?> 240w,<?php wkwkrnht_eyecatch($size_320_crop);?> 320w,<?php wkwkrnht_eyecatch($size_480_crop);?> 480w,<?php wkwkrnht_eyecatch($size_560_crop);?> 560w,<?php wkwkrnht_eyecatch($size_640_crop);?> 640w,<?php wkwkrnht_eyecatch($size_720_crop);?> 720w,<?php wkwkrnht_eyecatch($size_800_crop);?> 800w,<?php wkwkrnht_eyecatch($size_1024_crop);?> 1024w,<?php wkwkrnht_eyecatch($size_1280_crop);?> 1280w,<?php wkwkrnht_eyecatch($size_1366_crop);?> 1366w,<?php wkwkrnht_eyecatch($size_1600_crop);?> 1600w,<?php wkwkrnht_eyecatch($size_1920_crop);?> 1920w,<?php wkwkrnht_eyecatch($size_2560_crop);?> 2560w" sizes="30vmax" layout="fill" alt="eyecatch"></amp-img>
+                    <amp-img <?php wkwkrnht_img_srcs();?> sizes="30vmax" layout="fill" alt="eyecatch"></amp-img>
                 </div>
                 <div class="card-meta">
                     <h2 class="card-title">

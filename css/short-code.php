@@ -33,7 +33,6 @@
         border:1px solid #ddd;
         box-sizing:border-box;
         overflow:hidden;
-        /*padding:1vmin 4vmin;*/
     }
     .ogp-blogcard-img,.ogp-blogcard-info{
         display:inline-block;
