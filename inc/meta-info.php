@@ -160,8 +160,8 @@ if(is_singular()===true):
                         }
                     }
     }else{
-        $categories = get_the_category($post->ID);
-        $cat        = $categories[0];
+        $categories   = get_the_category($post->ID);
+        $cat          = $categories[0];
         $meta_script .= '
             {
                 "@context":"http://schema.org",

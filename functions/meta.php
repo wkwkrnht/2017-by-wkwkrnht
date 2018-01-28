@@ -69,22 +69,29 @@ function wkwkrnht_title($title){
 add_filter('wp_title','wkwkrnht_title');
 
 
-function get_wkwkrnht_img_sizes($size){
+function get_wkwkrnht_img_sizes($suffix){
     $sizes = array();
     global $_wp_additional_image_sizes;
     $origin_sizes = get_intermediate_image_sizes();
-    $origin_sizes = array_splice($origin_sizes,1,3);
+    for($i = 0;$i < 4;++$i){
+        array_shift($origin_sizes);
+    }
     foreach($origin_sizes as $s){
         $sizes[$s] = array(0,0);
         if(isset($_wp_additional_image_sizes)===true&&isset($_wp_additional_image_sizes[$s])===true){
             $sizes[$s] = array($_wp_additional_image_sizes[$s]['width'],$_wp_additional_image_sizes[$s]['height']);
         }
     }
-    if($size==='crop'){
-        $sizes = array_splice($sizes,1,13);
+    if($suffix==='crop'){
+        for($j =0 ;$j < 13;++$j){
+            array_shift($sizes);
+        }
         return $sizes;
-    }elseif($size==='full'){
+    }elseif($suffix==='full'){
         $sizes = array_splice($sizes,13);
+        for($k = 0;$k < 13;++$k){
+            array_pop($sizes);
+        }
         return $sizes;
     }else{
         return $sizes;
@@ -186,15 +193,15 @@ function get_wkwkrnht_img_src($size){
 function wkwkrnht_img_src($size){
     echo get_wkwkrnht_img_src($size);
 }
-function get_wkwkrnht_img_srcs($size){
-    $sizes  = get_wkwkrnht_img_sizes($size);
+function get_wkwkrnht_img_srcs($suffix){
+    $sizes  = get_wkwkrnht_img_sizes($suffix);
     $srcs   = array();
     $srcset = '';
     $i      = 0;
     if(has_post_thumbnail()===true){
         $over_w     = 0;
         $over_h     = 0;
-        $img_max    = wp_get_attachment_image_src(get_post_thumbnail_id());
+        $img_max    = wp_get_attachment_image_src(get_post_thumbnail_id(),'full');
         $origin_src = $img_max[0];
         $img_max    = array($img_max[1],$img_max[2]);
         foreach($sizes as $size){
@@ -214,25 +221,24 @@ function get_wkwkrnht_img_srcs($size){
             $srcs[] = get_yes_image($size);
         }
     }else{
-        $origin_src = get_no_image('wkwkrnht-thumb-160-' . $size);
+        $origin_src = get_no_image('wkwkrnht-thumb-160-' . $suffix);
         $sizes_key = array_keys($sizes);
-        foreach($sizes_key as $size){
-            $srcs[] = get_no_image($size);
+        foreach($sizes_key as $size_key){
+            $srcs[] = get_no_image($size_key);
         }
     }
-    foreach($srcs as $src){
+    foreach($sizes as $size){
         if($i > 0){
             $srcset .= ',';
         }
-        $src_width = chr(0x20) . $sizes[$i][0] . 'w';
-        $srcset   .= $src;
-        $srcset   .= $src_width;
+        $srcset_temp = $srcs[$i]. chr(0x20) . $size[0] . 'w';
+        $srcset     .= $srcset_temp;
         ++$i;
     }
     return 'src="' . $origin_src . '" srcset="' . $srcset . '"';
 }
-function wkwkrnht_img_srcs($size){
-    echo get_wkwkrnht_img_srcs($size);
+function wkwkrnht_img_srcs($suffix){
+    echo get_wkwkrnht_img_srcs($suffix);
 }
 
 function get_twitter_acount(){
