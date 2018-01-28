@@ -83,7 +83,7 @@ function get_wkwkrnht_img_sizes($size){
         }
     }
     if($size==='crop'){
-        $sizes = array_splice($sizes,,13);
+        $sizes = array_splice($sizes,1,13);
         return $sizes;
     }elseif($size==='full'){
         $sizes = array_splice($sizes,13);
