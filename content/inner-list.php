@@ -3,6 +3,7 @@
 }?>
 <div class="article-list">
     <?php
+    $size = 'crop';
     if(is_active_sidebar('listheader')){
         dynamic_sidebar('listheader');
     }
@@ -14,7 +15,7 @@
             $title = the_title_attribute(array('echo'=>false));
             $time  = get_mtime('Y/n/j G:i.s');?>
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
-                <img <?php wkwkrnht_img_srcs();?> sizes="30vmax" alt="eyecatch" class="card-img">
+                <img <?php wkwkrnht_img_srcs($size);?> sizes="30vmax" alt="eyecatch" class="card-img">
                 <div class="card-meta">
                     <h2 class="card-title">
                         <?php echo $title;?>

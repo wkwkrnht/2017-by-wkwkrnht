@@ -1,6 +1,7 @@
 <?php
 $categories  = get_the_category();
 $category_ID = array();
+$size        = 'crop';
 foreach($categories as $category){
 	array_push($category_ID,$category->cat_ID);
 }
@@ -19,7 +20,7 @@ if($query->have_posts()===false){
 }
 while($query->have_posts()):$query->the_post();?>
 	<a href="<?php the_permalink()?>" title="<?php the_title_attribute();?>" tabindex="0" class="article-card">
-		<img <?php wkwkrnht_img_srcs();?> sizes="30vmax" alt="thumbnail" class="card-img">
+		<img <?php wkwkrnht_img_srcs($size);?> sizes="30vmax" alt="thumbnail" class="card-img">
 		<div class="card-meta">
 			<?php the_title('<h3 class="card-title">','</h3>');?>
 		</div>

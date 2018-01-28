@@ -69,7 +69,7 @@ function wkwkrnht_title($title){
 add_filter('wp_title','wkwkrnht_title');
 
 
-function get_wkwkrnht_img_sizes(){
+function get_wkwkrnht_img_sizes($size){
     $sizes = array();
     global $_wp_additional_image_sizes;
     $origin_sizes = get_intermediate_image_sizes();
@@ -82,7 +82,15 @@ function get_wkwkrnht_img_sizes(){
             $sizes[$s] = array($_wp_additional_image_sizes[$s]['width'],$_wp_additional_image_sizes[$s]['height']);
         }
     }
-    return $sizes;
+    if($size==='crop'){
+        $sizes = array_splice($sizes,0,13);
+        return $sizes;
+    }elseif($size==='full'){
+        $sizes = array_splice($sizes,13);
+        return $sizes;
+    }else{
+        return $sizes;
+    }
 }
 function get_yes_image($size){
     $img = wp_get_attachment_image_src(get_post_thumbnail_id(),$size);
@@ -180,8 +188,8 @@ function get_wkwkrnht_img_src($size){
 function wkwkrnht_img_src($size){
     echo get_wkwkrnht_img_src($size);
 }
-function get_wkwkrnht_img_srcs(){
-    $sizes  = get_wkwkrnht_img_sizes();
+function get_wkwkrnht_img_srcs($size){
+    $sizes  = get_wkwkrnht_img_sizes($size);
     $srcs   = array();
     $srcset = '';
     $i      = 0;
@@ -208,7 +216,7 @@ function get_wkwkrnht_img_srcs(){
             $srcs[] = get_yes_image($size);
         }
     }else{
-        $origin_src = get_no_image();
+        $origin_src = get_no_image('wkwkrnht-thumb-160-' . $size);
         $sizes_key = array_keys($sizes);
         foreach($sizes_key as $size){
             $srcs[] = get_no_image($size);

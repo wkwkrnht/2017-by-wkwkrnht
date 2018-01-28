@@ -1,5 +1,6 @@
 <?php
 $made_time = get_mtime('Y/n/j G:i.s');
+$size      = 'full';
 if(have_posts()){
     while(have_posts()){
         the_post();
@@ -17,7 +18,7 @@ if(have_posts()){
 }?>
 <article id="post-<?php the_ID();?>" <?php post_class('article-wrapper');?>>
     <header class="article-header">
-        <img <?php wkwkrnht_img_srcs();?> sizes="90vw" alt="eyecatch" class="article-eyecatch">
+        <img <?php wkwkrnht_img_srcs($size);?> sizes="90vw" alt="eyecatch" class="article-eyecatch">
         <div class="article-meta">
             <h1 class="article-title entry-title">
                 <?php the_title();?>

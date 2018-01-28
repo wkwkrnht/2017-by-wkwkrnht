@@ -37,12 +37,13 @@
 </aside>
 <main class="article-list">
     <?php
+    $size = 'crop';
     if(have_posts()):while(have_posts()):the_post();
             $title = the_title_attribute(array('echo'=>false));
             $time  = get_mtime('Y/n/j G:i.s');?>
             <a href="<?php the_permalink();?>" title="<?php echo $title;?>" tabindex="0" class="article-card">
                 <div class="card-img">
-                    <amp-img <?php wkwkrnht_img_srcs();?> sizes="30vmax" layout="fill" alt="eyecatch"></amp-img>
+                    <amp-img <?php wkwkrnht_img_srcs($size);?> sizes="30vmax" layout="fill" alt="eyecatch"></amp-img>
                 </div>
                 <div class="card-meta">
                     <h2 class="card-title">
