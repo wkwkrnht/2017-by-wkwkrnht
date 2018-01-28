@@ -64,7 +64,7 @@ if($pin!==''){
         <link rel="preload" as="script" href="//cdn.embedly.com/widgets/platform.js">
     <?php endif;?>
     <link rel="preload" as="script" href="//www.google-analytics.com/analytics.js">
-    <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/js/script.php">
+    <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/js/app.js">
     <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
 	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
     <link rel="amphtml" href="<?php echo $meta_url;?>?amp=1">

@@ -117,12 +117,24 @@ function make_TOC($atts){
     for($i = 0; $i < $header_count; $i++){
         $depth = 0;
         switch(strtolower($headers[1][$i])){
-            case 'h1': $depth = 1 - $top_level + 1; break;
-            case 'h2': $depth = 2 - $top_level + 1; break;
-            case 'h3': $depth = 3 - $top_level + 1; break;
-            case 'h4': $depth = 4 - $top_level + 1; break;
-            case 'h5': $depth = 5 - $top_level + 1; break;
-            case 'h6': $depth = 6 - $top_level + 1; break;
+            case 'h1':
+                $depth = 1 - $top_level + 1;
+                break;
+            case 'h2':
+                $depth = 2 - $top_level + 1;
+                break;
+            case 'h3':
+                $depth = 3 - $top_level + 1;
+                break;
+            case 'h4':
+                $depth = 4 - $top_level + 1;
+                break;
+            case 'h5':
+                $depth = 5 - $top_level + 1;
+                break;
+            case 'h6':
+                $depth = 6 - $top_level + 1;
+                break;
         }
         if($depth >= 1 && $depth <= $max_depth){
             while($current_depth > $depth){
@@ -157,16 +169,16 @@ function make_TOC($atts){
         '</aside>
         <script>
             window.onload = function () {
-                var idCounter = 0;
-                var sub = [' . $harray . '];
-                var targetClasses = document.getElementsByClassName("' . $targetclass . '");
-                for (var i = 0; i < targetClasses.length; i++) {
-                    var targetClass = targetClasses[i];
-                    for (var m = 0; m < sub.length; m++) {
-                        var targetHx = String(sub[m]);
-                        var targetElements = targetClass.getElementsByTagName(targetHx);
-                        for (var n = 0; n < targetElements.length; n++) {
-                            var targetElement = targetElements[n];
+                let idCounter = 0;
+                let sub = [' . $harray . '];
+                let targetClass = document.getElementsByClassName("' . $targetclass . '");
+                for (let i = 0; i < targetClass.length; i++) {
+                    let targetClass = targetClass[i];
+                    for (var j = 0; j < sub.length; j++) {
+                        let targetHx = String(sub[j]);
+                        let targetElements = targetClass.getElementsByTagName(targetHx);
+                        for (let k = 0; k < targetElements.length; k++) {
+                            let targetElement = targetElements[k];
                             if (targetElement.hasAttribute("class") === false) {
                                 idCounter++;
                                 targetElement.id = "toc" + idCounter;
@@ -282,6 +294,7 @@ function load_TOC($atts){
 function make_before_after_box($atts){
     extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
     return'
+    <script async src="' . get_parent_theme_file_uri('/inc/js/ba-slider.js') . '"></script>
     <figure class="ba-slider">
         <img src="' . $before . '" alt="before">
         <div class="resize">
