@@ -233,8 +233,8 @@ function get_wkwkrnht_img_srcs($size){
     }
     return 'src="' . $origin_src . '" srcset="' . $srcset . '"';
 }
-function wkwkrnht_img_srcs(){
-    echo get_wkwkrnht_img_srcs();
+function wkwkrnht_img_srcs($size){
+    echo get_wkwkrnht_img_srcs($size);
 }
 
 function get_twitter_acount(){
