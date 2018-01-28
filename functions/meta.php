@@ -73,9 +73,7 @@ function get_wkwkrnht_img_sizes($size){
     $sizes = array();
     global $_wp_additional_image_sizes;
     $origin_sizes = get_intermediate_image_sizes();
-    for($i = 0;$i < 4;++$i){
-        array_shift($origin_sizes);
-    }
+    $origin_sizes = array_splice($origin_sizes,1,3);
     foreach($origin_sizes as $s){
         $sizes[$s] = array(0,0);
         if(isset($_wp_additional_image_sizes)===true&&isset($_wp_additional_image_sizes[$s])===true){
@@ -83,7 +81,7 @@ function get_wkwkrnht_img_sizes($size){
         }
     }
     if($size==='crop'){
-        //$sizes = array_splice($sizes,1,13);
+        $sizes = array_splice($sizes,1,13);
         return $sizes;
     }elseif($size==='full'){
         $sizes = array_splice($sizes,13);
