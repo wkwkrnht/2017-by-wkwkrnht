@@ -21,7 +21,7 @@ do_action('rss_tag_pre','rss2');
     <snf:logo>
 		<url><?php meta_image();?></url>
 	</snf:logo>
-	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
+	<atom:link href="<?php self_link();?>" rel="self" type="application/rss+xml" />
 	<link><?php bloginfo_rss('url');?></link>
 	<description><?php bloginfo_rss("description");?></description>
 	<lastBuildDate><?php
@@ -29,7 +29,7 @@ do_action('rss_tag_pre','rss2');
 		echo $date ? mysql2date('r',$date,false) : date('r');
 	?></lastBuildDate>
 	<language><?php bloginfo_rss('language');?></language>
-	<sy:updatePeriod><?php echo apply_filters('rss_update_period','hourly');?></sy:updatePeriod>
+	<sy:updatePeriod><?php echo apply_filters('rss_update_period');?></sy:updatePeriod>
 	<sy:updateFrequency><?php echo apply_filters('rss_update_frequency','1');?></sy:updateFrequency>
 	<?php
 	do_action('rss2_head');
@@ -44,7 +44,7 @@ do_action('rss_tag_pre','rss2');
     		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000',get_post_time('Y-m-d H:i:s',true),false);?></pubDate>
     		<dc:creator><![CDATA[<?php the_author();?>]]></dc:creator>
     		<?php the_category_rss();?>
-            <media:thumbnail><?php echo wkwkrnht_eyecatch(array(1920,1080));?></media:thumbnail>
+            <media:thumbnail><?php wkwkrnht_img_src('full');?></media:thumbnail>
             <guid isPermaLink="false"><?php the_guid();?></guid>
             <?php if(get_option('rss_use_excerpt')):?>
                 <description><![CDATA[<?php echo the_excerpt_rss();?>]]></description>

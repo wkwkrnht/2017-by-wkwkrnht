@@ -1,41 +1,49 @@
 <?php
 $more    = 1;
+$date    = get_lastpostmodified('GMT');
 $charset = get_option('blog_charset');
-header('Content-Type: ' . feed_content_type('atom') . '; charset=' . $charset, true);
+header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . $charset, true);
 echo'<?xml version="1.0" encoding="' . $charset . '"?'.'>';
-do_action('rss_tag_pre','atom');
+do_action('rss_tag_pre','rss2');
 ?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="<?php bloginfo_rss('language');?>" xmlns:gnf="http://assets.gunosy.com/media/gnf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
+<rss version="2.0" xmlns:gnf="http://assets.gunosy.com/media/gnf" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" <?php do_action('rss2_ns');?>>
     <title><?php wp_title_rss();?></title>
     <link type="text/html" href="<?php bloginfo_rss('url');?>" rel="alternate"/>
     <subtitle><?php bloginfo_rss("description");?></subtitle>
-    <updated><?php echo mysql2date('Y-m-d\TH:i:s\Z',get_lastpostmodified('GMT'),false);?></updated>
+    <lastBuildDate><?php echo $date ? mysql2date('r',$date,false) : date('r');?></lastBuildDate>
     <rights><?php wp_title_rss();?></rights>
-    <logo><?php meta_image();?></logo>
+    <language><?php bloginfo_rss('language');?></language>
+    <image>
+        <url><?php meta_image();?></url>
+        <title><?php wp_title_rss();?></title>
+        <link><?php bloginfo_rss('url');?><link/>
+    </image>
+    <gnf:wide_image_link><?php meta_image();?></gnf:wide_image_link>
+    <ttl><?php echo apply_filters('rss_update_period');?></ttl>
     <?php
+    do_action('rss2_head');
     while(have_posts()):the_post();
         global $post;
         $post_id   = get_the_ID();
-        $thumb     = get_the_post_thumbnail_url($post_id,'full');
-        $thumb_cap = get_the_post_thumbnail_caption($post_id);
         $post_tags = get_the_tags();?>
-        <entry>
+        <item>
+            <media:status state="<?php echo (get_post_status($post_id)=='publish') ? 'active' : 'deleted';?>"/>
             <title><![CDATA[<?php the_title_rss();?>]]></title>
             <link type="text/html" href="<?php the_permalink_rss();?>" rel="alternate"/>
-            <id><?php echo $post_id;?></id>
-            <published><?php echo get_post_time(DATE_RFC3339,true);?></published>
-            <updated><?php echo get_post_modified_time(DATE_RFC3339,true);?></updated>
-            <summary><?php the_excerpt_rss();?></summary>
-            <content><![CDATA[
+            <guid><?php echo $post_id;?></guid>
+            <pubDate><?php echo get_post_time(DATE_RFC3339,true);?></pubDate>
+            <gnf:modified><?php echo get_post_modified_time(DATE_RFC3339,true);?></gnf:modified>
+            <description><?php the_excerpt_rss();?></description>
+            <content:encoded><![CDATA[
                 <?php if(has_post_thumbnail()===true):?>
                             <figure>
-                                <img src="<?php echo $thumb;?>">
-                                <figcaption><?php echo $thumb_cap;?></figcaption>
+                                <img src="<?php wkwkrnht_img_src('full');?>" alt="eyecatch">
+                                <figcaption><?php echo get_the_post_thumbnail_caption($post_id);?></figcaption>
                             </figure>
                 <?php endif;?>
-                <?php the_content_feed('atom');?>
-            ]]></content>
-            <?php the_category_rss('atom');?>
+                <?php the_content_feed('rss2');?>
+            ]]></content:encoded>
+            <?php the_category_rss();?>
             <?php if(isset($post_tags)===true):?>
                 <gnf:keyword>
                     <?php
@@ -49,11 +57,8 @@ do_action('rss_tag_pre','atom');
                     }?>
                 </gnf:keyword>
             <?php endif;?>
-            <?php if(has_post_thumbnail()===true):?>
-                    <link rel="enclosure" type="image/jpeg" title="<?php echo $thumb_cap;?>" href="<?php echo $thumb;?>" />
-            <?php endif;?>
-            <media:status state="<?php echo (get_post_status($post_id)=='publish') ? 'active' : 'deleted';?>"/>
-            <?php do_action('atom_entry');?>
-        </entry>
+            <?php rss_enclosure();?>
+            <?php do_action('rss2_item');?>
+        </item>
     <?php endwhile;?>
-</feed>
+</rss>
