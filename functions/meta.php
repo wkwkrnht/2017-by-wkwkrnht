@@ -70,9 +70,9 @@ add_filter('wp_title','wkwkrnht_title');
 
 
 function get_wkwkrnht_img_sizes($suffix){
-    $sizes = array();
     global $_wp_additional_image_sizes;
     $origin_sizes = get_intermediate_image_sizes();
+    $sizes        = array();
     for($i = 0;$i < 4;++$i){
         array_shift($origin_sizes);
     }
@@ -88,7 +88,6 @@ function get_wkwkrnht_img_sizes($suffix){
         }
         return $sizes;
     }elseif($suffix==='full'){
-        $sizes = array_splice($sizes,13);
         for($k = 0;$k < 13;++$k){
             array_pop($sizes);
         }
@@ -199,20 +198,17 @@ function get_wkwkrnht_img_srcs($suffix){
     $srcset = '';
     $i      = 0;
     if(has_post_thumbnail()===true){
-        $over_w     = 0;
-        $over_h     = 0;
+        $over_time  = 0;
         $img_max    = wp_get_attachment_image_src(get_post_thumbnail_id(),'full');
         $origin_src = $img_max[0];
-        $img_max    = array($img_max[1],$img_max[2]);
+        $img_max    = array('width'=>$img_max[1],'height'=>$img_max[2]);
         foreach($sizes as $size){
-            if($size[0] > $img_max[0]){
-                ++$over_w;
-            }
-            if($size[1] > $img_max[1]){
-                ++$over_h;
+            if($size['width'] > $img_max['width']){
+                ++$over_time;
+            }elseif($size['height'] > $img_max['height']){
+                ++$over_time;
             }
         }
-        $over_time  = max($over_w,$over_h);
         for($k = 0;$k < $over_time;++$k){
             array_shift($sizes);
         }
@@ -222,7 +218,7 @@ function get_wkwkrnht_img_srcs($suffix){
         }
     }else{
         $origin_src = get_no_image('wkwkrnht-thumb-160-' . $suffix);
-        $sizes_key = array_keys($sizes);
+        $sizes_key  = array_keys($sizes);
         foreach($sizes_key as $size_key){
             $srcs[] = get_no_image($size_key);
         }
