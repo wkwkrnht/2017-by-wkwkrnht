@@ -88,7 +88,7 @@ function wkwkrnht_term_description($term){
     return apply_filters('the_content',$term);
 }
 
-add_action('pre_get_posts',);
+add_action('pre_get_posts','wkwkrnht_pre_get_posts');
 function wkwkrnht_pre_get_posts($query){
     if(is_admin()===true){
         return $query;
