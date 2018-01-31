@@ -1,8 +1,25 @@
 <?php
+/*
+    for AMP
+1.SET variable to check page AMP or not
+2.break limit which is related list page to reduce load
+3.enque ADD scripts
+4.snitize HTML
+*/
+
 add_rewrite_endpoint('amp',EP_ALL);
 define('AMP_QUERY_VAR','amp');
 function is_amp(){
     return false !== get_query_var(AMP_QUERY_VAR,false);
+}
+
+add_filter('post_limits','amp_limits');
+function amp_limits($limits){
+    global $gloss_category;
+    if(is_amp()===true){
+        return'';
+    }
+    return $limits;
 }
 
 function corect_amp_script($array){

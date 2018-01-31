@@ -1,6 +1,7 @@
 <?php
-header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . get_option('blog_charset'),true);
-echo'<?xml version="1.0" encoding="' . get_option('blog_charset') . '"?' . '>';
+$charset = get_option('blog_charset');
+header('Content-Type: ' . feed_content_type('rss2') . '; charset=' . $charset,true);
+echo'<?xml version="1.0" encoding="' . $charset . '"?' . '>';
 do_action('rss_tag_pre','rss2');
 ?>
 <rss version="2.0"
@@ -17,7 +18,9 @@ do_action('rss_tag_pre','rss2');
 
 <channel>
 	<title><?php wp_title_rss();?></title>
-    <snf:logo><url><?php meta_image();?></url></snf:logo>
+    <snf:logo>
+		<url><?php meta_image();?></url>
+	</snf:logo>
 	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 	<link><?php bloginfo_rss('url');?></link>
 	<description><?php bloginfo_rss("description");?></description>
@@ -40,7 +43,7 @@ do_action('rss_tag_pre','rss2');
             <?php endif;?>
     		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000',get_post_time('Y-m-d H:i:s',true),false);?></pubDate>
     		<dc:creator><![CDATA[<?php the_author();?>]]></dc:creator>
-    		<?php the_category_rss('rss2');?>
+    		<?php the_category_rss();?>
             <media:thumbnail><?php echo wkwkrnht_eyecatch(array(1920,1080));?></media:thumbnail>
             <guid isPermaLink="false"><?php the_guid();?></guid>
             <?php if(get_option('rss_use_excerpt')):?>

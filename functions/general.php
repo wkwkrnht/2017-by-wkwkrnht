@@ -14,8 +14,6 @@
 8.CUSTOM oEmbed
     ●Twitter
 9.description filltered by the_content
-10.ADD feed for smartnews
-11.SETTING for amp list
 */
 //add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
 
@@ -90,16 +88,16 @@ function wkwkrnht_term_description($term){
     return apply_filters('the_content',$term);
 }
 
-add_action('do_feed_smartnews','do_feed_smartnews');
-function do_feed_smartnews(){
-    require(get_template_directory() . '/inc/smartnews.php');
-}
-
-add_filter('post_limits','amp_limits');
-function amp_limits($limits){
-    global $gloss_category;
-    if(is_amp()===true){
-        return'';
+add_action('pre_get_posts',);
+function wkwkrnht_pre_get_posts($query){
+    if(is_admin()===true){
+        return $query;
     }
-    return $limits;
+    if($query->is_main_query()===true){
+        if($query->is_feed('gunosy')===true || $query->is_feed('smartnews')===true){
+            $query->set('post_type',['post','any']);
+            $query->set('post_status',['publish','trash']);
+        }
+    }
+    return $query;
 }

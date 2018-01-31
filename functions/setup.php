@@ -110,6 +110,9 @@ add_action('widgets_init','wkwkrnht_sidebars_init');
 
 
 function wkwkrnht_init(){
+    add_feed('smartnews',function(){get_template_part('/feed/smartnews');});
+    add_feed('gunosy',function(){get_template_part('/feed/gunosy');});
+
     if(get_option('jetpack_open_graph')===true){
         add_filter('jetpack_enable_open_graph','__return_false',99);
     }
