@@ -16,9 +16,9 @@ foreach($archives_year as $year_value){
     }
     $year_echo = ltrim($year_value);
     $echo     .= '
-    <li class="list-year">
-        <h3>
-            <a href="' . $home . '/' . $year_echo . '" tabindex="0">'
+    <li class="year-list">
+        <h3 class="year-tite">
+            <a href="' . $home . '/' . $year_echo . '" title="' . $year_echo . '年" tabindex="0">'
                 . $year_echo . '年
             </a>
         </h3>

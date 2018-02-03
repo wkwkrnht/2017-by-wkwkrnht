@@ -220,8 +220,8 @@ function my_new_contactmethods($contactmethods){
     $contactmethods['Tumblr']            = 'Tumblr';
     $contactmethods['Blogger']           = 'Blogger';
     $contactmethods['livedoor']          = 'livedoor';
-    $contactmethods['WordPress.com']     = 'WordPress.com';
-    $contactmethods['WordPress.org']     = 'WordPress.org';
+    $contactmethods['WordPressCOM']     = 'WordPress.com';
+    $contactmethods['WordPressORG']     = 'WordPress.org';
     $contactmethods['Amazonlist']        = 'Amazonの欲しいものリスト';
     $contactmethods['Yahooaction']       = 'Yahoo!オークション';
     $contactmethods['Rakuma']            = 'ラクマ';

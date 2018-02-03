@@ -178,35 +178,35 @@
         font-size:1.6rem;
         list-style:none;
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year{
+    .widget_wkwkrnht_manth_archive .year-list{
         margin:1em 0;
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year > h3{
+    .widget_wkwkrnht_manth_archive .year-title{
         background-color:<?php echo get_option('manth_archive_year_background','#03a9f4');?>;
         display:inline-block;
         height:100%;
         text-align:center;
         width:calc(30% - 1vmin);
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year > h3 > a{
+    .widget_wkwkrnht_manth_archive .list-title > a{
         color:<?php echo get_option('manth_archive_year_h3_color','#fff');?>;
         font-size:1.2em;
         text-decoration:none;
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year > .article-list{
+    .widget_wkwkrnht_manth_archive .article-list{
         box-sizing:border-box;
         display:inline-block;
         list-style:none;
         padding:.75em 2em;
         width:70%;
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year > .article-list > li{
+    .widget_wkwkrnht_manth_archive .article-list > li{
         display:inline-block;
         height:2em;
         text-align:center;
         width:4.5em;
     }
-    .widget_wkwkrnht_manth_archive > ul > .list-year > .article-list > li > a{
+    .widget_wkwkrnht_manth_archive .article-list > li > a{
         text-decoration:none;
     }
 <?php endif;?>

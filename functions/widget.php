@@ -365,3 +365,161 @@ function custom_comment_tags($data){
     $allowedtags['pre']   = array('class'=>array());
 	return $data;
 }
+
+function make_author_info_array($setting){
+    $array = array();
+    foreach($setting as $key){
+        $value = get_the_author_meta($key);
+        if($value){
+            $array[$key] = $value;
+        }
+    }
+    return $array;
+}
+function make_author_follow_button($array){
+    foreach($array as $key => $value){
+        $fw_class  = '';
+        $character = '';
+        switch($key){
+            case 'twitter':
+                $fw_class = 'fa-twitter-square';
+                $value    = 'https://twitter.com/' . $value;
+                break;
+            case 'facebook':
+                $fw_class = 'fa-facebook-official';
+                break;
+            case 'Instagram':
+                $fw_class = 'fa-instagram';
+                $value    = 'https://www.instagram.com/' . $value;
+                break;
+            case 'Googleplus':
+                $fw_class = 'fa-google-plus-official';
+                break;
+            case 'Linkedin':
+                $fw_class = 'fa-linkedin-square';
+                break;
+            case 'vine':
+                $fw_class = 'fa-vine';
+                break;
+            case 'vimeo':
+                $fw_class = 'fa-vimeo-square';
+                break;
+            case 'niconico':
+                $fw_class = 'fa-television';
+                break;
+            case 'YouTube':
+                $fw_class = 'fa-youtube-square';
+                break;
+            case 'Twitch':
+                $fw_class = 'fa-twitch';
+                break;
+            case 'USTREAM':
+                $character = 'U';
+                $value     = 'https://www.ustream.tv/channel/' . $value;
+                break;
+            case 'Skype':
+                $fw_class = 'fa-skype';
+                break;
+            case 'Blogger':
+                $character = 'B';
+                $value     = 'https://' . $value . 'blogspot.jp/';
+                break;
+            case 'WordPressCOM':
+                $fw_class = 'fa-wordpress';
+                $value    = 'https://' . $value . 'wordpress.com/';
+                break;
+            case 'WordPressORG':
+                $fw_class = 'fa-wordpress';
+                $value    = 'https://profiles.wordpress.org/' . $value;
+                break;
+            case 'Tumblr':
+                $fw_class = 'fa-tumblr-square';
+                $value    = 'https://' . $value . 'tumblr.com/';
+                break;
+            case 'Medium':
+                $fw_class = 'fa-medium';
+                $value    = 'https://medium.com/@' . $value;
+                break;
+            case 'note':
+                $character = 'n';
+                $value    = 'https://note.mu/' . $value;
+                break;
+            case 'mixi':
+                $character = 'm';
+                break;
+            case 'hatebu':
+                $character = 'B!';
+                break;
+            case 'Pinterest':
+                $fw_class = 'fa-pinterest-square';
+                $value    = 'https://www.pinterest.jp/' . $value;
+                break;
+            case 'Spotify':
+                $fw_class = 'fa-spotify';
+                break;
+            case 'SoundCloud':
+                $fw_class = 'fa-soundcloud';
+                break;
+            case 'Flickr':
+                $fw_class = 'fa-flickr';
+                $value    = 'https://www.flickr.com/people/' . $value;
+                break;
+            case 'FourSquare':
+                $fw_class = 'fa-foursquare';
+                break;
+            case 'Steam':
+                $fw_class = 'fa-steam-square';
+                $value    = 'https://steamcommunity.com/id/' . $value;
+                break;
+            case 'UPlay':
+                $character = 'U';
+                $value    = 'https://club.ubisoft.com/ja-JP/profile/' . $value;
+                break;
+            case 'Qiita':
+                $character = 'Q';
+                $value    = 'https://qiita.com/' . $value;
+                break;
+            case 'Codepen':
+                $fw_class = 'fa-codepen';
+                $value    = 'https://codepen.io/' . $value;
+                break;
+            case 'Github':
+                $fw_class = 'fa-github';
+                $value    = 'https://github.com/' . $value;
+                break;
+            case 'Gitlab':
+                $fw_class = 'fa-gitlab';
+                break;
+            case 'Bitbucket':
+                $fw_class = 'fa-bittbucket-square';
+                break;
+            case 'Rakuma':
+                $character = 'R';
+                break;
+            case 'Amazonlist':
+                $fw_class = 'fa-amazon';
+                break;
+            case 'PayPal':
+                $fw_class = 'fa-cc-paypal';
+                break;
+            case 'Bitcoin':
+                $fw_class = 'fa-bitcoin';
+                break;
+            default:
+                break;
+        }
+        if($fw_class!==''){
+            $name = '<span class="fa fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
+        }elseif($character!==''){
+            $name = '<span itemprop="name">' . $character . '</span>';
+        }else{
+            $name = '<span itemprop="name">' . $key . '</span>';
+        }
+        echo'
+        <li itemscope itemtype="http://schema.org/SiteNavigationElement">
+            <a href="' . $value . '" title="' . $key . '" class="' . $key . '" tabindex="0" itemprop="url">
+                ' . $name . '
+            </a>
+        </li>';
+    }
+}
