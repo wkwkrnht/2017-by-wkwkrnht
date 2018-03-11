@@ -16,11 +16,10 @@
 9.description filltered by the_content
 */
 add_filter('rest_post_collection_params','my_prefix_change_post_per_page',10,1);
-function my_prefix_change_post_per_page($params ){
+function my_prefix_change_post_per_page($params){
     if(isset($params['per_page'])){
-        $params['per_page']['maximum'] = 9999999999999
+        $params['per_page']['maximum'] = 99999999999999999;
     }
-
     return $params;
 }
 
