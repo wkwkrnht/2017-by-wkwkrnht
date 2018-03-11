@@ -15,7 +15,14 @@
     ●Twitter
 9.description filltered by the_content
 */
-//add_action('wp_enqueue_scripts',function(){wp_enqueue_script('jquery');});
+add_filter('rest_post_collection_params','my_prefix_change_post_per_page',10,1);
+function my_prefix_change_post_per_page($params ){
+    if(isset($params['per_page'])){
+        $params['per_page']['maximum'] = 9999999999999
+    }
+
+    return $params;
+}
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
