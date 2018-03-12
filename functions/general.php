@@ -22,6 +22,13 @@ function my_prefix_change_post_per_page($params){
     }
     return $params;
 }
+add_filter('rest_endpoints','my_prefix_change_tag_per_page');
+function my_prefix_change_tag_per_page($endpoints){
+    if(isset($endpoints['/wp/v2/tags'][0]['args']['per_page']['maximum'])){
+        $endpoints['/wp/v2/tags'][0]['args']['per_page']['maximum'] = 99999999999999999;
+    }
+    return $endpoints;
+}
 
 remove_action('wp_head','print_emoji_detection_script',7);
 remove_action('wp_print_styles','print_emoji_styles');
