@@ -183,7 +183,8 @@
         color:<?php echo $root_color;?>;
         margin:0;
         text-align:initial;
-        width:calc(80% + (2vh * 2));}
+        width:calc(80% + (2vh * 2));
+    }
     .red.cutin-box > .cutin-box-inner{
         border-color:#f44336;
     }
@@ -279,18 +280,16 @@
 
 <?php if(has_shortcode($content,'search-box')===true):?>
     .search-form{
+        background-color:#fff;
+        border:1px solid #555;
         line-height:2;
         margin:4vh auto;
+        max-width:70%;
+        min-width:16em;
     }
     .search-form > *{
         display:inline-block;
         padding:1em;
-    }
-    .search-form{
-        background-color:#fff;
-        border:1px solid #555;
-        max-width:70%;
-        min-width:16em;
     }
     .search-btn,.search-btn::after{
         position:absolute;
