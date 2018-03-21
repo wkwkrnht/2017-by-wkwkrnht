@@ -291,7 +291,7 @@ function load_TOC($atts){
     }
     return $result;
 }
-function make_before_after_box($atts){
+function make_before_after($atts){
     extract(shortcode_atts(array('before'=>'','after'=>'',),$atts));
     return'
     <script async src="' . get_parent_theme_file_uri('/inc/js/ba-slider.js') . '"></script>
@@ -328,13 +328,19 @@ function simple_box($args=array(),$content=''){
 }
 function info_box($args=array(),$content=''){
     return'
-    <div class="information">'
+    <div class="info-box" data-type="ｉ">'
          . do_shortcode($content) . '
     </div>';
 }
 function qa_box($args=array(),$content=''){
     return'
-    <div class="question">'
+    <div class="info-box" data-type="？">'
+         . do_shortcode($content) . '
+    </div>';
+}
+function attention_box($args=array(),$content=''){
+    return'
+    <div class="info-box" data-type="！">'
          . do_shortcode($content) . '
     </div>';
 }
@@ -378,10 +384,11 @@ add_shortcode('spotify','spotify_play_into_article');
 add_shortcode('mastodon','toot_into_article');
 add_shortcode('nav','navigation_in_article');
 add_shortcode('adsense','google_ads_in_article');
-add_shortcode('before_after_box','make_before_after_box');
+add_shortcode('before_after','make_before_after');
 add_shortcode('columun','columun_in_article');
 add_shortcode('info','info_box');
 add_shortcode('qa','qa_box');
+add_shortcode('attention','attention_box');
 add_shortcode('search-box','search_box');
 add_shortcode('simple-box','simple_box');
 add_shortcode('box','cutin_box');

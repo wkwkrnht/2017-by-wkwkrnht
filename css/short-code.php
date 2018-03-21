@@ -86,7 +86,7 @@
 
 
 <?php if(has_shortcode($content,'info')===true || has_shortcode($content,'qa')===true):?>
-    .information,.question,.attention{
+    .info-box{
         background-color:#f4f3eb;
         box-sizing:border-box;
         margin:1em auto;
@@ -94,29 +94,22 @@
         position:relative;
         width:80%;
     }
-    .information::before,.question::before,.attention::before{
+    .info-box::before{
         background-color:#eae3b4;
         border-radius:50%;
         color:#f4f3eb;
+        content:attr(data-type);
         display:inline-block;
-        font-size:5rem;font-weight:700;
+        font-size:5em;
+        font-weight:700;
         height:7rem;
         left:1vmin;
-        line-height:7rem;
-        margin-right:7rem;
+        line-height:7em;
+        margin-right:7em;
         position:absolute;
         text-align:center;
         top:1vmin;
-        width:7rem;
-    }
-    .information::before{
-        content:"ｉ";
-    }
-    .question::before{
-        content:"？";
-    }
-    .attention::before{
-        content:"！";
+        width:7em;
     }
 <?php endif;?>
 
