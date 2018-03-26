@@ -59,6 +59,8 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('delete_OGPblogcard_cache',array('settings'=>'delete_OGPblogcard_cache','label'=>'OGPblogcardのキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
     $wp_customize->add_setting('delete_mastodon_embed_cache',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('delete_mastodon_embed_cache',array('settings'=>'delete_mastodon_embed_cache','label'=>'mastodon埋め込みのキャッシュを削除する','section'=>'cache_section','type'=>'checkbox',));
+    $wp_customize->add_setting('CLOUDINARY_URL',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_control('CLOUDINARY_URL',array('section'=>'sns_section','settings'=>'CLOUDINARY_URL','label'=>'CLOUDINARY_URL','type'=>'text'));
 
     /*
         color
