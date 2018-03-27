@@ -115,31 +115,3 @@ function wkwkrnht_pre_get_posts($query){
     }
     return $query;
 }
-
-function cldnry_wp_generate_attachment_metadata($metadata,$postid){
-    //ファイル形式のチェック
-    $imgPath    = get_attached_file($postid);
-    $info       = pathinfo($imgPath);
-    $public_id  = $info['filename'];
-    $mime_types = array('png'=>'image/png','jpg'=>'image/jpeg','pdf'=>'application/pdf','gif'=>"image/gif",'bmp'=>'image/bmp');
-    $extension  = $info['extension'];
-    $type       = @$mime_types[$extension];
-    //画像以外はcloudinaryにアップしない
-    if($type === null){
-        //$stderr = fopen('php://stderr','w');
-        //fwrite($stderr,'アップロードされたファイルが画像ではありません。file-type:' . $extension);
-        return $metadata;
-    }
-
-    //Cloudinaryへアップ
-    require_once(get_parent_theme_file_path('/inc/cloudinaryuploader.php'));
-    $cl_upload = new CloudinaryUploader();
-    $uploaded  = $cl_upload->upload($imgPath,array());
-    $public_id = $uploaded['public_id'];
-
-    update_attached_file($postid,$uploaded['secure_url']); //DBへ保存
-    $metadata['cloudinary'] = true; //cloudinaryからアップしたことを記録
-
-    return $metadata;
-}
-add_filter('wp_generate_attachment_metadata','cldnry_wp_generate_attachment_metadata',10,2);
