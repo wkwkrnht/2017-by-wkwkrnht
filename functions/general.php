@@ -89,10 +89,15 @@ function custom_oembed_element($html){
         $html = preg_replace('/ class="(.*?)\d+"/','class="$1" align="center"',$html);
         return $html;
     }
-    return $code;
+    return $html;
 }
 add_filter('embed_handler_html','custom_oembed_element');
 add_filter('embed_oembed_html','custom_oembed_element');
+wp_embed_register_handler('gist','/https?:\/\/gist\.github\.com\/([a-z0-9]+)\/([a-z0-9]+)(#file=.*)?/i','wp_embed_register_handler_for_gist');
+function wp_embed_register_handler_for_gist($matches,$attr,$url,$rawattr){
+    $embed = sprintf('<script src="https://gist.github.com/%1$s/%2$s.js"></script>',esc_attr($matches[1]),esc_attr($matches[2]));
+    return apply_filters('embed_gist',$embed,$matches,$attr,$url,$rawattr);
+}
 
 add_filter('term_description','wkwkrnht_term_description');
 function wkwkrnht_term_description($term){
