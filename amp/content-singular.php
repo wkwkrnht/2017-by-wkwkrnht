@@ -29,10 +29,10 @@ if(have_posts()){
                 <?php the_title();?>
             </h1>
             <div>
-                <time class="article-date fa fa-calendar" datetime="<?php echo $made_time;?>">
+                <time class="article-date far fa-calendar" datetime="<?php echo $made_time;?>">
                     <?php echo $made_time;?>
                 </time>
-                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="article-author fa fa-user" tabindex="0">
+                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="article-author far fa-user" tabindex="0">
                     <?php echo $author_name;?>
                 </a>
             </div>

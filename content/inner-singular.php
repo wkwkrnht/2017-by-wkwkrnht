@@ -24,10 +24,10 @@ if(have_posts()){
                 <?php the_title();?>
             </h1>
             <div>
-                <time class="updated article-date fa fa-calendar" datetime="<?php echo $made_time;?>">
+                <time class="updated article-date far fa-calendar" datetime="<?php echo $made_time;?>">
                     <?php echo $made_time;?>
                 </time>
-                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="author article-author fa fa-user" tabindex="0">
+                <a href="<?php echo site_url() . '?author=' . $author_id;?>" title="<?php echo $author_name;?>" class="author article-author far fa-user" tabindex="0">
                     <span class="vcard author">
                         <span class="fn">
                             <?php echo $author_name;?>
