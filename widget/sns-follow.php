@@ -6,17 +6,17 @@
     <ul class="follow-button-area">
         <li class="twitter follow-button">
             <a href="https://twitter.com/<?php echo get_twitter_acount();?>" title="Twitterでフォローする">
-                <span class="fa fa-twitter" aria-hidden="true"></span>でフォローする
+                <span class="fab fa-twitter" aria-hidden="true"></span>でフォローする
             </a>
         </li>
         <li class="facebook follow-button">
             <a href="https://facebook.com/<?php echo get_facebook_acount();?>" title="Facebookでフォローする">
-                <span class="fa fa-facebook" aria-hidden="true"></span>でフォローする
+                <span class="fab fa-facebook" aria-hidden="true"></span>でフォローする
             </a>
         </li>
         <li class="feedly follow-button">
             <a href="<?php bloginfo('rss2_url');?>" title="RSSで購読する">
-                <span class="fa fa-rss" aria-hidden="true"></span>でフォローする
+                <span class="fas fa-rss" aria-hidden="true"></span>でフォローする
             </a>
         </li>
     </ul>

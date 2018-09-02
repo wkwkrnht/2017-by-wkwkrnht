@@ -42,13 +42,13 @@ function make_OGPblogcard($url){
         </blockquote>
         <ul class="ogp-blogcard-share">
             <li>
-                <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-twitter" title="Twitterへ共有する"></a>
+                <a href="https://twitter.com/share?url=' . $share_url . '&amp;text=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fab fa-twitter" title="Twitterへ共有する"></a>
             </li>
             <li>
-                <a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-thumbs-up" title="facebookrへ共有する"></a>
+                <a href="http://www.facebook.com/share.php?u=' . $share_url . '" target="_blank" rel="noopener" tabindex="0" class="fab fa-facebook-f" title="facebookrへ共有する"></a>
             </li>
             <li>
-                <a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fa fa-get-pocket" title="pocketへ共有する"></a>
+                <a href="http://getpocket.com/edit?url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0" class="fab fa-get-pocket" title="pocketへ共有する"></a>
             </li>
             <li>
                 <a href="http://b.hatena.ne.jp/add?mode=confirm&url=' . $share_url . '&amp;title=' . $title . '" target="_blank" rel="noopener" tabindex="0" title="はてブへ共有する">

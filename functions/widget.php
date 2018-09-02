@@ -509,7 +509,7 @@ function make_author_follow_button($array){
                 break;
         }
         if($fw_class!==''){
-            $name = '<span class="fa fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
+            $name = '<span class="fab fa-3x ' . $fw_class . '" aria-hidden="true" itemprop="name"></span>';
         }elseif($character!==''){
             $name = '<span itemprop="name">' . $character . '</span>';
         }else{
