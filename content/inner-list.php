@@ -20,7 +20,7 @@
                     <h2 class="card-title">
                         <?php echo $title;?>
                     </h2>
-                    <time class="entry-date updated card-time far fa-calendar" datetime="<?php echo $time;?>">
+                    <time class="entry-date updated card-time far fa-calendar-alt" datetime="<?php echo $time;?>">
                         <?php echo $time;?>
                     </time>
                 </div>

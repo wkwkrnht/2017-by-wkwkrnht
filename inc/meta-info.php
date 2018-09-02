@@ -65,8 +65,12 @@ if($pin!==''){
     <?php endif;?>
     <link rel="preload" as="script" href="//www.google-analytics.com/analytics.js">
     <link rel="preload" as="script" href="<?php echo $theme_uri;?>/inc/js/app.js">
-    <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff2" crossorigin>
-	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fontawesome-webfont.woff" crossorigin>
+    <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-solid-900.woff2" crossorigin>
+	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-solid-900.woff" crossorigin>
+    <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-regular-400.woff2" crossorigin>
+	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-regular-400.woff" crossorigin>
+    <link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-brands-400.woff2" crossorigin>
+	<link rel="preload" as="font" href="<?php echo $theme_uri;?>/inc/font-awesome/fa-brands-400.woff" crossorigin>
     <link rel="amphtml" href="<?php echo $meta_url;?>?amp=1">
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
