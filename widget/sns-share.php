@@ -15,7 +15,7 @@ $tw__acount = get_twitter_acount();?>
     </li>
     <li class="fb-like">
         <a href="https://www.facebook.com/share.php?u=<?php echo rawurlencode($url_now);?>" target="_blank" rel="noopener" title="Facebookへの共有リンク">
-            <span class="far fa-facebook-f" aria-hidden="true"></span>
+            <span class="fab fa-facebook-f" aria-hidden="true"></span>
         </a>
     </li>
     <li class="line">
