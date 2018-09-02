@@ -15,7 +15,7 @@ made by [wkwkrnht](https://twitter.com/wkwkrnht)
 
 ##使用ライブラリ
 1. [normalize.css](https://github.com/necolas/normalize.css) | v7.0.0 | MIT License |
-2. [Font Awesome](http://fontawesome.io) | 4.6.3 | ([License](http://fontawesome.io/license) (Font: SIL OFL 1.1, CSS: MIT License)) | @davegandy
+2. [Font Awesome](https://fontawesome.com) | 5.3.1 | ([License](https://fontawesome.com/license/free) (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)) | @fontawesome
 3. [OpenGraph.php](https://github.com/scottmac/opengraph/) | Apache License, Version 2.0 | Scott MacVicar
 
 ##作成者
