@@ -1,3 +1,13 @@
+<?php
+/*
+1.変数に値を格納
+2.メタ情報出力
+3.AMP切り分け
+    1.AMP対応実行
+    2.スクリプトの類読み込み
+4.JSON-LDでメタ情報付加
+*/
+?>
 <meta charset="utf-8">
 <?php
 $i            = 1;
@@ -6,6 +16,7 @@ $google_ana   = get_option('Google_Analytics');
 $google_meta  = get_option('Google_Webmaster');
 $bing         = get_option('Bing_Webmaster');
 $pin          = get_option('Pinterest');
+$linkswitch   = get_option('LinkSwitch');
 $is_amp       = is_amp();
 $is_home      = is_home();
 $theme_uri    = get_template_directory_uri();
@@ -74,7 +85,7 @@ if($pin!==''){
     <link rel="amphtml" href="<?php echo $meta_url;?>?amp=1">
     <link rel="fluid-icon" href="<?php echo $meta_img;?>" title="<?php echo $blog_name;?>">
     <link rel="image_src" href="<?php echo $meta_img;?>" url="<?php echo $meta_img;?>" height="256" width="256">
-    <?php if($google_ana!==false&&(!isset($_SERVER['HTTP_USER_AGENT']) || stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false)):?>
+    <?php if($google_ana!==false&&(!isset($_SERVER['HTTP_USER_AGENT'])||stripos($_SERVER['HTTP_USER_AGENT'],'Speed Insights')===false)):?>
         <script>
             window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};
             ga.l=+new Date;
@@ -83,6 +94,9 @@ if($pin!==''){
         </script>
         <script src="//www.google-analytics.com/analytics.js"></script>
     <?php endif;
+    if($linkswitch!==''){
+        echo'<script>const vc_pid = "' . $linkswitch . '";</script><script async src="//aml.valuecommerce.com/vcdal.js"></script>';
+    }
 endif;
 if(is_singular()===true):
     $google_id  = get_the_author_meta('GoogleID');

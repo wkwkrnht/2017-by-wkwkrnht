@@ -6,6 +6,7 @@ function wkwkrnht_customizer($wp_customize){
     2.Google Search Consoleの認証コード
     3.Bing Web masterの認証コード
     4.Pinterestの認証コード
+    5.LinkSwichの認証コード
     */
     $wp_customize->add_setting('Google_Analytics',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Google_Analytics',array('section'=>'title_tagline','settings'=>'Google_Analytics','label'=>'サイトのGoogleAnalyticsのIDを指定する','type'=>'text'));
@@ -15,16 +16,25 @@ function wkwkrnht_customizer($wp_customize){
     $wp_customize->add_control('Bing_Webmaster',array('section'=>'title_tagline','settings'=>'Bing_Webmaster','label'=>'サイトのBingWebmaster向け認証コードを指定する','type'=>'text'));
     $wp_customize->add_setting('Pinterest',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Pinterest',array('section'=>'title_tagline','settings'=>'Pinterest','label'=>'サイトのPinterest向け認証コードを指定する','type'=>'text'));
+    $wp_customize->add_setting('LinkSwitch',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_control('LinkSwitch',array('section'=>'title_tagline','settings'=>'LinkSwitch','label'=>'サイトのLinkSwitch向け認証コードを指定する','type'=>'text'));
 
     /*
         Security
-    1.
+    1.リファラーの値
+    2.エックスサーバー独自のスクリプトの高速化設定
     */
     $wp_customize->add_section('security_section',array('title'=>'セキュリティ','description'=>'このテーマ独自のセキュリティ設定',));
     $wp_customize->add_setting('referrer_setting',array('default'=>'default','type'=>'theme_mod','sanitize_callback'=>'sanitize_radio',));
 	$wp_customize->add_control('referrer_setting',array('settings'=>'referrer_setting','label'=>'メタタグのリファラーの値','section'=>'security_section','type'=>'radio','choices'=>array('default'=>'default','unsafe-url'=>'unsafe-url','origin-when-crossorigin'=>'origin-when-crossorigin','none-when-downgrade'=>'none-when-downgrade','none'=>'none',),));
     $wp_customize->add_setting('x_domain_ad_preload',array('type'=>'option','sanitize_callback'=>'sanitize_checkbox',));
     $wp_customize->add_control('x_domain_ad_preload',array('settings'=>'x_domain_ad_preload','label'=>'エックスドメインの無料WordPressサーバーにて広告用スクリプトを先読みする','section'=>'security_section','type'=>'checkbox',));
+
+    /*
+        SNS
+    1.Twitterアカウント
+    */
+
     $wp_customize->add_section('sns_section',array('title'=>'SNS','description'=>'このテーマ独自のSNS向け設定',));
     $wp_customize->add_setting('Twitter_URL',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
     $wp_customize->add_control('Twitter_URL',array('section'=>'sns_section','settings'=>'Twitter_URL','label'=>'サイト全体のTwitterアカウントを指定する','type'=>'text'));
@@ -208,8 +218,8 @@ function wkwkrnht_customizer($wp_customize){
     1.header
     2.footer
     */
-    $wp_customize->add_setting('insert_into_header',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_setting('insert_into_header',array('type'=>'option',));
     $wp_customize->add_control('insert_into_header',array('settings'=>'insert_into_header','label'=>'headタグ内に追加で出力するテキスト','section'=>'custom_css','type'=>'textarea'));
-    $wp_customize->add_setting('insert_into_footer',array('type'=>'option','sanitize_callback'=>'sanitize_text_field',));
+    $wp_customize->add_setting('insert_into_footer',array('type'=>'option',));
     $wp_customize->add_control('insert_into_footer',array('settings'=>'insert_into_insert_into_footer','label'=>'bodyタグ直前に追加で出力するテキスト','section'=>'custom_css','type'=>'textarea'));
 }
